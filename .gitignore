@@ -32,3 +32,10 @@ dist/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Makineye ozel Gradle ayarlari (JDK yolu)
+backend/gradle.properties
+
+# Gradle build ciktilari
+backend/.gradle/
+backend/build/

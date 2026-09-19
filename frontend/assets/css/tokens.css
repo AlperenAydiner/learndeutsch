@@ -1,0 +1,137 @@
+/* =====================================================================
+   Tasarim token'lari — tek kaynak.
+   Renk, olcu ve tipografi degerleri SADECE burada tanimlanir.
+   ===================================================================== */
+
+:root {
+    /* --- Yuzeyler --- */
+    --bg:            #f7f6f3;
+    --surface:       #ffffff;
+    --surface-alt:   #f1efea;
+    --border:        #e2ded6;
+    --border-strong: #cdc7bb;
+
+    /* --- Metin --- */
+    --text:          #1c1a17;
+    --text-muted:    #6b665d;
+    --text-faint:    #948e83;
+
+    /* --- Marka: derin mavi, disiplinli/sakin --- */
+    --accent:        #2f5d8c;
+    --accent-hover:  #24486d;
+    --accent-soft:   #e8eff6;
+    --accent-text:   #ffffff;
+
+    /* --- Durum renkleri (gorev isaretleme) --- */
+    --done:          #2f7a52;
+    --done-soft:     #e6f1ea;
+    --partial:       #b07d1f;
+    --partial-soft:  #faf1dd;
+    --missed:        #a8443a;
+    --missed-soft:   #f7e8e6;
+
+    /* --- Artikel renk kodlari (sabit anlam tasir, temayla degismez) --- */
+    --der:           #1f6fb8;
+    --die:           #c0392b;
+    --das:           #2f8f4e;
+
+    /* --- Tipografi --- */
+    --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "Cascadia Mono", "SF Mono", Consolas, monospace;
+
+    --fs-xs:   0.78rem;
+    --fs-sm:   0.875rem;
+    --fs-base: 1rem;
+    --fs-md:   1.125rem;
+    --fs-lg:   1.375rem;
+    --fs-xl:   1.875rem;
+    --fs-2xl:  2.5rem;
+    --fs-3xl:  3.25rem;
+
+    /* --- Olcu --- */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --sp-7: 3rem;
+    --sp-8: 4.5rem;
+
+    --radius-sm: 6px;
+    --radius:    10px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 1px 2px rgba(28, 26, 23, 0.06);
+    --shadow:    0 2px 8px rgba(28, 26, 23, 0.08);
+    --shadow-lg: 0 8px 28px rgba(28, 26, 23, 0.12);
+
+    --content-max: 1120px;
+    --nav-h: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:            #161513;
+        --surface:       #201f1c;
+        --surface-alt:   #2a2823;
+        --border:        #35322c;
+        --border-strong: #4a463e;
+
+        --text:          #f0ede7;
+        --text-muted:    #a9a399;
+        --text-faint:    #7d776d;
+
+        --accent:        #6fa3d4;
+        --accent-hover:  #8bb8e2;
+        --accent-soft:   #1e2a36;
+        --accent-text:   #161513;
+
+        --done:          #63b487;
+        --done-soft:     #1c2a22;
+        --partial:       #d9ab54;
+        --partial-soft:  #2c2619;
+        --missed:        #d8776c;
+        --missed-soft:   #2e1f1d;
+
+        --der:           #6fa9e0;
+        --die:           #e8877c;
+        --das:           #6fbf8c;
+
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+        --shadow:    0 2px 8px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.5);
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg:            #161513;
+    --surface:       #201f1c;
+    --surface-alt:   #2a2823;
+    --border:        #35322c;
+    --border-strong: #4a463e;
+
+    --text:          #f0ede7;
+    --text-muted:    #a9a399;
+    --text-faint:    #7d776d;
+
+    --accent:        #6fa3d4;
+    --accent-hover:  #8bb8e2;
+    --accent-soft:   #1e2a36;
+    --accent-text:   #161513;
+
+    --done:          #63b487;
+    --done-soft:     #1c2a22;
+    --partial:       #d9ab54;
+    --partial-soft:  #2c2619;
+    --missed:        #d8776c;
+    --missed-soft:   #2e1f1d;
+
+    --der:           #6fa9e0;
+    --die:           #e8877c;
+    --das:           #6fbf8c;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow:    0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.5);
+}

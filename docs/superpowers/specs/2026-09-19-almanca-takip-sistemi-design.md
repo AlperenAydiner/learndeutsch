@@ -39,7 +39,7 @@ Arayüz dili Türkçe, çalışma içeriği Almancadır.
 
 | Konu | Karar | Gerekçe |
 |---|---|---|
-| Runtime | Java 21 (LTS) + Spring Boot 3.3 | Spring Boot 3 için JDK 17+ zorunlu; 21 LTS |
+| Runtime | Java 21 (LTS) + Spring Boot 4.1 | Spring Boot 4 için JDK 17+ zorunlu; 21 LTS |
 | Build | Gradle Wrapper (`./gradlew`) | Makineye ayrıca Gradle/Maven kurmak gerekmez |
 | Veritabanı | Supabase (PostgreSQL) | Yönetilen Postgres, bulutta, ücretsiz katman |
 | Migration | Flyway | Şema sürümlenir, elle SQL çalıştırma yok |
@@ -67,7 +67,7 @@ API'dir. İş mantığı tek yerde toplanır.
 
 ```
 IchSprecheDeutsch/
-├── backend/        Spring Boot 3.3 + Java 21
+├── backend/        Spring Boot 4.1 + Java 21
 ├── frontend/       Statik HTML/CSS/JS
 ├── content/        Seed verisi (CSV/JSON)
 ├── docs/
@@ -457,7 +457,7 @@ giriş sonrası panel bağlantıları + Çıkış
 
 | # | Adım | Çıktı | Doğrulama |
 |---|---|---|---|
-| 0 | İskelet | Gradle + JDK 21, Spring Boot 3.3, Supabase bağlantısı, Flyway, `/api/health` | `./gradlew bootRun` → health 200 |
+| 0 | İskelet | Gradle + JDK 21, Spring Boot 4.1, Supabase bağlantısı, Flyway, `/api/health` | `./gradlew bootRun` → health 200 |
 | 1 | Auth | Supabase JWT doğrulama, `app_user` senkronu, `/api/me`, frontend kayıt/giriş | Token ile `/api/me` çalışır, tokensız 401 |
 | 2 | Ana sayfa + menü | `index.html`, hamburger menü, korumalı rota yönlendirmesi | Girişsiz `/app/bugun` → `giris.html` |
 | 3 | İçerik havuzu | Şema + Excel'den seed (birimler, bloklar, kategoriler, A1–A2 kelimeler) | Seeder 2 kez çalışır, kayıt çiftlenmez |

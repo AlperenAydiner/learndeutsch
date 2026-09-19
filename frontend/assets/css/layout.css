@@ -1,0 +1,147 @@
+/* =====================================================================
+   Ust bar, hamburger menu ve sayfa iskeleti.
+   ===================================================================== */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    height: var(--nav-h);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+}
+
+.topbar__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+}
+
+.brand__de {
+    color: var(--accent);
+}
+
+/* --- Hamburger dugmesi --- */
+
+.nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.nav-toggle__bar {
+    display: block;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --- Acilir menu --- */
+
+.nav-panel {
+    position: fixed;
+    inset: var(--nav-h) 0 auto 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    z-index: 49;
+}
+
+.nav-panel[hidden] {
+    display: none !important;
+}
+
+.nav-panel__list {
+    list-style: none;
+    margin: 0;
+    padding: var(--sp-4) 0 var(--sp-5);
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-panel__link {
+    display: block;
+    padding: var(--sp-3) 0;
+    color: var(--text);
+    font-size: var(--fs-md);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-panel__link:hover {
+    color: var(--accent);
+}
+
+.nav-panel__link--current {
+    color: var(--accent);
+    font-weight: 650;
+}
+
+.nav-panel__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    padding-top: var(--sp-5);
+}
+
+.nav-panel__actions .btn {
+    flex: 1 1 160px;
+}
+
+/* --- Sayfa bolumleri --- */
+
+.section {
+    padding-block: var(--sp-8);
+}
+
+.section--tight {
+    padding-block: var(--sp-7);
+}
+
+.section--alt {
+    background: var(--surface-alt);
+    border-block: 1px solid var(--border);
+}
+
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding-block: var(--sp-6);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+}

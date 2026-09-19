@@ -1,0 +1,220 @@
+/* =====================================================================
+   Ana sayfa.
+   ===================================================================== */
+
+/* --- Giris --- */
+
+.hero {
+    padding-block: var(--sp-8) var(--sp-7);
+}
+
+.hero__eyebrow {
+    margin: 0 0 var(--sp-3);
+    color: var(--accent);
+    font-size: var(--fs-sm);
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.hero__title {
+    font-size: clamp(2.1rem, 5.5vw, var(--fs-3xl));
+    max-width: 16ch;
+    margin-bottom: var(--sp-5);
+}
+
+.hero__title-accent {
+    color: var(--accent);
+}
+
+.hero__lead {
+    max-width: 58ch;
+    font-size: var(--fs-md);
+    color: var(--text-muted);
+    margin-bottom: var(--sp-6);
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+}
+
+/* --- Ne degil / Ne --- */
+
+.contrast {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--sp-6);
+}
+
+.contrast__head {
+    font-size: var(--fs-lg);
+    padding-bottom: var(--sp-2);
+    border-bottom: 2px solid var(--border-strong);
+}
+
+.contrast__head--no  { color: var(--missed); border-bottom-color: var(--missed); }
+.contrast__head--yes { color: var(--done);   border-bottom-color: var(--done); }
+
+.contrast__list {
+    margin: 0;
+    padding-left: var(--sp-5);
+    color: var(--text-muted);
+}
+
+.contrast__list li {
+    margin-bottom: var(--sp-2);
+}
+
+.contrast__note {
+    margin-top: var(--sp-6);
+    margin-bottom: 0;
+    font-size: var(--fs-md);
+    text-align: center;
+    color: var(--text);
+}
+
+/* --- Adimlar --- */
+
+.steps {
+    list-style: none;
+    margin: var(--sp-6) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--sp-5);
+    counter-reset: step;
+}
+
+.steps__item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
+}
+
+.steps__no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-bottom: var(--sp-3);
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: var(--fs-sm);
+}
+
+.steps__title {
+    font-size: var(--fs-md);
+    margin-bottom: var(--sp-2);
+}
+
+.steps__item p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+}
+
+/* --- Ornek gun --- */
+
+.section__lead {
+    max-width: 62ch;
+    color: var(--text-muted);
+    margin-bottom: var(--sp-5);
+}
+
+.day__blocks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.day__block {
+    display: grid;
+    grid-template-columns: 72px 130px 1fr;
+    align-items: baseline;
+    gap: var(--sp-3);
+    padding: var(--sp-3) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.day__block:last-child {
+    border-bottom: 0;
+}
+
+.day__time {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--accent);
+    font-weight: 650;
+}
+
+.day__name {
+    font-weight: 650;
+}
+
+.day__desc {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+}
+
+.day__note {
+    margin: var(--sp-5) 0 0;
+    padding-top: var(--sp-4);
+    border-top: 1px dashed var(--border-strong);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+}
+
+@media (max-width: 560px) {
+    .day__block {
+        grid-template-columns: 64px 1fr;
+    }
+
+    .day__desc {
+        grid-column: 2;
+    }
+}
+
+/* --- Kimin icin --- */
+
+.audience {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--sp-4);
+    margin-top: var(--sp-5);
+}
+
+.audience__item h3 {
+    font-size: var(--fs-base);
+    margin-bottom: var(--sp-2);
+    color: var(--accent);
+}
+
+.audience__item p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+}
+
+/* --- Son cagri --- */
+
+.cta__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-5);
+    padding: var(--sp-6);
+    background: var(--accent-soft);
+    border-radius: var(--radius-lg);
+}
+
+.cta__title {
+    margin: 0;
+    font-size: var(--fs-lg);
+}
