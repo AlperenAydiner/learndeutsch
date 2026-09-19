@@ -2,6 +2,13 @@ spring:
   application:
     name: ichsprechedeutsch-backend
 
+  # Gizli degerler backend/.env dosyasindan gelir (repoya girmez).
+  # Spring Boot .env'i properties dosyasi olarak okur; ek bagimlilik gerekmez.
+  # "optional:" -> dosya yoksa uygulama yine acilir (ornegin Render'da
+  # degerler gercek ortam degiskeni olarak verilir).
+  config:
+    import: optional:file:.env[.properties]
+
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
