@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bugün — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap section">
+    <h1 id="baslik">Yükleniyor...</h1>
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+
+    <div class="card" id="kart" hidden>
+        <h2 style="font-size: var(--fs-md);">Bağlantı doğrulandı</h2>
+        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+            Tarayıcı → Supabase Auth → Spring Boot API → PostgreSQL zinciri
+            uçtan uca çalışıyor. Aşağıdaki bilgiler sunucudan, token'ındaki
+            kimlikle geldi.
+        </p>
+        <dl class="ozet">
+            <dt>Kullanıcı kimliği</dt><dd id="kimlik"></dd>
+            <dt>E-posta</dt><dd id="eposta"></dd>
+            <dt>Ad</dt><dd id="ad"></dd>
+            <dt>Saat dilimi</dt><dd id="saat"></dd>
+            <dt>Kayıt tarihi</dt><dd id="tarih"></dd>
+        </dl>
+    </div>
+
+    <p style="margin-top: var(--sp-6); color: var(--text-faint); font-size: var(--fs-sm);">
+        Bu ekran şimdilik bir yer tutucu. Günün konusu, görev listesi ve
+        işaretleme Adım 6'da gelecek.
+    </p>
+</main>
+
+<style>
+    .ozet {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: var(--sp-2) var(--sp-4);
+        margin: var(--sp-5) 0 0;
+        font-size: var(--fs-sm);
+    }
+    .ozet dt { color: var(--text-muted); }
+    .ozet dd { margin: 0; font-family: var(--font-mono); word-break: break-all; }
+    @media (max-width: 560px) {
+        .ozet { grid-template-columns: 1fr; gap: var(--sp-1) 0; }
+        .ozet dd { margin-bottom: var(--sp-3); }
+    }
+</style>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api } from "/assets/js/core/api.js";
+
+    const session = await requireAuth();
+    if (session) {
+        try {
+            const me = await api.get("/me");
+            document.getElementById("baslik").textContent =
+                `Merhaba${me.displayName ? ", " + me.displayName : ""}!`;
+            document.getElementById("kimlik").textContent = me.id;
+            document.getElementById("eposta").textContent = me.email;
+            document.getElementById("ad").textContent = me.displayName ?? "—";
+            document.getElementById("saat").textContent = me.timezone;
+            document.getElementById("tarih").textContent =
+                new Date(me.createdAt).toLocaleString("tr-TR");
+            document.getElementById("kart").hidden = false;
+        } catch (err) {
+            document.getElementById("baslik").textContent = "Bir sorun var";
+            const hata = document.getElementById("hata");
+            hata.textContent = err.message;
+            hata.hidden = false;
+        }
+    }
+</script>
+
+</body>
+</html>

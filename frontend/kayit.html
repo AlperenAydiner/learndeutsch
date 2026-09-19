@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kayıt ol — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap auth">
+    <div class="auth__card">
+
+        <!-- ---------- Form ---------- -->
+        <div id="formBolumu">
+            <h1 class="auth__title">Kayıt ol</h1>
+            <p class="auth__lead">
+                Hedefini belirleyelim, seviyeni ölçelim, programını çıkaralım.
+            </p>
+
+            <div class="notice notice--error" id="hata" role="alert" hidden></div>
+
+            <form id="kayitFormu" novalidate>
+                <div class="field">
+                    <label class="field__label" for="ad">Adın</label>
+                    <input class="field__input" type="text" id="ad" name="ad"
+                           autocomplete="given-name" maxlength="80" required>
+                    <p class="field__error" id="adHata" hidden></p>
+                </div>
+
+                <div class="field">
+                    <label class="field__label" for="eposta">E-posta</label>
+                    <input class="field__input" type="email" id="eposta" name="eposta"
+                           autocomplete="email" required>
+                    <p class="field__error" id="epostaHata" hidden></p>
+                </div>
+
+                <div class="field">
+                    <label class="field__label" for="sifre">Şifre</label>
+                    <div class="field__wrap">
+                        <input class="field__input" type="password" id="sifre" name="sifre"
+                               autocomplete="new-password" minlength="8" required>
+                        <button class="field__reveal" type="button" data-reveal="sifre">
+                            Göster
+                        </button>
+                    </div>
+                    <p class="field__hint">En az 8 karakter.</p>
+                    <p class="field__error" id="sifreHata" hidden></p>
+                </div>
+
+                <button class="btn btn--primary auth__submit" type="submit" id="gonder">
+                    Kayıt ol
+                </button>
+            </form>
+
+            <p class="auth__alt">
+                Hesabın var mı? <a href="/giris.html">Giriş yap</a>
+            </p>
+        </div>
+
+        <!-- ---------- Kayit sonrasi ---------- -->
+        <div id="gonderildiBolumu" class="sent" hidden>
+            <div class="sent__icon" aria-hidden="true">📬</div>
+            <h1 class="auth__title">Postanı kontrol et</h1>
+            <p class="auth__lead">
+                <span class="sent__mail" id="gonderilenAdres"></span> adresine bir
+                doğrulama bağlantısı gönderdik. Bağlantıya tıkladıktan sonra
+                giriş yapabilirsin.
+            </p>
+
+            <div class="notice notice--success" id="tekrarBilgi" role="status" hidden></div>
+            <div class="notice notice--error" id="tekrarHata" role="alert" hidden></div>
+
+            <p class="sent__hint">
+                E-posta gelmediyse spam klasörüne bak, ya da
+                <button class="linkish" type="button" id="tekrarGonder">tekrar gönder</button>.
+            </p>
+        </div>
+
+    </div>
+</main>
+
+<script type="module">
+    import { mountNav } from "/assets/js/components/nav.js";
+    import { signUp, resendConfirmation } from "/assets/js/core/auth.js";
+    import { redirectIfLoggedIn } from "/assets/js/core/guard.js";
+
+    mountNav({ loggedIn: false });
+
+    // Zaten girmisse burada isi yok.
+    if (await redirectIfLoggedIn()) {
+        // yonlendirme yapildi
+    } else {
+        kur();
+    }
+
+    function kur() {
+        const form = document.getElementById("kayitFormu");
+        const gonder = document.getElementById("gonder");
+        const hata = document.getElementById("hata");
+
+        // Sifre goster/gizle
+        document.querySelectorAll("[data-reveal]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const input = document.getElementById(btn.dataset.reveal);
+                const gizli = input.type === "password";
+                input.type = gizli ? "text" : "password";
+                btn.textContent = gizli ? "Gizle" : "Göster";
+            });
+        });
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            hata.hidden = true;
+
+            const ad = document.getElementById("ad").value.trim();
+            const eposta = document.getElementById("eposta").value.trim();
+            const sifre = document.getElementById("sifre").value;
+
+            if (!dogrula({ ad, eposta, sifre })) return;
+
+            gonder.disabled = true;
+            gonder.textContent = "Kaydediliyor...";
+
+            try {
+                await signUp({ email: eposta, password: sifre, displayName: ad });
+                gonderildiGoster(eposta);
+            } catch (err) {
+                hata.textContent = err.message;
+                hata.hidden = false;
+                gonder.disabled = false;
+                gonder.textContent = "Kayıt ol";
+            }
+        });
+    }
+
+    function dogrula({ ad, eposta, sifre }) {
+        let gecerli = true;
+        gecerli = alanHata("adHata", "ad",
+            ad ? "" : "Adını yaz.") && gecerli;
+        gecerli = alanHata("epostaHata", "eposta",
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta) ? "" : "Geçerli bir e-posta yaz.") && gecerli;
+        gecerli = alanHata("sifreHata", "sifre",
+            sifre.length >= 8 ? "" : "Şifre en az 8 karakter olmalı.") && gecerli;
+        return gecerli;
+    }
+
+    function alanHata(hataId, alanId, mesaj) {
+        const kutu = document.getElementById(hataId);
+        const alan = document.getElementById(alanId);
+        kutu.textContent = mesaj;
+        kutu.hidden = !mesaj;
+        alan.setAttribute("aria-invalid", mesaj ? "true" : "false");
+        return !mesaj;
+    }
+
+    function gonderildiGoster(eposta) {
+        document.getElementById("formBolumu").hidden = true;
+        document.getElementById("gonderilenAdres").textContent = eposta;
+        document.getElementById("gonderildiBolumu").hidden = false;
+
+        const tekrar = document.getElementById("tekrarGonder");
+        const bilgi = document.getElementById("tekrarBilgi");
+        const tHata = document.getElementById("tekrarHata");
+
+        tekrar.addEventListener("click", async () => {
+            bilgi.hidden = true;
+            tHata.hidden = true;
+            tekrar.disabled = true;
+            try {
+                await resendConfirmation(eposta);
+                bilgi.textContent = "Doğrulama e-postası tekrar gönderildi.";
+                bilgi.hidden = false;
+            } catch (err) {
+                tHata.textContent = err.message;
+                tHata.hidden = false;
+            }
+            // Supabase pes pese gonderimi zaten sinirliyor; dugmeyi de bekletelim.
+            setTimeout(() => { tekrar.disabled = false; }, 60000);
+        });
+    }
+</script>
+
+</body>
+</html>

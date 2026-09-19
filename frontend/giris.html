@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giriş yap — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap auth">
+    <div class="auth__card">
+        <h1 class="auth__title">Giriş yap</h1>
+        <p class="auth__lead">Kaldığın yerden devam et.</p>
+
+        <div class="notice notice--success" id="bilgi" role="status" hidden></div>
+        <div class="notice notice--info" id="uyari" role="status" hidden></div>
+        <div class="notice notice--error" id="hata" role="alert" hidden></div>
+
+        <form id="girisFormu" novalidate>
+            <div class="field">
+                <label class="field__label" for="eposta">E-posta</label>
+                <input class="field__input" type="email" id="eposta" name="eposta"
+                       autocomplete="email" required>
+                <p class="field__error" id="epostaHata" hidden></p>
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="sifre">Şifre</label>
+                <div class="field__wrap">
+                    <input class="field__input" type="password" id="sifre" name="sifre"
+                           autocomplete="current-password" required>
+                    <button class="field__reveal" type="button" data-reveal="sifre">
+                        Göster
+                    </button>
+                </div>
+                <p class="field__error" id="sifreHata" hidden></p>
+            </div>
+
+            <button class="btn btn--primary auth__submit" type="submit" id="gonder">
+                Giriş yap
+            </button>
+        </form>
+
+        <p class="auth__alt">
+            Hesabın yok mu? <a href="/kayit.html">Kayıt ol</a>
+        </p>
+    </div>
+</main>
+
+<script type="module">
+    import { mountNav } from "/assets/js/components/nav.js";
+    import { signIn } from "/assets/js/core/auth.js";
+    import { redirectIfLoggedIn, popReturnUrl } from "/assets/js/core/guard.js";
+
+    mountNav({ loggedIn: false });
+
+    const params = new URLSearchParams(window.location.search);
+
+    // E-posta dogrulama baglantisindan gelindiyse Supabase oturumu
+    // adres cubugundaki parcadan kurar; o yuzden once oturuma bakariz.
+    if (await redirectIfLoggedIn(popReturnUrl())) {
+        // yonlendirme yapildi
+    } else {
+        durumMesaji();
+        kur();
+    }
+
+    function durumMesaji() {
+        if (params.get("dogrulandi") === "1") {
+            goster("bilgi", "E-postan doğrulandı. Şimdi giriş yapabilirsin.");
+        } else if (params.get("oturum") === "gerekli") {
+            goster("uyari", "Bu sayfayı görmek için giriş yapman gerekiyor.");
+        }
+    }
+
+    function kur() {
+        const form = document.getElementById("girisFormu");
+        const gonder = document.getElementById("gonder");
+
+        document.querySelectorAll("[data-reveal]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const input = document.getElementById(btn.dataset.reveal);
+                const gizli = input.type === "password";
+                input.type = gizli ? "text" : "password";
+                btn.textContent = gizli ? "Gizle" : "Göster";
+            });
+        });
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            document.getElementById("hata").hidden = true;
+
+            const eposta = document.getElementById("eposta").value.trim();
+            const sifre = document.getElementById("sifre").value;
+
+            let gecerli = true;
+            gecerli = alanHata("epostaHata", "eposta",
+                eposta ? "" : "E-postanı yaz.") && gecerli;
+            gecerli = alanHata("sifreHata", "sifre",
+                sifre ? "" : "Şifreni yaz.") && gecerli;
+            if (!gecerli) return;
+
+            gonder.disabled = true;
+            gonder.textContent = "Giriş yapılıyor...";
+
+            try {
+                await signIn({ email: eposta, password: sifre });
+                window.location.replace(popReturnUrl());
+            } catch (err) {
+                goster("hata", err.message);
+                gonder.disabled = false;
+                gonder.textContent = "Giriş yap";
+            }
+        });
+    }
+
+    function alanHata(hataId, alanId, mesaj) {
+        const kutu = document.getElementById(hataId);
+        const alan = document.getElementById(alanId);
+        kutu.textContent = mesaj;
+        kutu.hidden = !mesaj;
+        alan.setAttribute("aria-invalid", mesaj ? "true" : "false");
+        return !mesaj;
+    }
+
+    function goster(id, mesaj) {
+        const kutu = document.getElementById(id);
+        kutu.textContent = mesaj;
+        kutu.hidden = false;
+    }
+</script>
+
+</body>
+</html>

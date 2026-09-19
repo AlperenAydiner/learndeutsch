@@ -1,0 +1,6 @@
+# Derleme ciktilari ve makineye ozel dosyalar imaja girmez.
+build/
+.gradle/
+gradle.properties
+.env
+*.log

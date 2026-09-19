@@ -1,0 +1,204 @@
+/* =====================================================================
+   Kayit ve giris sayfalari.
+   ===================================================================== */
+
+.auth {
+    display: flex;
+    justify-content: center;
+    padding-block: var(--sp-7) var(--sp-8);
+}
+
+.auth__card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    box-shadow: var(--shadow);
+}
+
+.auth__title {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--sp-2);
+}
+
+.auth__lead {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--sp-5);
+}
+
+/* --- Alanlar --- */
+
+.field {
+    margin-bottom: var(--sp-4);
+}
+
+.field__label {
+    display: block;
+    margin-bottom: var(--sp-2);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+}
+
+.field__input {
+    width: 100%;
+    padding: var(--sp-3);
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font: inherit;
+    transition: border-color 0.15s ease;
+}
+
+.field__input:focus {
+    border-color: var(--accent);
+}
+
+.field__input[aria-invalid="true"] {
+    border-color: var(--missed);
+}
+
+.field__hint {
+    margin: var(--sp-2) 0 0;
+    font-size: var(--fs-xs);
+    color: var(--text-faint);
+}
+
+.field__error {
+    margin: var(--sp-2) 0 0;
+    font-size: var(--fs-xs);
+    color: var(--missed);
+}
+
+.field__error[hidden] {
+    display: none;
+}
+
+/* --- Sifre alani + goster dugmesi --- */
+
+.field__wrap {
+    position: relative;
+    display: flex;
+}
+
+.field__wrap .field__input {
+    padding-right: 76px;
+}
+
+.field__reveal {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: var(--sp-1) var(--sp-2);
+    background: transparent;
+    border: 0;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: var(--fs-xs);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.field__reveal:hover {
+    color: var(--accent);
+}
+
+/* --- Gonder --- */
+
+.auth__submit {
+    width: 100%;
+    margin-top: var(--sp-2);
+}
+
+.auth__submit[disabled] {
+    opacity: 0.6;
+    cursor: progress;
+}
+
+.auth__alt {
+    margin: var(--sp-5) 0 0;
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* --- Uyari kutulari --- */
+
+.notice {
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius);
+    font-size: var(--fs-sm);
+    margin-bottom: var(--sp-5);
+    border: 1px solid transparent;
+}
+
+.notice[hidden] {
+    display: none;
+}
+
+.notice--error {
+    background: var(--missed-soft);
+    border-color: var(--missed);
+    color: var(--missed);
+}
+
+.notice--info {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.notice--success {
+    background: var(--done-soft);
+    border-color: var(--done);
+    color: var(--done);
+}
+
+/* --- Kayit sonrasi "postana bak" ekrani --- */
+
+.sent {
+    text-align: center;
+}
+
+.sent__icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: var(--sp-4);
+}
+
+.sent__mail {
+    font-weight: 650;
+    color: var(--text);
+    word-break: break-all;
+}
+
+.sent__hint {
+    margin-top: var(--sp-5);
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+.linkish {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+.linkish[disabled] {
+    color: var(--text-faint);
+    cursor: default;
+    text-decoration: none;
+}

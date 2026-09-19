@@ -1,0 +1,25 @@
+# Render yapilandirmasi (Infrastructure as Code).
+# Panelden "New > Blueprint" ile bu dosya okunur.
+services:
+  - type: web
+    name: ichsprechedeutsch-api
+    runtime: docker
+    repo: https://github.com/OWNER/learndeutsch
+    branch: main
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    region: frankfurt
+    healthCheckPath: /api/health
+    envVars:
+      # Degerler panelden girilir; repoya yazilmaz.
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: SUPABASE_JWKS_URI
+        sync: false
+      - key: FRONTEND_ORIGINS
+        sync: false
