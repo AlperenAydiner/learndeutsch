@@ -34,4 +34,47 @@ docs/       Tasarim ve plan dokumanlari
 
 ## Calistirma
 
-Adim 0 tamamlandiginda bu bolum doldurulacak.
+### Gereksinimler
+
+- JDK 21 (kurulu: `C:\Users\alperen\.jdks\jdk-21.0.12.1+1`)
+- Python 3 (frontend'i servis etmek icin)
+- Supabase projesi (asagida)
+
+Gradle'in JDK'yi bulmasi `backend/gradle.properties` ile saglanir.
+Bu dosya makineye ozeldir ve repoya girmez.
+
+### 1. Supabase baglantisi
+
+`backend/.env.example` dosyasini `backend/.env` olarak kopyala ve doldur:
+
+```
+cp backend/.env.example backend/.env
+```
+
+Degerler Supabase panelinden alinir:
+
+| Degisken | Nerede |
+|---|---|
+| `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` | Project Settings > Database > Connection string |
+| `SUPABASE_URL`, `SUPABASE_JWKS_URI` | Project Settings > API |
+
+`.env` dosyasi `.gitignore` tarafindan engellenir, asla repoya girmez.
+
+### 2. Backend
+
+```
+cd backend
+./gradlew bootRun
+```
+
+Dogrulama: http://localhost:8080/api/health -> `{"status":"UP", ...}`
+
+Uygulama ilk aciliste Flyway ile semayi kurar (V1__schema.sql).
+
+### 3. Frontend
+
+```
+python -m http.server 5500 --directory frontend
+```
+
+Adres: http://localhost:5500
