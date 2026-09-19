@@ -4,7 +4,7 @@ services:
   - type: web
     name: ichsprechedeutsch-api
     runtime: docker
-    repo: https://github.com/OWNER/learndeutsch
+    repo: https://github.com/AlperenAydiner/learndeutsch
     branch: main
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
