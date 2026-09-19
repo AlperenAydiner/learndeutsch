@@ -1,5 +1,6 @@
 package com.ichsprechedeutsch.common.config;
 
+import com.ichsprechedeutsch.common.security.JsonAuthErrorHandlers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +26,12 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
     private final List<String> allowedOrigins;
+    private final JsonAuthErrorHandlers authErrorHandlers;
 
-    public SecurityConfig(@Value("${app.cors.allowed-origins}") List<String> allowedOrigins) {
+    public SecurityConfig(@Value("${app.cors.allowed-origins}") List<String> allowedOrigins,
+                          JsonAuthErrorHandlers authErrorHandlers) {
         this.allowedOrigins = allowedOrigins;
+        this.authErrorHandlers = authErrorHandlers;
     }
 
     @Bean
@@ -41,7 +45,13 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/api/health", "/actuator/health").permitAll()
                         .anyRequest().authenticated())
-                .oauth2ResourceServer(oauth -> oauth.jwt(jwt -> {}))
+                .oauth2ResourceServer(oauth -> oauth
+                        .jwt(jwt -> {})
+                        .authenticationEntryPoint(authErrorHandlers))
+                // Zincirin geri kalani icin de ayni JSON bicimi.
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint(authErrorHandlers)
+                        .accessDeniedHandler(authErrorHandlers))
                 .build();
     }
 

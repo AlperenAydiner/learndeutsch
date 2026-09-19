@@ -37,6 +37,11 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: ${SUPABASE_JWKS_URI}
+          # Spring varsayilani yalnizca RS256'dir. Supabase'in yeni projeleri
+          # asimetrik ECC (P-256) anahtar kullanir, yani ES256 imzalar.
+          # Bu satir olmadan gecerli token "algoritma desteklenmiyor" diye
+          # reddedilir ve istek denetleyiciye hic ulasmaz.
+          jws-algorithms: ES256
 
 app:
   cors:
