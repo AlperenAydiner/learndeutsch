@@ -71,6 +71,30 @@ Dogrulama: http://localhost:8080/api/health -> `{"status":"UP", ...}`
 
 Uygulama ilk aciliste Flyway ile semayi kurar (V1__schema.sql).
 
+#### Tek seferlik: Flyway kayit tablosunu kapat
+
+Flyway kendi `flyway_schema_history` tablosunu `public` semasinda olusturur
+ve o tabloda RLS kapali gelir; Supabase'in Data API'si `public` semasini
+disari actigi icin anon anahtarla okunabilir hale gelir. Icinde gizli veri
+yok (migration adlari) ama acik birakmanin faydasi da yok.
+
+Bu, Flyway migration'i olarak YAPILAMAZ: Flyway migration boyunca kendi
+tablosunu kilitli tutar, `ALTER TABLE` kendi kendini kilitler ve
+`statement timeout` alinir. Onun yerine Supabase SQL Editor'de bir kez
+calistir:
+
+```sql
+ALTER TABLE public.flyway_schema_history ENABLE ROW LEVEL SECURITY;
+```
+
+Dogrulama - bu sorgu 0 dondurmeli:
+
+```sql
+select count(*) from pg_class c
+join pg_namespace n on n.oid = c.relnamespace
+where n.nspname = 'public' and c.relkind = 'r' and not c.relrowsecurity;
+```
+
 ### 3. Frontend
 
 ```
