@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kelimeler — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
-    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/pages/words.css">
 </head>
 <body>
@@ -18,7 +21,7 @@
 <main class="wrap section session">
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
-    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
 
     <!-- ---------- Oturum ---------- -->
     <div id="oturum" hidden>
@@ -70,8 +73,8 @@
     <!-- ---------- Bitti ---------- -->
     <div class="done-box" id="bitti" hidden>
         <div class="done-box__icon" aria-hidden="true">✓</div>
-        <h1 style="font-size: var(--fs-lg);" id="bittiBaslik">Bugünkü tekrarın bitti</h1>
-        <p style="color: var(--text-muted);" id="bittiAciklama"></p>
+        <h1 class="done-box__title" id="bittiBaslik">Bugünkü tekrarın bitti</h1>
+        <p class="done-box__lead" id="bittiAciklama"></p>
         <div class="done-box__stats">
             <div class="done-box__stat">
                 <b id="statCard">0</b><span>kart</span>

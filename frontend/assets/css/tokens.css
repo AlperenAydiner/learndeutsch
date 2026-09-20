@@ -1,137 +1,241 @@
 /* =====================================================================
    Tasarim token'lari — tek kaynak.
-   Renk, olcu ve tipografi degerleri SADECE burada tanimlanir.
+
+   Yon: Minimalism & Swiss Style. Bol beyaz alan, guclu tipografi
+   hiyerarsisi, izgara, kisitli renk. Renk dekorasyon degil bilgi
+   tasir: teal birincil eylem, turuncu yalnizca sayfanin TEK ana
+   cagrisi, geri kalan her sey notr.
+
+   Renkler WCAG AA'ya gore secildi. Onerilen teal-600 (#0D9488)
+   uzerine beyaz metin 3.74:1 veriyordu - normal metin icin yetersiz.
+   Bir ton koyu olan teal-700 (#0F766E) 5.47:1 veriyor; o kullanildi.
    ===================================================================== */
 
 :root {
-    /* --- Yuzeyler --- */
-    --bg:            #f7f6f3;
-    --surface:       #ffffff;
-    --surface-alt:   #f1efea;
-    --border:        #e2ded6;
-    --border-strong: #cdc7bb;
+    /* --- Notr olcek (sicak gri: saf griden daha az steril) --- */
+    --n-0:   #ffffff;
+    --n-25:  #fdfdfc;
+    --n-50:  #fafaf9;
+    --n-100: #f5f5f4;
+    --n-200: #e7e5e4;
+    --n-300: #d6d3d1;
+    --n-400: #a8a29e;
+    --n-500: #78716c;
+    --n-600: #57534e;
+    --n-700: #44403c;
+    --n-800: #292524;
+    --n-900: #1c1917;
+    --n-950: #0c0a09;
 
-    /* --- Metin --- */
-    --text:          #1c1a17;
-    --text-muted:    #6b665d;
-    --text-faint:    #948e83;
+    /* --- Birincil: teal. Odak, sakinlik, ilerleme. --- */
+    --p-50:  #f0fdfa;
+    --p-100: #ccfbf1;
+    --p-200: #99f6e4;
+    --p-400: #2dd4bf;
+    --p-600: #0d9488;
+    --p-700: #0f766e;   /* metin ve dugmeler icin taban */
+    --p-800: #115e59;
+    --p-900: #134e4a;
 
-    /* --- Marka: derin mavi, disiplinli/sakin --- */
-    --accent:        #2f5d8c;
-    --accent-hover:  #24486d;
-    --accent-soft:   #e8eff6;
-    --accent-text:   #ffffff;
+    /* --- Vurgu: turuncu. Sayfada TEK ana cagri icin. --- */
+    --a-50:  #fff7ed;
+    --a-600: #ea580c;
+    --a-700: #c2410c;
+    --a-800: #9a3412;
 
-    /* --- Durum renkleri (gorev isaretleme) --- */
-    --done:          #2f7a52;
-    --done-soft:     #e6f1ea;
-    --partial:       #b07d1f;
-    --partial-soft:  #faf1dd;
-    --missed:        #a8443a;
-    --missed-soft:   #f7e8e6;
+    /* --- Durum --- */
+    --ok-50:   #f0fdf4;
+    --ok-600:  #16a34a;
+    --ok-700:  #15803d;
+    --warn-50: #fffbeb;
+    --warn-600:#d97706;
+    --warn-700:#b45309;
+    --err-50:  #fef2f2;
+    --err-600: #dc2626;
+    --err-700: #b91c1c;
 
-    /* --- Artikel renk kodlari (sabit anlam tasir, temayla degismez) --- */
-    --der:           #1f6fb8;
-    --die:           #c0392b;
-    --das:           #2f8f4e;
+    /* --- Artikel renkleri: sabit anlam tasir, temayla degismez --- */
+    --der: #1d4ed8;
+    --die: #be123c;
+    --das: #15803d;
+
+    /* --- Anlamsal: acik tema --- */
+    --bg:            var(--n-50);
+    --bg-subtle:     var(--n-100);
+    --surface:       var(--n-0);
+    --surface-hover: var(--n-50);
+    --border:        var(--n-200);
+    --border-strong: var(--n-300);
+
+    --text:          var(--n-900);
+    --text-muted:    var(--n-600);
+    --text-faint:    var(--n-500);
+    --text-inverse:  var(--n-0);
+
+    --primary:        var(--p-700);
+    --primary-hover:  var(--p-800);
+    --primary-soft:   var(--p-50);
+    --primary-border: var(--p-200);
+    --on-primary:     var(--n-0);
+
+    --accent:        var(--a-700);
+    --accent-hover:  var(--a-800);
+    --accent-soft:   var(--a-50);
+    --on-accent:     var(--n-0);
+
+    --ok: var(--ok-700);   --ok-soft: var(--ok-50);
+    --warn: var(--warn-700); --warn-soft: var(--warn-50);
+    --err: var(--err-700); --err-soft: var(--err-50);
+
+    --focus: var(--p-600);
+
+    /* --- Gorev durumu: tum uygulamada ayni uc renk --------------------
+       Ayri isim veriyoruz cunku bunlar "hata/uyari" degil, gorev
+       durumu; ileride ayrismalari gerekirse tek yerden degisir. */
+    --done:         var(--ok);
+    --done-soft:    var(--ok-soft);
+    --partial:      var(--warn);
+    --partial-soft: var(--warn-soft);
+    --missed:       var(--err);
+    --missed-soft:  var(--err-soft);
 
     /* --- Tipografi --- */
-    --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-    --font-mono: "Cascadia Mono", "SF Mono", Consolas, monospace;
+    --font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Mono", SFMono-Regular,
+                 "Segoe UI Mono", Consolas, monospace;
 
-    --fs-xs:   0.78rem;
-    --fs-sm:   0.875rem;
-    --fs-base: 1rem;
-    --fs-md:   1.125rem;
-    --fs-lg:   1.375rem;
-    --fs-xl:   1.875rem;
-    --fs-2xl:  2.5rem;
-    --fs-3xl:  3.25rem;
+    /* Modüler olcek 1.25; govde 16px sabit, basliklar viewport'a gore akar */
+    --fs-xs:   0.75rem;    /* 12 */
+    --fs-sm:   0.875rem;   /* 14 */
+    --fs-base: 1rem;       /* 16 */
+    --fs-md:   1.125rem;   /* 18 */
+    --fs-lg:   1.375rem;   /* 22 */
+    --fs-xl:   1.75rem;    /* 28 */
+    --fs-2xl:  clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
+    --fs-3xl:  clamp(2.5rem, 1.5rem + 4vw, 4rem);
+
+    --lh-tight: 1.15;
+    --lh-snug:  1.35;
+    --lh-base:  1.6;
+
+    --ls-tight: -0.02em;
+    --ls-wide:  0.08em;
+
+    /* --- Aralik: 4px taban --- */
+    --s-1:  0.25rem;
+    --s-2:  0.5rem;
+    --s-3:  0.75rem;
+    --s-4:  1rem;
+    --s-5:  1.5rem;
+    --s-6:  2rem;
+    --s-7:  3rem;
+    --s-8:  4rem;
+    --s-9:  6rem;
+    --s-10: 8rem;
+
+    /* --- Kose: Swiss geometrik, yumusak degil --- */
+    --r-sm: 4px;
+    --r:    8px;
+    --r-lg: 12px;
+    --r-full: 999px;
+
+    /* --- Golge: cok kisitli; derinlik golgeyle degil cizgiyle kurulur --- */
+    --sh-sm: 0 1px 2px rgb(28 25 23 / 0.06);
+    --sh:    0 2px 8px rgb(28 25 23 / 0.07);
+    --sh-lg: 0 12px 32px rgb(28 25 23 / 0.10);
+
+    /* --- Hareket --- */
+    --t-fast: 120ms;
+    --t:      180ms;
+    --t-slow: 300ms;
+    --ease: cubic-bezier(0.2, 0, 0.2, 1);
 
     /* --- Olcu --- */
-    --sp-1: 0.25rem;
-    --sp-2: 0.5rem;
-    --sp-3: 0.75rem;
-    --sp-4: 1rem;
-    --sp-5: 1.5rem;
-    --sp-6: 2rem;
-    --sp-7: 3rem;
-    --sp-8: 4.5rem;
-
-    --radius-sm: 6px;
-    --radius:    10px;
-    --radius-lg: 16px;
-
-    --shadow-sm: 0 1px 2px rgba(28, 26, 23, 0.06);
-    --shadow:    0 2px 8px rgba(28, 26, 23, 0.08);
-    --shadow-lg: 0 8px 28px rgba(28, 26, 23, 0.12);
-
-    --content-max: 1120px;
-    --nav-h: 64px;
+    --page: 1200px;
+    --prose: 68ch;
+    --nav-h: 68px;
 }
+
+/* --- Koyu tema ------------------------------------------------------ */
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-        --bg:            #161513;
-        --surface:       #201f1c;
-        --surface-alt:   #2a2823;
-        --border:        #35322c;
-        --border-strong: #4a463e;
+        --bg:            var(--n-950);
+        --bg-subtle:     var(--n-900);
+        --surface:       #16130f;
+        --surface-hover: var(--n-800);
+        --border:        #2b2622;
+        --border-strong: #3d3833;
 
-        --text:          #f0ede7;
-        --text-muted:    #a9a399;
-        --text-faint:    #7d776d;
+        --text:          var(--n-50);
+        --text-muted:    var(--n-400);
+        --text-faint:    #8f877f;   /* n-500 koyu zeminde 3.9:1 kaliyordu */
+        --text-inverse:  var(--n-950);
 
-        --accent:        #6fa3d4;
-        --accent-hover:  #8bb8e2;
-        --accent-soft:   #1e2a36;
-        --accent-text:   #161513;
+        /* Koyu zeminde koyu teal okunmaz; acik tonlara geciliyor. */
+        --primary:        var(--p-400);
+        --primary-hover:  var(--p-200);
+        --primary-soft:   #0c2b28;
+        --primary-border: #14524b;
+        --on-primary:     var(--n-950);
 
-        --done:          #63b487;
-        --done-soft:     #1c2a22;
-        --partial:       #d9ab54;
-        --partial-soft:  #2c2619;
-        --missed:        #d8776c;
-        --missed-soft:   #2e1f1d;
+        --accent:        #fb923c;
+        --accent-hover:  #fdba74;
+        --accent-soft:   #2b1508;
+        --on-accent:     var(--n-950);
 
-        --der:           #6fa9e0;
-        --die:           #e8877c;
-        --das:           #6fbf8c;
+        --ok: #4ade80;   --ok-soft: #0e2417;
+        --warn: #fbbf24; --warn-soft: #2a1d05;
+        --err: #f87171;  --err-soft: #2c1212;
 
-        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-        --shadow:    0 2px 8px rgba(0, 0, 0, 0.4);
-        --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.5);
+        --focus: var(--p-400);
+
+        --der: #60a5fa;
+        --die: #fb7185;
+        --das: #4ade80;
+
+        --sh-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+        --sh:    0 2px 8px rgb(0 0 0 / 0.45);
+        --sh-lg: 0 12px 32px rgb(0 0 0 / 0.55);
     }
 }
 
 :root[data-theme="dark"] {
-    --bg:            #161513;
-    --surface:       #201f1c;
-    --surface-alt:   #2a2823;
-    --border:        #35322c;
-    --border-strong: #4a463e;
+    --bg:            var(--n-950);
+    --bg-subtle:     var(--n-900);
+    --surface:       #16130f;
+    --surface-hover: var(--n-800);
+    --border:        #2b2622;
+    --border-strong: #3d3833;
 
-    --text:          #f0ede7;
-    --text-muted:    #a9a399;
-    --text-faint:    #7d776d;
+    --text:          var(--n-50);
+    --text-muted:    var(--n-400);
+    --text-faint:    #8f877f;   /* n-500 koyu zeminde 3.9:1 kaliyordu */
+    --text-inverse:  var(--n-950);
 
-    --accent:        #6fa3d4;
-    --accent-hover:  #8bb8e2;
-    --accent-soft:   #1e2a36;
-    --accent-text:   #161513;
+    --primary:        var(--p-400);
+    --primary-hover:  var(--p-200);
+    --primary-soft:   #0c2b28;
+    --primary-border: #14524b;
+    --on-primary:     var(--n-950);
 
-    --done:          #63b487;
-    --done-soft:     #1c2a22;
-    --partial:       #d9ab54;
-    --partial-soft:  #2c2619;
-    --missed:        #d8776c;
-    --missed-soft:   #2e1f1d;
+    --accent:        #fb923c;
+    --accent-hover:  #fdba74;
+    --accent-soft:   #2b1508;
+    --on-accent:     var(--n-950);
 
-    --der:           #6fa9e0;
-    --die:           #e8877c;
-    --das:           #6fbf8c;
+    --ok: #4ade80;   --ok-soft: #0e2417;
+    --warn: #fbbf24; --warn-soft: #2a1d05;
+    --err: #f87171;  --err-soft: #2c1212;
 
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-    --shadow:    0 2px 8px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.5);
+    --focus: var(--p-400);
+
+    --der: #60a5fa;
+    --die: #fb7185;
+    --das: #4ade80;
+
+    --sh-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --sh:    0 2px 8px rgb(0 0 0 / 0.45);
+    --sh-lg: 0 12px 32px rgb(0 0 0 / 0.55);
 }

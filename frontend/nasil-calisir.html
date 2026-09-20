@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nasıl çalışır — Ich spreche Deutsch</title>
     <meta name="description" content="Hedeften geriye planlama, günlük görevler, aralıklı kelime tekrarı ve ölçme. Sistem nasıl işler?">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
@@ -14,103 +19,109 @@
 
 <div data-nav></div>
 
-<main>
+<main id="main">
 
-    <section class="section">
+    <!-- ============ Baslik ============ -->
+    <section class="section section--sm">
         <div class="wrap">
+            <span class="eyebrow">Sistem</span>
             <h1>Nasıl çalışır</h1>
-            <p class="section__lead">
-                Sistem tek bir döngü üzerine kurulu: <strong>planla → çalış →
-                işaretle → tekrar et → ölç → ayarla</strong>. Her adımda kimin
-                ne yaptığı bellidir.
+            <p class="lead">
+                Tek bir döngü: <strong>planla → çalış → işaretle → tekrar et →
+                ölç → ayarla</strong>. Her adımda kimin ne yaptığı bellidir.
             </p>
         </div>
     </section>
 
-    <section class="section section--alt section--tight">
+    <!-- ============ Planlama ============ -->
+    <section class="section section--alt">
         <div class="wrap">
+            <span class="eyebrow">Adım 1</span>
             <h2>Hedeften geriye planlama</h2>
-            <p class="section__lead">
-                Sen dört şey seçersin: hedef seviye, sınav türü, kaç gün, günde
-                kaç saat. Gerisini sistem hesaplar.
+            <p class="lead">
+                Sen dört şey seçersin: hedef seviye, sınav türü, kaç gün,
+                günde kaç saat. Gerisini sistem hesaplar.
             </p>
+
             <ol class="steps">
                 <li class="steps__item">
                     <span class="steps__no">1</span>
-                    <h3 class="steps__title">Toplam iş yükü</h3>
+                    <h3>Toplam iş yükü</h3>
                     <p>Hedef seviyeye kadar gereken tüm içerik birimlerinin süresi toplanır.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">2</span>
-                    <h3 class="steps__title">Bildiklerin düşülür</h3>
-                    <p>Yerleştirme testinde iyi gittiğin konular programdan çıkarılır, yarı bildiklerin hafifletilir.</p>
+                    <h3>Bildiklerin düşülür</h3>
+                    <p>Yerleştirme testinde iyi gittiğin konular programdan çıkar, yarı bildiklerin hafifler.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">3</span>
-                    <h3 class="steps__title">Gerçekçilik kontrolü</h3>
+                    <h3>Gerçekçilik kontrolü</h3>
                     <p>Kalan iş elindeki zamana sığmıyorsa sistem bunu söyler ve iki somut alternatif sunar.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">4</span>
-                    <h3 class="steps__title">Sınav günü sabitlenir</h3>
+                    <h3>Sınav günü sabitlenir</h3>
                     <p>Prova, son tekrar ve deneme kampı sondan geriye doğru yerleştirilir.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">5</span>
-                    <h3 class="steps__title">Günlere dağıtım</h3>
+                    <h3>Günlere dağıtım</h3>
                     <p>Kalan konular kalan günlere yayılır; her yedinci gün hafif gün olur.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">6</span>
-                    <h3 class="steps__title">Bloklara bölme</h3>
+                    <h3>Bloklara bölme</h3>
                     <p>Günlük süren ne kadarsa bloklar ona göre ölçeklenir.</p>
                 </li>
             </ol>
         </div>
     </section>
 
+    <!-- ============ Isaretleme ============ -->
     <section class="section">
         <div class="wrap">
+            <span class="eyebrow">Adım 2</span>
             <h2>Görevleri işaretleme</h2>
-            <p class="section__lead">
+            <p class="lead">
                 Serbest metin yazmazsın. Her görev için tek tık:
                 <strong>Yaptım</strong> / <strong>Yarım yaptım</strong> /
                 <strong>Yapamadım</strong>. Göreve göre bir de hazır seçenek gelir.
             </p>
-            <div class="day card">
-                <ul class="day__blocks">
-                    <li class="day__block">
-                        <span class="day__time">Kelime</span>
-                        <span class="day__name">Otomatik</span>
-                        <span class="day__desc">Performans sitedeki tekrar oturumundan ölçülür</span>
-                    </li>
-                    <li class="day__block">
-                        <span class="day__time">Gramer</span>
-                        <span class="day__name">Otomatik</span>
-                        <span class="day__desc">Günün konusuna ait kısa quiz, skor kaydedilir</span>
-                    </li>
-                    <li class="day__block">
-                        <span class="day__time">Hören</span>
-                        <span class="day__name">Öz bildirim</span>
-                        <span class="day__desc">Ne kadar anladın? az / yarısı / çoğu</span>
-                    </li>
-                    <li class="day__block">
-                        <span class="day__time">Lesen</span>
-                        <span class="day__name">Karma</span>
-                        <span class="day__desc">Kısa okuma soruları + ne kadar anladın</span>
-                    </li>
-                    <li class="day__block">
-                        <span class="day__time">Schreiben</span>
-                        <span class="day__name">Öz bildirim</span>
-                        <span class="day__desc">Kaç metin yazdın? Kalıpları kullanabildin mi?</span>
-                    </li>
-                    <li class="day__block">
-                        <span class="day__time">Sprechen</span>
-                        <span class="day__name">Öz bildirim</span>
-                        <span class="day__desc">Kendini kaydettin mi? Nasıl geçti?</span>
-                    </li>
-                </ul>
-                <p class="day__note">
+
+            <div class="card card--pad day-table">
+                <div class="day-row">
+                    <span class="day-row__time">Kelime</span>
+                    <span class="day-row__name">Otomatik</span>
+                    <span class="day-row__desc">Performans sitedeki tekrar oturumundan ölçülür</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Gramer</span>
+                    <span class="day-row__name">Otomatik</span>
+                    <span class="day-row__desc">Günün konusuna ait kısa quiz, skor kaydedilir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Hören</span>
+                    <span class="day-row__name">Öz bildirim</span>
+                    <span class="day-row__desc">Ne kadar anladın? az / yarısı / çoğu</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Lesen</span>
+                    <span class="day-row__name">Karma</span>
+                    <span class="day-row__desc">Kısa okuma soruları + ne kadar anladın</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Schreiben</span>
+                    <span class="day-row__name">Öz bildirim</span>
+                    <span class="day-row__desc">Kaç metin yazdın? Kalıpları kullanabildin mi?</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Sprechen</span>
+                    <span class="day-row__name">Öz bildirim</span>
+                    <span class="day-row__desc">Kendini kaydettin mi? Nasıl geçti?</span>
+                </div>
+
+                <p class="day-note">
                     Nereden çalıştığını, ne kadar sürdüğünü, hangi videoyu izlediğini
                     sormuyoruz. Bir görevi işaretlemek birkaç saniye sürmeli.
                 </p>
@@ -118,51 +129,57 @@
         </div>
     </section>
 
+    <!-- ============ Kelime ============ -->
     <section class="section section--alt">
         <div class="wrap">
+            <span class="eyebrow">Adım 3</span>
             <h2>Kelimeler neden unutulmuyor</h2>
-            <p class="section__lead">
+            <p class="lead">
                 Kelimeleri sistem verir — sen liste hazırlamazsın. Her kelime
-                <strong>SM-2</strong> algoritmasıyla takip edilir: doğru
-                bildiğin kelime giderek daha seyrek, zorlandığın kelime daha
-                sık karşına çıkar.
+                <strong>SM-2</strong> algoritmasıyla takip edilir: iyi bildiğin
+                kelime giderek daha seyrek, zorlandığın kelime daha sık karşına çıkar.
             </p>
-            <div class="card">
-                <p style="margin-bottom: var(--sp-4);">
-                    İsimlerde artikel renk kodlu gösterilir:
-                </p>
-                <p style="font-size: var(--fs-lg); margin: 0;">
-                    <span class="artikel--der">der</span> Bahnhof &nbsp;·&nbsp;
-                    <span class="artikel--die">die</span> Straße &nbsp;·&nbsp;
+
+            <div class="card card--pad artikel-demo">
+                <p class="artikel-demo__label">İsimlerde artikel renk kodlu gösterilir</p>
+                <p class="artikel-demo__row">
+                    <span class="artikel--der">der</span> Bahnhof
+                    <span class="artikel-demo__sep">·</span>
+                    <span class="artikel--die">die</span> Straße
+                    <span class="artikel-demo__sep">·</span>
                     <span class="artikel--das">das</span> Fahrrad
                 </p>
-                <p class="day__note">
+                <p class="day-note">
                     Sorular iki yönlü sorulur: Almanca → Türkçe, Türkçe → Almanca.
-                    İsimlerde ayrıca artikelin kendisi sorulur. Günlük yeni kelime
-                    sayısı, o gün biriken tekrar yüküne göre otomatik kısılır —
-                    kelime bloğu planlanan süreyi aşmaz.
+                    İsimlerde ayrıca artikelin kendisi sorulur — Türkçede cinsiyet
+                    olmadığı için "Bahnhof"u bilmekle "der Bahnhof"u bilmek ayrı
+                    beceridir. Günlük yeni kelime sayısı, o gün biriken tekrar
+                    yüküne göre otomatik kısılır; kelime bloğu planlanan süreyi aşmaz.
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- ============ Uyarlama ============ -->
     <section class="section">
         <div class="wrap">
+            <span class="eyebrow">Adım 4</span>
             <h2>Program kendini nasıl ayarlar</h2>
-            <div class="audience">
-                <div class="audience__item card">
+
+            <div class="who">
+                <div class="card who__item">
                     <h3>Zayıf konular</h3>
                     <p>Her soru bir konuya bağlı. Hata yaptığın konular sonraki günlerde daha çok karşına çıkar.</p>
                 </div>
-                <div class="audience__item card">
+                <div class="card who__item">
                     <h3>Kaçan görevler</h3>
                     <p>"Yapamadım" dediğin görevler kaybolmaz, bir sonraki hafif güne taşınır.</p>
                 </div>
-                <div class="audience__item card">
+                <div class="card who__item">
                     <h3>Geri kalma</h3>
                     <p>Programın gerisine düşersen uyarı gelir ve planı yeniden hesaplamayı önerir.</p>
                 </div>
-                <div class="audience__item card">
+                <div class="card who__item">
                     <h3>Denemeler</h3>
                     <p>Aynı deneme körü körüne tekrarlanmaz; yanlışlarına göre yeni kombinasyon kurulur.</p>
                 </div>
@@ -170,18 +187,30 @@
         </div>
     </section>
 
-    <section class="section section--tight cta">
-        <div class="wrap cta__inner">
-            <h2 class="cta__title">Başlamaya hazır mısın?</h2>
-            <a class="btn btn--primary btn--lg" href="/kayit.html">Ücretsiz başla</a>
+    <!-- ============ Son cagri ============ -->
+    <section class="section section--sm">
+        <div class="wrap">
+            <div class="cta">
+                <div>
+                    <h2 class="cta__title">Başlamaya hazır mısın?</h2>
+                    <p class="cta__sub">Kayıt iki dakika, yerleştirme testi on beş.</p>
+                </div>
+                <a class="btn btn--accent btn--lg" href="/kayit.html">Ücretsiz başla</a>
+            </div>
         </div>
     </section>
 
 </main>
 
 <footer class="site-footer">
-    <div class="wrap">
-        <p>Ich spreche Deutsch — Almanca çalışma takip sistemi. Arayüz Türkçe, içerik Almanca.</p>
+    <div class="wrap site-footer__inner">
+        <p style="margin:0;">
+            <strong>Ich spreche Deutsch</strong> — Arayüz Türkçe, içerik Almanca.
+        </p>
+        <p style="margin:0;">
+            <a href="/index.html">Ana sayfa</a> ·
+            <a href="/giris.html">Giriş yap</a>
+        </p>
     </div>
 </footer>
 

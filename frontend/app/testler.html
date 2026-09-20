@@ -4,51 +4,63 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Testler — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
-    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
-    <link rel="stylesheet" href="/assets/css/pages/program.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 <body>
 
 <div data-nav></div>
 
-<main class="wrap section">
-    <h1>Testler</h1>
-
-    <div class="notice notice--error" id="hata" role="alert" hidden></div>
-
-    <div class="audience" style="margin-bottom: var(--sp-7);">
-        <div class="audience__item card">
-            <h3>Günün quiz'i</h3>
-            <p>Bugünün konusuna ait 10 soru. Skorun otomatik kaydedilir ve
-               programın buna göre ayarlanır.</p>
-            <a class="btn btn--primary" style="margin-top: var(--sp-4);"
-               href="/app/quiz.html">Quiz'i çöz</a>
-        </div>
-        <div class="audience__item card">
-            <h3>Yerleştirme testi</h3>
-            <p>39 soru. Bildiğin konuları programdan çıkarır. Tekrar çözersen
-               programın yeni sonuca göre hesaplanabilir.</p>
-            <a class="btn btn--ghost" style="margin-top: var(--sp-4);"
-               href="/app/baslangic.html">Tekrar çöz</a>
+<main class="wrap section" id="main">
+    <div class="page-head">
+        <div>
+            <h1>Testler</h1>
+            <p class="page-head__sub">
+                Ölçme iki yerden gelir: her günün kısa quiz'i ve seviyeni
+                belirleyen yerleştirme testi.
+            </p>
         </div>
     </div>
 
-    <h2 style="font-size: var(--fs-md);">Geçmiş sonuçların</h2>
-    <div id="gecmis"><p style="color: var(--text-muted);">Yükleniyor…</p></div>
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+
+    <div class="cards">
+        <div class="card card--pad">
+            <h3>Günün quiz'i</h3>
+            <p>Bugünün konusuna ait 10 soru. Skorun otomatik kaydedilir ve
+               programın buna göre ayarlanır.</p>
+            <a class="btn btn--primary" href="/app/quiz.html">Quiz'i çöz</a>
+        </div>
+        <div class="card card--pad">
+            <h3>Yerleştirme testi</h3>
+            <p>39 soru. Bildiğin konuları programdan çıkarır. Tekrar çözersen
+               programın yeni sonuca göre hesaplanabilir.</p>
+            <a class="btn btn--ghost" href="/app/baslangic.html">Tekrar çöz</a>
+        </div>
+    </div>
+
+    <section class="block">
+        <h2 class="block__title">Geçmiş sonuçların</h2>
+        <div id="gecmis"><p class="loading">Yükleniyor…</p></div>
+    </section>
 </main>
 
 <style>
     .attempt { display: grid; grid-template-columns: 1fr 120px 70px;
-               gap: var(--sp-3); align-items: center; padding: var(--sp-3) 0;
+               gap: var(--s-3); align-items: center; padding: var(--s-3) 0;
                border-bottom: 1px solid var(--border); font-size: var(--fs-sm); }
     .attempt__date { color: var(--text-faint); font-size: var(--fs-xs); }
-    .attempt__bar { height: 8px; background: var(--surface-alt);
-                    border-radius: 4px; overflow: hidden; }
-    .attempt__fill { height: 100%; background: var(--accent); }
+    .attempt__score { font-family: var(--font-mono); font-weight: 600;
+                      text-align: right; }
+    .attempt__bar { height: 6px; background: var(--bg-subtle);
+                    border-radius: var(--r-full); overflow: hidden; }
+    .attempt__fill { height: 100%; background: var(--primary); }
 </style>
 
 <script type="module">
@@ -71,11 +83,9 @@
                         <div class="attempt__bar">
                             <div class="attempt__fill" style="width:${s.ratio * 100}%"></div>
                         </div>
-                        <div style="text-align:right; font-family: var(--font-mono);">
-                            %${Math.round(s.ratio * 100)}
-                        </div>
+                        <div class="attempt__score">%${Math.round(s.ratio * 100)}</div>
                     </div>`).join("")
-                : `<p style="color: var(--text-faint);">Henüz çözülmüş test yok.</p>`;
+                : `<p class="loading">Henüz çözülmüş test yok.</p>`;
         } catch (err) {
             const h = document.getElementById("hata");
             h.textContent = err.message;

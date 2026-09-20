@@ -4,23 +4,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Program — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/pages/program.css">
 </head>
 <body>
 
 <div data-nav></div>
 
-<main class="wrap section">
+<main class="wrap section" id="main">
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
 
     <div id="yukleniyor">
         <h1>Program</h1>
-        <p style="color: var(--text-muted);">Yükleniyor…</p>
+        <p class="loading">Yükleniyor…</p>
     </div>
 
     <!-- ---------- Program yoksa ---------- -->
@@ -30,7 +34,7 @@
             Hedefini ve seviyeni belirledikten sonra sana gün gün ne
             yapacağını söyleyen bir program çıkarabiliriz.
         </p>
-        <div style="margin-top: var(--sp-5); display: flex; gap: var(--sp-3); justify-content: center; flex-wrap: wrap;">
+        <div class="empty__actions">
             <a class="btn btn--ghost" href="/app/baslangic.html">Hedefimi belirle</a>
             <button class="btn btn--primary" type="button" id="uretBtn">Programı oluştur</button>
         </div>
@@ -38,9 +42,9 @@
 
     <!-- ---------- Program ---------- -->
     <div id="program" hidden>
-        <div class="plan__head">
+        <div class="page-head">
             <div>
-                <h1 style="margin-bottom: var(--sp-2);">Program</h1>
+                <h1>Program</h1>
                 <div class="plan__meta">
                     <span><b id="metaGun">—</b>gün</span>
                     <span><b id="metaSure">—</b>günlük süre</span>

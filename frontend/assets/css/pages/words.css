@@ -10,8 +10,8 @@
 .session__bar {
     display: flex;
     align-items: center;
-    gap: var(--sp-3);
-    margin-bottom: var(--sp-5);
+    gap: var(--s-3);
+    margin-bottom: var(--s-5);
     font-size: var(--fs-sm);
     color: var(--text-muted);
 }
@@ -21,10 +21,10 @@
 .card2 {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--sp-7) var(--sp-5);
+    border-radius: var(--r-lg);
+    padding: var(--s-7) var(--s-5);
     text-align: center;
-    box-shadow: var(--shadow);
+    box-shadow: var(--sh);
     min-height: 260px;
     display: flex;
     flex-direction: column;
@@ -33,20 +33,20 @@
 
 .card2__badge {
     font-size: var(--fs-xs);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--ls-wide);
     text-transform: uppercase;
     color: var(--text-faint);
-    margin-bottom: var(--sp-4);
+    margin-bottom: var(--s-4);
 }
 
 .card2__badge--new {
-    color: var(--accent);
+    color: var(--primary);
     font-weight: 700;
 }
 
 .card2__prompt {
     font-size: var(--fs-2xl);
-    font-weight: 650;
+    font-weight: 700;
     line-height: 1.25;
     margin: 0;
     overflow-wrap: break-word;
@@ -54,15 +54,15 @@
 
 .card2__plural {
     display: block;
-    margin-top: var(--sp-2);
+    margin-top: var(--s-2);
     font-size: var(--fs-sm);
     font-weight: 400;
     color: var(--text-faint);
 }
 
 .card2__answer {
-    margin-top: var(--sp-5);
-    padding-top: var(--sp-5);
+    margin-top: var(--s-5);
+    padding-top: var(--s-5);
     border-top: 1px solid var(--border);
 }
 
@@ -72,8 +72,8 @@
 
 .card2__answer-value {
     font-size: var(--fs-xl);
-    font-weight: 650;
-    margin: 0 0 var(--sp-4);
+    font-weight: 700;
+    margin: 0 0 var(--s-4);
 }
 
 .card2__example {
@@ -93,23 +93,23 @@
 
 .artikel-choice {
     display: flex;
-    gap: var(--sp-3);
+    gap: var(--s-3);
     justify-content: center;
-    margin-top: var(--sp-5);
+    margin-top: var(--s-5);
 }
 
 .artikel-btn {
     flex: 1;
     max-width: 120px;
-    padding: var(--sp-4);
-    background: var(--surface-alt);
+    padding: var(--s-4);
+    background: var(--bg-subtle);
     border: 2px solid transparent;
-    border-radius: var(--radius);
+    border-radius: var(--r);
     font: inherit;
     font-size: var(--fs-lg);
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.08s ease, border-color 0.12s ease;
+    transition: transform var(--t) var(--ease), border-color var(--t) var(--ease);
 }
 
 .artikel-btn:hover { transform: translateY(-2px); }
@@ -134,24 +134,24 @@
 .rate {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: var(--sp-2);
-    margin-top: var(--sp-5);
+    gap: var(--s-2);
+    margin-top: var(--s-5);
 }
 
 .rate[hidden] { display: none; }
 
 .rate__btn {
-    padding: var(--sp-3) var(--sp-2);
+    padding: var(--s-3) var(--s-2);
     background: var(--surface);
     border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
+    border-radius: var(--r);
     font: inherit;
     font-size: var(--fs-sm);
     color: var(--text);
     cursor: pointer;
 }
 
-.rate__btn:hover { border-color: var(--accent); }
+.rate__btn:hover { border-color: var(--primary); }
 
 .rate__btn b {
     display: block;
@@ -166,29 +166,29 @@
 
 .reveal {
     width: 100%;
-    margin-top: var(--sp-5);
+    margin-top: var(--s-5);
 }
 
 /* --- Bitiş --- */
 
 .done-box {
     text-align: center;
-    padding: var(--sp-8) var(--sp-5);
+    padding: var(--s-8) var(--s-5);
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--r-lg);
 }
 
 .done-box__icon {
     font-size: 2.5rem;
-    margin-bottom: var(--sp-4);
+    margin-bottom: var(--s-4);
 }
 
 .done-box__stats {
     display: flex;
     justify-content: center;
-    gap: var(--sp-6);
-    margin: var(--sp-5) 0;
+    gap: var(--s-6);
+    margin: var(--s-5) 0;
 }
 
 .done-box__stat b {
@@ -202,8 +202,13 @@
 }
 
 .hint {
-    margin-top: var(--sp-4);
+    margin-top: var(--s-4);
     text-align: center;
     font-size: var(--fs-xs);
     color: var(--text-faint);
 }
+
+/* --- Oturum bitis basligi ------------------------------------------- */
+
+.done-box__title { font-size: var(--fs-lg); margin-bottom: var(--s-2); }
+.done-box__lead  { color: var(--text-muted); margin: 0; }

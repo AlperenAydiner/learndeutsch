@@ -4,24 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gelişim — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
-    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
-    <link rel="stylesheet" href="/assets/css/pages/program.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
 </head>
 <body>
 
 <div data-nav></div>
 
-<main class="wrap section">
+<main class="wrap section" id="main">
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
-    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
 
     <div id="panel" hidden>
-        <h1>Gelişim</h1>
+        <div class="page-head">
+            <div>
+                <h1>Gelişim</h1>
+                <p class="page-head__sub">
+                    Ne kadar çalıştığın değil, neyin oturduğu. Sayılar
+                    işaretlediğin görevlerden ve çözdüğün sorulardan geliyor.
+                </p>
+            </div>
+        </div>
 
         <!-- İçgörüler -->
         <div id="icgoruler"></div>
@@ -30,33 +40,33 @@
         <div class="result__stats" id="sayilar"></div>
 
         <!-- Çalışma yoğunluğu -->
-        <section style="margin-top: var(--sp-7);">
-            <h2 style="font-size: var(--fs-md);">Son 30 gün</h2>
-            <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+        <section class="block">
+            <h2 class="block__title">Son 30 gün</h2>
+            <p class="block__note">
                 Her çubuk bir gün. Yükseklik o gün çalıştığın süreyi gösterir.
             </p>
             <div id="yogunluk"></div>
         </section>
 
         <!-- Test skorları -->
-        <section style="margin-top: var(--sp-7);" id="skorBolum" hidden>
-            <h2 style="font-size: var(--fs-md);">Test skorların</h2>
+        <section class="block" id="skorBolum" hidden>
+            <h2 class="block__title">Test skorların</h2>
             <div id="skorlar"></div>
         </section>
 
         <!-- Beceri tahmini -->
-        <section style="margin-top: var(--sp-7);">
-            <h2 style="font-size: var(--fs-md);">Beceri tahmini</h2>
-            <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+        <section class="block">
+            <h2 class="block__title">Beceri tahmini</h2>
+            <p class="block__note">
                 Kaba bir tahmin. Yeterli veri olmayan beceride tahmin yapmıyoruz.
             </p>
             <div class="result__stats" id="beceriler"></div>
         </section>
 
         <!-- Konular -->
-        <section style="margin-top: var(--sp-7);">
-            <h2 style="font-size: var(--fs-md);">Konu konu durumun</h2>
-            <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+        <section class="block">
+            <h2 class="block__title">Konu konu durumun</h2>
+            <p class="block__note">
                 Zayıftan güçlüye sıralı.
             </p>
             <ul class="cats" id="konular"></ul>
@@ -67,28 +77,30 @@
 
 <style>
     .insight {
-        padding: var(--sp-3) var(--sp-4);
-        background: var(--accent-soft);
-        border-left: 3px solid var(--accent);
-        border-radius: var(--radius-sm);
-        margin-bottom: var(--sp-2);
+        padding: var(--s-3) var(--s-4);
+        background: var(--primary-soft);
+        border-left: 3px solid var(--primary);
+        border-radius: var(--r-sm);
+        margin-bottom: var(--s-2);
         font-size: var(--fs-sm);
     }
     .spark { display: flex; align-items: flex-end; gap: 3px; height: 90px;
-             margin-top: var(--sp-4); }
-    .spark__bar { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0;
+             margin-top: var(--s-4); }
+    .spark__bar { flex: 1; background: var(--primary); border-radius: 2px 2px 0 0;
                   min-height: 2px; opacity: 0.85; }
     .spark__bar--zero { background: var(--border); }
     .spark__labels { display: flex; justify-content: space-between;
                      font-size: var(--fs-xs); color: var(--text-faint);
-                     margin-top: var(--sp-2); }
+                     margin-top: var(--s-2); }
     .score-row { display: grid; grid-template-columns: 90px 1fr 56px;
-                 gap: var(--sp-3); align-items: center; padding: var(--sp-2) 0;
+                 gap: var(--s-3); align-items: center; padding: var(--s-2) 0;
                  border-bottom: 1px solid var(--border); font-size: var(--fs-sm); }
-    .score-row__bar { height: 8px; background: var(--surface-alt);
+    .score-row__bar { height: 8px; background: var(--bg-subtle);
                       border-radius: 4px; overflow: hidden; }
-    .score-row__fill { height: 100%; background: var(--accent); }
+    .score-row__fill { height: 100%; background: var(--primary); }
     .score-row__date { color: var(--text-faint); font-size: var(--fs-xs); }
+    .score-row__pct { text-align: right; font-family: var(--font-mono);
+                      font-weight: 600; }
 </style>
 
 <script type="module">
@@ -153,8 +165,7 @@
     function yogunluk(gunler) {
         const kutu = document.getElementById("yogunluk");
         if (!gunler.length) {
-            kutu.innerHTML = `<p style="color: var(--text-faint);
-                font-size: var(--fs-sm);">Henüz çalışma kaydı yok.</p>`;
+            kutu.innerHTML = `<p class="loading">Henüz çalışma kaydı yok.</p>`;
             return;
         }
 
@@ -187,9 +198,7 @@
                 <div class="score-row__bar">
                     <div class="score-row__fill" style="width:${s.ratio * 100}%"></div>
                 </div>
-                <div style="text-align:right; font-family: var(--font-mono);">
-                    %${Math.round(s.ratio * 100)}
-                </div>
+                <div class="score-row__pct">%${Math.round(s.ratio * 100)}</div>
             </div>`).join("");
     }
 
@@ -215,8 +224,8 @@
                     <span class="tag tag--${sinif}">${ad}</span>
                 </li>`;
             }).join("")
-            : `<li style="color: var(--text-faint); font-size: var(--fs-sm);">
-               Henüz ölçüm yok. Yerleştirme testini çöz veya günün quiz'ini yap.</li>`;
+            : `<li class="loading">Henüz ölçüm yok. Yerleştirme testini çöz
+                   veya günün quiz'ini yap.</li>`;
     }
 
     function tarih(iso) {

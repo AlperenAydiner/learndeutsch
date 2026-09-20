@@ -29,19 +29,23 @@ function goster() {
         <span class="uyanma__nokta" aria-hidden="true"></span>
         <span>Sunucu uyanıyor — ilk açılış yarım dakika kadar sürebilir.</span>`;
 
-    bant.style.cssText = `
-        position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-        display: flex; align-items: center; gap: 10px;
-        padding: 10px 18px; z-index: 100;
-        background: var(--surface); color: var(--text);
-        border: 1px solid var(--border-strong); border-radius: 999px;
-        box-shadow: var(--shadow-lg); font-size: 0.875rem;
-        max-width: calc(100vw - 32px);`;
+    bant.className = "uyanma";
 
     if (!document.getElementById(ID + "Stil")) {
         const stil = document.createElement("style");
         stil.id = ID + "Stil";
         stil.textContent = `
+            .uyanma {
+                position: fixed; left: 50%; bottom: var(--s-5);
+                transform: translateX(-50%);
+                display: flex; align-items: center; gap: var(--s-3);
+                padding: var(--s-3) var(--s-5); z-index: 100;
+                background: var(--surface); color: var(--text);
+                border: 1px solid var(--border-strong);
+                border-radius: var(--r-full);
+                box-shadow: var(--sh-lg); font-size: var(--fs-sm);
+                max-width: calc(100vw - 2 * var(--s-4));
+            }
             .uyanma__nokta {
                 width: 8px; height: 8px; border-radius: 50%;
                 background: var(--partial); flex: none;

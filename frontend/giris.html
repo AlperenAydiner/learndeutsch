@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giriş yap — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
@@ -13,8 +17,9 @@
 
 <div data-nav></div>
 
-<main class="wrap auth">
+<main class="wrap auth" id="main">
     <div class="auth__card">
+        <span class="auth__eyebrow">Tekrar hoş geldin</span>
         <h1 class="auth__title">Giriş yap</h1>
         <p class="auth__lead">Kaldığın yerden devam et.</p>
 
@@ -22,7 +27,7 @@
         <div class="notice notice--info" id="uyari" role="status" hidden></div>
         <div class="notice notice--error" id="hata" role="alert" hidden></div>
 
-        <form id="girisFormu" novalidate>
+        <form class="auth__form" id="girisFormu" novalidate>
             <div class="field">
                 <label class="field__label" for="eposta">E-posta</label>
                 <input class="field__input" type="email" id="eposta" name="eposta"

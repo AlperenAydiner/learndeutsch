@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Günün quiz'i — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
 </head>
 <body>
@@ -17,12 +21,12 @@
 <main class="wrap wizard">
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
-    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
 
     <div class="empty" id="bos" hidden>
         <h2>Quiz hazırlanamadı</h2>
         <p id="bosAciklama"></p>
-        <div style="margin-top: var(--sp-5);">
+        <div class="empty__actions">
             <a class="btn btn--primary" href="/app/bugun.html">Bugüne dön</a>
         </div>
     </div>
@@ -41,7 +45,7 @@
         </div>
 
         <div class="quiz__prompt" id="soru"></div>
-        <p style="color: var(--text-faint); font-size: var(--fs-xs); margin-bottom: var(--sp-4);"
+        <p class="quiz__hint"
            id="kategori"></p>
         <div class="quiz__options" id="secenekler"></div>
 
@@ -61,10 +65,10 @@
             <span class="result__level-label" id="skorMesaj"></span>
         </div>
 
-        <h2 style="font-size: var(--fs-md);">Soru soru</h2>
+        <h2 class="block__title">Soru soru</h2>
         <div id="inceleme"></div>
 
-        <div style="margin-top: var(--sp-6); display: flex; gap: var(--sp-3); flex-wrap: wrap;">
+        <div class="btn-row" style="margin-top: var(--s-6);">
             <a class="btn btn--primary" href="/app/bugun.html">Bugüne dön</a>
             <a class="btn btn--ghost" href="/app/gelisim.html">Gelişimi gör</a>
         </div>
@@ -74,20 +78,20 @@
 
 <style>
     .qrev {
-        padding: var(--sp-4);
+        padding: var(--s-4);
         border: 1px solid var(--border);
         border-left: 3px solid var(--border-strong);
-        border-radius: var(--radius);
-        margin-bottom: var(--sp-3);
+        border-radius: var(--r);
+        margin-bottom: var(--s-3);
         background: var(--surface);
     }
     .qrev--ok    { border-left-color: var(--done); }
     .qrev--wrong { border-left-color: var(--missed); }
-    .qrev__q { font-family: var(--font-mono); margin: 0 0 var(--sp-2); }
+    .qrev__q { font-family: var(--font-mono); margin: 0 0 var(--s-2); }
     .qrev__a { margin: 0; font-size: var(--fs-sm); }
     .qrev__a b { color: var(--done); }
     .qrev__exp {
-        margin: var(--sp-2) 0 0;
+        margin: var(--s-2) 0 0;
         font-size: var(--fs-sm);
         color: var(--text-muted);
     }

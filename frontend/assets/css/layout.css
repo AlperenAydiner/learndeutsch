@@ -1,147 +1,214 @@
 /* =====================================================================
-   Ust bar, hamburger menu ve sayfa iskeleti.
+   Ust bar, gezinme, sayfa iskeleti.
+
+   Masaustunde YATAY menu, mobilde hamburger. Onceki surumde her
+   genislikte hamburger vardi: 1280px ekranda menuyu gizlemek,
+   kullaniciyi bulabilecegi seyi aramaya zorlamaktir.
    ===================================================================== */
 
 .topbar {
     position: sticky;
     top: 0;
     z-index: 50;
-    height: var(--nav-h);
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(8px);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
 }
 
 .topbar__inner {
-    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--sp-4);
+    gap: var(--s-6);
+    min-height: var(--nav-h);
 }
+
+/* --- Marka ---------------------------------------------------------- */
 
 .brand {
     display: inline-flex;
-    align-items: baseline;
-    gap: var(--sp-2);
-    font-weight: 700;
-    font-size: var(--fs-md);
+    align-items: center;
+    gap: var(--s-2);
+    font-weight: 800;
+    font-size: var(--fs-base);
+    letter-spacing: var(--ls-tight);
     color: var(--text);
     text-decoration: none;
-    letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
-.brand__de {
-    color: var(--accent);
+.brand:hover { color: var(--text); }
+
+.brand__mark {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: var(--r-sm);
+    background: var(--primary);
+    color: var(--on-primary);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    flex: none;
 }
 
-/* --- Hamburger dugmesi --- */
+/* --- Masaustu menu -------------------------------------------------- */
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--s-1);
+    margin-right: auto;
+}
+
+.nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 var(--s-3);
+    border-radius: var(--r);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: background-color var(--t-fast) var(--ease),
+                color var(--t-fast) var(--ease);
+}
+
+.nav__link:hover { background: var(--surface-hover); color: var(--text); }
+
+.nav__link--current {
+    color: var(--text);
+    font-weight: 600;
+    background: var(--bg-subtle);
+}
+
+.topbar__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+}
+
+.topbar__actions .btn { min-height: 38px; padding: 0 var(--s-4); font-size: var(--fs-sm); }
+
+/* --- Hamburger (yalnizca dar ekran) --------------------------------- */
 
 .nav-toggle {
-    display: inline-flex;
-    flex-direction: column;
+    display: none;
+    align-items: center;
     justify-content: center;
-    gap: 5px;
     width: 44px;
     height: 44px;
-    padding: 0 10px;
+    margin-left: auto;
     background: transparent;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r);
     cursor: pointer;
+    color: var(--text);
 }
 
-.nav-toggle__bar {
-    display: block;
+.nav-toggle__bars { display: block; width: 18px; height: 12px; position: relative; }
+
+.nav-toggle__bars::before,
+.nav-toggle__bars::after,
+.nav-toggle__bars span {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
     height: 2px;
-    background: var(--text);
+    background: currentColor;
     border-radius: 2px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform var(--t) var(--ease), opacity var(--t) var(--ease);
 }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
+.nav-toggle__bars::before { top: 0; }
+.nav-toggle__bars span    { top: 5px; }
+.nav-toggle__bars::after  { top: 10px; }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) {
-    opacity: 0;
-}
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars span    { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { transform: translateY(-5px) rotate(-45deg); }
 
-.nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-/* --- Acilir menu --- */
+/* --- Mobil panel ---------------------------------------------------- */
 
 .nav-panel {
-    position: fixed;
-    inset: var(--nav-h) 0 auto 0;
+    display: none;
+    border-top: 1px solid var(--border);
     background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-lg);
-    z-index: 49;
-}
-
-.nav-panel[hidden] {
-    display: none !important;
+    padding-block: var(--s-4) var(--s-5);
 }
 
 .nav-panel__list {
     list-style: none;
-    margin: 0;
-    padding: var(--sp-4) 0 var(--sp-5);
-    display: flex;
-    flex-direction: column;
+    margin: 0 0 var(--s-4);
+    padding: 0;
 }
 
 .nav-panel__link {
     display: block;
-    padding: var(--sp-3) 0;
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
     color: var(--text);
     font-size: var(--fs-md);
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 1px solid var(--border);
 }
 
-.nav-panel__link:hover {
-    color: var(--accent);
+.nav-panel__link--current { color: var(--primary); font-weight: 700; }
+
+.nav-panel__actions { display: grid; gap: var(--s-3); }
+
+@media (max-width: 900px) {
+    .nav, .topbar__actions { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .nav-panel { display: block; }
+    .nav-panel[hidden] { display: none; }
 }
 
-.nav-panel__link--current {
-    color: var(--accent);
-    font-weight: 650;
+/* --- Uygulama ust bari (giris yapmis) ------------------------------- */
+
+.topbar--app .nav__link { font-size: var(--fs-sm); }
+
+.user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: var(--s-1) var(--s-2) var(--s-1) var(--s-1);
+    border: 1px solid var(--border);
+    border-radius: var(--r-full);
+    background: var(--surface);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
 }
 
-.nav-panel__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-3);
-    padding-top: var(--sp-5);
+.user-chip__avatar {
+    display: grid;
+    place-items: center;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: var(--fs-xs);
 }
 
-.nav-panel__actions .btn {
-    flex: 1 1 160px;
-}
-
-/* --- Sayfa bolumleri --- */
-
-.section {
-    padding-block: var(--sp-8);
-}
-
-.section--tight {
-    padding-block: var(--sp-7);
-}
-
-.section--alt {
-    background: var(--surface-alt);
-    border-block: 1px solid var(--border);
-}
+/* --- Alt bilgi ------------------------------------------------------ */
 
 .site-footer {
     border-top: 1px solid var(--border);
-    padding-block: var(--sp-6);
+    padding-block: var(--s-7);
+    margin-top: var(--s-9);
     color: var(--text-muted);
     font-size: var(--fs-sm);
 }
+
+.site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-5);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-footer a { color: var(--text-muted); }
+.site-footer a:hover { color: var(--primary); }

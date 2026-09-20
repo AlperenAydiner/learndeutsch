@@ -39,3 +39,6 @@ backend/gradle.properties
 # Gradle build ciktilari
 backend/.gradle/
 backend/build/
+
+# Indirilen skill paketleri (11 MB, ucuncu taraf) — repoda tutulmaz
+.claude/skills/

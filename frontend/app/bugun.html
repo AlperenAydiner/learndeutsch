@@ -4,28 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bugün — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
-    <link rel="stylesheet" href="/assets/css/pages/program.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/pages/today.css">
 </head>
 <body>
 
 <div data-nav></div>
 
-<main class="wrap section">
+<main class="wrap section" id="main">
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
 
-    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
 
     <!-- ---------- Program yok / gün yok ---------- -->
     <div class="empty" id="bos" hidden>
         <h2 id="bosBaslik">Bugün için bir şey yok</h2>
         <p id="bosAciklama"></p>
-        <div style="margin-top: var(--sp-5);">
+        <div class="empty__actions">
             <a class="btn btn--primary" href="/app/program.html">Programa git</a>
         </div>
     </div>
@@ -197,8 +200,8 @@
         // yerine dogrudan oraya goturuyoruz. Skor kendiliginden kaydediliyor.
         const iceride = ICERIDE[g.taskType];
         const baslaBtn = iceride && !g.status
-            ? `<a class="btn btn--primary" href="${iceride.href}"
-                 style="margin-right: var(--sp-2);">${iceride.label}</a>` : "";
+            ? `<a class="btn btn--primary" href="${iceride.href}">${iceride.label}</a>`
+            : "";
 
         const dugmeler = baslaBtn + DURUMLAR.map((d) => `
             <button class="mark mark--${d.sinif}" type="button"

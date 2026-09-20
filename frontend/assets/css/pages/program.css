@@ -2,36 +2,32 @@
    Program takvimi.
    ===================================================================== */
 
-.plan__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: var(--sp-4);
-    margin-bottom: var(--sp-5);
-}
-
+/* Programin kunyesi: kac gun, gunde kac dakika, hangi surum. */
 .plan__meta {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-5);
-    font-size: var(--fs-sm);
-    color: var(--text-muted);
+    gap: var(--s-5);
+    margin-top: var(--s-3);
+    font-size: var(--fs-xs);
+    color: var(--text-faint);
 }
 
 .plan__meta b {
     display: block;
+    margin-bottom: 1px;
     color: var(--text);
     font-size: var(--fs-md);
+    font-weight: 800;
+    letter-spacing: var(--ls-tight);
 }
 
 /* --- Fizibilite uyarisi --- */
 
 .verdict {
-    padding: var(--sp-4) var(--sp-5);
-    border-radius: var(--radius);
+    padding: var(--s-4) var(--s-5);
+    border-radius: var(--r);
     border: 1px solid;
-    margin-bottom: var(--sp-5);
+    margin-bottom: var(--s-5);
     font-size: var(--fs-sm);
 }
 
@@ -55,21 +51,21 @@
 
 .verdict__title {
     font-weight: 700;
-    margin-bottom: var(--sp-2);
+    margin-bottom: var(--s-2);
 }
 
 .verdict ul {
-    margin: var(--sp-2) 0 0;
-    padding-left: var(--sp-5);
+    margin: var(--s-2) 0 0;
+    padding-left: var(--s-5);
 }
 
 /* --- Hafta basligi --- */
 
 .week {
-    margin-top: var(--sp-6);
-    margin-bottom: var(--sp-3);
+    margin-top: var(--s-6);
+    margin-bottom: var(--s-3);
     font-size: var(--fs-xs);
-    letter-spacing: 0.08em;
+    letter-spacing: var(--ls-wide);
     text-transform: uppercase;
     color: var(--text-faint);
     font-weight: 700;
@@ -80,22 +76,22 @@
 .day {
     display: grid;
     grid-template-columns: 56px 1fr auto;
-    gap: var(--sp-4);
+    gap: var(--s-4);
     align-items: center;
-    padding: var(--sp-3) var(--sp-4);
+    padding: var(--s-3) var(--s-4);
     background: var(--surface);
     border: 1px solid var(--border);
     border-left: 3px solid var(--border-strong);
-    border-radius: var(--radius);
-    margin-bottom: var(--sp-2);
+    border-radius: var(--r);
+    margin-bottom: var(--s-2);
 }
 
 .day--light     { border-left-color: var(--partial); }
 .day--mock      { border-left-color: var(--missed); }
-.day--normal    { border-left-color: var(--accent); }
+.day--normal    { border-left-color: var(--primary); }
 
 .day--today {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--primary);
     outline-offset: 1px;
 }
 
@@ -135,14 +131,14 @@
 .day__blocks {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-1);
-    margin-top: var(--sp-2);
+    gap: var(--s-1);
+    margin-top: var(--s-2);
 }
 
 .chip {
-    padding: 1px var(--sp-2);
-    border-radius: var(--radius-sm);
-    background: var(--surface-alt);
+    padding: 1px var(--s-2);
+    border-radius: var(--r-sm);
+    background: var(--bg-subtle);
     color: var(--text-muted);
     font-size: var(--fs-xs);
     white-space: nowrap;
@@ -157,11 +153,11 @@
 
 .day__tag {
     display: inline-block;
-    margin-left: var(--sp-2);
-    padding: 1px var(--sp-2);
-    border-radius: var(--radius-sm);
+    margin-left: var(--s-2);
+    padding: 1px var(--s-2);
+    border-radius: var(--r-sm);
     font-size: var(--fs-xs);
-    font-weight: 650;
+    font-weight: 700;
 }
 
 .day__tag--light { background: var(--partial-soft); color: var(--partial); }
@@ -174,26 +170,6 @@
 
     .day__minutes {
         grid-column: 2;
-        margin-top: var(--sp-1);
+        margin-top: var(--s-1);
     }
-}
-
-/* --- Bos durum --- */
-
-.empty {
-    text-align: center;
-    padding: var(--sp-8) var(--sp-5);
-    background: var(--surface);
-    border: 1px dashed var(--border-strong);
-    border-radius: var(--radius-lg);
-}
-
-.empty h2 {
-    font-size: var(--fs-lg);
-}
-
-.empty p {
-    color: var(--text-muted);
-    max-width: 46ch;
-    margin-inline: auto;
 }

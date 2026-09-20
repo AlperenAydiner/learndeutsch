@@ -1,0 +1,163 @@
+/* =====================================================================
+   Uygulama kabugu — giris yapmis tum sayfalarin paylastigi parcalar.
+
+   Sayfa basligi, kart izgarasi, bos/yukleniyor durumlari ve sonuc
+   ekranlarinda tekrar eden sayi/konu bloklari burada. Her sayfanin
+   kendine ozel CSS'i ayri dosyada.
+   ===================================================================== */
+
+/* --- Sayfa basligi -------------------------------------------------- */
+
+.page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--s-4);
+    margin-bottom: var(--s-6);
+}
+
+.page-head h1 { margin: 0; font-size: var(--fs-2xl); }
+
+.page-head__sub {
+    margin: var(--s-2) 0 0;
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    max-width: var(--prose);
+}
+
+/* Bolum basligi: sayfa icindeki ara basliklar tek tipte olsun. */
+.block { margin-top: var(--s-7); }
+
+.block__title {
+    font-size: var(--fs-md);
+    margin-bottom: var(--s-2);
+}
+
+.block__note {
+    margin: 0 0 var(--s-4);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    max-width: var(--prose);
+}
+
+/* --- Kart izgarasi -------------------------------------------------- */
+
+.cards {
+    display: grid;
+    gap: var(--s-4);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.cards .card { display: flex; flex-direction: column; }
+.cards .card h3 { font-size: var(--fs-base); margin-bottom: var(--s-2); }
+.cards .card p  { color: var(--text-muted); font-size: var(--fs-sm); }
+.cards .card .btn { margin-top: auto; align-self: flex-start; }
+
+/* --- Yukleniyor / bos durum ----------------------------------------- */
+
+.loading {
+    color: var(--text-faint);
+    font-size: var(--fs-sm);
+}
+
+.loading[hidden] { display: none; }
+
+.empty {
+    text-align: center;
+    padding: var(--s-8) var(--s-5);
+    background: var(--surface);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-lg);
+}
+
+.empty h2 { font-size: var(--fs-lg); }
+
+.empty p {
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin-inline: auto;
+}
+
+.empty__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    justify-content: center;
+    margin-top: var(--s-5);
+}
+
+/* --- Sayi kutulari (sonuc ve gelisim ekranlari) --------------------- */
+
+.result__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--s-3);
+    margin-bottom: var(--s-6);
+}
+
+.stat {
+    padding: var(--s-4);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    text-align: center;
+}
+
+.stat__value {
+    display: block;
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    letter-spacing: var(--ls-tight);
+    line-height: 1.1;
+}
+
+.stat__label {
+    display: block;
+    margin-top: var(--s-1);
+    font-size: var(--fs-xs);
+    color: var(--text-faint);
+}
+
+/* --- Konu konu durum ------------------------------------------------ */
+
+.cats { list-style: none; margin: 0 0 var(--s-6); padding: 0; }
+
+.cat {
+    display: grid;
+    grid-template-columns: 1fr 70px 100px;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.cat__score {
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+    text-align: right;
+}
+
+.tag {
+    padding: 2px var(--s-2);
+    border-radius: var(--r-sm);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-align: center;
+}
+
+.tag--mastered { background: var(--done-soft);    color: var(--done); }
+.tag--partial  { background: var(--partial-soft); color: var(--partial); }
+.tag--weak     { background: var(--missed-soft);  color: var(--missed); }
+
+@media (max-width: 560px) {
+    .cat { grid-template-columns: 1fr auto; }
+    .cat__score { grid-row: 2; grid-column: 1; text-align: left; }
+}
+
+/* --- Ayarlar sayfasi ------------------------------------------------ */
+
+.settings__section { margin-bottom: var(--s-5); }
+.settings__section .block__title { margin-bottom: var(--s-2); }
+.settings__current { margin-bottom: var(--s-5); }

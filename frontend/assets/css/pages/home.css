@@ -2,219 +2,333 @@
    Ana sayfa.
    ===================================================================== */
 
-/* --- Giris --- */
+/* --- Hero ----------------------------------------------------------- */
 
 .hero {
-    padding-block: var(--sp-8) var(--sp-7);
-}
-
-.hero__eyebrow {
-    margin: 0 0 var(--sp-3);
-    color: var(--accent);
-    font-size: var(--fs-sm);
-    font-weight: 650;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-}
-
-.hero__title {
-    font-size: clamp(2.1rem, 5.5vw, var(--fs-3xl));
-    max-width: 16ch;
-    margin-bottom: var(--sp-5);
-}
-
-.hero__title-accent {
-    color: var(--accent);
-}
-
-.hero__lead {
-    max-width: 58ch;
-    font-size: var(--fs-md);
-    color: var(--text-muted);
-    margin-bottom: var(--sp-6);
-}
-
-.hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-3);
-}
-
-/* --- Ne degil / Ne --- */
-
-.contrast {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--sp-6);
-}
-
-.contrast__head {
-    font-size: var(--fs-lg);
-    padding-bottom: var(--sp-2);
-    border-bottom: 2px solid var(--border-strong);
-}
-
-.contrast__head--no  { color: var(--missed); border-bottom-color: var(--missed); }
-.contrast__head--yes { color: var(--done);   border-bottom-color: var(--done); }
-
-.contrast__list {
-    margin: 0;
-    padding-left: var(--sp-5);
-    color: var(--text-muted);
-}
-
-.contrast__list li {
-    margin-bottom: var(--sp-2);
-}
-
-.contrast__note {
-    margin-top: var(--sp-6);
-    margin-bottom: 0;
-    font-size: var(--fs-md);
-    text-align: center;
-    color: var(--text);
-}
-
-/* --- Adimlar --- */
-
-.steps {
-    list-style: none;
-    margin: var(--sp-6) 0 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--sp-5);
-    counter-reset: step;
-}
-
-.steps__item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: var(--sp-5);
-}
-
-.steps__no {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    margin-bottom: var(--sp-3);
-    background: var(--accent-soft);
-    color: var(--accent);
-    border-radius: 50%;
-    font-weight: 700;
-    font-size: var(--fs-sm);
-}
-
-.steps__title {
-    font-size: var(--fs-md);
-    margin-bottom: var(--sp-2);
-}
-
-.steps__item p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: var(--fs-sm);
-}
-
-/* --- Ornek gun --- */
-
-.section__lead {
-    max-width: 62ch;
-    color: var(--text-muted);
-    margin-bottom: var(--sp-5);
-}
-
-.day__blocks {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.day__block {
-    display: grid;
-    grid-template-columns: 72px 130px 1fr;
-    align-items: baseline;
-    gap: var(--sp-3);
-    padding: var(--sp-3) 0;
+    padding-block: var(--s-8) var(--s-9);
     border-bottom: 1px solid var(--border);
 }
 
-.day__block:last-child {
-    border-bottom: 0;
+.hero__grid {
+    display: grid;
+    gap: var(--s-8);
+    align-items: center;
 }
 
-.day__time {
-    font-family: var(--font-mono);
+@media (min-width: 960px) {
+    .hero__grid { grid-template-columns: 1.05fr 1fr; gap: var(--s-9); }
+}
+
+.hero__title {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--s-5);
+    max-width: 14ch;
+}
+
+.hero__title em {
+    font-style: normal;
+    color: var(--primary);
+}
+
+.hero__lead {
+    font-size: var(--fs-md);
+    color: var(--text-muted);
+    max-width: 52ch;
+    margin-bottom: var(--s-6);
+}
+
+.hero__note {
+    margin: var(--s-4) 0 0;
     font-size: var(--fs-sm);
-    color: var(--accent);
-    font-weight: 650;
+    color: var(--text-faint);
 }
 
-.day__name {
-    font-weight: 650;
+/* --- Urun gorseli: gercek ekranin CSS ile cizilmis hali -------------- */
+
+.shot {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--sh-lg);
+    overflow: hidden;
 }
 
-.day__desc {
+.shot__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: var(--s-3) var(--s-4);
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--border);
+}
+
+.shot__dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--border-strong);
+}
+
+.shot__label {
+    margin-left: auto;
+    font-size: var(--fs-xs);
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+}
+
+.shot__body { padding: var(--s-5); }
+
+.shot__day {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s-3);
+    margin-bottom: var(--s-2);
+}
+
+.shot__daynum {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.shot__streak { font-size: var(--fs-xs); color: var(--primary); font-weight: 700; }
+
+.shot__topic {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    letter-spacing: var(--ls-tight);
+    margin-bottom: var(--s-4);
+}
+
+.shot__meter {
+    height: 6px;
+    background: var(--bg-subtle);
+    border-radius: var(--r-full);
+    overflow: hidden;
+    margin-bottom: var(--s-5);
+}
+
+.shot__meter span {
+    display: block;
+    height: 100%;
+    width: 42%;
+    background: var(--primary);
+    border-radius: var(--r-full);
+}
+
+.shot__task {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.shot__check {
+    width: 18px; height: 18px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--r-sm);
+}
+
+.shot__task--done .shot__check {
+    background: var(--ok);
+    border-color: var(--ok);
+    position: relative;
+}
+
+.shot__task--done .shot__check::after {
+    content: "";
+    position: absolute;
+    left: 5px; top: 1px;
+    width: 5px; height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.shot__task--done .shot__name { color: var(--text-faint); text-decoration: line-through; }
+
+.shot__min { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-faint); }
+
+/* --- Ne degil / Ne -------------------------------------------------- */
+
+.compare {
+    display: grid;
+    gap: var(--s-6);
+}
+
+@media (min-width: 760px) {
+    .compare { grid-template-columns: 1fr 1fr; gap: var(--s-8); }
+}
+
+.compare__head {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    font-size: var(--fs-md);
+    margin-bottom: var(--s-4);
+    padding-bottom: var(--s-3);
+    border-bottom: 2px solid;
+}
+
+.compare__head--no  { color: var(--err); border-color: var(--err); }
+.compare__head--yes { color: var(--ok);  border-color: var(--ok); }
+
+.compare__list { list-style: none; margin: 0; padding: 0; }
+
+.compare__list li {
+    position: relative;
+    padding-left: var(--s-5);
+    margin-bottom: var(--s-3);
     color: var(--text-muted);
     font-size: var(--fs-sm);
 }
 
-.day__note {
-    margin: var(--sp-5) 0 0;
-    padding-top: var(--sp-4);
+.compare__list li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.compare__list--no li::before  { content: "×"; color: var(--err); }
+.compare__list--yes li::before { content: "✓"; color: var(--ok); }
+
+.compare__note {
+    grid-column: 1 / -1;
+    margin: var(--s-4) 0 0;
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: var(--fs-md);
+}
+
+/* --- Adimlar -------------------------------------------------------- */
+
+.steps {
+    list-style: none;
+    margin: var(--s-6) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--s-5);
+    counter-reset: step;
+}
+
+@media (min-width: 700px)  { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+
+.steps__item {
+    padding: var(--s-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+}
+
+.steps__no {
+    display: inline-grid;
+    place-items: center;
+    width: 30px; height: 30px;
+    margin-bottom: var(--s-3);
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: var(--r-sm);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+}
+
+.steps__item h3 { font-size: var(--fs-base); margin-bottom: var(--s-2); }
+.steps__item p  { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); }
+
+/* --- Ornek gun ------------------------------------------------------ */
+
+.day-table { margin-top: var(--s-5); }
+
+.day-row {
+    display: grid;
+    grid-template-columns: 76px 140px 1fr;
+    gap: var(--s-4);
+    align-items: baseline;
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.day-row:last-of-type { border-bottom: 0; }
+
+.day-row__time {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.day-row__name { font-weight: 600; }
+.day-row__desc { color: var(--text-muted); font-size: var(--fs-sm); }
+
+@media (max-width: 620px) {
+    .day-row { grid-template-columns: 70px 1fr; }
+    .day-row__desc { grid-column: 2; }
+}
+
+.day-note {
+    margin: var(--s-5) 0 0;
+    padding-top: var(--s-4);
     border-top: 1px dashed var(--border-strong);
     color: var(--text-muted);
     font-size: var(--fs-sm);
 }
 
-@media (max-width: 560px) {
-    .day__block {
-        grid-template-columns: 64px 1fr;
-    }
+/* --- Kimin icin ----------------------------------------------------- */
 
-    .day__desc {
-        grid-column: 2;
-    }
-}
-
-/* --- Kimin icin --- */
-
-.audience {
+.who {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: var(--sp-4);
-    margin-top: var(--sp-5);
+    gap: var(--s-4);
+    margin-top: var(--s-6);
 }
 
-.audience__item h3 {
-    font-size: var(--fs-base);
-    margin-bottom: var(--sp-2);
-    color: var(--accent);
-}
+@media (min-width: 640px)  { .who { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .who { grid-template-columns: repeat(4, 1fr); } }
 
-.audience__item p {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: var(--fs-sm);
-}
+.who__item h3 { font-size: var(--fs-base); color: var(--primary); margin-bottom: var(--s-2); }
+.who__item p  { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); }
 
-/* --- Son cagri --- */
+/* --- Son cagri ------------------------------------------------------ */
 
-.cta__inner {
+.cta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: var(--sp-5);
-    padding: var(--sp-6);
-    background: var(--accent-soft);
-    border-radius: var(--radius-lg);
+    gap: var(--s-5);
+    padding: var(--s-7);
+    background: var(--primary-soft);
+    border: 1px solid var(--primary-border);
+    border-radius: var(--r-lg);
 }
 
-.cta__title {
-    margin: 0;
-    font-size: var(--fs-lg);
+.cta__title { margin: 0; font-size: var(--fs-xl); max-width: 20ch; }
+.cta__sub { margin: var(--s-2) 0 0; color: var(--text-muted); font-size: var(--fs-sm); }
+
+/* --- Artikel gosterimi (nasil-calisir) ------------------------------ */
+
+.artikel-demo { margin-top: var(--s-5); }
+
+.artikel-demo__label {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--text-faint);
 }
+
+.artikel-demo__row {
+    margin: 0 0 var(--s-2);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    letter-spacing: var(--ls-tight);
+}
+
+.artikel-demo__sep { color: var(--text-faint); margin-inline: var(--s-2); }

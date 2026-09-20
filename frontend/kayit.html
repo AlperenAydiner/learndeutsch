@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kayıt ol — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
@@ -13,11 +17,12 @@
 
 <div data-nav></div>
 
-<main class="wrap auth">
+<main class="wrap auth" id="main">
     <div class="auth__card">
 
         <!-- ---------- Form ---------- -->
         <div id="formBolumu">
+            <span class="auth__eyebrow">İki dakika</span>
             <h1 class="auth__title">Kayıt ol</h1>
             <p class="auth__lead">
                 Hedefini belirleyelim, seviyeni ölçelim, programını çıkaralım.
@@ -25,7 +30,7 @@
 
             <div class="notice notice--error" id="hata" role="alert" hidden></div>
 
-            <form id="kayitFormu" novalidate>
+            <form class="auth__form" id="kayitFormu" novalidate>
                 <div class="field">
                     <label class="field__label" for="ad">Adın</label>
                     <input class="field__input" type="text" id="ad" name="ad"
@@ -61,6 +66,12 @@
             <p class="auth__alt">
                 Hesabın var mı? <a href="/giris.html">Giriş yap</a>
             </p>
+
+            <ul class="auth__perks">
+                <li>Kredi kartı istemiyoruz, ücretli sürüm yok.</li>
+                <li>Hedefini ve günlük süreni sonradan değiştirebilirsin.</li>
+                <li>Kelime listesi hazırlaman gerekmez — sistem verir.</li>
+            </ul>
         </div>
 
         <!-- ---------- Kayit sonrasi ---------- -->

@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ayarlar — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/layout.css">
-    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
 </head>
 <body>
@@ -21,9 +25,9 @@
     <div class="notice notice--success" id="bilgi" role="status" hidden></div>
 
     <!-- ---------- Hesap ---------- -->
-    <section class="card" style="margin-bottom: var(--sp-6);">
-        <h2 style="font-size: var(--fs-md);">Hesap</h2>
-        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+    <section class="card card--pad settings__section">
+        <h2 class="block__title">Hesap</h2>
+        <p class="block__note">
             E-postanı değiştirmek için Supabase üzerinden doğrulama gerekir;
             burada değiştirilemez.
         </p>
@@ -42,14 +46,14 @@
     </section>
 
     <!-- ---------- Hedef ---------- -->
-    <section class="card" style="margin-bottom: var(--sp-6);">
-        <h2 style="font-size: var(--fs-md);">Hedefin</h2>
-        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+    <section class="card card--pad settings__section">
+        <h2 class="block__title">Hedefin</h2>
+        <p class="block__note">
             Hedefini değiştirirsen yeni bir program üretilir. Eski programın
             silinmez, arşivlenir.
         </p>
 
-        <div id="mevcutHedef" style="margin-bottom: var(--sp-5);"></div>
+        <div id="mevcutHedef" class="settings__current"></div>
 
         <form id="hedefFormu">
             <div class="choice">
@@ -79,9 +83,9 @@
     </section>
 
     <!-- ---------- Program ---------- -->
-    <section class="card" style="margin-bottom: var(--sp-6);">
-        <h2 style="font-size: var(--fs-md);">Program</h2>
-        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+    <section class="card card--pad settings__section">
+        <h2 class="block__title">Program</h2>
+        <p class="block__note">
             Hedefin aynı kalsın ama program yeniden hesaplansın istiyorsan.
             Son ölçümlerin (quiz ve kelime sonuçların) dikkate alınır.
         </p>
@@ -92,7 +96,7 @@
 
     <!-- ---------- Çıkış ---------- -->
     <section class="card">
-        <h2 style="font-size: var(--fs-md);">Oturum</h2>
+        <h2 class="block__title">Oturum</h2>
         <button class="btn btn--ghost" type="button" data-logout>Çıkış yap</button>
     </section>
 </main>
@@ -143,13 +147,13 @@
     function mevcutHedefGoster(hedef) {
         const kutu = document.getElementById("mevcutHedef");
         if (!hedef) {
-            kutu.innerHTML = `<p style="color: var(--text-faint); font-size: var(--fs-sm);">
+            kutu.innerHTML = `<p class="block__note">
                 Henüz hedefin yok.</p>`;
             return;
         }
         const sinav = hedef.examType === "NONE" ? "sınav yok" : "Goethe A2";
-        kutu.innerHTML = `<p style="font-size: var(--fs-sm); color: var(--text-muted);">
-            Şu an: <b style="color: var(--text);">${hedef.targetLevel}</b> ·
+        kutu.innerHTML = `<p class="block__note">
+            Şu an: <b>${hedef.targetLevel}</b> ·
             ${sinav} · ${hedef.totalDays} gün ·
             günde ${Math.round(hedef.dailyMinutes / 60 * 10) / 10} saat ·
             hedef tarih ${new Date(hedef.targetDate).toLocaleDateString("tr-TR")}</p>`;
