@@ -1,0 +1,249 @@
+/* =====================================================================
+   Bugun ekrani.
+   ===================================================================== */
+
+.today__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-5);
+}
+
+.today__day {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    font-weight: 700;
+    margin-bottom: var(--sp-2);
+}
+
+.today__title {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--sp-2);
+}
+
+.today__grammar {
+    color: var(--text-muted);
+    max-width: 62ch;
+    margin: 0;
+}
+
+.today__side {
+    display: flex;
+    gap: var(--sp-5);
+    text-align: center;
+}
+
+.today__stat b {
+    display: block;
+    font-size: var(--fs-lg);
+    line-height: 1.1;
+}
+
+.today__stat span {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+}
+
+/* --- Ilerleme --- */
+
+.progress {
+    margin-bottom: var(--sp-6);
+}
+
+.progress__bar {
+    height: 8px;
+    background: var(--surface-alt);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+}
+
+.progress__done    { background: var(--done); }
+.progress__partial { background: var(--partial); }
+
+.progress__text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--sp-2);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+/* --- Gorev --- */
+
+.task {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: var(--sp-4) var(--sp-5);
+    margin-bottom: var(--sp-3);
+    transition: border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.task--done    { border-left-color: var(--done); }
+.task--partial { border-left-color: var(--partial); }
+.task--missed  { border-left-color: var(--missed); opacity: 0.6; }
+
+.task__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-3);
+}
+
+.task__name {
+    font-size: var(--fs-md);
+    font-weight: 650;
+}
+
+.task__minutes {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--accent);
+}
+
+.task__instruction {
+    margin: var(--sp-2) 0 var(--sp-4);
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+}
+
+/* --- Durum dugmeleri --- */
+
+.marks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+}
+
+.mark {
+    padding: var(--sp-2) var(--sp-4);
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text);
+    cursor: pointer;
+    transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.mark:hover {
+    border-color: var(--accent);
+}
+
+.mark[aria-pressed="true"] {
+    font-weight: 650;
+}
+
+.mark--done[aria-pressed="true"] {
+    background: var(--done-soft);
+    border-color: var(--done);
+    color: var(--done);
+}
+
+.mark--partial[aria-pressed="true"] {
+    background: var(--partial-soft);
+    border-color: var(--partial);
+    color: var(--partial);
+}
+
+.mark--missed[aria-pressed="true"] {
+    background: var(--missed-soft);
+    border-color: var(--missed);
+    color: var(--missed);
+}
+
+.mark[disabled] {
+    opacity: 0.5;
+    cursor: progress;
+}
+
+/* --- Tipe ozel sorular --- */
+
+.report {
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-4);
+    border-top: 1px dashed var(--border);
+}
+
+.report[hidden] {
+    display: none;
+}
+
+.report__row + .report__row {
+    margin-top: var(--sp-3);
+}
+
+.report__label {
+    display: block;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--sp-2);
+}
+
+.report__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+}
+
+.pill {
+    padding: var(--sp-1) var(--sp-3);
+    background: var(--surface-alt);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.pill:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
+
+.pill[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 650;
+}
+
+/* --- Gun tipi rozeti --- */
+
+.badge {
+    display: inline-block;
+    padding: 2px var(--sp-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-xs);
+    font-weight: 650;
+    margin-bottom: var(--sp-3);
+}
+
+.badge--light { background: var(--partial-soft); color: var(--partial); }
+.badge--mock  { background: var(--missed-soft);  color: var(--missed); }
+
+/* --- Gun bitti --- */
+
+.finished {
+    margin-top: var(--sp-5);
+    padding: var(--sp-5);
+    background: var(--done-soft);
+    border: 1px solid var(--done);
+    border-radius: var(--radius);
+    color: var(--done);
+    text-align: center;
+    font-weight: 650;
+}
+
+.finished[hidden] {
+    display: none;
+}
