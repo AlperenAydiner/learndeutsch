@@ -28,6 +28,17 @@ content/    Seed verisi (CSV/JSON) - icerik eklemek kod degisikligi gerektirmez
 docs/       Tasarim ve plan dokumanlari
 ```
 
+## Yayinda
+
+| Parca | Adres |
+|---|---|
+| Site | https://learndeutsch-alpi7.vercel.app |
+| API | https://ichsprechedeutsch-api.onrender.com |
+
+Render'in ucretsiz katmani 15 dakika hareketsizlikten sonra uykuya
+gecer; ilk istek 30-50 saniye surebilir. Arayuz bu sirada kullaniciya
+"Sunucu uyaniyor" bandi gosterir.
+
 ## Dokumanlar
 
 - Tasarim: `docs/superpowers/specs/2026-09-19-almanca-takip-sistemi-design.md`

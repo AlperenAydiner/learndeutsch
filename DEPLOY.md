@@ -1,8 +1,27 @@
 # Yayına Alma
 
-Backend → **Render**, frontend → **Vercel**, veritabanı zaten **Supabase**'de.
+**Durum: yayında.** 20 Eylül 2026'da kuruldu.
 
-Hesap açma ve giriş adımlarını sen yapacaksın; geri kalan her şey hazır.
+| Parça | Adres |
+|---|---|
+| Site | https://learndeutsch-alpi7.vercel.app |
+| API | https://ichsprechedeutsch-api.onrender.com |
+| Veritabanı | Supabase — Alperen Proje (eu-central-1) |
+
+Aşağıdaki adımlar sıfırdan kurulum içindir; bir şey bozulursa veya
+ikinci bir ortam kurulacaksa buraya bakılır.
+
+## Kurulum sırasında karşılaşılanlar
+
+**Vercel Deployment Protection varsayılan olarak AÇIK geliyor.** Site
+`vercel.com/sso-api`'ye yönlendirir ve yalnızca proje sahibi görebilir.
+Settings → Deployment Protection → Vercel Authentication kapatılmalı.
+
+**`learndeutsch.vercel.app` adresi başkasına ait.** Projenin gerçek
+adresi takım adını içerir: `learndeutsch-alpi7.vercel.app`.
+
+**Render ortam değişkeni düzenlerken** maskeli alanların DOM değeri boş
+görünür; kaydetmeden önce göz simgesine basıp hepsini açmak güvenlidir.
 
 ---
 
