@@ -158,6 +158,9 @@
 
 /* --- Ayarlar sayfasi ------------------------------------------------ */
 
+/* Form agirlikli sayfa; satirlar 1200px boyunca uzamasin. */
+.settings { max-width: 720px; }
+
 .settings__section { margin-bottom: var(--s-5); }
 .settings__section .block__title { margin-bottom: var(--s-2); }
 .settings__current { margin-bottom: var(--s-5); }

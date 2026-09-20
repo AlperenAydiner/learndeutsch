@@ -273,4 +273,7 @@
     .today__side { width: 100%; }
     .today__stat { flex: 1; }
     .mark { flex: 1 1 auto; }
+
+    /* Dar ekranda iki sayi yan yana sikisip sariyordu; alt alta gelsin. */
+    .progress__text { flex-direction: column; gap: var(--s-1); }
 }

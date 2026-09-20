@@ -18,8 +18,15 @@
 
 <div data-nav></div>
 
-<main class="wrap section" style="max-width: 720px;">
-    <h1>Ayarlar</h1>
+<main class="wrap section settings" id="main">
+    <div class="page-head">
+        <div>
+            <h1>Ayarlar</h1>
+            <p class="page-head__sub">
+                Hedefini, günlük süreni ve hesap bilgilerini buradan değiştirirsin.
+            </p>
+        </div>
+    </div>
 
     <div class="notice notice--error"   id="hata"  role="alert"  hidden></div>
     <div class="notice notice--success" id="bilgi" role="status" hidden></div>
@@ -77,7 +84,7 @@
             </div>
 
             <button class="btn btn--primary" type="submit" id="hedefKaydet">
-                Hedefi güncelle ve programı yeniden üret
+                Hedefi güncelle
             </button>
         </form>
     </section>
@@ -103,6 +110,7 @@
 
 <script type="module">
     import { requireAuth } from "/assets/js/core/guard.js";
+    import { tarihYaz } from "/assets/js/core/tarih.js";
     import { api, ApiError } from "/assets/js/core/api.js";
 
     const SEVIYELER = [
@@ -155,8 +163,14 @@
         kutu.innerHTML = `<p class="block__note">
             Şu an: <b>${hedef.targetLevel}</b> ·
             ${sinav} · ${hedef.totalDays} gün ·
-            günde ${Math.round(hedef.dailyMinutes / 60 * 10) / 10} saat ·
-            hedef tarih ${new Date(hedef.targetDate).toLocaleDateString("tr-TR")}</p>`;
+            günde ${saatMetni(hedef.dailyMinutes)} saat ·
+            hedef tarih ${tarihYaz(hedef.targetDate)}</p>`;
+    }
+
+
+    /** Turkce ondalik ayraci virgul: 6.5 degil 6,5. */
+    function saatMetni(dakika) {
+        return (Math.round(dakika / 6) / 10).toLocaleString("tr-TR");
     }
 
     function secenekleriKur(hedef) {

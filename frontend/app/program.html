@@ -65,6 +65,7 @@
 
 <script type="module">
     import { requireAuth } from "/assets/js/core/guard.js";
+    import { bugunYerel, tarihYaz } from "/assets/js/core/tarih.js";
     import { api, ApiError } from "/assets/js/core/api.js";
 
     const TIP = {
@@ -165,7 +166,7 @@
     }
 
     function takvimGoster(gunler) {
-        const bugun = new Date().toISOString().slice(0, 10);
+        const bugun = bugunYerel();
         const parcalar = [];
 
         gunler.forEach((g, i) => {
@@ -178,7 +179,7 @@
                         : g.date < bugun ? " day--past" : "";
 
             const bloklar = g.tasks.map((t) =>
-                `<span class="chip">${BLOK_ADI[t.taskType] ?? t.taskType} ${t.plannedMinutes}dk</span>`
+                `<span class="chip">${BLOK_ADI[t.taskType] ?? t.taskType} ${t.plannedMinutes} dk</span>`
             ).join("");
 
             parcalar.push(`
@@ -210,13 +211,11 @@
     }
 
     function tarih(iso) {
-        return new Date(iso).toLocaleDateString("tr-TR",
-            { day: "numeric", month: "long", year: "numeric" });
+        return tarihYaz(iso);
     }
 
     function kisaTarih(iso) {
-        return new Date(iso).toLocaleDateString("tr-TR",
-            { day: "numeric", month: "short" });
+        return tarihYaz(iso, { day: "numeric", month: "short" });
     }
 
     function hataGoster(mesaj) {

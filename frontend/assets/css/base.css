@@ -170,6 +170,16 @@ a:hover { color: var(--primary-hover); }
     gap: var(--s-3);
 }
 
+/* Dugme etiketleri kisa olmali; yine de uzun bir etiket dar ekrani
+   tasirmasin diye sarma izni veriliyor. */
+@media (max-width: 560px) {
+    .btn {
+        white-space: normal;
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
 /* --- Yuzeyler ------------------------------------------------------- */
 
 .card {

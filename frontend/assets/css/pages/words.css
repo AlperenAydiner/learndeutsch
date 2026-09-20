@@ -2,9 +2,18 @@
    Kelime tekrar oturumu.
    ===================================================================== */
 
+/* Tekrar oturumunda kullanici ayni yere arka arkaya onlarca kez bakar;
+   kart her kartta ayni yerde, goz hizasinda dursun diye dikey ortali. */
 .session {
     max-width: 640px;
     margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* .section'in 96px'lik dolgusu kutuyu icerik kadar buyutup ortalanacak
+       bos alan birakmiyordu; bu ekranda dolgu kucultuluyor. */
+    padding-block: var(--s-6);
+    min-height: calc(100dvh - var(--nav-h) - 1px);   /* ust barin alt cizgisi */
 }
 
 .session__bar {

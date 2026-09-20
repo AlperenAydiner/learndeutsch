@@ -71,7 +71,8 @@
 .shot__label {
     margin-left: auto;
     font-size: var(--fs-xs);
-    color: var(--text-faint);
+    /* Acik gri serit uzerinde text-faint 4.4:1 kaliyordu. */
+    color: var(--text-muted);
     font-family: var(--font-mono);
 }
 

@@ -75,6 +75,7 @@
 
 <script type="module">
     import { requireAuth } from "/assets/js/core/guard.js";
+    import { gunFarki } from "/assets/js/core/tarih.js";
     import { api, ApiError } from "/assets/js/core/api.js";
 
     const BLOK_ADI = {
@@ -229,8 +230,17 @@
                 </div>
                 ${g.instructionTr ? `<p class="task__instruction">${esc(g.instructionTr)}</p>` : ""}
                 <div class="marks">${dugmeler}</div>
-                ${sorular ? `<div class="report" ${g.status ? "" : "hidden"}>${sorular}</div>` : ""}
+                ${sorular ? `<div class="report" ${raporSorulsun(g.status) ? "" : "hidden"}>${sorular}</div>` : ""}
             </div>`;
+    }
+
+
+    /**
+     * Gorev yapilmadiysa "kac metin yazdin" diye sormak tutarsiz olur;
+     * sorular yalnizca yapilan ve yarim yapilan gorevlerde gosterilir.
+     */
+    function raporSorulsun(status) {
+        return status === "DONE" || status === "PARTIAL";
     }
 
     // ---------- işaretleme ----------
@@ -290,10 +300,6 @@
         const saat = Math.floor(dakika / 60);
         const kalan = dakika % 60;
         return kalan === 0 ? `${saat} sa` : `${saat} sa ${kalan} dk`;
-    }
-
-    function gunFarki(a, b) {
-        return Math.round((new Date(b) - new Date(a)) / 86400000);
     }
 
     function hataGoster(mesaj) {

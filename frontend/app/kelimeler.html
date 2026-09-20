@@ -18,7 +18,11 @@
 
 <div data-nav></div>
 
-<main class="wrap section session">
+<main class="wrap section session" id="main">
+
+    <!-- Odak ekrani: gorunur baslik dikkat dagitir, ama sayfanin bir
+         basligi olmali. Ekran okuyucu icin gorunmez basligi kullaniyoruz. -->
+    <h1 class="visually-hidden">Kelime tekrarı</h1>
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
     <p class="loading" id="yukleniyor">Yükleniyor…</p>
@@ -73,7 +77,7 @@
     <!-- ---------- Bitti ---------- -->
     <div class="done-box" id="bitti" hidden>
         <div class="done-box__icon" aria-hidden="true">✓</div>
-        <h1 class="done-box__title" id="bittiBaslik">Bugünkü tekrarın bitti</h1>
+        <h2 class="done-box__title" id="bittiBaslik">Bugünkü tekrarın bitti</h2>
         <p class="done-box__lead" id="bittiAciklama"></p>
         <div class="done-box__stats">
             <div class="done-box__stat">

@@ -105,6 +105,7 @@
 
 <script type="module">
     import { requireAuth } from "/assets/js/core/guard.js";
+    import { tarihYaz } from "/assets/js/core/tarih.js";
     import { api, ApiError } from "/assets/js/core/api.js";
 
     const SKILL_ADI = {
@@ -229,8 +230,7 @@
     }
 
     function tarih(iso) {
-        return new Date(iso).toLocaleDateString("tr-TR",
-            { day: "numeric", month: "short" });
+        return tarihYaz(iso, { day: "numeric", month: "short" });
     }
 
     function esc(s) {
