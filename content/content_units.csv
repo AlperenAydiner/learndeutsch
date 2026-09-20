@@ -1,0 +1,33 @@
+code,level,phase,sequence_no,title_tr,grammar_summary,vocab_theme,estimated_minutes,is_new_content
+A1-01,A1,TEMEL,10,Tanışma ve temel cümle,"sein ve haben; kişi zamirleri; düzenli fiil çekimi; W-Fragen",TANISMA,390,true
+A1-02,A1,TEMEL,20,Artikel ve çoğul,"der/die/das; ein/eine; çoğul biçimleri; nicht ve kein farkı",AILE_EV,390,true
+A1-03,A1,TEMEL,30,Günlük rutin,"Präsens düzensiz fiiller; ayrılabilen fiiller; cümlede fiil pozisyonu",GUNLUK_HAYAT,390,true
+A1-04,A1,TEMEL,40,Modal fiiller,"können, müssen, wollen, dürfen, mögen; modal fiilli cümle yapısı",YETENEK_ZORUNLULUK,390,true
+A1-05,A1,TEMEL,50,Akkusativ ve iyelik,"Akkusativ (-i hâli); mein/dein/sein/ihr; belirsiz artikelin Akkusativ hâli",ALISVERIS_YEMEK,390,true
+A1-06,A1,TEMEL,60,Zaman ifadeleri,"Saat ve tarih; am/um/im/von...bis; zaman zarflarının yeri",ZAMAN_RANDEVU,390,true
+A1-07,A1,TEMEL,70,Dativ'e giriş,"Dativ (-e hâli); mit/nach/aus/bei/von/zu; Dativ alan sık fiiller",ULASIM_YON,390,true
+A1-08,A1,TEMEL,80,Perfekt,"haben/sein + Partizip II; hangi fiil hangi yardımcıyı alır",GECMIS_ANLATIM,390,true
+A1-09,A1,TEMEL,90,Emir kipi ve yer tarifi,"Imperativ (du/ihr/Sie); yer edatları; yol tarifi kalıpları",SEHIR_YOL,390,true
+A1-10,A1,TEMEL,100,A1 tekrar ve ölçme,"A1 genel tekrar ve eksik kapatma",A1_TEKRAR,300,false
+A2-01,A2,GRAMER,110,Perfekt pekiştirme,"Düzensiz Partizip II; sein alan hareket fiilleri; Perfekt ile anlatım",SIK_FIILLER,390,true
+A2-02,A2,GRAMER,120,Präteritum,"war, hatte, konnte, musste, wollte; Perfekt ile farkı",BIYOGRAFI,390,true
+A2-03,A2,GRAMER,130,Dativ edatları,"mit, nach, aus, bei, von, zu, seit; her zaman Dativ isteyenler",ULASIM_SEHIR,390,true
+A2-04,A2,GRAMER,140,Yön ve yer edatları,"Wechselpräpositionen: in, an, auf, über, unter, vor, hinter, neben, zwischen; Wo? Dativ, Wohin? Akkusativ",EV_KONUM,390,true
+A2-05,A2,GRAMER,150,Yan cümle: weil ve dass,"Yan cümlede fiil sona gider; sebep bildirme ve aktarma",SEBEP_DUSUNCE,390,true
+A2-06,A2,GRAMER,160,Yan cümle: wenn ve ob,"Koşul cümlesi; dolaylı soru; ana cümle-yan cümle sırası",PLAN_IHTIMAL,390,true
+A2-07,A2,GRAMER,170,Karşılaştırma,"Komparativ ve Superlativ; als ve wie; düzensiz biçimler",SIFATLAR_TERCIH,390,true
+A2-08,A2,GRAMER,180,Dönüşlü fiiller,"sich freuen, sich interessieren, sich treffen; dönüşlü zamirin yeri",DUYGU_HOBI,390,true
+A2-09,A2,GRAMER,190,Sıfat çekimi,"Adjektivdeklination: belirli ve belirsiz artikelden sonra (Nominativ, Akkusativ)",KIYAFET_TANIM,390,true
+A2-10,A2,GRAMER,200,Konjunktiv II,"würde, könnte, hätte gern; nezaket ve istek bildirme",NEZAKET_ISTEK,390,true
+A2-11,A2,GRAMER,210,Sağlık ve resmî iletişim,"Resmî e-posta kalıpları; randevu alma ve iptal etme",SAGLIK_RESMI,390,true
+A2-12,A2,GRAMER,220,A2 tekrar ve ölçme,"A2 genel tekrar; yanlış analizi",A2_TEKRAR,300,false
+A2-EX1,A2,SINAV_ODAK,230,Sınav odağı: Lesen,"Okuma stratejileri; soru tiplerini tanıma",LESEN_KELIMELERI,390,false
+A2-EX2,A2,SINAV_ODAK,240,Sınav odağı: Hören,"Dinleme stratejileri; anahtar kelime yakalama",HOEREN_KELIMELERI,390,false
+A2-EX3,A2,SINAV_ODAK,250,Sınav odağı: Schreiben,"E-posta türleri: davet, iptal, rica, randevu",YAZMA_KALIPLARI,390,false
+A2-EX4,A2,SINAV_ODAK,260,Sınav odağı: Sprechen,"Konuşma kartları; kendini tanıtma ve planlama kalıpları",KONUSMA_KALIPLARI,390,false
+A2-KK,A2,KELIME_KAMPI,270,Kelime kampı,"Kelime içinde gramer tekrarı",KARMA_TEMA,390,false
+A2-MOCK1,A2,DENEME,280,Tam deneme 1,"Yeni konu yok; tam deneme ve yanlış analizi",YANLIS_KELIMELER,390,false
+A2-MOCK2,A2,DENEME,290,Tam deneme 2,"Yeni konu yok; tam deneme ve yanlış analizi",YANLIS_KELIMELER,390,false
+A2-MOCK3,A2,DENEME,300,Tam deneme 3,"Yeni konu yok; tam deneme ve yanlış analizi",YANLIS_KELIMELER,390,false
+A2-REV,A2,SON_TEKRAR,310,Son tekrar,"Temel gramer ve sık hata yapılan konular",TEMEL_TEKRAR,330,false
+A2-PROVA,A2,PROVA,320,Sınav provası,"Gerçek sınav simülasyonu; hafif tekrar",TEMEL_TEKRAR,330,false

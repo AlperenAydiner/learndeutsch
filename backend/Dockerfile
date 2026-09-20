@@ -1,6 +1,9 @@
 # =====================================================================
 # Backend imajı — iki asamali.
-# Derleme JDK ile yapilir, calistirma sadece JRE tasiyan kucuk imajda.
+#
+# DIKKAT: derleme baglami depo KOKUDUR (backend/ degil), cunku icerik
+# CSV'leri /content altinda durur ve jar'a oradan kopyalanir.
+#   docker build -f backend/Dockerfile .
 # =====================================================================
 
 # ---------- 1. asama: derle ----------
@@ -9,12 +12,15 @@ WORKDIR /app
 
 # Once sadece bagimlilik tanimlarini kopyala: kaynak kod degisince
 # Docker bu katmani yeniden indirmez, derleme hizlanir.
-COPY gradlew ./
-COPY gradle gradle
-COPY build.gradle.kts settings.gradle.kts ./
+COPY backend/gradlew ./
+COPY backend/gradle gradle
+COPY backend/build.gradle.kts backend/settings.gradle.kts ./
 RUN chmod +x gradlew && ./gradlew --no-daemon dependencies || true
 
-COPY src src
+# processResources bunu ../content olarak arar.
+COPY content /content
+COPY backend/src src
+
 RUN ./gradlew --no-daemon bootJar
 
 # ---------- 2. asama: calistir ----------

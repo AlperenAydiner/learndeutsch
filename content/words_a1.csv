@@ -1,0 +1,141 @@
+lemma,word_type,article,plural_form,meaning_tr,example_de,example_tr,level,theme
+Name,NOUN,DER,Namen,"isim, ad","Mein Name ist Alperen.","Benim adım Alperen.",A1,TANISMA
+Frau,NOUN,DIE,Frauen,"kadın, hanım","Die Frau kommt aus der Türkei.","Kadın Türkiye'den geliyor.",A1,TANISMA
+Mann,NOUN,DER,Männer,"adam, erkek","Der Mann ist Lehrer.","Adam öğretmen.",A1,TANISMA
+Land,NOUN,DAS,Länder,ülke,"Welches Land ist das?","Bu hangi ülke?",A1,TANISMA
+Stadt,NOUN,DIE,Städte,şehir,"Ich wohne in einer kleinen Stadt.","Küçük bir şehirde oturuyorum.",A1,TANISMA
+Beruf,NOUN,DER,Berufe,meslek,"Was sind Sie von Beruf?","Mesleğiniz nedir?",A1,TANISMA
+Sprache,NOUN,DIE,Sprachen,dil,"Ich lerne zwei Sprachen.","İki dil öğreniyorum.",A1,TANISMA
+Freund,NOUN,DER,Freunde,arkadaş,"Mein Freund wohnt in Berlin.","Arkadaşım Berlin'de oturuyor.",A1,TANISMA
+Adresse,NOUN,DIE,Adressen,adres,"Wie ist Ihre Adresse?","Adresiniz nedir?",A1,TANISMA
+Nummer,NOUN,DIE,Nummern,numara,"Ich gebe dir meine Nummer.","Sana numaramı vereyim.",A1,TANISMA
+heißen,VERB,,,"adı olmak, denmek","Wie heißt du?","Adın ne?",A1,TANISMA
+wohnen,VERB,,,oturmak,"Wo wohnst du?","Nerede oturuyorsun?",A1,TANISMA
+kommen,VERB,,,gelmek,"Ich komme aus Ankara.","Ankara'dan geliyorum.",A1,TANISMA
+sprechen,VERB,,,konuşmak,"Sprichst du Deutsch?","Almanca konuşuyor musun?",A1,TANISMA
+lernen,VERB,,,öğrenmek,"Wir lernen jeden Tag.","Her gün öğreniyoruz.",A1,TANISMA
+arbeiten,VERB,,,çalışmak,"Sie arbeitet im Krankenhaus.","O hastanede çalışıyor.",A1,TANISMA
+verstehen,VERB,,,anlamak,"Ich verstehe das nicht.","Bunu anlamıyorum.",A1,TANISMA
+Familie,NOUN,DIE,Familien,aile,"Meine Familie ist groß.","Ailem büyük.",A1,AILE_EV
+Mutter,NOUN,DIE,Mütter,anne,"Meine Mutter kocht gern.","Annem yemek yapmayı sever.",A1,AILE_EV
+Vater,NOUN,DER,Väter,baba,"Mein Vater arbeitet viel.","Babam çok çalışıyor.",A1,AILE_EV
+Kind,NOUN,DAS,Kinder,çocuk,"Das Kind spielt im Garten.","Çocuk bahçede oynuyor.",A1,AILE_EV
+Bruder,NOUN,DER,Brüder,erkek kardeş,"Mein Bruder ist älter als ich.","Kardeşim benden büyük.",A1,AILE_EV
+Schwester,NOUN,DIE,Schwestern,kız kardeş,"Meine Schwester studiert.","Kız kardeşim üniversitede okuyor.",A1,AILE_EV
+Haus,NOUN,DAS,Häuser,ev,"Das Haus ist alt.","Ev eski.",A1,AILE_EV
+Wohnung,NOUN,DIE,Wohnungen,daire,"Die Wohnung hat drei Zimmer.","Dairenin üç odası var.",A1,AILE_EV
+Zimmer,NOUN,DAS,Zimmer,oda,"Mein Zimmer ist klein.","Odam küçük.",A1,AILE_EV
+Tisch,NOUN,DER,Tische,masa,"Das Buch liegt auf dem Tisch.","Kitap masanın üstünde.",A1,AILE_EV
+Stuhl,NOUN,DER,Stühle,sandalye,"Der Stuhl ist bequem.","Sandalye rahat.",A1,AILE_EV
+Bett,NOUN,DAS,Betten,yatak,"Das Bett steht am Fenster.","Yatak pencerenin yanında.",A1,AILE_EV
+Tür,NOUN,DIE,Türen,kapı,"Mach bitte die Tür zu.","Lütfen kapıyı kapat.",A1,AILE_EV
+Fenster,NOUN,DAS,Fenster,pencere,"Das Fenster ist offen.","Pencere açık.",A1,AILE_EV
+Küche,NOUN,DIE,Küchen,mutfak,"Wir essen in der Küche.","Mutfakta yemek yiyoruz.",A1,AILE_EV
+Buch,NOUN,DAS,Bücher,kitap,"Ich lese ein Buch.","Bir kitap okuyorum.",A1,AILE_EV
+Tag,NOUN,DER,Tage,gün,"Der Tag war lang.","Gün uzundu.",A1,GUNLUK_HAYAT
+Morgen,NOUN,DER,Morgen,sabah,"Am Morgen trinke ich Tee.","Sabahları çay içerim.",A1,GUNLUK_HAYAT
+Abend,NOUN,DER,Abende,akşam,"Am Abend sehe ich fern.","Akşamları televizyon izlerim.",A1,GUNLUK_HAYAT
+Nacht,NOUN,DIE,Nächte,gece,"Gute Nacht!","İyi geceler!",A1,GUNLUK_HAYAT
+Arbeit,NOUN,DIE,Arbeiten,iş,"Ich gehe zur Arbeit.","İşe gidiyorum.",A1,GUNLUK_HAYAT
+Schule,NOUN,DIE,Schulen,okul,"Die Schule beginnt um acht.","Okul sekizde başlıyor.",A1,GUNLUK_HAYAT
+aufstehen,VERB,,,kalkmak,"Ich stehe um sieben auf.","Yedide kalkıyorum.",A1,GUNLUK_HAYAT
+anfangen,VERB,,,başlamak,"Der Kurs fängt morgen an.","Kurs yarın başlıyor.",A1,GUNLUK_HAYAT
+einkaufen,VERB,,,alışveriş yapmak,"Wir kaufen am Samstag ein.","Cumartesi alışveriş yapıyoruz.",A1,GUNLUK_HAYAT
+fernsehen,VERB,,,televizyon izlemek,"Abends sehe ich fern.","Akşamları televizyon izlerim.",A1,GUNLUK_HAYAT
+schlafen,VERB,,,uyumak,"Ich schlafe acht Stunden.","Sekiz saat uyuyorum.",A1,GUNLUK_HAYAT
+essen,VERB,,,yemek,"Wir essen um zwölf.","On ikide yemek yiyoruz.",A1,GUNLUK_HAYAT
+trinken,VERB,,,içmek,"Trinkst du Kaffee?","Kahve içer misin?",A1,GUNLUK_HAYAT
+gehen,VERB,,,gitmek,"Ich gehe nach Hause.","Eve gidiyorum.",A1,GUNLUK_HAYAT
+machen,VERB,,,yapmak,"Was machst du heute?","Bugün ne yapıyorsun?",A1,GUNLUK_HAYAT
+spielen,VERB,,,oynamak,"Die Kinder spielen draußen.","Çocuklar dışarıda oynuyor.",A1,GUNLUK_HAYAT
+können,VERB,,,-ebilmek,"Ich kann schwimmen.","Yüzebiliyorum.",A1,YETENEK_ZORUNLULUK
+müssen,VERB,,,zorunda olmak,"Du musst jetzt gehen.","Şimdi gitmen lazım.",A1,YETENEK_ZORUNLULUK
+wollen,VERB,,,istemek,"Ich will Deutsch lernen.","Almanca öğrenmek istiyorum.",A1,YETENEK_ZORUNLULUK
+dürfen,VERB,,,izinli olmak,"Hier darf man nicht rauchen.","Burada sigara içilmez.",A1,YETENEK_ZORUNLULUK
+mögen,VERB,,,sevmek,"Ich mag Musik.","Müziği severim.",A1,YETENEK_ZORUNLULUK
+helfen,VERB,,,yardım etmek,"Kannst du mir helfen?","Bana yardım edebilir misin?",A1,YETENEK_ZORUNLULUK
+brauchen,VERB,,,ihtiyacı olmak,"Ich brauche mehr Zeit.","Daha fazla zamana ihtiyacım var.",A1,YETENEK_ZORUNLULUK
+Zeit,NOUN,DIE,Zeiten,zaman,"Ich habe keine Zeit.","Zamanım yok.",A1,YETENEK_ZORUNLULUK
+Hilfe,NOUN,DIE,Hilfen,yardım,"Danke für deine Hilfe.","Yardımın için teşekkürler.",A1,YETENEK_ZORUNLULUK
+Brot,NOUN,DAS,Brote,ekmek,"Ich kaufe Brot.","Ekmek alıyorum.",A1,ALISVERIS_YEMEK
+Wasser,NOUN,DAS,,su,"Ein Glas Wasser, bitte.","Bir bardak su lütfen.",A1,ALISVERIS_YEMEK
+Milch,NOUN,DIE,,süt,"Die Milch ist kalt.","Süt soğuk.",A1,ALISVERIS_YEMEK
+Kaffee,NOUN,DER,Kaffees,kahve,"Möchtest du Kaffee?","Kahve ister misin?",A1,ALISVERIS_YEMEK
+Tee,NOUN,DER,Tees,çay,"Wir trinken viel Tee.","Çok çay içeriz.",A1,ALISVERIS_YEMEK
+Apfel,NOUN,DER,Äpfel,elma,"Der Apfel ist süß.","Elma tatlı.",A1,ALISVERIS_YEMEK
+Fleisch,NOUN,DAS,,et,"Ich esse kein Fleisch.","Et yemiyorum.",A1,ALISVERIS_YEMEK
+Gemüse,NOUN,DAS,,sebze,"Gemüse ist gesund.","Sebze sağlıklı.",A1,ALISVERIS_YEMEK
+Geld,NOUN,DAS,,para,"Ich habe kein Geld dabei.","Yanımda para yok.",A1,ALISVERIS_YEMEK
+Preis,NOUN,DER,Preise,fiyat,"Der Preis ist zu hoch.","Fiyat çok yüksek.",A1,ALISVERIS_YEMEK
+Geschäft,NOUN,DAS,Geschäfte,dükkân,"Das Geschäft ist heute zu.","Dükkân bugün kapalı.",A1,ALISVERIS_YEMEK
+Markt,NOUN,DER,Märkte,pazar,"Am Dienstag ist Markt.","Salı günü pazar var.",A1,ALISVERIS_YEMEK
+kaufen,VERB,,,satın almak,"Ich kaufe einen Tisch.","Bir masa alıyorum.",A1,ALISVERIS_YEMEK
+bezahlen,VERB,,,ödemek,"Wo kann ich bezahlen?","Nerede ödeyebilirim?",A1,ALISVERIS_YEMEK
+kosten,VERB,,,fiyatı olmak,"Was kostet das?","Bu ne kadar?",A1,ALISVERIS_YEMEK
+teuer,ADJ,,,pahalı,"Das Auto ist teuer.","Araba pahalı.",A1,ALISVERIS_YEMEK
+billig,ADJ,,,ucuz,"Das Brot ist billig.","Ekmek ucuz.",A1,ALISVERIS_YEMEK
+Uhr,NOUN,DIE,Uhren,"saat (alet)","Die Uhr geht falsch.","Saat yanlış gidiyor.",A1,ZAMAN_RANDEVU
+Stunde,NOUN,DIE,Stunden,"saat (süre)","Wir warten seit einer Stunde.","Bir saattir bekliyoruz.",A1,ZAMAN_RANDEVU
+Minute,NOUN,DIE,Minuten,dakika,"Warte fünf Minuten.","Beş dakika bekle.",A1,ZAMAN_RANDEVU
+Woche,NOUN,DIE,Wochen,hafta,"Nächste Woche habe ich frei.","Gelecek hafta iznim var.",A1,ZAMAN_RANDEVU
+Monat,NOUN,DER,Monate,ay,"Der Kurs dauert drei Monate.","Kurs üç ay sürüyor.",A1,ZAMAN_RANDEVU
+Jahr,NOUN,DAS,Jahre,yıl,"Ich lerne seit einem Jahr Deutsch.","Bir yıldır Almanca öğreniyorum.",A1,ZAMAN_RANDEVU
+Termin,NOUN,DER,Termine,randevu,"Ich habe einen Termin um drei.","Saat üçte randevum var.",A1,ZAMAN_RANDEVU
+Montag,NOUN,DER,Montage,pazartesi,"Am Montag beginnt der Kurs.","Pazartesi kurs başlıyor.",A1,ZAMAN_RANDEVU
+Samstag,NOUN,DER,Samstage,cumartesi,"Am Samstag schlafe ich lange.","Cumartesi geç kalkarım.",A1,ZAMAN_RANDEVU
+heute,ADV,,,bugün,"Heute ist Montag.","Bugün pazartesi.",A1,ZAMAN_RANDEVU
+morgen,ADV,,,yarın,"Morgen habe ich Zeit.","Yarın vaktim var.",A1,ZAMAN_RANDEVU
+gestern,ADV,,,dün,"Gestern war ich müde.","Dün yorgundum.",A1,ZAMAN_RANDEVU
+immer,ADV,,,her zaman,"Er kommt immer zu spät.","Her zaman geç geliyor.",A1,ZAMAN_RANDEVU
+manchmal,ADV,,,bazen,"Manchmal koche ich.","Bazen yemek yaparım.",A1,ZAMAN_RANDEVU
+nie,ADV,,,asla,"Ich trinke nie Alkohol.","Hiç alkol içmem.",A1,ZAMAN_RANDEVU
+Bus,NOUN,DER,Busse,otobüs,"Der Bus kommt gleich.","Otobüs birazdan gelir.",A1,ULASIM_YON
+Zug,NOUN,DER,Züge,tren,"Der Zug hat Verspätung.","Tren gecikmeli.",A1,ULASIM_YON
+Auto,NOUN,DAS,Autos,araba,"Ich fahre mit dem Auto.","Arabayla gidiyorum.",A1,ULASIM_YON
+Fahrrad,NOUN,DAS,Fahrräder,bisiklet,"Sie fährt mit dem Fahrrad.","Bisikletle gidiyor.",A1,ULASIM_YON
+Bahnhof,NOUN,DER,Bahnhöfe,gar,"Wo ist der Bahnhof?","Gar nerede?",A1,ULASIM_YON
+Haltestelle,NOUN,DIE,Haltestellen,durak,"Die Haltestelle ist dort.","Durak orada.",A1,ULASIM_YON
+Fahrkarte,NOUN,DIE,Fahrkarten,bilet,"Ich brauche eine Fahrkarte.","Bir bilete ihtiyacım var.",A1,ULASIM_YON
+fahren,VERB,,,"gitmek (araçla)","Wir fahren nach München.","Münih'e gidiyoruz.",A1,ULASIM_YON
+ankommen,VERB,,,varmak,"Wann kommt der Zug an?","Tren ne zaman varıyor?",A1,ULASIM_YON
+aussteigen,VERB,,,inmek,"Wir steigen hier aus.","Burada iniyoruz.",A1,ULASIM_YON
+links,ADV,,,sol,"Gehen Sie nach links.","Sola gidin.",A1,SEHIR_YOL
+rechts,ADV,,,sağ,"Das Café ist rechts.","Kafe sağda.",A1,SEHIR_YOL
+geradeaus,ADV,,,düz,"Gehen Sie geradeaus.","Düz gidin.",A1,SEHIR_YOL
+Straße,NOUN,DIE,Straßen,cadde,"Die Straße ist lang.","Cadde uzun.",A1,SEHIR_YOL
+Platz,NOUN,DER,Plätze,meydan,"Wir treffen uns am Platz.","Meydanda buluşuyoruz.",A1,SEHIR_YOL
+Kirche,NOUN,DIE,Kirchen,kilise,"Neben der Kirche ist eine Bank.","Kilisenin yanında bir banka var.",A1,SEHIR_YOL
+Bank,NOUN,DIE,Banken,banka,"Die Bank öffnet um neun.","Banka dokuzda açılıyor.",A1,SEHIR_YOL
+Post,NOUN,DIE,,postane,"Die Post ist geschlossen.","Postane kapalı.",A1,SEHIR_YOL
+Apotheke,NOUN,DIE,Apotheken,eczane,"Gibt es hier eine Apotheke?","Burada eczane var mı?",A1,SEHIR_YOL
+suchen,VERB,,,aramak,"Ich suche den Bahnhof.","Garı arıyorum.",A1,SEHIR_YOL
+finden,VERB,,,bulmak,"Ich finde die Adresse nicht.","Adresi bulamıyorum.",A1,SEHIR_YOL
+fragen,VERB,,,sormak,"Frag bitte den Mann.","Lütfen adama sor.",A1,SEHIR_YOL
+zeigen,VERB,,,göstermek,"Zeigen Sie mir den Weg.","Bana yolu gösterin.",A1,SEHIR_YOL
+Weg,NOUN,DER,Wege,yol,"Der Weg ist nicht weit.","Yol uzak değil.",A1,SEHIR_YOL
+sehen,VERB,,,görmek,"Ich habe ihn gesehen.","Onu gördüm.",A1,GECMIS_ANLATIM
+treffen,VERB,,,buluşmak,"Wir haben uns gestern getroffen.","Dün buluştuk.",A1,GECMIS_ANLATIM
+bleiben,VERB,,,kalmak,"Ich bin zu Hause geblieben.","Evde kaldım.",A1,GECMIS_ANLATIM
+werden,VERB,,,olmak,"Es ist kalt geworden.","Hava soğudu.",A1,GECMIS_ANLATIM
+geben,VERB,,,vermek,"Er hat mir das Buch gegeben.","Bana kitabı verdi.",A1,GECMIS_ANLATIM
+nehmen,VERB,,,almak,"Ich habe den Bus genommen.","Otobüse bindim.",A1,GECMIS_ANLATIM
+schreiben,VERB,,,yazmak,"Ich habe eine E-Mail geschrieben.","Bir e-posta yazdım.",A1,GECMIS_ANLATIM
+lesen,VERB,,,okumak,"Hast du die Nachricht gelesen?","Mesajı okudun mu?",A1,GECMIS_ANLATIM
+hören,VERB,,,duymak,"Ich habe nichts gehört.","Hiçbir şey duymadım.",A1,GECMIS_ANLATIM
+bringen,VERB,,,getirmek,"Sie hat Kuchen gebracht.","Kek getirdi.",A1,GECMIS_ANLATIM
+vergessen,VERB,,,unutmak,"Ich habe den Schlüssel vergessen.","Anahtarı unuttum.",A1,GECMIS_ANLATIM
+Schlüssel,NOUN,DER,Schlüssel,anahtar,"Wo ist mein Schlüssel?","Anahtarım nerede?",A1,GECMIS_ANLATIM
+Nachricht,NOUN,DIE,Nachrichten,haber,"Ich habe eine Nachricht bekommen.","Bir mesaj aldım.",A1,GECMIS_ANLATIM
+gut,ADJ,,,iyi,"Das Essen war sehr gut.","Yemek çok iyiydi.",A1,GUNLUK_HAYAT
+schlecht,ADJ,,,kötü,"Das Wetter ist schlecht.","Hava kötü.",A1,GUNLUK_HAYAT
+groß,ADJ,,,büyük,"Die Wohnung ist groß.","Daire büyük.",A1,AILE_EV
+klein,ADJ,,,küçük,"Mein Zimmer ist klein.","Odam küçük.",A1,AILE_EV
+neu,ADJ,,,yeni,"Das ist mein neues Handy.","Bu benim yeni telefonum.",A1,ALISVERIS_YEMEK
+alt,ADJ,,,eski,"Das Haus ist sehr alt.","Ev çok eski.",A1,AILE_EV
+schön,ADJ,,,güzel,"Die Stadt ist schön.","Şehir güzel.",A1,SEHIR_YOL
+müde,ADJ,,,yorgun,"Ich bin heute müde.","Bugün yorgunum.",A1,GUNLUK_HAYAT
+krank,ADJ,,,hasta,"Mein Kind ist krank.","Çocuğum hasta.",A1,GUNLUK_HAYAT
+schnell,ADJ,,,hızlı,"Der Zug ist schnell.","Tren hızlı.",A1,ULASIM_YON
+langsam,ADJ,,,yavaş,"Bitte sprich langsam.","Lütfen yavaş konuş.",A1,TANISMA
+Wetter,NOUN,DAS,,hava durumu,"Wie ist das Wetter heute?","Bugün hava nasıl?",A1,GUNLUK_HAYAT
+Handy,NOUN,DAS,Handys,cep telefonu,"Mein Handy ist kaputt.","Telefonum bozuk.",A1,ALISVERIS_YEMEK

@@ -38,3 +38,13 @@ dependencies {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+// Icerik CSV'leri depoda tek yerde durur: /content.
+// Buradan jar'in icine /seed altina kopyalanir; boylece icerik eklemek
+// icin CSV'ye satir eklemek yeterli olur, kod degismez.
+tasks.named<ProcessResources>("processResources") {
+	from("../content") {
+		include("*.csv")
+		into("seed")
+	}
+}

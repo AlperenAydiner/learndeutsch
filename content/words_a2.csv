@@ -1,0 +1,132 @@
+lemma,word_type,article,plural_form,meaning_tr,example_de,example_tr,level,theme
+beginnen,VERB,,,başlamak,"Der Film hat schon begonnen.","Film çoktan başladı.",A2,SIK_FIILLER
+verlieren,VERB,,,kaybetmek,"Ich habe meinen Ausweis verloren.","Kimliğimi kaybettim.",A2,SIK_FIILLER
+gewinnen,VERB,,,kazanmak,"Unsere Mannschaft hat gewonnen.","Takımımız kazandı.",A2,SIK_FIILLER
+entscheiden,VERB,,,karar vermek,"Wir haben uns schnell entschieden.","Çabuk karar verdik.",A2,SIK_FIILLER
+versuchen,VERB,,,denemek,"Ich habe es zweimal versucht.","İki kez denedim.",A2,SIK_FIILLER
+erklären,VERB,,,açıklamak,"Können Sie das noch einmal erklären?","Bunu bir daha açıklayabilir misiniz?",A2,SIK_FIILLER
+erzählen,VERB,,,anlatmak,"Erzähl mir von deinem Tag.","Bana gününü anlat.",A2,SIK_FIILLER
+bekommen,VERB,,,almak,"Ich habe eine Antwort bekommen.","Bir cevap aldım.",A2,SIK_FIILLER
+verlassen,VERB,,,terk etmek,"Er hat das Haus früh verlassen.","Evden erken çıktı.",A2,SIK_FIILLER
+passieren,VERB,,,olmak,"Was ist passiert?","Ne oldu?",A2,SIK_FIILLER
+steigen,VERB,,,yükselmek,"Die Preise sind gestiegen.","Fiyatlar yükseldi.",A2,SIK_FIILLER
+umziehen,VERB,,,taşınmak,"Wir sind nach Hamburg umgezogen.","Hamburg'a taşındık.",A2,SIK_FIILLER
+Erfahrung,NOUN,DIE,Erfahrungen,deneyim,"Sie hat viel Erfahrung.","Çok deneyimi var.",A2,BIYOGRAFI
+Ausbildung,NOUN,DIE,Ausbildungen,meslek eğitimi,"Er macht eine Ausbildung.","Meslek eğitimi yapıyor.",A2,BIYOGRAFI
+Studium,NOUN,DAS,Studien,üniversite eğitimi,"Mein Studium dauert vier Jahre.","Eğitimim dört yıl sürüyor.",A2,BIYOGRAFI
+Prüfung,NOUN,DIE,Prüfungen,sınav,"Die Prüfung war schwer.","Sınav zordu.",A2,BIYOGRAFI
+Zeugnis,NOUN,DAS,Zeugnisse,belge,"Ich brauche mein Zeugnis.","Belgeme ihtiyacım var.",A2,BIYOGRAFI
+Stelle,NOUN,DIE,Stellen,iş yeri,"Ich suche eine neue Stelle.","Yeni bir iş arıyorum.",A2,BIYOGRAFI
+Kollege,NOUN,DER,Kollegen,iş arkadaşı,"Mein Kollege hilft mir oft.","İş arkadaşım bana sık sık yardım eder.",A2,BIYOGRAFI
+Chef,NOUN,DER,Chefs,patron,"Der Chef ist heute nicht da.","Patron bugün yok.",A2,BIYOGRAFI
+Gehalt,NOUN,DAS,Gehälter,maaş,"Das Gehalt ist niedrig.","Maaş düşük.",A2,BIYOGRAFI
+Lebenslauf,NOUN,DER,Lebensläufe,özgeçmiş,"Schicken Sie Ihren Lebenslauf.","Özgeçmişinizi gönderin.",A2,BIYOGRAFI
+geboren,ADJ,,,doğmuş,"Ich bin in Izmir geboren.","İzmir'de doğdum.",A2,BIYOGRAFI
+damals,ADV,,,o zamanlar,"Damals war ich noch Student.","O zamanlar hâlâ öğrenciydim.",A2,BIYOGRAFI
+früher,ADV,,,eskiden,"Früher habe ich in Ankara gewohnt.","Eskiden Ankara'da otururdum.",A2,BIYOGRAFI
+Verkehr,NOUN,DER,,trafik,"Der Verkehr ist stark.","Trafik yoğun.",A2,ULASIM_SEHIR
+Verspätung,NOUN,DIE,Verspätungen,gecikme,"Der Zug hat zehn Minuten Verspätung.","Tren on dakika gecikmeli.",A2,ULASIM_SEHIR
+Anschluss,NOUN,DER,Anschlüsse,aktarma,"Ich habe meinen Anschluss verpasst.","Aktarmamı kaçırdım.",A2,ULASIM_SEHIR
+Richtung,NOUN,DIE,Richtungen,yön,"In welche Richtung fährt der Bus?","Otobüs hangi yöne gidiyor?",A2,ULASIM_SEHIR
+Strecke,NOUN,DIE,Strecken,güzergâh,"Die Strecke ist kurz.","Güzergâh kısa.",A2,ULASIM_SEHIR
+Flughafen,NOUN,DER,Flughäfen,havalimanı,"Wir fahren zum Flughafen.","Havalimanına gidiyoruz.",A2,ULASIM_SEHIR
+Ausland,NOUN,DAS,,yurt dışı,"Sie arbeitet im Ausland.","Yurt dışında çalışıyor.",A2,ULASIM_SEHIR
+Reise,NOUN,DIE,Reisen,seyahat,"Die Reise war anstrengend.","Seyahat yorucuydu.",A2,ULASIM_SEHIR
+Gepäck,NOUN,DAS,,bagaj,"Mein Gepäck ist schwer.","Bagajım ağır.",A2,ULASIM_SEHIR
+umsteigen,VERB,,,aktarma yapmak,"In Köln müssen Sie umsteigen.","Köln'de aktarma yapmalısınız.",A2,ULASIM_SEHIR
+verpassen,VERB,,,kaçırmak,"Ich habe den Bus verpasst.","Otobüsü kaçırdım.",A2,ULASIM_SEHIR
+abfahren,VERB,,,hareket etmek,"Der Zug fährt um acht ab.","Tren sekizde kalkıyor.",A2,ULASIM_SEHIR
+Möbel,NOUN,DAS,Möbel,mobilya,"Die Möbel sind neu.","Mobilyalar yeni.",A2,EV_KONUM
+Schrank,NOUN,DER,Schränke,dolap,"Die Kleidung ist im Schrank.","Kıyafetler dolapta.",A2,EV_KONUM
+Regal,NOUN,DAS,Regale,raf,"Das Buch steht im Regal.","Kitap rafta.",A2,EV_KONUM
+Wand,NOUN,DIE,Wände,duvar,"Das Bild hängt an der Wand.","Resim duvarda asılı.",A2,EV_KONUM
+Boden,NOUN,DER,Böden,zemin,"Die Tasche liegt auf dem Boden.","Çanta yerde.",A2,EV_KONUM
+Balkon,NOUN,DER,Balkone,balkon,"Wir sitzen auf dem Balkon.","Balkonda oturuyoruz.",A2,EV_KONUM
+Miete,NOUN,DIE,Mieten,kira,"Die Miete ist zu hoch.","Kira çok yüksek.",A2,EV_KONUM
+Nachbar,NOUN,DER,Nachbarn,komşu,"Mein Nachbar ist sehr nett.","Komşum çok kibar.",A2,EV_KONUM
+stellen,VERB,,,koymak,"Stell die Tassen auf den Tisch.","Fincanları masaya koy.",A2,EV_KONUM
+legen,VERB,,,yatırmak,"Ich lege das Buch auf das Regal.","Kitabı rafa koyuyorum.",A2,EV_KONUM
+hängen,VERB,,,asmak,"Das Bild hängt über dem Sofa.","Resim kanepenin üstünde asılı.",A2,EV_KONUM
+zwischen,PREP,,,arasında,"Die Bank ist zwischen dem Café und der Post.","Banka kafeyle postane arasında.",A2,EV_KONUM
+gegenüber,PREP,,,karşısında,"Die Schule ist gegenüber dem Park.","Okul parkın karşısında.",A2,EV_KONUM
+Grund,NOUN,DER,Gründe,sebep,"Was ist der Grund dafür?","Bunun sebebi ne?",A2,SEBEP_DUSUNCE
+Meinung,NOUN,DIE,Meinungen,fikir,"Was ist deine Meinung?","Senin fikrin ne?",A2,SEBEP_DUSUNCE
+Problem,NOUN,DAS,Probleme,sorun,"Wir haben ein Problem.","Bir sorunumuz var.",A2,SEBEP_DUSUNCE
+Lösung,NOUN,DIE,Lösungen,çözüm,"Ich sehe keine Lösung.","Bir çözüm göremiyorum.",A2,SEBEP_DUSUNCE
+Beispiel,NOUN,DAS,Beispiele,örnek,"Gib mir bitte ein Beispiel.","Lütfen bana bir örnek ver.",A2,SEBEP_DUSUNCE
+glauben,VERB,,,inanmak,"Ich glaube, dass er Recht hat.","Bence haklı.",A2,SEBEP_DUSUNCE
+denken,VERB,,,düşünmek,"Ich denke oft daran.","Sık sık onu düşünüyorum.",A2,SEBEP_DUSUNCE
+finden,VERB,,,"bulmak (görüş belirtirken)","Ich finde den Film langweilig.","Filmi sıkıcı buluyorum.",A2,SEBEP_DUSUNCE
+bedeuten,VERB,,,anlamına gelmek,"Was bedeutet dieses Wort?","Bu kelime ne demek?",A2,SEBEP_DUSUNCE
+stimmen,VERB,,,doğru olmak,"Das stimmt nicht.","Bu doğru değil.",A2,SEBEP_DUSUNCE
+deshalb,ADV,,,bu yüzden,"Es regnet, deshalb bleiben wir zu Hause.","Yağmur yağıyor, bu yüzden evde kalıyoruz.",A2,SEBEP_DUSUNCE
+trotzdem,ADV,,,buna rağmen,"Es war teuer, trotzdem habe ich es gekauft.","Pahalıydı, yine de aldım.",A2,SEBEP_DUSUNCE
+Plan,NOUN,DER,Pläne,plan,"Hast du schon einen Plan?","Bir planın var mı?",A2,PLAN_IHTIMAL
+Möglichkeit,NOUN,DIE,Möglichkeiten,imkân,"Es gibt eine andere Möglichkeit.","Başka bir imkân var.",A2,PLAN_IHTIMAL
+Zukunft,NOUN,DIE,,gelecek,"In Zukunft will ich in Deutschland leben.","Gelecekte Almanya'da yaşamak istiyorum.",A2,PLAN_IHTIMAL
+Ziel,NOUN,DAS,Ziele,hedef,"Mein Ziel ist das B1-Zertifikat.","Hedefim B1 sertifikası.",A2,PLAN_IHTIMAL
+planen,VERB,,,planlamak,"Wir planen eine Reise.","Bir seyahat planlıyoruz.",A2,PLAN_IHTIMAL
+verschieben,VERB,,,ertelemek,"Können wir das verschieben?","Bunu erteleyebilir miyiz?",A2,PLAN_IHTIMAL
+absagen,VERB,,,iptal etmek,"Ich muss leider absagen.","Maalesef iptal etmem gerekiyor.",A2,PLAN_IHTIMAL
+vorhaben,VERB,,,niyetinde olmak,"Was hast du am Wochenende vor?","Hafta sonu ne yapmayı düşünüyorsun?",A2,PLAN_IHTIMAL
+vielleicht,ADV,,,belki,"Vielleicht komme ich später.","Belki daha sonra gelirim.",A2,PLAN_IHTIMAL
+wahrscheinlich,ADV,,,muhtemelen,"Wahrscheinlich regnet es morgen.","Muhtemelen yarın yağmur yağar.",A2,PLAN_IHTIMAL
+wichtig,ADJ,,,önemli,"Das ist sehr wichtig für mich.","Bu benim için çok önemli.",A2,SIFATLAR_TERCIH
+einfach,ADJ,,,kolay,"Die Aufgabe war einfach.","Ödev kolaydı.",A2,SIFATLAR_TERCIH
+schwierig,ADJ,,,zor,"Deutsch ist manchmal schwierig.","Almanca bazen zor.",A2,SIFATLAR_TERCIH
+ruhig,ADJ,,,sakin,"Die Wohnung ist ruhig.","Daire sakin.",A2,SIFATLAR_TERCIH
+laut,ADJ,,,gürültülü,"Die Straße ist sehr laut.","Cadde çok gürültülü.",A2,SIFATLAR_TERCIH
+bequem,ADJ,,,rahat,"Der Sessel ist bequem.","Koltuk rahat.",A2,SIFATLAR_TERCIH
+gesund,ADJ,,,sağlıklı,"Obst ist gesund.","Meyve sağlıklıdır.",A2,SIFATLAR_TERCIH
+gefährlich,ADJ,,,tehlikeli,"Das ist zu gefährlich.","Bu çok tehlikeli.",A2,SIFATLAR_TERCIH
+besser,ADJ,,,daha iyi,"Heute geht es mir besser.","Bugün kendimi daha iyi hissediyorum.",A2,SIFATLAR_TERCIH
+schlechter,ADJ,,,daha kötü,"Das Wetter wird schlechter.","Hava kötüleşiyor.",A2,SIFATLAR_TERCIH
+lieber,ADV,,,tercihen,"Ich trinke lieber Tee.","Ben çay içmeyi tercih ederim.",A2,SIFATLAR_TERCIH
+Unterschied,NOUN,DER,Unterschiede,fark,"Was ist der Unterschied?","Fark nedir?",A2,SIFATLAR_TERCIH
+sich freuen,VERB,,,sevinmek,"Ich freue mich auf das Wochenende.","Hafta sonunu dört gözle bekliyorum.",A2,DUYGU_HOBI
+sich interessieren,VERB,,,ilgilenmek,"Er interessiert sich für Musik.","Müzikle ilgileniyor.",A2,DUYGU_HOBI
+sich treffen,VERB,,,buluşmak,"Wir treffen uns um sieben.","Yedide buluşuyoruz.",A2,DUYGU_HOBI
+sich erinnern,VERB,,,hatırlamak,"Ich erinnere mich an den Tag.","O günü hatırlıyorum.",A2,DUYGU_HOBI
+sich ärgern,VERB,,,sinirlenmek,"Ärgere dich nicht darüber.","Buna sinirlenme.",A2,DUYGU_HOBI
+sich entspannen,VERB,,,rahatlamak,"Am Sonntag entspanne ich mich.","Pazar günü rahatlıyorum.",A2,DUYGU_HOBI
+Gefühl,NOUN,DAS,Gefühle,duygu,"Ich habe ein gutes Gefühl.","İçimde iyi bir his var.",A2,DUYGU_HOBI
+Freizeit,NOUN,DIE,,boş zaman,"In meiner Freizeit lese ich.","Boş zamanımda okurum.",A2,DUYGU_HOBI
+Hobby,NOUN,DAS,Hobbys,hobi,"Mein Hobby ist Fotografieren.","Hobim fotoğrafçılık.",A2,DUYGU_HOBI
+Verein,NOUN,DER,Vereine,kulüp,"Er ist in einem Sportverein.","Bir spor kulübünde.",A2,DUYGU_HOBI
+Ausflug,NOUN,DER,Ausflüge,gezi,"Wir machen einen Ausflug.","Bir gezi yapıyoruz.",A2,DUYGU_HOBI
+glücklich,ADJ,,,mutlu,"Sie ist sehr glücklich.","Çok mutlu.",A2,DUYGU_HOBI
+traurig,ADJ,,,üzgün,"Warum bist du traurig?","Neden üzgünsün?",A2,DUYGU_HOBI
+Kleidung,NOUN,DIE,,kıyafet,"Ich kaufe neue Kleidung.","Yeni kıyafet alıyorum.",A2,KIYAFET_TANIM
+Hemd,NOUN,DAS,Hemden,gömlek,"Das weiße Hemd gefällt mir.","Beyaz gömlek hoşuma gidiyor.",A2,KIYAFET_TANIM
+Hose,NOUN,DIE,Hosen,pantolon,"Die Hose ist zu eng.","Pantolon çok dar.",A2,KIYAFET_TANIM
+Jacke,NOUN,DIE,Jacken,ceket,"Nimm eine warme Jacke mit.","Yanına kalın bir ceket al.",A2,KIYAFET_TANIM
+Schuh,NOUN,DER,Schuhe,ayakkabı,"Die Schuhe sind bequem.","Ayakkabılar rahat.",A2,KIYAFET_TANIM
+Größe,NOUN,DIE,Größen,beden,"Welche Größe brauchen Sie?","Hangi bedene ihtiyacınız var?",A2,KIYAFET_TANIM
+Farbe,NOUN,DIE,Farben,renk,"Welche Farbe magst du?","Hangi rengi seversin?",A2,KIYAFET_TANIM
+anziehen,VERB,,,giymek,"Zieh dir eine Jacke an.","Bir ceket giy.",A2,KIYAFET_TANIM
+passen,VERB,,,uymak,"Die Hose passt mir nicht.","Pantolon bana olmadı.",A2,KIYAFET_TANIM
+gefallen,VERB,,,hoşuna gitmek,"Das Kleid gefällt mir.","Elbise hoşuma gidiyor.",A2,KIYAFET_TANIM
+umtauschen,VERB,,,değiştirmek,"Kann ich das umtauschen?","Bunu değiştirebilir miyim?",A2,KIYAFET_TANIM
+Bitte,NOUN,DIE,Bitten,rica,"Ich habe eine Bitte an Sie.","Sizden bir ricam var.",A2,NEZAKET_ISTEK
+Entschuldigung,NOUN,DIE,Entschuldigungen,özür,"Entschuldigung, wo ist der Ausgang?","Affedersiniz, çıkış nerede?",A2,NEZAKET_ISTEK
+Einladung,NOUN,DIE,Einladungen,davet,"Danke für die Einladung.","Davet için teşekkürler.",A2,NEZAKET_ISTEK
+Antwort,NOUN,DIE,Antworten,cevap,"Ich warte auf deine Antwort.","Cevabını bekliyorum.",A2,NEZAKET_ISTEK
+bitten,VERB,,,rica etmek,"Darf ich Sie um Hilfe bitten?","Sizden yardım rica edebilir miyim?",A2,NEZAKET_ISTEK
+einladen,VERB,,,davet etmek,"Ich lade dich zum Essen ein.","Seni yemeğe davet ediyorum.",A2,NEZAKET_ISTEK
+danken,VERB,,,teşekkür etmek,"Ich danke Ihnen sehr.","Size çok teşekkür ederim.",A2,NEZAKET_ISTEK
+sich entschuldigen,VERB,,,özür dilemek,"Ich möchte mich entschuldigen.","Özür dilemek istiyorum.",A2,NEZAKET_ISTEK
+freundlich,ADJ,,,nazik,"Die Verkäuferin war sehr freundlich.","Satıcı çok nazikti.",A2,NEZAKET_ISTEK
+höflich,ADJ,,,kibar,"Sei bitte höflich.","Lütfen kibar ol.",A2,NEZAKET_ISTEK
+gern,ADV,,,memnuniyetle,"Ich hätte gern einen Kaffee.","Bir kahve alabilir miyim.",A2,NEZAKET_ISTEK
+Arzt,NOUN,DER,Ärzte,doktor,"Ich muss zum Arzt gehen.","Doktora gitmem lazım.",A2,SAGLIK_RESMI
+Krankenhaus,NOUN,DAS,Krankenhäuser,hastane,"Sie liegt im Krankenhaus.","Hastanede yatıyor.",A2,SAGLIK_RESMI
+Schmerz,NOUN,DER,Schmerzen,ağrı,"Ich habe Schmerzen im Rücken.","Sırtımda ağrı var.",A2,SAGLIK_RESMI
+Medikament,NOUN,DAS,Medikamente,ilaç,"Nehmen Sie dieses Medikament.","Bu ilacı alın.",A2,SAGLIK_RESMI
+Versicherung,NOUN,DIE,Versicherungen,sigorta,"Haben Sie eine Versicherung?","Sigortanız var mı?",A2,SAGLIK_RESMI
+Amt,NOUN,DAS,Ämter,resmî daire,"Ich war heute beim Amt.","Bugün daireye gittim.",A2,SAGLIK_RESMI
+Formular,NOUN,DAS,Formulare,form,"Füllen Sie bitte das Formular aus.","Lütfen formu doldurun.",A2,SAGLIK_RESMI
+Unterschrift,NOUN,DIE,Unterschriften,imza,"Hier fehlt Ihre Unterschrift.","Burada imzanız eksik.",A2,SAGLIK_RESMI
+Anmeldung,NOUN,DIE,Anmeldungen,kayıt,"Die Anmeldung ist kostenlos.","Kayıt ücretsiz.",A2,SAGLIK_RESMI
+ausfüllen,VERB,,,doldurmak,"Ich habe das Formular ausgefüllt.","Formu doldurdum.",A2,SAGLIK_RESMI
+anmelden,VERB,,,kaydolmak,"Ich möchte mich zum Kurs anmelden.","Kursa kaydolmak istiyorum.",A2,SAGLIK_RESMI
+weh tun,VERB,,,acımak,"Mein Kopf tut weh.","Başım ağrıyor.",A2,SAGLIK_RESMI

@@ -7,7 +7,7 @@ services:
     repo: https://github.com/AlperenAydiner/learndeutsch
     branch: main
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    dockerContext: .
     plan: free
     region: frankfurt
     healthCheckPath: /api/health

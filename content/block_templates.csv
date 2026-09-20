@@ -1,0 +1,65 @@
+applies_to,task_type,reference_minutes,instruction_tr
+TEMEL,KELIME,60,Günün kelimelerini öğren ve bekleyen tekrarları yap.
+TEMEL,GRAMER,90,Günün gramer konusunu dışarıdan çalış; sonra buradaki quiz'i çöz.
+TEMEL,HOEREN,60,Seviyene uygun bir dinleme yap ve ne kadar anladığını işaretle.
+TEMEL,LESEN,60,Seviyene uygun bir metin oku; sonra kısa soruları cevapla.
+TEMEL,SCHREIBEN,45,Günün konusuyla kısa metinler veya mesajlar yaz.
+TEMEL,SPRECHEN,45,Günün konusunu sesli anlat ve kendini kaydet.
+TEMEL,SINAV_PRATIGI,30,Günün konusuna ait ek alıştırma yap.
+GRAMER,KELIME,60,Günün kelimelerini öğren ve bekleyen tekrarları yap.
+GRAMER,GRAMER,90,Günün gramer konusunu dışarıdan çalış; sonra buradaki quiz'i çöz.
+GRAMER,HOEREN,60,Konuyla ilgili bir dinleme yap ve ne kadar anladığını işaretle.
+GRAMER,LESEN,60,Konuyla ilgili bir metin oku; sonra kısa soruları cevapla.
+GRAMER,SCHREIBEN,45,Günün yapısını kullanarak kısa metinler yaz.
+GRAMER,SPRECHEN,45,Günün yapısıyla cümleler kurup kendini kaydet.
+GRAMER,SINAV_PRATIGI,30,Günün konusuna ait ek alıştırma yap.
+SINAV_ODAK,KELIME,60,Sınav kelimelerini çalış ve tekrarları tamamla.
+SINAV_ODAK,GRAMER,45,Eksik kalan gramer konularını tekrar et.
+SINAV_ODAK,HOEREN,75,Sınav formatında dinleme pratiği yap.
+SINAV_ODAK,LESEN,75,Sınav formatında okuma pratiği yap.
+SINAV_ODAK,SCHREIBEN,60,Sınav formatında e-posta veya mesaj yaz.
+SINAV_ODAK,SPRECHEN,45,Sınav konuşma kartlarıyla pratik yap.
+SINAV_ODAK,SINAV_PRATIGI,30,Yanlış yaptığın soruları tekrar gözden geçir.
+A2-EX1,KELIME,60,Okuma metinlerinde geçen kelimeleri çalış.
+A2-EX1,GRAMER,45,Okuma için gereken yapıları tekrar et.
+A2-EX1,LESEN,150,Süre tutarak 3-4 A2 okuma metni çöz.
+A2-EX1,HOEREN,45,Kısa bir dinleme yaparak kulağını açık tut.
+A2-EX1,SCHREIBEN,45,Okuduğun metinlerin kısa özetini yaz.
+A2-EX1,SPRECHEN,45,Okuduğun metinler hakkında sesli konuş.
+A2-EX2,KELIME,60,Dinlemelerde geçen kelimeleri çalış.
+A2-EX2,GRAMER,45,Dinleme için gereken yapıları tekrar et.
+A2-EX2,HOEREN,150,Dinle, cevapla, tekrar dinle, transkriptle kontrol et.
+A2-EX2,LESEN,45,Dinleme transkriptlerini okuyarak pekiştir.
+A2-EX2,SCHREIBEN,45,Duyduklarını kısa cümlelerle yaz.
+A2-EX2,SPRECHEN,45,Dinlediğini kendi cümlelerinle anlat.
+A2-EX3,KELIME,60,Yazma kalıplarında geçen kelimeleri çalış.
+A2-EX3,GRAMER,60,E-posta cümle yapılarını tekrar et.
+A2-EX3,SCHREIBEN,150,Davet, iptal, rica ve randevu için beş kısa e-posta yaz.
+A2-EX3,LESEN,60,Örnek e-postaları ve mesajları incele.
+A2-EX3,HOEREN,30,Kısa bir dinleme yap.
+A2-EX3,SPRECHEN,30,Yazdıklarını sesli anlat.
+A2-EX4,KELIME,60,Konuşma temalarının kelimelerini çalış.
+A2-EX4,GRAMER,45,Konuşmada kullanacağın kalıpları tekrar et.
+A2-EX4,SPRECHEN,150,Yirmi konu kartı; her biri için 1-2 dakika konuş ve kaydet.
+A2-EX4,HOEREN,60,Örnek konuşma diyaloglarını dinle.
+A2-EX4,LESEN,45,Konuşma kartlarını ve örnek cevapları oku.
+A2-EX4,SCHREIBEN,30,Kartlara kısa yazılı cevaplar hazırla.
+KELIME_KAMPI,KELIME,180,Yoğun kelime oturumu: yeni kelimeler ve birikmiş tekrarlar.
+KELIME_KAMPI,GRAMER,45,Kelimelerin içinde geçen yapıları fark et ve tekrar et.
+KELIME_KAMPI,LESEN,60,Yeni kelimelerin geçtiği metinleri oku.
+KELIME_KAMPI,HOEREN,45,Yeni kelimeleri dinlemede yakalamaya çalış.
+KELIME_KAMPI,SCHREIBEN,30,Yeni kelimelerle cümleler kur.
+KELIME_KAMPI,SPRECHEN,30,Yeni kelimeleri kullanarak konuş.
+DENEME,SINAV_PRATIGI,180,Süre tutarak tam deneme çöz ve sonrasında yanlışlarını analiz et.
+DENEME,KELIME,60,Yanlış yaptığın sorulardaki kelimeleri çalış.
+DENEME,SCHREIBEN,60,Denemenin yazma bölümünü tamamla.
+DENEME,SPRECHEN,45,Denemenin konuşma bölümünü tamamla ve kaydet.
+DENEME,GRAMER,45,Denemede hata yaptığın gramer konularını tekrar et.
+SON_TEKRAR,KELIME,90,Zorlandığın kelimeleri son kez tekrar et.
+SON_TEKRAR,GRAMER,90,En çok hata yaptığın gramer konularını tekrar et.
+SON_TEKRAR,LESEN,60,Kısa okuma pratiği yap.
+SON_TEKRAR,HOEREN,60,Kısa dinleme pratiği yap.
+SON_TEKRAR,SINAV_PRATIGI,30,Sınav formatını son kez gözden geçir.
+PROVA,SINAV_PRATIGI,240,Gerçek sınav koşullarında tam prova yap.
+PROVA,KELIME,45,Hafif kelime tekrarı; yeni kelime yok.
+PROVA,GRAMER,45,Hafif gramer tekrarı; yeni konu yok.
