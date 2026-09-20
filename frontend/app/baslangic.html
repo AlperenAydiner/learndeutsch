@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Başlangıç — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap wizard">
+
+    <ol class="wizard__steps">
+        <li class="wizard__step wizard__step--active" id="ad1">1 · Hedefin</li>
+        <li class="wizard__step" id="ad2">2 · Seviye ölçümü</li>
+        <li class="wizard__step" id="ad3">3 · Sonuç</li>
+    </ol>
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+
+    <!-- ================= 1. Hedef ================= -->
+    <section class="wizard__panel" id="panelHedef">
+        <h1 class="wizard__title">Hedefini belirleyelim</h1>
+        <p class="wizard__lead">
+            Dört soru. Programını buna göre kuracağız — sonradan
+            Ayarlar'dan değiştirebilirsin.
+        </p>
+
+        <form id="hedefFormu">
+            <div class="choice">
+                <span class="choice__label">
+                    Hangi seviyeye ulaşmak istiyorsun?
+                    <span class="choice__hint">İçerik havuzu şu an A1 ve A2'yi kapsıyor.</span>
+                </span>
+                <div class="choice__options choice__options--cards" role="radiogroup">
+                    <label class="opt">
+                        <input type="radio" name="seviye" value="A1" required>
+                        <span class="opt__box">
+                            <span class="opt__title">A1</span>
+                            <span class="opt__desc">Sıfırdan temel: tanışma, günlük hayat, basit cümleler</span>
+                        </span>
+                    </label>
+                    <label class="opt">
+                        <input type="radio" name="seviye" value="A2" checked>
+                        <span class="opt__box">
+                            <span class="opt__title">A2</span>
+                            <span class="opt__desc">Geçmiş zaman, yan cümle, günlük iletişimde rahatlık</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="choice">
+                <span class="choice__label">
+                    Bir sınava mı hazırlanıyorsun?
+                    <span class="choice__hint">Sınav seçersen program deneme ve prova günleri içerir.</span>
+                </span>
+                <div class="choice__options choice__options--cards" role="radiogroup">
+                    <label class="opt">
+                        <input type="radio" name="sinav" value="GOETHE_A2" checked>
+                        <span class="opt__box">
+                            <span class="opt__title">Goethe-Zertifikat A2</span>
+                            <span class="opt__desc">Sınav formatına göre hazırlık</span>
+                        </span>
+                    </label>
+                    <label class="opt">
+                        <input type="radio" name="sinav" value="NONE">
+                        <span class="opt__box">
+                            <span class="opt__title">Sınavım yok</span>
+                            <span class="opt__desc">Sadece seviyeyi bitirmek istiyorum</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="choice">
+                <span class="choice__label">Kaç günde ulaşmak istiyorsun?</span>
+                <div class="choice__options" role="radiogroup" id="gunSecenekleri"></div>
+            </div>
+
+            <div class="choice">
+                <span class="choice__label">
+                    Günde ne kadar ayırabilirsin?
+                    <span class="choice__hint">Dürüst ol — program buna göre ölçeklenir.</span>
+                </span>
+                <div class="choice__options" role="radiogroup" id="sureSecenekleri"></div>
+            </div>
+
+            <button class="btn btn--primary btn--lg" type="submit" id="hedefGonder">
+                Devam et
+            </button>
+        </form>
+    </section>
+
+    <!-- ================= 2. Test ================= -->
+    <section class="wizard__panel" id="panelTest" hidden>
+        <h1 class="wizard__title">Seviyeni ölçelim</h1>
+        <p class="wizard__lead">
+            39 soru, yaklaşık 15 dakika. Bilmediğini boş bırak —
+            tahmin etmen ölçümü bozar ve bildiğin sayılan konular programdan
+            çıkarılır. Amacımız seni yakalamak değil, zamanını boşa harcamamak.
+        </p>
+
+        <div class="quiz__progress">
+            <span id="soruSayaci">1 / 39</span>
+            <span class="bar"><span class="bar__fill" id="ilerleme" style="width:0%"></span></span>
+        </div>
+
+        <div class="quiz__prompt" id="soruMetni"></div>
+        <div class="quiz__options" id="secenekler"></div>
+
+        <div class="quiz__nav">
+            <button class="btn btn--ghost" type="button" id="geriBtn">Geri</button>
+            <button class="btn btn--ghost" type="button" id="atlaBtn">Bilmiyorum, atla</button>
+            <button class="btn btn--primary" type="button" id="ileriBtn">İleri</button>
+        </div>
+    </section>
+
+    <!-- ================= 3. Sonuç ================= -->
+    <section class="wizard__panel" id="panelSonuc" hidden>
+        <h1 class="wizard__title">Sonuç</h1>
+
+        <div class="result__level">
+            <span class="result__level-value" id="seviyeTahmini">—</span>
+            <span class="result__level-label">tahmini mevcut seviyen</span>
+        </div>
+
+        <div class="result__stats">
+            <div class="stat">
+                <span class="stat__value" id="statDogru">—</span>
+                <span class="stat__label">doğru cevap</span>
+            </div>
+            <div class="stat">
+                <span class="stat__value" id="statBilinen">—</span>
+                <span class="stat__label">bildiğin konu</span>
+            </div>
+            <div class="stat">
+                <span class="stat__value" id="statAtlanan">—</span>
+                <span class="stat__label">atlanacak gün</span>
+            </div>
+        </div>
+
+        <h2 style="font-size: var(--fs-md);">Konu konu durumun</h2>
+        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+            Zayıftan güçlüye sıralı. <strong>Biliyorsun</strong> işaretli konular
+            programdan çıkarılacak; <strong>yarım</strong> olanların süresi kısalacak.
+        </p>
+        <ul class="cats" id="kategoriler"></ul>
+
+        <div class="notice notice--info" role="status">
+            Program üretici Adım 5'te geliyor. Bu sonuçlar kaydedildi ve
+            programın hesaplanmasında kullanılacak.
+        </div>
+
+        <a class="btn btn--primary btn--lg" href="/app/bugun.html">Panele git</a>
+    </section>
+
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api, ApiError } from "/assets/js/core/api.js";
+
+    const GUN_SECENEKLERI = [
+        { value: 30, label: "30 gün", desc: "yoğun tempo" },
+        { value: 45, label: "45 gün", desc: "hızlı" },
+        { value: 60, label: "60 gün", desc: "dengeli" },
+        { value: 90, label: "90 gün", desc: "rahat" },
+        { value: 120, label: "120 gün", desc: "geniş zaman" },
+    ];
+
+    const SURE_SECENEKLERI = [
+        { value: 60, label: "1 saat" },
+        { value: 120, label: "2 saat" },
+        { value: 180, label: "3 saat" },
+        { value: 240, label: "4 saat" },
+        { value: 390, label: "6,5 saat", desc: "tam gün" },
+    ];
+
+    const hata = document.getElementById("hata");
+    let sorular = [];
+    let cevaplar = new Map();   // soruId -> secenekId
+    let sira = 0;
+
+    const session = await requireAuth();
+    if (session) {
+        kurSecenekler();
+        bagla();
+    }
+
+    // ---------- 1. Hedef ----------
+
+    function kurSecenekler() {
+        const gunler = document.getElementById("gunSecenekleri");
+        gunler.innerHTML = GUN_SECENEKLERI.map((o, i) => `
+            <label class="opt">
+                <input type="radio" name="gun" value="${o.value}" ${i === 2 ? "checked" : ""}>
+                <span class="opt__box">
+                    <span class="opt__title">${o.label}</span>
+                    <span class="opt__desc">${o.desc}</span>
+                </span>
+            </label>`).join("");
+
+        const sureler = document.getElementById("sureSecenekleri");
+        sureler.innerHTML = SURE_SECENEKLERI.map((o, i) => `
+            <label class="opt">
+                <input type="radio" name="sure" value="${o.value}" ${i === 1 ? "checked" : ""}>
+                <span class="opt__box">
+                    <span class="opt__title">${o.label}</span>
+                    ${o.desc ? `<span class="opt__desc">${o.desc}</span>` : ""}
+                </span>
+            </label>`).join("");
+    }
+
+    function bagla() {
+        document.getElementById("hedefFormu")
+            .addEventListener("submit", hedefGonder);
+        document.getElementById("ileriBtn").addEventListener("click", ileri);
+        document.getElementById("geriBtn").addEventListener("click", geri);
+        document.getElementById("atlaBtn").addEventListener("click", () => {
+            cevaplar.delete(sorular[sira].id);
+            ileri();
+        });
+    }
+
+    async function hedefGonder(e) {
+        e.preventDefault();
+        hata.hidden = true;
+
+        const form = new FormData(e.target);
+        const seviye = form.get("seviye");
+        const sinav = form.get("sinav");
+
+        // Goethe A2 ile A1 hedefi celisir; kullaniciyi sunucuya gondermeden uyar.
+        if (sinav === "GOETHE_A2" && seviye !== "A2") {
+            goster("Goethe A2 sınavı için hedef seviyen de A2 olmalı.");
+            return;
+        }
+
+        const btn = document.getElementById("hedefGonder");
+        btn.disabled = true;
+        btn.textContent = "Kaydediliyor...";
+
+        try {
+            await api.post("/goals", {
+                targetLevel: seviye,
+                examType: sinav,
+                totalDays: Number(form.get("gun")),
+                dailyMinutes: Number(form.get("sure")),
+            });
+            await testeGec();
+        } catch (err) {
+            goster(err.message);
+            btn.disabled = false;
+            btn.textContent = "Devam et";
+        }
+    }
+
+    // ---------- 2. Test ----------
+
+    async function testeGec() {
+        const test = await api.get("/placement/test");
+        sorular = test.questions;
+        sira = 0;
+
+        panel("panelTest");
+        adim(2);
+        ciz();
+    }
+
+    function ciz() {
+        const soru = sorular[sira];
+
+        document.getElementById("soruSayaci").textContent =
+            `${sira + 1} / ${sorular.length}`;
+        document.getElementById("ilerleme").style.width =
+            `${(sira / sorular.length) * 100}%`;
+
+        // Bosluk gorsel olarak one ciksin.
+        document.getElementById("soruMetni").innerHTML =
+            escapeHtml(soru.prompt).replace(/___/g, '<span class="quiz__gap">___</span>');
+
+        const secili = cevaplar.get(soru.id);
+        document.getElementById("secenekler").innerHTML = soru.options.map((o) => `
+            <button class="quiz__option" type="button"
+                    data-id="${o.id}" aria-pressed="${o.id === secili}">
+                ${escapeHtml(o.text)}
+            </button>`).join("");
+
+        document.querySelectorAll(".quiz__option").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                cevaplar.set(soru.id, btn.dataset.id);
+                ciz();
+                // Secince kendiliginden ilerle: 39 soruda her seferinde
+                // "ileri" tiklamak gereksiz surtunme.
+                setTimeout(ileri, 180);
+            });
+        });
+
+        document.getElementById("geriBtn").disabled = sira === 0;
+        document.getElementById("ileriBtn").textContent =
+            sira === sorular.length - 1 ? "Bitir ve sonucu gör" : "İleri";
+    }
+
+    function geri() {
+        if (sira > 0) {
+            sira--;
+            ciz();
+        }
+    }
+
+    async function ileri() {
+        if (sira < sorular.length - 1) {
+            sira++;
+            ciz();
+            return;
+        }
+        await gonder();
+    }
+
+    async function gonder() {
+        const btn = document.getElementById("ileriBtn");
+        btn.disabled = true;
+        btn.textContent = "Değerlendiriliyor...";
+
+        try {
+            const sonuc = await api.post("/placement/submit", {
+                answers: sorular.map((s) => ({
+                    questionId: s.id,
+                    selectedOptionId: cevaplar.get(s.id) ?? null,
+                })),
+            });
+            sonucGoster(sonuc);
+        } catch (err) {
+            goster(err.message);
+            btn.disabled = false;
+            btn.textContent = "Bitir ve sonucu gör";
+        }
+    }
+
+    // ---------- 3. Sonuç ----------
+
+    function sonucGoster(s) {
+        panel("panelSonuc");
+        adim(3);
+
+        document.getElementById("seviyeTahmini").textContent = s.estimatedLevel;
+        document.getElementById("statDogru").textContent = `${s.correct}/${s.total}`;
+        document.getElementById("statBilinen").textContent =
+            s.masteredCategoryCodes.length;
+        document.getElementById("statAtlanan").textContent = s.skippableUnits;
+
+        const etiket = { MASTERED: "biliyorsun", PARTIAL: "yarım", WEAK: "zayıf" };
+        document.getElementById("kategoriler").innerHTML = s.categories.map((c) => `
+            <li class="cat">
+                <span>${escapeHtml(c.nameTr)}</span>
+                <span class="cat__score">${c.correct}/${c.total}</span>
+                <span class="tag tag--${c.status.toLowerCase()}">${etiket[c.status]}</span>
+            </li>`).join("");
+    }
+
+    // ---------- yardımcılar ----------
+
+    function panel(id) {
+        ["panelHedef", "panelTest", "panelSonuc"].forEach((p) => {
+            document.getElementById(p).hidden = p !== id;
+        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function adim(n) {
+        [1, 2, 3].forEach((i) => {
+            const el = document.getElementById("ad" + i);
+            el.classList.toggle("wizard__step--active", i === n);
+            el.classList.toggle("wizard__step--done", i < n);
+        });
+    }
+
+    function goster(mesaj) {
+        hata.textContent = mesaj;
+        hata.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function escapeHtml(s) {
+        const d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+    }
+</script>
+
+</body>
+</html>

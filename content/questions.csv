@@ -1,0 +1,40 @@
+code,test_code,question_type,skill,level,mistake_category_code,prompt_de,explanation_tr,difficulty
+P01,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,SEIN_HABEN,Ich ___ Student.,"sein fiili: ich bin, du bist, er ist.",1
+P02,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Er ___ in Berlin.,"Düzenli fiil, 3. tekil şahıs: -t eki alır.",1
+P03,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Du ___ sehr gut Deutsch.,"sprechen düzensizdir: du sprichst, er spricht.",2
+P04,PLACEMENT,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Buch ist neu.,"Buch nötr: das Buch.",1
+P05,PLACEMENT,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Straße ist lang.,"-e ile biten isimlerin çoğu dişildir: die Straße.",2
+P06,PLACEMENT,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Bahnhof ist dort.,"Bahnhof eril: der Bahnhof.",2
+P07,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,PLURAL,"Ein Haus, zwei ___.","Haus çoğulu Häuser: sesli harf değişir ve -er eklenir.",2
+P08,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,NEGATION,Ich habe ___ Zeit.,"İsmi olumsuzlarken kein kullanılır; Zeit dişil olduğu için keine.",2
+P09,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,W_FRAGEN,___ kommst du? — Aus der Türkei.,"Woher: nereden. Wo nerede, wohin nereye demektir.",1
+P10,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,AKKUSATIV,Ich sehe ___ Mann.,"Akkusativ -i hâlidir; eril artikel der yerine den olur.",2
+P11,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,AKKUSATIV,Wir kaufen ___ Tisch.,"Belirsiz artikel eril Akkusativ'de einen olur.",2
+P12,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,AKKUSATIV,Hast du ___ Schlüssel gefunden?,"Schlüssel eril; Akkusativ'de den Schlüssel.",3
+P13,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,POSSESSIV,Das ist ___ Schwester.,"Schwester dişil; iyelik zamiri meine olur.",2
+P14,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,MODALVERBEN,Ich ___ heute arbeiten.,"müssen: ich muss, du musst, er muss.",2
+P15,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,MODALVERBEN,___ du mir helfen?,"können: du kannst. Soru cümlesinde fiil başa gelir.",3
+P16,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,TRENNBARE_VERBEN,Ich ___ jeden Tag um sieben auf.,"aufstehen ayrılabilen fiildir; ön ek cümle sonuna gider.",3
+P17,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,WORTSTELLUNG,Morgen ___ ins Kino.,"Cümle zaman ifadesiyle başlarsa fiil ikinci sırada kalır: özne fiilden sonra gelir.",3
+P18,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,WORTSTELLUNG,Am Samstag ___ meine Eltern.,"Fiil her zaman ikinci öğedir; başta zaman varsa özne arkaya geçer.",3
+P19,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,ZEITANGABEN,Der Kurs beginnt ___ neun Uhr.,"Saat için um kullanılır. am gün için, im ay için.",2
+P20,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,DATIV,Ich fahre mit ___ Bus.,"mit her zaman Dativ ister; eril der yerine dem olur.",3
+P21,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,DATIV,Wir kommen aus ___ Türkei.,"aus Dativ ister; dişil die yerine der olur.",3
+P22,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,DATIV,Ich helfe ___ Kind.,"helfen fiili Dativ ister; nötr das yerine dem olur.",3
+P23,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,PERFEKT,Ich ___ einen Film gesehen.,"Çoğu fiil Perfekt'te haben alır.",3
+P24,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Wir ___ nach Hause gegangen.,"Hareket bildiren fiiller sein alır: gehen, fahren, kommen.",3
+P25,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Sie hat den Brief ___.,"schreiben düzensizdir: Partizip II geschrieben.",4
+P26,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,IMPERATIV,___ bitte langsam!,"sprechen fiilinin du emri: Sprich (sesli harf değişir, -e düşer).",3
+P27,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Gestern ___ ich krank.,"sein fiilinin Präteritum hâli: ich war.",3
+P28,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Als Kind ___ ich viel Zeit.,"haben fiilinin Präteritum hâli: ich hatte.",4
+P29,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Das Buch liegt auf ___ Tisch.,"Wo? sorusuna cevap veriyorsa Dativ: auf dem Tisch.",4
+P30,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Ich lege das Buch auf ___ Tisch.,"Wohin? sorusuna cevap veriyorsa Akkusativ: auf den Tisch.",4
+P31,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich bleibe zu Hause, weil ich krank ___.","weil yan cümlesinde çekimli fiil en sona gider.",4
+P32,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich weiß, dass er morgen ___.","dass yan cümlesinde fiil sondadır ve özne tekrarlanmaz.",4
+P33,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"___ es regnet, bleiben wir zu Hause.","Koşul için wenn kullanılır: eğer yağmur yağarsa.",5
+P34,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Mein Bruder ist ___ als ich.,"Karşılaştırmada -er eki; alt sesli harf değiştirir: älter.",3
+P35,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,REFLEXIV,Ich freue ___ auf das Wochenende.,"sich freuen dönüşlüdür; ich için Akkusativ zamiri mich.",4
+P36,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,ADJEKTIVDEKLINATION,Ich habe einen ___ Wagen gekauft.,"Belirsiz artikel eril Akkusativ'den sonra sıfat -en alır.",5
+P37,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KONJUNKTIV2,___ Sie mir bitte helfen?,"Nezaket için Konjunktiv II: Könnten Sie ...?",4
+P38,PLACEMENT,MULTIPLE_CHOICE,VOCAB,A1,WORTSCHATZ,"Ich gehe zum Arzt, weil ich ___ bin.","Doktora hasta olunca gidilir: krank.",2
+P39,PLACEMENT,MULTIPLE_CHOICE,VOCAB,A2,WORTSCHATZ,Der Zug hat 20 Minuten ___.,"Gecikme: die Verspätung.",3

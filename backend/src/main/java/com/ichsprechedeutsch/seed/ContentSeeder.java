@@ -59,6 +59,10 @@ public class ContentSeeder implements ApplicationRunner {
         seedBlocks();
         seedWords();
         linkWordsToUnits();
+        seedTests();
+        seedQuestions();
+        seedQuestionOptions();
+        linkTestQuestions();
 
         log.info("Icerik yuklendi ({} ms): {} kategori, {} birim, {} birim-kategori, "
                         + "{} blok, {} kelime, {} birim-kelime bagi",
@@ -66,6 +70,10 @@ public class ContentSeeder implements ApplicationRunner {
                 count("mistake_category"), count("content_unit"),
                 count("content_unit_category"), count("content_unit_block"),
                 count("word"), count("content_unit_word"));
+
+        log.info("Olcme: {} test, {} soru, {} secenek, {} test-soru bagi",
+                count("test"), count("question"),
+                count("question_option"), count("test_question"));
     }
 
     // ------------------------------------------------------------------
@@ -241,6 +249,108 @@ public class ContentSeeder implements ApplicationRunner {
                 JOIN word w ON w.theme = cu.vocab_theme
                 ON CONFLICT DO NOTHING
                 """);
+    }
+
+
+    // ---- olcme -------------------------------------------------------
+
+    private void seedTests() throws Exception {
+        List<Object[]> batch = new ArrayList<>();
+        for (Map<String, String> r : load("seed/tests.csv")) {
+            batch.add(new Object[]{
+                    r.get("code"), r.get("test_type"), r.get("level"), r.get("title_tr"),
+                    Integer.parseInt(r.get("question_count")),
+                    Integer.parseInt(r.get("time_limit_minutes")),
+            });
+        }
+        jdbc.batchUpdate("""
+                INSERT INTO test
+                    (code, test_type, level, title_tr, question_count, time_limit_minutes)
+                VALUES (?, ?, ?, ?, ?, ?)
+                ON CONFLICT (code) DO UPDATE SET
+                    test_type = EXCLUDED.test_type,
+                    level = EXCLUDED.level,
+                    title_tr = EXCLUDED.title_tr,
+                    question_count = EXCLUDED.question_count,
+                    time_limit_minutes = EXCLUDED.time_limit_minutes
+                """, batch);
+    }
+
+    private void seedQuestions() throws Exception {
+        List<Object[]> batch = new ArrayList<>();
+        for (Map<String, String> r : load("seed/questions.csv")) {
+            // Sira SQL'deki ? sirasiyla ayni: kategori kodu WHERE'de, en sonda.
+            batch.add(new Object[]{
+                    r.get("code"), r.get("question_type"), r.get("skill"), r.get("level"),
+                    r.get("prompt_de"), nullIfBlank(r.get("explanation_tr")),
+                    Short.parseShort(r.get("difficulty")),
+                    r.get("mistake_category_code"),
+            });
+        }
+        int[] written = jdbc.batchUpdate("""
+                INSERT INTO question
+                    (code, question_type, skill, level, mistake_category_id,
+                     prompt_de, explanation_tr, difficulty)
+                SELECT ?, ?, ?, ?, mc.id, ?, ?, ?
+                FROM mistake_category mc
+                WHERE mc.code = ?
+                ON CONFLICT (code) DO UPDATE SET
+                    question_type = EXCLUDED.question_type,
+                    skill = EXCLUDED.skill,
+                    level = EXCLUDED.level,
+                    mistake_category_id = EXCLUDED.mistake_category_id,
+                    prompt_de = EXCLUDED.prompt_de,
+                    explanation_tr = EXCLUDED.explanation_tr,
+                    difficulty = EXCLUDED.difficulty
+                """, batch);
+
+        long eslesmeyen = Arrays.stream(written).filter(n -> n == 0).count();
+        if (eslesmeyen > 0) {
+            log.warn("{} sorunun hata kategorisi bulunamadi", eslesmeyen);
+        }
+    }
+
+
+    private void seedQuestionOptions() throws Exception {
+        List<Object[]> batch = new ArrayList<>();
+        for (Map<String, String> r : load("seed/question_options.csv")) {
+            batch.add(new Object[]{
+                    r.get("option_text"),
+                    Boolean.parseBoolean(r.get("is_correct")),
+                    Short.parseShort(r.get("order_no")),
+                    r.get("question_code"),
+            });
+        }
+        jdbc.batchUpdate("""
+                INSERT INTO question_option (question_id, option_text, is_correct, order_no)
+                SELECT q.id, ?, ?, ?
+                FROM question q
+                WHERE q.code = ?
+                ON CONFLICT (question_id, option_text) DO UPDATE SET
+                    is_correct = EXCLUDED.is_correct,
+                    order_no = EXCLUDED.order_no
+                """, batch);
+    }
+
+    /** Sorunun testteki sirasi CSV'deki satir sirasidir. */
+    private void linkTestQuestions() throws Exception {
+        List<Object[]> batch = new ArrayList<>();
+        short order = 1;
+        for (Map<String, String> r : load("seed/questions.csv")) {
+            String testCode = nullIfBlank(r.get("test_code"));
+            if (testCode == null) {
+                continue;
+            }
+            batch.add(new Object[]{order++, testCode, r.get("code")});
+        }
+        jdbc.batchUpdate("""
+                INSERT INTO test_question (test_id, question_id, order_no)
+                SELECT t.id, q.id, ?
+                FROM test t, question q
+                WHERE t.code = ? AND q.code = ?
+                ON CONFLICT (test_id, question_id) DO UPDATE
+                SET order_no = EXCLUDED.order_no
+                """, batch);
     }
 
     // ------------------------------------------------------------------
