@@ -8,6 +8,7 @@
 
 import { getSession, signOut } from "./auth.js";
 import { mountNav } from "../components/nav.js";
+import { mountWakeBanner } from "../components/wakeBanner.js";
 
 /**
  * Korumali sayfalarin basinda cagrilir. Oturum yoksa giris sayfasina
@@ -27,6 +28,8 @@ export async function requireAuth() {
 
     mountNav({ loggedIn: true });
     bindLogout();
+    // Sunucu uykudan uyanirken kullaniciyi bos ekranla birakmayalim.
+    mountWakeBanner();
     return session;
 }
 
