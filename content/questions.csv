@@ -23,8 +23,8 @@ P21,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,DATIV,Wir kommen aus ___ Türkei.,"aus 
 P22,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,DATIV,Ich helfe ___ Kind.,"helfen fiili Dativ ister; nötr das yerine dem olur.",3
 P23,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,PERFEKT,Ich ___ einen Film gesehen.,"Çoğu fiil Perfekt'te haben alır.",3
 P24,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Wir ___ nach Hause gegangen.,"Hareket bildiren fiiller sein alır: gehen, fahren, kommen.",3
-P25,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Sie hat den Brief ___.,"schreiben düzensizdir: Partizip II geschrieben.",4
-P26,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,IMPERATIV,___ bitte langsam!,"sprechen fiilinin du emri: Sprich (sesli harf değişir, -e düşer).",3
+P25,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Sie hat den Brief ___. (schreiben),"schreiben düzensizdir: Partizip II geschrieben.",4
+P26,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A1,IMPERATIV,___ bitte langsam! (sprechen),"sprechen fiilinin du emri: Sprich (sesli harf değişir, -e düşer).",3
 P27,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Gestern ___ ich krank.,"sein fiilinin Präteritum hâli: ich war.",3
 P28,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Als Kind ___ ich viel Zeit.,"haben fiilinin Präteritum hâli: ich hatte.",4
 P29,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Das Buch liegt auf ___ Tisch.,"Wo? sorusuna cevap veriyorsa Dativ: auf dem Tisch.",4
@@ -32,9 +32,55 @@ P30,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Ich lege das Buch
 P31,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich bleibe zu Hause, weil ich krank ___.","weil yan cümlesinde çekimli fiil en sona gider.",4
 P32,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich weiß, dass er morgen ___.","dass yan cümlesinde fiil sondadır ve özne tekrarlanmaz.",4
 P33,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"___ es regnet, bleiben wir zu Hause.","Koşul için wenn kullanılır: eğer yağmur yağarsa.",5
-P34,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Mein Bruder ist ___ als ich.,"Karşılaştırmada -er eki; alt sesli harf değiştirir: älter.",3
+P34,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Mein Bruder ist ___ als ich. (alt),"Karşılaştırmada -er eki; alt sesli harf değiştirir: älter.",3
 P35,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,REFLEXIV,Ich freue ___ auf das Wochenende.,"sich freuen dönüşlüdür; ich için Akkusativ zamiri mich.",4
-P36,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,ADJEKTIVDEKLINATION,Ich habe einen ___ Wagen gekauft.,"Belirsiz artikel eril Akkusativ'den sonra sıfat -en alır.",5
+P36,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,ADJEKTIVDEKLINATION,Ich habe einen ___ Wagen gekauft. (neu),"Belirsiz artikel eril Akkusativ'den sonra sıfat -en alır.",5
 P37,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KONJUNKTIV2,___ Sie mir bitte helfen?,"Nezaket için Konjunktiv II: Könnten Sie ...?",4
 P38,PLACEMENT,MULTIPLE_CHOICE,VOCAB,A1,WORTSCHATZ,"Ich gehe zum Arzt, weil ich ___ bin.","Doktora hasta olunca gidilir: krank.",2
 P39,PLACEMENT,MULTIPLE_CHOICE,VOCAB,A2,WORTSCHATZ,Der Zug hat 20 Minuten ___.,"Gecikme: die Verspätung.",3
+Q01,,MULTIPLE_CHOICE,GRAMMAR,A1,SEIN_HABEN,Wir ___ aus der Türkei.,"sein: wir sind, ihr seid, sie sind.",1
+Q02,,MULTIPLE_CHOICE,GRAMMAR,A1,SEIN_HABEN,___ du Geschwister?,"haben: du hast. Soru cümlesinde fiil başa gelir.",2
+Q03,,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Ihr ___ sehr schnell. (lernen),"Düzenli fiil, 2. çoğul şahıs: -t eki.",2
+Q04,,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Sie ___ jeden Tag Zeitung. (lesen),"lesen düzensizdir: er/sie liest.",3
+Q05,,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Zeitung liegt auf dem Tisch.,"-ung ile biten isimler dişildir: die Zeitung.",2
+Q06,,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Mädchen spielt im Garten.,"-chen ile biten isimler nötrdür: das Mädchen.",3
+Q07,,MULTIPLE_CHOICE,GRAMMAR,A1,PLURAL,"Eine Frau, zwei ___.","Frau çoğulu Frauen: -en eklenir.",2
+Q08,,MULTIPLE_CHOICE,GRAMMAR,A1,PLURAL,"Ein Kind, drei ___.","Kind çoğulu Kinder: -er eklenir.",2
+Q09,,MULTIPLE_CHOICE,GRAMMAR,A1,NEGATION,Ich komme heute ___.,"Fiili olumsuzlarken nicht kullanılır.",2
+Q10,,MULTIPLE_CHOICE,GRAMMAR,A1,NEGATION,Das ist ___ Problem.,"Problem nötr; belirsiz isimde kein kullanılır.",3
+Q11,,MULTIPLE_CHOICE,GRAMMAR,A1,W_FRAGEN,___ kostet das Buch?,"Fiyat sorarken Wie viel kullanılır.",2
+Q12,,MULTIPLE_CHOICE,GRAMMAR,A1,W_FRAGEN,___ gehst du? — Nach Hause.,"Wohin: nereye. Wo nerede demektir.",2
+Q13,,MULTIPLE_CHOICE,GRAMMAR,A1,AKKUSATIV,Ich trinke ___ Kaffee.,"Kaffee eril; Akkusativ'de einen olur.",2
+Q14,,MULTIPLE_CHOICE,GRAMMAR,A1,AKKUSATIV,Kennst du ___ Frau dort?,"Dişil artikel Akkusativ'de değişmez: die.",3
+Q15,,MULTIPLE_CHOICE,GRAMMAR,A1,POSSESSIV,Wo ist ___ Auto?,"Auto nötr; iyelik zamiri ekstra ek almaz: dein.",2
+Q16,,MULTIPLE_CHOICE,GRAMMAR,A1,POSSESSIV,Ich rufe ___ Bruder an.,"Bruder eril ve Akkusativ: meinen.",3
+Q17,,MULTIPLE_CHOICE,GRAMMAR,A1,MODALVERBEN,Wir ___ morgen früh aufstehen.,"müssen: wir müssen.",2
+Q18,,MULTIPLE_CHOICE,GRAMMAR,A1,MODALVERBEN,___ ich hier rauchen?,"İzin sorarken dürfen kullanılır: Darf ich?",3
+Q19,,MULTIPLE_CHOICE,GRAMMAR,A1,TRENNBARE_VERBEN,Der Film ___ um acht ___. (anfangen),"anfangen ayrılabilen fiildir: fängt ... an.",3
+Q20,,MULTIPLE_CHOICE,GRAMMAR,A1,TRENNBARE_VERBEN,Wann ___ du zurück?,"zurückkommen: kommst du zurück.",3
+Q21,,MULTIPLE_CHOICE,GRAMMAR,A1,WORTSTELLUNG,Heute ___ ich keine Zeit.,"Fiil ikinci öğe; zaman başta olunca özne arkaya geçer.",3
+Q22,,MULTIPLE_CHOICE,GRAMMAR,A1,ZEITANGABEN,Ich habe ___ Montag frei.,"Günler için am kullanılır: am Montag.",2
+Q23,,MULTIPLE_CHOICE,GRAMMAR,A1,ZEITANGABEN,Der Kurs dauert ___ Januar ___ März.,"von ... bis: ocaktan marta.",3
+Q24,,MULTIPLE_CHOICE,GRAMMAR,A1,DATIV,Ich gehe ___ Arzt.,"zu Dativ ister; zu dem birleşip zum olur.",3
+Q25,,MULTIPLE_CHOICE,GRAMMAR,A2,DATIV,Das Buch gehört ___ Lehrerin.,"gehören Dativ ister; dişil der olur.",4
+Q26,,MULTIPLE_CHOICE,GRAMMAR,A1,IMPERATIV,___ bitte die Tür zu! (zumachen),"zumachen: du emri Mach ... zu.",3
+Q27,,MULTIPLE_CHOICE,GRAMMAR,A1,IMPERATIV,___ Sie bitte hier! (warten),"Sie için emir: fiil + Sie. Warten Sie!",3
+Q28,,MULTIPLE_CHOICE,GRAMMAR,A1,PERFEKT,Was ___ du gestern gemacht?,"machen haben alır: hast du gemacht.",3
+Q29,,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Der Zug ___ pünktlich angekommen.,"ankommen hareket fiilidir: sein alır.",3
+Q30,,MULTIPLE_CHOICE,GRAMMAR,A2,PERFEKT,Ich habe das Buch ___. (lesen),"lesen düzensizdir: Partizip II gelesen.",4
+Q31,,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Wir ___ gestern im Kino.,"sein Präteritum: wir waren.",3
+Q32,,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Er ___ nicht kommen.,"können Präteritum: er konnte.",4
+Q33,,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Die Kinder spielen ___ Garten.,"Wo? sorusu: Dativ. in dem birleşip im olur.",3
+Q34,,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Ich hänge das Bild ___ Wand.,"Wohin? sorusu: Akkusativ. an die Wand.",4
+Q35,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Er sagt, dass er müde ___.","dass yan cümlesinde fiil sona gider: ist.",3
+Q36,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich weiß nicht, ___ er kommt.","Dolaylı evet-hayır sorusu için ob kullanılır.",4
+Q37,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich lerne Deutsch, ___ ich in Berlin arbeiten will.","Sebep bildirir: weil.",3
+Q38,,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Diese Wohnung ist ___ als die andere. (groß),"groß karşılaştırması: größer.",3
+Q39,,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Das ist das ___ Restaurant in der Stadt. (gut),"Üstünlük: am besten yerine sıfat olarak beste.",4
+Q40,,MULTIPLE_CHOICE,GRAMMAR,A2,REFLEXIV,Wir treffen ___ um sieben.,"sich treffen: wir treffen uns.",3
+Q41,,MULTIPLE_CHOICE,GRAMMAR,A2,REFLEXIV,Interessierst du ___ für Sport?,"sich interessieren: du interessierst dich.",4
+Q42,,MULTIPLE_CHOICE,GRAMMAR,A2,ADJEKTIVDEKLINATION,Das ist ein ___ Haus. (schön),"Belirsiz artikel nötr Nominativ: schönes.",5
+Q43,,MULTIPLE_CHOICE,GRAMMAR,A2,ADJEKTIVDEKLINATION,Ich mag den ___ Mantel. (blau),"Belirli artikel eril Akkusativ: -en eki.",5
+Q44,,MULTIPLE_CHOICE,GRAMMAR,A2,KONJUNKTIV2,Ich ___ gern einen Kaffee.,"Nezaket: hätte gern.",3
+Q45,,MULTIPLE_CHOICE,VOCAB,A1,WORTSCHATZ,Ich kaufe Brot ___ Bäckerei.,"Fırın: die Bäckerei. in der Bäckerei.",3
+Q46,,MULTIPLE_CHOICE,VOCAB,A2,WORTSCHATZ,Bitte ___ Sie dieses Formular aus.,"Form doldurmak: ausfüllen.",3

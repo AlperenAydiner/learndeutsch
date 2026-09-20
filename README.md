@@ -31,6 +31,50 @@ docs/       Tasarim ve plan dokumanlari
 ## Dokumanlar
 
 - Tasarim: `docs/superpowers/specs/2026-09-19-almanca-takip-sistemi-design.md`
+- Yayina alma: `DEPLOY.md`
+- Icerik kaynaklari ve lisans: `content/ATTRIBUTION.md`
+
+## Sayfalar
+
+| Sayfa | Ne yapar |
+|---|---|
+| `index.html` | Ana sayfa (herkese acik) |
+| `nasil-calisir.html` | Sistemin nasil isledigi |
+| `kayit.html` / `giris.html` | Supabase Auth ile kayit ve giris |
+| `app/baslangic.html` | Hedef secimi + 39 soruluk yerlestirme testi |
+| `app/program.html` | Gun gun takvim, fizibilite uyarisi |
+| `app/bugun.html` | Gunun gorevleri, tek tikla isaretleme |
+| `app/kelimeler.html` | SM-2 tekrar oturumu |
+| `app/quiz.html` | Gunun gramer quiz'i |
+| `app/testler.html` | Testler ve gecmis sonuclar |
+| `app/gelisim.html` | Grafikler, icgoruler, beceri tahmini |
+| `app/ayarlar.html` | Hedef ve hesap ayarlari |
+
+## API
+
+Saglik ucu disinda hepsi Supabase JWT ister.
+
+| Uc | Ne yapar |
+|---|---|
+| `GET /api/health` | Ayakta mi (acik) |
+| `GET /api/me` · `PATCH /api/me` | Profil |
+| `GET/POST /api/goals` | Hedef |
+| `GET /api/placement/test` · `POST /api/placement/submit` | Yerlestirme |
+| `POST /api/plan/generate` · `GET /api/plan` | Program |
+| `GET /api/today` · `POST /api/tasks/{id}/complete` | Gunluk gorevler |
+| `GET /api/words/session` · `POST /api/words/{id}/review` | Kelime tekrari |
+| `GET /api/quiz/today` · `POST /api/quiz/submit` | Gunluk quiz |
+| `GET /api/progress` | Gelisim paneli |
+
+## Testler
+
+```
+cd backend
+./gradlew test
+```
+
+Program uretici, SM-2, kelime kotasi ve oz bildirim dogrulamasi saf
+siniflar oldugu icin veritabani olmadan test edilir.
 
 ## Calistirma
 

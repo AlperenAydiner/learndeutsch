@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gelişim — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+    <link rel="stylesheet" href="/assets/css/pages/program.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap section">
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+
+    <div id="panel" hidden>
+        <h1>Gelişim</h1>
+
+        <!-- İçgörüler -->
+        <div id="icgoruler"></div>
+
+        <!-- Sayılar -->
+        <div class="result__stats" id="sayilar"></div>
+
+        <!-- Çalışma yoğunluğu -->
+        <section style="margin-top: var(--sp-7);">
+            <h2 style="font-size: var(--fs-md);">Son 30 gün</h2>
+            <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+                Her çubuk bir gün. Yükseklik o gün çalıştığın süreyi gösterir.
+            </p>
+            <div id="yogunluk"></div>
+        </section>
+
+        <!-- Test skorları -->
+        <section style="margin-top: var(--sp-7);" id="skorBolum" hidden>
+            <h2 style="font-size: var(--fs-md);">Test skorların</h2>
+            <div id="skorlar"></div>
+        </section>
+
+        <!-- Beceri tahmini -->
+        <section style="margin-top: var(--sp-7);">
+            <h2 style="font-size: var(--fs-md);">Beceri tahmini</h2>
+            <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+                Kaba bir tahmin. Yeterli veri olmayan beceride tahmin yapmıyoruz.
+            </p>
+            <div class="result__stats" id="beceriler"></div>
+        </section>
+
+        <!-- Konular -->
+        <section style="margin-top: var(--sp-7);">
+            <h2 style="font-size: var(--fs-md);">Konu konu durumun</h2>
+            <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+                Zayıftan güçlüye sıralı.
+            </p>
+            <ul class="cats" id="konular"></ul>
+        </section>
+    </div>
+
+</main>
+
+<style>
+    .insight {
+        padding: var(--sp-3) var(--sp-4);
+        background: var(--accent-soft);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--radius-sm);
+        margin-bottom: var(--sp-2);
+        font-size: var(--fs-sm);
+    }
+    .spark { display: flex; align-items: flex-end; gap: 3px; height: 90px;
+             margin-top: var(--sp-4); }
+    .spark__bar { flex: 1; background: var(--accent); border-radius: 2px 2px 0 0;
+                  min-height: 2px; opacity: 0.85; }
+    .spark__bar--zero { background: var(--border); }
+    .spark__labels { display: flex; justify-content: space-between;
+                     font-size: var(--fs-xs); color: var(--text-faint);
+                     margin-top: var(--sp-2); }
+    .score-row { display: grid; grid-template-columns: 90px 1fr 56px;
+                 gap: var(--sp-3); align-items: center; padding: var(--sp-2) 0;
+                 border-bottom: 1px solid var(--border); font-size: var(--fs-sm); }
+    .score-row__bar { height: 8px; background: var(--surface-alt);
+                      border-radius: 4px; overflow: hidden; }
+    .score-row__fill { height: 100%; background: var(--accent); }
+    .score-row__date { color: var(--text-faint); font-size: var(--fs-xs); }
+</style>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api, ApiError } from "/assets/js/core/api.js";
+
+    const SKILL_ADI = {
+        GRAMMAR: "Gramer", VOCAB: "Kelime", READING: "Lesen", LISTENING: "Hören",
+    };
+
+    const hata = document.getElementById("hata");
+
+    const session = await requireAuth();
+    if (session) {
+        try {
+            goster(await api.get("/progress"));
+            document.getElementById("panel").hidden = false;
+        } catch (err) {
+            hata.textContent = err.message;
+            hata.hidden = false;
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    function goster(p) {
+        icgoruler(p.insights);
+        sayilar(p);
+        yogunluk(p.activity);
+        skorlar(p.scores);
+        beceriler(p.skills);
+        konular(p.categories);
+    }
+
+    function icgoruler(liste) {
+        document.getElementById("icgoruler").innerHTML = liste.length
+            ? liste.map((i) => `<div class="insight">${esc(i)}</div>`).join("")
+            : `<div class="insight">Henüz yeterli veri yok. Birkaç gün çalışınca
+               burada senin verine dayanan gözlemler göreceksin.</div>`;
+    }
+
+    function sayilar(p) {
+        const kutu = (deger, etiket) =>
+            `<div class="stat"><span class="stat__value">${deger}</span>
+             <span class="stat__label">${etiket}</span></div>`;
+
+        const parcalar = [
+            kutu(p.adherence.streak, "günlük seri"),
+            kutu("%" + Math.round(p.adherence.rate * 100), "programa uyum"),
+            kutu(p.vocabulary.startedWords, "öğrenilen kelime"),
+            kutu(p.vocabulary.totalReviews
+                ? "%" + Math.round(p.vocabulary.successRate * 100) : "—",
+                "tekrar başarısı"),
+        ];
+
+        if (p.plan) {
+            parcalar.push(kutu(p.plan.daysRemaining, "gün kaldı"));
+        }
+        document.getElementById("sayilar").innerHTML = parcalar.join("");
+    }
+
+    function yogunluk(gunler) {
+        const kutu = document.getElementById("yogunluk");
+        if (!gunler.length) {
+            kutu.innerHTML = `<p style="color: var(--text-faint);
+                font-size: var(--fs-sm);">Henüz çalışma kaydı yok.</p>`;
+            return;
+        }
+
+        const enYuksek = Math.max(...gunler.map((g) => g.minutes), 1);
+        const cubuklar = gunler.map((g) => {
+            const yukseklik = Math.round((g.minutes / enYuksek) * 100);
+            const sinif = g.minutes === 0 ? " spark__bar--zero" : "";
+            return `<div class="spark__bar${sinif}" style="height:${Math.max(2, yukseklik)}%"
+                         title="${tarih(g.date)}: ${g.minutes} dk"></div>`;
+        }).join("");
+
+        kutu.innerHTML = `
+            <div class="spark">${cubuklar}</div>
+            <div class="spark__labels">
+                <span>${tarih(gunler[0].date)}</span>
+                <span>${tarih(gunler[gunler.length - 1].date)}</span>
+            </div>`;
+    }
+
+    function skorlar(liste) {
+        if (!liste.length) return;
+
+        document.getElementById("skorBolum").hidden = false;
+        document.getElementById("skorlar").innerHTML = liste.map((s) => `
+            <div class="score-row">
+                <div>
+                    ${esc(s.titleTr)}
+                    <div class="score-row__date">${tarih(s.date)}</div>
+                </div>
+                <div class="score-row__bar">
+                    <div class="score-row__fill" style="width:${s.ratio * 100}%"></div>
+                </div>
+                <div style="text-align:right; font-family: var(--font-mono);">
+                    %${Math.round(s.ratio * 100)}
+                </div>
+            </div>`).join("");
+    }
+
+    function beceriler(liste) {
+        document.getElementById("beceriler").innerHTML = liste.map((s) => `
+            <div class="stat">
+                <span class="stat__value">${s.level ?? "—"}</span>
+                <span class="stat__label">${SKILL_ADI[s.skill] ?? s.skill}${
+                    s.level ? "" : " · yetersiz veri"}</span>
+            </div>`).join("");
+    }
+
+    function konular(liste) {
+        const etiket = (r) => r >= 0.8 ? ["mastered", "iyi"]
+                            : r >= 0.5 ? ["partial", "orta"] : ["weak", "zayıf"];
+
+        document.getElementById("konular").innerHTML = liste.length
+            ? liste.map((c) => {
+                const [sinif, ad] = etiket(c.ratio);
+                return `<li class="cat">
+                    <span>${esc(c.nameTr)}</span>
+                    <span class="cat__score">${c.correct}/${c.attempts}</span>
+                    <span class="tag tag--${sinif}">${ad}</span>
+                </li>`;
+            }).join("")
+            : `<li style="color: var(--text-faint); font-size: var(--fs-sm);">
+               Henüz ölçüm yok. Yerleştirme testini çöz veya günün quiz'ini yap.</li>`;
+    }
+
+    function tarih(iso) {
+        return new Date(iso).toLocaleDateString("tr-TR",
+            { day: "numeric", month: "short" });
+    }
+
+    function esc(s) {
+        const d = document.createElement("div");
+        d.textContent = s ?? "";
+        return d.innerHTML;
+    }
+</script>
+
+</body>
+</html>

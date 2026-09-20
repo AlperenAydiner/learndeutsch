@@ -79,6 +79,12 @@
         SCHREIBEN: "Schreiben", SPRECHEN: "Sprechen", SINAV_PRATIGI: "Sınav pratiği",
     };
 
+    /** Sitede yapilan gorevler: isaretleme degil, dogrudan basla. */
+    const ICERIDE = {
+        KELIME: { href: "/app/kelimeler.html", label: "Tekrara başla" },
+        GRAMER: { href: "/app/quiz.html", label: "Quiz'i çöz" },
+    };
+
     const DURUMLAR = [
         { value: "DONE",    label: "Yaptım",       sinif: "done" },
         { value: "PARTIAL", label: "Yarım yaptım", sinif: "partial" },
@@ -187,7 +193,14 @@
         const rapor = g.selfReport ? JSON.parse(g.selfReport) : {};
         const sinif = g.status ? ` task--${g.status.toLowerCase()}` : "";
 
-        const dugmeler = DURUMLAR.map((d) => `
+        // Kelime ve gramer sitede olculuyor; kullaniciya "yaptim" dedirtmek
+        // yerine dogrudan oraya goturuyoruz. Skor kendiliginden kaydediliyor.
+        const iceride = ICERIDE[g.taskType];
+        const baslaBtn = iceride && !g.status
+            ? `<a class="btn btn--primary" href="${iceride.href}"
+                 style="margin-right: var(--sp-2);">${iceride.label}</a>` : "";
+
+        const dugmeler = baslaBtn + DURUMLAR.map((d) => `
             <button class="mark mark--${d.sinif}" type="button"
                     data-mark="${g.id}" data-status="${d.value}"
                     aria-pressed="${g.status === d.value}">${d.label}</button>`).join("");

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Günün quiz'i — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap wizard">
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+
+    <div class="empty" id="bos" hidden>
+        <h2>Quiz hazırlanamadı</h2>
+        <p id="bosAciklama"></p>
+        <div style="margin-top: var(--sp-5);">
+            <a class="btn btn--primary" href="/app/bugun.html">Bugüne dön</a>
+        </div>
+    </div>
+
+    <!-- ---------- Quiz ---------- -->
+    <section id="quiz" hidden>
+        <h1 class="wizard__title" id="konu"></h1>
+        <p class="wizard__lead">
+            Günün konusuna ait 10 soru. Bilmediğini boş bırakabilirsin —
+            sonunda her sorunun doğru cevabını ve açıklamasını göreceksin.
+        </p>
+
+        <div class="quiz__progress">
+            <span id="sayac"></span>
+            <span class="bar"><span class="bar__fill" id="ilerleme" style="width:0%"></span></span>
+        </div>
+
+        <div class="quiz__prompt" id="soru"></div>
+        <p style="color: var(--text-faint); font-size: var(--fs-xs); margin-bottom: var(--sp-4);"
+           id="kategori"></p>
+        <div class="quiz__options" id="secenekler"></div>
+
+        <div class="quiz__nav">
+            <button class="btn btn--ghost" type="button" id="geriBtn">Geri</button>
+            <button class="btn btn--ghost" type="button" id="atlaBtn">Atla</button>
+            <button class="btn btn--primary" type="button" id="ileriBtn">İleri</button>
+        </div>
+    </section>
+
+    <!-- ---------- Sonuç ---------- -->
+    <section id="sonuc" hidden>
+        <h1 class="wizard__title">Quiz sonucu</h1>
+
+        <div class="result__level">
+            <span class="result__level-value" id="skor">—</span>
+            <span class="result__level-label" id="skorMesaj"></span>
+        </div>
+
+        <h2 style="font-size: var(--fs-md);">Soru soru</h2>
+        <div id="inceleme"></div>
+
+        <div style="margin-top: var(--sp-6); display: flex; gap: var(--sp-3); flex-wrap: wrap;">
+            <a class="btn btn--primary" href="/app/bugun.html">Bugüne dön</a>
+            <a class="btn btn--ghost" href="/app/gelisim.html">Gelişimi gör</a>
+        </div>
+    </section>
+
+</main>
+
+<style>
+    .qrev {
+        padding: var(--sp-4);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--border-strong);
+        border-radius: var(--radius);
+        margin-bottom: var(--sp-3);
+        background: var(--surface);
+    }
+    .qrev--ok    { border-left-color: var(--done); }
+    .qrev--wrong { border-left-color: var(--missed); }
+    .qrev__q { font-family: var(--font-mono); margin: 0 0 var(--sp-2); }
+    .qrev__a { margin: 0; font-size: var(--fs-sm); }
+    .qrev__a b { color: var(--done); }
+    .qrev__exp {
+        margin: var(--sp-2) 0 0;
+        font-size: var(--fs-sm);
+        color: var(--text-muted);
+    }
+</style>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api, ApiError } from "/assets/js/core/api.js";
+
+    let sorular = [];
+    let cevaplar = new Map();
+    let sira = 0;
+
+    const hata = document.getElementById("hata");
+
+    const session = await requireAuth();
+    if (session) {
+        await yukle();
+    }
+
+    async function yukle() {
+        try {
+            const quiz = await api.get("/quiz/today");
+            sorular = quiz.questions;
+            document.getElementById("konu").textContent = quiz.topicTr;
+            document.getElementById("quiz").hidden = false;
+            bagla();
+            ciz();
+        } catch (err) {
+            if (err instanceof ApiError && err.status === 404) {
+                document.getElementById("bosAciklama").textContent = err.message;
+                document.getElementById("bos").hidden = false;
+            } else {
+                hataGoster(err.message);
+            }
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    function bagla() {
+        document.getElementById("ileriBtn").addEventListener("click", ileri);
+        document.getElementById("geriBtn").addEventListener("click", () => {
+            if (sira > 0) { sira--; ciz(); }
+        });
+        document.getElementById("atlaBtn").addEventListener("click", () => {
+            cevaplar.delete(sorular[sira].id);
+            ileri();
+        });
+    }
+
+    function ciz() {
+        const s = sorular[sira];
+
+        document.getElementById("sayac").textContent = `${sira + 1} / ${sorular.length}`;
+        document.getElementById("ilerleme").style.width =
+            `${(sira / sorular.length) * 100}%`;
+        document.getElementById("kategori").textContent = s.categoryNameTr;
+
+        document.getElementById("soru").innerHTML =
+            esc(s.promptDe).replace(/___/g, '<span class="quiz__gap">___</span>');
+
+        const secili = cevaplar.get(s.id);
+        document.getElementById("secenekler").innerHTML = s.options.map((o) => `
+            <button class="quiz__option" type="button" data-id="${o.id}"
+                    aria-pressed="${o.id === secili}">${esc(o.text)}</button>`).join("");
+
+        document.querySelectorAll(".quiz__option").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                cevaplar.set(s.id, btn.dataset.id);
+                ciz();
+                setTimeout(ileri, 180);
+            });
+        });
+
+        document.getElementById("geriBtn").disabled = sira === 0;
+        document.getElementById("ileriBtn").textContent =
+            sira === sorular.length - 1 ? "Bitir" : "İleri";
+    }
+
+    async function ileri() {
+        if (sira < sorular.length - 1) {
+            sira++;
+            ciz();
+            return;
+        }
+        await gonder();
+    }
+
+    async function gonder() {
+        const btn = document.getElementById("ileriBtn");
+        btn.disabled = true;
+        btn.textContent = "Değerlendiriliyor...";
+
+        try {
+            const sonuc = await api.post("/quiz/submit", {
+                answers: sorular.map((s) => ({
+                    questionId: s.id,
+                    selectedOptionId: cevaplar.get(s.id) ?? null,
+                })),
+            });
+            sonucGoster(sonuc);
+        } catch (err) {
+            hataGoster(err.message);
+            btn.disabled = false;
+            btn.textContent = "Bitir";
+        }
+    }
+
+    function sonucGoster(sonuc) {
+        document.getElementById("quiz").hidden = true;
+        document.getElementById("sonuc").hidden = false;
+
+        document.getElementById("skor").textContent =
+            `${sonuc.correct}/${sonuc.total}`;
+        document.getElementById("skorMesaj").textContent = sonuc.messageTr;
+
+        const soruAdi = new Map(sorular.map((s) => [s.id, s.promptDe]));
+
+        document.getElementById("inceleme").innerHTML = sonuc.review.map((r) => `
+            <div class="qrev qrev--${r.wasCorrect ? "ok" : "wrong"}">
+                <p class="qrev__q">${esc(soruAdi.get(r.questionId) ?? "")}</p>
+                <p class="qrev__a">Doğru cevap: <b>${esc(r.correctOptionText)}</b></p>
+                ${r.explanationTr
+                    ? `<p class="qrev__exp">${esc(r.explanationTr)}</p>` : ""}
+            </div>`).join("");
+    }
+
+    function hataGoster(mesaj) {
+        hata.textContent = mesaj;
+        hata.hidden = false;
+    }
+
+    function esc(s) {
+        const d = document.createElement("div");
+        d.textContent = s ?? "";
+        return d.innerHTML;
+    }
+</script>
+
+</body>
+</html>

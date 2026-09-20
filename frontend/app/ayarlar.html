@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ayarlar — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap section" style="max-width: 720px;">
+    <h1>Ayarlar</h1>
+
+    <div class="notice notice--error"   id="hata"  role="alert"  hidden></div>
+    <div class="notice notice--success" id="bilgi" role="status" hidden></div>
+
+    <!-- ---------- Hesap ---------- -->
+    <section class="card" style="margin-bottom: var(--sp-6);">
+        <h2 style="font-size: var(--fs-md);">Hesap</h2>
+        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+            E-postanı değiştirmek için Supabase üzerinden doğrulama gerekir;
+            burada değiştirilemez.
+        </p>
+
+        <div class="field">
+            <label class="field__label" for="eposta">E-posta</label>
+            <input class="field__input" type="email" id="eposta" disabled>
+        </div>
+
+        <div class="field">
+            <label class="field__label" for="ad">Adın</label>
+            <input class="field__input" type="text" id="ad" maxlength="80">
+        </div>
+
+        <button class="btn btn--primary" type="button" id="hesapKaydet">Kaydet</button>
+    </section>
+
+    <!-- ---------- Hedef ---------- -->
+    <section class="card" style="margin-bottom: var(--sp-6);">
+        <h2 style="font-size: var(--fs-md);">Hedefin</h2>
+        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+            Hedefini değiştirirsen yeni bir program üretilir. Eski programın
+            silinmez, arşivlenir.
+        </p>
+
+        <div id="mevcutHedef" style="margin-bottom: var(--sp-5);"></div>
+
+        <form id="hedefFormu">
+            <div class="choice">
+                <span class="choice__label">Hedef seviye</span>
+                <div class="choice__options" role="radiogroup" id="seviyeSec"></div>
+            </div>
+
+            <div class="choice">
+                <span class="choice__label">Sınav</span>
+                <div class="choice__options" role="radiogroup" id="sinavSec"></div>
+            </div>
+
+            <div class="choice">
+                <span class="choice__label">Kaç günde</span>
+                <div class="choice__options" role="radiogroup" id="gunSec"></div>
+            </div>
+
+            <div class="choice">
+                <span class="choice__label">Günlük süre</span>
+                <div class="choice__options" role="radiogroup" id="sureSec"></div>
+            </div>
+
+            <button class="btn btn--primary" type="submit" id="hedefKaydet">
+                Hedefi güncelle ve programı yeniden üret
+            </button>
+        </form>
+    </section>
+
+    <!-- ---------- Program ---------- -->
+    <section class="card" style="margin-bottom: var(--sp-6);">
+        <h2 style="font-size: var(--fs-md);">Program</h2>
+        <p style="color: var(--text-muted); font-size: var(--fs-sm);">
+            Hedefin aynı kalsın ama program yeniden hesaplansın istiyorsan.
+            Son ölçümlerin (quiz ve kelime sonuçların) dikkate alınır.
+        </p>
+        <button class="btn btn--ghost" type="button" id="yenidenUret">
+            Programı yeniden hesapla
+        </button>
+    </section>
+
+    <!-- ---------- Çıkış ---------- -->
+    <section class="card">
+        <h2 style="font-size: var(--fs-md);">Oturum</h2>
+        <button class="btn btn--ghost" type="button" data-logout>Çıkış yap</button>
+    </section>
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api, ApiError } from "/assets/js/core/api.js";
+
+    const SEVIYELER = [
+        { v: "A1", t: "A1" },
+        { v: "A2", t: "A2" },
+    ];
+    const SINAVLAR = [
+        { v: "GOETHE_A2", t: "Goethe A2" },
+        { v: "NONE", t: "Sınavım yok" },
+    ];
+    const GUNLER = [30, 45, 60, 90, 120];
+    const SURELER = [
+        { v: 60, t: "1 saat" }, { v: 120, t: "2 saat" }, { v: 180, t: "3 saat" },
+        { v: 240, t: "4 saat" }, { v: 390, t: "6,5 saat" },
+    ];
+
+    const hata = document.getElementById("hata");
+    const bilgi = document.getElementById("bilgi");
+
+    const session = await requireAuth();
+    if (session) {
+        await yukle();
+    }
+
+    async function yukle() {
+        const me = await api.get("/me");
+        document.getElementById("eposta").value = me.email;
+        document.getElementById("ad").value = me.displayName ?? "";
+
+        let hedef = null;
+        try {
+            hedef = await api.get("/goals/active");
+        } catch (err) {
+            if (!(err instanceof ApiError && err.status === 404)) throw err;
+        }
+
+        mevcutHedefGoster(hedef);
+        secenekleriKur(hedef);
+        bagla();
+    }
+
+    function mevcutHedefGoster(hedef) {
+        const kutu = document.getElementById("mevcutHedef");
+        if (!hedef) {
+            kutu.innerHTML = `<p style="color: var(--text-faint); font-size: var(--fs-sm);">
+                Henüz hedefin yok.</p>`;
+            return;
+        }
+        const sinav = hedef.examType === "NONE" ? "sınav yok" : "Goethe A2";
+        kutu.innerHTML = `<p style="font-size: var(--fs-sm); color: var(--text-muted);">
+            Şu an: <b style="color: var(--text);">${hedef.targetLevel}</b> ·
+            ${sinav} · ${hedef.totalDays} gün ·
+            günde ${Math.round(hedef.dailyMinutes / 60 * 10) / 10} saat ·
+            hedef tarih ${new Date(hedef.targetDate).toLocaleDateString("tr-TR")}</p>`;
+    }
+
+    function secenekleriKur(hedef) {
+        radyo("seviyeSec", "seviye", SEVIYELER.map((s) => ({ v: s.v, t: s.t })),
+            hedef?.targetLevel ?? "A2");
+        radyo("sinavSec", "sinav", SINAVLAR, hedef?.examType ?? "GOETHE_A2");
+        radyo("gunSec", "gun", GUNLER.map((g) => ({ v: g, t: g + " gün" })),
+            hedef?.totalDays ?? 60);
+        radyo("sureSec", "sure", SURELER, hedef?.dailyMinutes ?? 120);
+    }
+
+    function radyo(hedefId, ad, secenekler, secili) {
+        document.getElementById(hedefId).innerHTML = secenekler.map((o) => `
+            <label class="opt">
+                <input type="radio" name="${ad}" value="${o.v}"
+                       ${String(o.v) === String(secili) ? "checked" : ""}>
+                <span class="opt__box"><span class="opt__title">${o.t}</span></span>
+            </label>`).join("");
+    }
+
+    function bagla() {
+        document.getElementById("hesapKaydet").addEventListener("click", hesapKaydet);
+        document.getElementById("hedefFormu").addEventListener("submit", hedefKaydet);
+        document.getElementById("yenidenUret").addEventListener("click", yenidenUret);
+    }
+
+    async function hesapKaydet() {
+        await calistir(document.getElementById("hesapKaydet"), async () => {
+            await api.patch("/me", {
+                displayName: document.getElementById("ad").value.trim(),
+            });
+            basarili("Hesap bilgilerin kaydedildi.");
+        });
+    }
+
+    async function hedefKaydet(e) {
+        e.preventDefault();
+        const form = new FormData(e.target);
+
+        await calistir(document.getElementById("hedefKaydet"), async () => {
+            await api.post("/goals", {
+                targetLevel: form.get("seviye"),
+                examType: form.get("sinav"),
+                totalDays: Number(form.get("gun")),
+                dailyMinutes: Number(form.get("sure")),
+            });
+            const plan = await api.post("/plan/generate");
+            basarili(`Hedefin güncellendi ve ${plan.totalDays} günlük yeni program `
+                + `üretildi (sürüm ${plan.version}).`);
+            mevcutHedefGoster(await api.get("/goals/active"));
+        });
+    }
+
+    async function yenidenUret() {
+        await calistir(document.getElementById("yenidenUret"), async () => {
+            const plan = await api.post("/plan/generate");
+            basarili(`Program yeniden hesaplandı (sürüm ${plan.version}).`);
+        });
+    }
+
+    async function calistir(btn, is) {
+        hata.hidden = true;
+        bilgi.hidden = true;
+        const eski = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Kaydediliyor…";
+        try {
+            await is();
+        } catch (err) {
+            hata.textContent = err.message;
+            hata.hidden = false;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = eski;
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    }
+
+    function basarili(mesaj) {
+        bilgi.textContent = mesaj;
+        bilgi.hidden = false;
+    }
+</script>
+
+</body>
+</html>

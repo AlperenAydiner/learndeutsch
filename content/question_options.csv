@@ -155,3 +155,187 @@ P39,Verspätung,true,1
 P39,Termin,false,2
 P39,Richtung,false,3
 P39,Reise,false,4
+Q01,sind,true,1
+Q01,bin,false,2
+Q01,seid,false,3
+Q01,ist,false,4
+Q02,Hast,true,1
+Q02,Habt,false,2
+Q02,Hat,false,3
+Q02,Haben,false,4
+Q03,lernt,true,1
+Q03,lerne,false,2
+Q03,lernst,false,3
+Q03,lernen,false,4
+Q04,liest,true,1
+Q04,lese,false,2
+Q04,lesen,false,3
+Q04,last,false,4
+Q05,Die,true,1
+Q05,Der,false,2
+Q05,Das,false,3
+Q05,Den,false,4
+Q06,Das,true,1
+Q06,Der,false,2
+Q06,Die,false,3
+Q06,Dem,false,4
+Q07,Frauen,true,1
+Q07,Fraue,false,2
+Q07,Frauns,false,3
+Q07,Frau,false,4
+Q08,Kinder,true,1
+Q08,Kinden,false,2
+Q08,Kindes,false,3
+Q08,Kind,false,4
+Q09,nicht,true,1
+Q09,kein,false,2
+Q09,keine,false,3
+Q09,nichts,false,4
+Q10,kein,true,1
+Q10,keine,false,2
+Q10,nicht,false,3
+Q10,keinen,false,4
+Q11,Wie viel,true,1
+Q11,Wie,false,2
+Q11,Was für,false,3
+Q11,Wann,false,4
+Q12,Wohin,true,1
+Q12,Wo,false,2
+Q12,Woher,false,3
+Q12,Wann,false,4
+Q13,einen,true,1
+Q13,ein,false,2
+Q13,einem,false,3
+Q13,eine,false,4
+Q14,die,true,1
+Q14,der,false,2
+Q14,dem,false,3
+Q14,den,false,4
+Q15,dein,true,1
+Q15,deine,false,2
+Q15,deinen,false,3
+Q15,deinem,false,4
+Q16,meinen,true,1
+Q16,mein,false,2
+Q16,meine,false,3
+Q16,meinem,false,4
+Q17,müssen,true,1
+Q17,muss,false,2
+Q17,musst,false,3
+Q17,müsst,false,4
+Q18,Darf,true,1
+Q18,Darfst,false,2
+Q18,Dürfe,false,3
+Q18,Dürfen,false,4
+Q19,fängt ... an,true,1
+Q19,anfängt,false,2
+Q19,fangt ... an,false,3
+Q19,anfangt,false,4
+Q20,kommst,true,1
+Q20,kommt,false,2
+Q20,zurückkommst,false,3
+Q20,komme,false,4
+Q21,habe,true,1
+Q21,ich habe,false,2
+Q21,habe ich,false,3
+Q21,hat,false,4
+Q22,am,true,1
+Q22,um,false,2
+Q22,im,false,3
+Q22,an,false,4
+Q23,von ... bis,true,1
+Q23,ab ... zu,false,2
+Q23,seit ... nach,false,3
+Q23,aus ... in,false,4
+Q24,zum,true,1
+Q24,zur,false,2
+Q24,zu der,false,3
+Q24,nach,false,4
+Q25,der,true,1
+Q25,die,false,2
+Q25,dem,false,3
+Q25,den,false,4
+Q26,Mach,true,1
+Q26,Machst,false,2
+Q26,Machen,false,3
+Q26,Macht,false,4
+Q27,Warten,true,1
+Q27,Wartet,false,2
+Q27,Warte,false,3
+Q27,Wartest,false,4
+Q28,hast,true,1
+Q28,bist,false,2
+Q28,hat,false,3
+Q28,habt,false,4
+Q29,ist,true,1
+Q29,hat,false,2
+Q29,haben,false,3
+Q29,sind,false,4
+Q30,gelesen,true,1
+Q30,gelest,false,2
+Q30,liest,false,3
+Q30,las,false,4
+Q31,waren,true,1
+Q31,wart,false,2
+Q31,sind,false,3
+Q31,hatten,false,4
+Q32,konnte,true,1
+Q32,kannte,false,2
+Q32,könnte,false,3
+Q32,konnten,false,4
+Q33,im,true,1
+Q33,in den,false,2
+Q33,ins,false,3
+Q33,in,false,4
+Q34,an die,true,1
+Q34,an der,false,2
+Q34,an dem,false,3
+Q34,auf der,false,4
+Q35,ist,true,1
+Q35,sei,false,2
+Q35,war,false,3
+Q35,bist,false,4
+Q36,ob,true,1
+Q36,dass,false,2
+Q36,wenn,false,3
+Q36,weil,false,4
+Q37,weil,true,1
+Q37,dass,false,2
+Q37,wenn,false,3
+Q37,ob,false,4
+Q38,größer,true,1
+Q38,groß,false,2
+Q38,am größten,false,3
+Q38,mehr groß,false,4
+Q39,beste,true,1
+Q39,gut,false,2
+Q39,besser,false,3
+Q39,am besten,false,4
+Q40,uns,true,1
+Q40,sich,false,2
+Q40,euch,false,3
+Q40,mich,false,4
+Q41,dich,true,1
+Q41,dir,false,2
+Q41,sich,false,3
+Q41,mich,false,4
+Q42,schönes,true,1
+Q42,schön,false,2
+Q42,schöne,false,3
+Q42,schönen,false,4
+Q43,blauen,true,1
+Q43,blau,false,2
+Q43,blaue,false,3
+Q43,blaues,false,4
+Q44,hätte,true,1
+Q44,habe,false,2
+Q44,hatte,false,3
+Q44,haben,false,4
+Q45,in der,true,1
+Q45,in die,false,2
+Q45,im,false,3
+Q45,in dem,false,4
+Q46,füllen,true,1
+Q46,fühlen,false,2
+Q46,fallen,false,3
+Q46,falten,false,4
