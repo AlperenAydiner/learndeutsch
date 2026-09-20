@@ -47,6 +47,7 @@
             </div>
 
             <div class="card2__answer" id="cevapKutu" hidden>
+                <p class="verdict-line" id="sonucSatiri" hidden></p>
                 <p class="card2__answer-value" id="cevap"></p>
                 <p class="card2__example" id="ornek"></p>
             </div>
@@ -54,6 +55,13 @@
 
         <button class="btn btn--primary btn--lg reveal" type="button" id="gosterBtn">
             Cevabı göster
+        </button>
+
+        <!-- Artikel sorusunda otomatik gecmiyoruz: dogru cevabi gormek
+             icin vakit birakmak, dogru/yanlis bilgisinin tek ogretici
+             ani oldugu icin onemli. -->
+        <button class="btn btn--primary btn--lg reveal" type="button" id="devamBtn" hidden>
+            Devam
         </button>
 
         <div class="rate" id="degerlendirme" hidden>
@@ -71,7 +79,7 @@
             </button>
         </div>
 
-        <p class="hint">Boşluk tuşu cevabı gösterir · 1–4 tuşları değerlendirir</p>
+        <p class="hint" id="ipucu">Boşluk tuşu cevabı gösterir · 1–4 tuşları değerlendirir</p>
     </div>
 
     <!-- ---------- Bitti ---------- -->
@@ -105,6 +113,8 @@
     let sira = 0;
     let dogru = 0;
     let acik = false;
+    /** Artikel sorusunda secim yapildi, kullanici "Devam"i bekliyor. */
+    let bekleyenKalite = null;
     let baslangic = 0;
     let ogrenilenToplam = 0;
 
@@ -143,6 +153,7 @@
 
     function bagla() {
         document.getElementById("gosterBtn").addEventListener("click", gosterCevap);
+        document.getElementById("devamBtn").addEventListener("click", devamEt);
 
         document.querySelectorAll("[data-quality]").forEach((btn) => {
             btn.addEventListener("click", () => cevapla(Number(btn.dataset.quality)));
@@ -155,7 +166,12 @@
         document.addEventListener("keydown", (e) => {
             if (e.target.tagName === "INPUT") return;
 
-            if (e.code === "Space" && !acik) {
+            if (bekleyenKalite !== null) {
+                if (e.code === "Space" || e.code === "Enter") {
+                    e.preventDefault();
+                    devamEt();
+                }
+            } else if (e.code === "Space" && !acik) {
                 e.preventDefault();
                 gosterCevap();
             } else if (acik && ["1", "2", "3", "4"].includes(e.key)) {
@@ -185,6 +201,12 @@
         document.getElementById("soru").innerHTML = soruHtml(kart);
         document.getElementById("cevapKutu").hidden = true;
         document.getElementById("degerlendirme").hidden = true;
+        document.getElementById("sonucSatiri").hidden = true;
+        document.getElementById("devamBtn").hidden = true;
+        bekleyenKalite = null;
+        ipucu(kart.direction === "ARTICLE"
+            ? "Doğru artikeli seç"
+            : "Boşluk tuşu cevabı gösterir · 1–4 tuşları değerlendirir");
 
         const artikelSoru = kart.direction === "ARTICLE";
         document.getElementById("artikelSecim").hidden = !artikelSoru;
@@ -234,6 +256,7 @@
     function artikelSec(btn) {
         const kart = kartlar[sira];
         const dogruMu = btn.dataset.artikel === kart.article;
+        const dogruArtikel = kart.article.toLowerCase();
 
         document.querySelectorAll("[data-artikel]").forEach((b) => {
             b.disabled = true;
@@ -244,12 +267,39 @@
             }
         });
 
-        document.getElementById("cevap").innerHTML = artikelHtml(kart) + esc(kart.lemma);
+        const satir = document.getElementById("sonucSatiri");
+        satir.className = "verdict-line " + (dogruMu ? "verdict-line--ok" : "verdict-line--no");
+        satir.innerHTML = dogruMu
+            ? "Doğru"
+            : `Yanlış — doğrusu <b class="${ARTIKEL_SINIF[kart.article]}">${dogruArtikel}</b>`;
+        satir.hidden = false;
+
+        const cogul = kart.pluralForm
+            ? `<span class="card2__plural">çoğul: die ${esc(kart.pluralForm)}</span>` : "";
+        document.getElementById("cevap").innerHTML =
+            artikelHtml(kart) + esc(kart.lemma) + " — " + esc(kart.meaningTr) + cogul;
         document.getElementById("ornek").innerHTML = kart.exampleDe
             ? `${esc(kart.exampleDe)}<i>${esc(kart.exampleTr ?? "")}</i>` : "";
         document.getElementById("cevapKutu").hidden = false;
 
-        setTimeout(() => cevapla(dogruMu ? 4 : 0), 900);
+        // Otomatik gecmiyoruz; kullanici dogruyu okuyup kendi devam etsin.
+        bekleyenKalite = dogruMu ? 4 : 0;
+        ipucu("Boşluk tuşu devam eder");
+        const devam = document.getElementById("devamBtn");
+        devam.hidden = false;
+        devam.focus();
+    }
+
+    function ipucu(metin) {
+        document.getElementById("ipucu").textContent = metin;
+    }
+
+    function devamEt() {
+        if (bekleyenKalite === null) return;
+        const kalite = bekleyenKalite;
+        bekleyenKalite = null;
+        document.getElementById("devamBtn").hidden = true;
+        cevapla(kalite);
     }
 
     // ---------- cevap ----------

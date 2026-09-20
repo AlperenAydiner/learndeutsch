@@ -54,6 +54,26 @@
 .cards .card p  { color: var(--text-muted); font-size: var(--fs-sm); }
 .cards .card .btn { margin-top: auto; align-self: flex-start; }
 
+/* --- Ilerleme cubugu ------------------------------------------------
+   Kelime oturumu, quiz ve yerlestirme testi ayni cubugu kullaniyor;
+   daha once yalnizca onboarding.css'te tanimliydi ve kelimeler
+   sayfasinda hic cizilmiyordu. */
+
+.bar {
+    flex: 1;
+    height: 6px;
+    background: var(--bg-subtle);
+    border-radius: var(--r-full);
+    overflow: hidden;
+}
+
+.bar__fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: var(--r-full);
+    transition: width var(--t) var(--ease);
+}
+
 /* --- Yukleniyor / bos durum ----------------------------------------- */
 
 .loading {
@@ -164,3 +184,41 @@
 .settings__section { margin-bottom: var(--s-5); }
 .settings__section .block__title { margin-bottom: var(--s-2); }
 .settings__current { margin-bottom: var(--s-5); }
+
+/* --- Soru soru inceleme (quiz ve yerlestirme testi) ----------------- */
+
+.qrev {
+    padding: var(--s-4);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border-strong);
+    border-radius: var(--r);
+    margin-bottom: var(--s-3);
+}
+
+.qrev--ok    { border-left-color: var(--done); }
+.qrev--wrong { border-left-color: var(--missed); }
+
+.qrev__q {
+    font-family: var(--font-mono);
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-sm);
+}
+
+.qrev__line {
+    margin: 0 0 var(--s-1);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+.qrev__line b { color: var(--text); }
+.qrev__line--ok b   { color: var(--done); }
+.qrev__line--no b   { color: var(--missed); text-decoration: line-through; }
+
+.qrev__exp {
+    margin: var(--s-3) 0 0;
+    padding-top: var(--s-3);
+    border-top: 1px dashed var(--border);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}

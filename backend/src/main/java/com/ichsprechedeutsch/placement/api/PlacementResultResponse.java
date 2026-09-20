@@ -14,7 +14,20 @@ public record PlacementResultResponse(
         List<CategoryResult> categories,
         List<String> masteredCategoryCodes,
         /** Programdan atlanacak icerik birimi sayisi tahmini. */
-        int skippableUnits) {
+        int skippableUnits,
+        /** Soru soru dogru cevap ve aciklama. */
+        List<Review> review) {
+
+    /**
+     * 39 soru cozup yalnizca seviye gormek ogretici degil: kullanici
+     * neyi neden yanlis yaptigini gorebilmeli.
+     */
+    public record Review(
+            UUID questionId,
+            boolean wasCorrect,
+            String correctOptionText,
+            String explanationTr) {
+    }
 
     public record CategoryResult(
             String code,

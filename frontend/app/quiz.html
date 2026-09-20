@@ -76,33 +76,13 @@
 
 </main>
 
-<style>
-    .qrev {
-        padding: var(--s-4);
-        border: 1px solid var(--border);
-        border-left: 3px solid var(--border-strong);
-        border-radius: var(--r);
-        margin-bottom: var(--s-3);
-        background: var(--surface);
-    }
-    .qrev--ok    { border-left-color: var(--done); }
-    .qrev--wrong { border-left-color: var(--missed); }
-    .qrev__q { font-family: var(--font-mono); margin: 0 0 var(--s-2); }
-    .qrev__a { margin: 0; font-size: var(--fs-sm); }
-    .qrev__a b { color: var(--done); }
-    .qrev__exp {
-        margin: var(--s-2) 0 0;
-        font-size: var(--fs-sm);
-        color: var(--text-muted);
-    }
-</style>
-
 <script type="module">
     import { requireAuth } from "/assets/js/core/guard.js";
     import { api, ApiError } from "/assets/js/core/api.js";
 
     let sorular = [];
     let cevaplar = new Map();
+    let secenekMetni = new Map();
     let sira = 0;
 
     const hata = document.getElementById("hata");
@@ -210,14 +190,35 @@
         document.getElementById("skorMesaj").textContent = sonuc.messageTr;
 
         const soruAdi = new Map(sorular.map((s) => [s.id, s.promptDe]));
+        secenekMetni = new Map(
+            sorular.flatMap((s) => s.options.map((o) => [o.id, o.text])));
 
-        document.getElementById("inceleme").innerHTML = sonuc.review.map((r) => `
+        document.getElementById("inceleme").innerHTML =
+            sonuc.review.map((r) => incelemeHtml(r, soruAdi.get(r.questionId))).join("");
+    }
+
+    /**
+     * Dogru cevabi gostermek tek basina yetmiyor: kullanici neyi
+     * isaretledigini de gormeli ki farki anlasin.
+     */
+    function incelemeHtml(r, soru) {
+        const seciliId = cevaplar.get(r.questionId);
+        const senin = seciliId ? secenekMetni.get(seciliId) : null;
+
+        const seninSatir = r.wasCorrect
+            ? ""
+            : `<p class="qrev__line qrev__line--no">Senin cevabın:
+                 <b>${senin ? esc(senin) : "boş bıraktın"}</b></p>`;
+
+        return `
             <div class="qrev qrev--${r.wasCorrect ? "ok" : "wrong"}">
-                <p class="qrev__q">${esc(soruAdi.get(r.questionId) ?? "")}</p>
-                <p class="qrev__a">Doğru cevap: <b>${esc(r.correctOptionText)}</b></p>
+                <p class="qrev__q">${esc(soru ?? "")}</p>
+                ${seninSatir}
+                <p class="qrev__line qrev__line--ok">Doğru cevap:
+                    <b>${esc(r.correctOptionText)}</b></p>
                 ${r.explanationTr
                     ? `<p class="qrev__exp">${esc(r.explanationTr)}</p>` : ""}
-            </div>`).join("");
+            </div>`;
     }
 
     function hataGoster(mesaj) {

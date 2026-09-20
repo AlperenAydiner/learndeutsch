@@ -35,13 +35,13 @@ P33,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"___ es regnet, bleiben wir z
 P34,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Mein Bruder ist ___ als ich. (alt),"Karşılaştırmada -er eki; alt sesli harf değiştirir: älter.",3
 P35,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,REFLEXIV,Ich freue ___ auf das Wochenende.,"sich freuen dönüşlüdür; ich için Akkusativ zamiri mich.",4
 P36,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,ADJEKTIVDEKLINATION,Ich habe einen ___ Wagen gekauft. (neu),"Belirsiz artikel eril Akkusativ'den sonra sıfat -en alır.",5
-P37,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KONJUNKTIV2,___ Sie mir bitte helfen?,"Nezaket için Konjunktiv II: Könnten Sie ...?",4
+P37,PLACEMENT,MULTIPLE_CHOICE,GRAMMAR,A2,KONJUNKTIV2,"Wenn ich reich ___, würde ich viel reisen. (sein)","Gerçek dışı koşul Konjunktiv II ister: ich wäre.",4
 P38,PLACEMENT,MULTIPLE_CHOICE,VOCAB,A1,WORTSCHATZ,"Ich gehe zum Arzt, weil ich ___ bin.","Doktora hasta olunca gidilir: krank.",2
 P39,PLACEMENT,MULTIPLE_CHOICE,VOCAB,A2,WORTSCHATZ,Der Zug hat 20 Minuten ___.,"Gecikme: die Verspätung.",3
 Q01,,MULTIPLE_CHOICE,GRAMMAR,A1,SEIN_HABEN,Wir ___ aus der Türkei.,"sein: wir sind, ihr seid, sie sind.",1
 Q02,,MULTIPLE_CHOICE,GRAMMAR,A1,SEIN_HABEN,___ du Geschwister?,"haben: du hast. Soru cümlesinde fiil başa gelir.",2
 Q03,,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Ihr ___ sehr schnell. (lernen),"Düzenli fiil, 2. çoğul şahıs: -t eki.",2
-Q04,,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Sie ___ jeden Tag Zeitung. (lesen),"lesen düzensizdir: er/sie liest.",3
+Q04,,MULTIPLE_CHOICE,GRAMMAR,A1,VERBKONJUGATION,Meine Mutter ___ jeden Tag Zeitung. (lesen),"lesen düzensizdir: er/sie liest.",3
 Q05,,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Zeitung liegt auf dem Tisch.,"-ung ile biten isimler dişildir: die Zeitung.",2
 Q06,,ARTICLE,GRAMMAR,A1,ARTIKEL,___ Mädchen spielt im Garten.,"-chen ile biten isimler nötrdür: das Mädchen.",3
 Q07,,MULTIPLE_CHOICE,GRAMMAR,A1,PLURAL,"Eine Frau, zwei ___.","Frau çoğulu Frauen: -en eklenir.",2
@@ -72,7 +72,7 @@ Q31,,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Wir ___ gestern im Kino.,"sein Prät
 Q32,,MULTIPLE_CHOICE,GRAMMAR,A2,PRAETERITUM,Er ___ nicht kommen.,"können Präteritum: er konnte.",4
 Q33,,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Die Kinder spielen ___ Garten.,"Wo? sorusu: Dativ. in dem birleşip im olur.",3
 Q34,,MULTIPLE_CHOICE,GRAMMAR,A2,WECHSELPRAEPOSITIONEN,Ich hänge das Bild ___ Wand.,"Wohin? sorusu: Akkusativ. an die Wand.",4
-Q35,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Er sagt, dass er müde ___.","dass yan cümlesinde fiil sona gider: ist.",3
+Q35,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Er sagt, dass er müde ___.","dass yan cümlesinde çekimli fiil en sona gider: ist.",3
 Q36,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich weiß nicht, ___ er kommt.","Dolaylı evet-hayır sorusu için ob kullanılır.",4
 Q37,,MULTIPLE_CHOICE,GRAMMAR,A2,NEBENSATZ,"Ich lerne Deutsch, ___ ich in Berlin arbeiten will.","Sebep bildirir: weil.",3
 Q38,,MULTIPLE_CHOICE,GRAMMAR,A2,KOMPARATIV,Diese Wohnung ist ___ als die andere. (groß),"groß karşılaştırması: größer.",3

@@ -157,12 +157,14 @@
         </p>
         <ul class="cats" id="kategoriler"></ul>
 
-        <div class="notice notice--info" role="status">
-            Program üretici Adım 5'te geliyor. Bu sonuçlar kaydedildi ve
-            programın hesaplanmasında kullanılacak.
-        </div>
+        <h2 class="block__title">Soru soru</h2>
+        <p class="block__note">
+            Yanlışlarını görmeden ilerlemek öğretici olmaz. Aşağıda her sorunun
+            doğru cevabı ve kısa açıklaması var.
+        </p>
+        <div id="inceleme"></div>
 
-        <a class="btn btn--primary btn--lg" href="/app/bugun.html">Panele git</a>
+        <a class="btn btn--primary btn--lg block" href="/app/bugun.html">Panele git</a>
     </section>
 
 </main>
@@ -190,6 +192,7 @@
     const hata = document.getElementById("hata");
     let sorular = [];
     let cevaplar = new Map();   // soruId -> secenekId
+    let secenekMetni = new Map();   // secenekId -> metin
     let sira = 0;
 
     const session = await requireAuth();
@@ -271,6 +274,8 @@
     async function testeGec() {
         const test = await api.get("/placement/test");
         sorular = test.questions;
+        secenekMetni = new Map(
+            sorular.flatMap((s) => s.options.map((o) => [o.id, o.text])));
         sira = 0;
 
         panel("panelTest");
@@ -367,6 +372,34 @@
                 <span class="cat__score">${c.correct}/${c.total}</span>
                 <span class="tag tag--${c.status.toLowerCase()}">${etiket[c.status]}</span>
             </li>`).join("");
+
+        const soruAdi = new Map(sorular.map((q) => [q.id, q.prompt]));
+        document.getElementById("inceleme").innerHTML =
+            (s.review ?? []).map((r) => incelemeHtml(r, soruAdi.get(r.questionId))).join("");
+    }
+
+    /**
+     * Dogru cevabi gostermek tek basina yetmez: kullanici neyi
+     * isaretledigini de gormeli ki farki anlasin.
+     */
+    function incelemeHtml(r, soru) {
+        const seciliId = cevaplar.get(r.questionId);
+        const senin = seciliId ? secenekMetni.get(seciliId) : null;
+
+        const seninSatir = r.wasCorrect
+            ? ""
+            : `<p class="qrev__line qrev__line--no">Senin cevabın:
+                 <b>${senin ? escapeHtml(senin) : "boş bıraktın"}</b></p>`;
+
+        return `
+            <div class="qrev qrev--${r.wasCorrect ? "ok" : "wrong"}">
+                <p class="qrev__q">${escapeHtml(soru ?? "")}</p>
+                ${seninSatir}
+                <p class="qrev__line qrev__line--ok">Doğru cevap:
+                    <b>${escapeHtml(r.correctOptionText)}</b></p>
+                ${r.explanationTr
+                    ? `<p class="qrev__exp">${escapeHtml(r.explanationTr)}</p>` : ""}
+            </div>`;
     }
 
     // ---------- yardımcılar ----------

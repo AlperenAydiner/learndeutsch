@@ -25,6 +25,20 @@
     color: var(--text-muted);
 }
 
+.session__bar #sayac {
+    flex: none;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    color: var(--text-faint);
+}
+
+/* Dar ekranda uzun kota metni ilerleme cubugunu sifira sikistiriyordu;
+   metin alt satira alindi. */
+@media (max-width: 620px) {
+    .session__bar { flex-wrap: wrap; }
+    .session__bar #kalanBilgi { flex-basis: 100%; font-size: var(--fs-xs); }
+}
+
 /* --- Kart --- */
 
 .card2 {
@@ -221,3 +235,17 @@
 
 .done-box__title { font-size: var(--fs-lg); margin-bottom: var(--s-2); }
 .done-box__lead  { color: var(--text-muted); margin: 0; }
+
+/* --- Artikel sonuc satiri ------------------------------------------- */
+
+.verdict-line {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+}
+
+.verdict-line[hidden] { display: none; }
+.verdict-line--ok { color: var(--done); }
+.verdict-line--no { color: var(--missed); }

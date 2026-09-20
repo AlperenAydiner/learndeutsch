@@ -143,10 +143,10 @@ P36,neu,false,1
 P36,neue,false,2
 P36,neuen,true,3
 P36,neuer,false,4
-P37,Können,false,1
-P37,Könnten,true,2
-P37,Konnten,false,3
-P37,Könnt,false,4
+P37,wäre,true,1
+P37,bin,false,2
+P37,war,false,3
+P37,sein,false,4
 P38,müde,false,1
 P38,krank,true,2
 P38,gesund,false,3
@@ -292,9 +292,9 @@ Q34,an der,false,2
 Q34,an dem,false,3
 Q34,auf der,false,4
 Q35,ist,true,1
-Q35,sei,false,2
-Q35,war,false,3
-Q35,bist,false,4
+Q35,ist er,false,2
+Q35,er ist,false,3
+Q35,sein,false,4
 Q36,ob,true,1
 Q36,dass,false,2
 Q36,wenn,false,3

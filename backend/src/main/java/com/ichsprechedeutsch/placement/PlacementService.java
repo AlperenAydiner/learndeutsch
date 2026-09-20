@@ -112,6 +112,7 @@ public class PlacementService {
         Map<String, int[]> perCategory = new LinkedHashMap<>();   // kod -> [dogru, toplam]
         Map<String, int[]> perSkill = new LinkedHashMap<>();
         Map<String, int[]> perLevel = new LinkedHashMap<>();
+        List<PlacementResultResponse.Review> review = new ArrayList<>();
         int correct = 0;
 
         for (PlacementSubmitRequest.Answer answer : request.answers()) {
@@ -132,6 +133,10 @@ public class PlacementService {
             tally(perCategory, key.categoryCode(), isCorrect);
             tally(perSkill, key.skill(), isCorrect);
             tally(perLevel, key.level(), isCorrect);
+
+            review.add(new PlacementResultResponse.Review(
+                    answer.questionId(), isCorrect,
+                    key.correctOptionText(), key.explanationTr()));
         }
 
         jdbc.batchUpdate("""
@@ -165,7 +170,7 @@ public class PlacementService {
 
         return new PlacementResultResponse(
                 attemptId, level, correct, total, skillScores, categories, mastered,
-                countSkippableUnits(mastered));
+                countSkippableUnits(mastered), review);
     }
 
     // ------------------------------------------------------------------
@@ -183,17 +188,20 @@ public class PlacementService {
     private Map<UUID, QuestionKey> loadAnswerKey(UUID testId) {
         Map<UUID, QuestionKey> keys = new LinkedHashMap<>();
         jdbc.queryForList("""
-                SELECT q.id, q.skill, q.level, mc.code AS category_code,
-                       (SELECT o.id FROM question_option o
-                        WHERE o.question_id = q.id AND o.is_correct LIMIT 1) AS correct_option_id
+                SELECT q.id, q.skill, q.level, q.explanation_tr,
+                       mc.code AS category_code,
+                       o.id AS correct_option_id, o.option_text AS correct_option_text
                 FROM test_question tq
                 JOIN question q ON q.id = tq.question_id
                 JOIN mistake_category mc ON mc.id = q.mistake_category_id
+                JOIN question_option o ON o.question_id = q.id AND o.is_correct
                 WHERE tq.test_id = ?
                 """, testId).forEach(row -> keys.put(
                 (UUID) row.get("id"),
                 new QuestionKey(
                         (UUID) row.get("correct_option_id"),
+                        (String) row.get("correct_option_text"),
+                        (String) row.get("explanation_tr"),
                         (String) row.get("category_code"),
                         (String) row.get("skill"),
                         (String) row.get("level"))));
@@ -315,7 +323,8 @@ public class PlacementService {
         return n == null ? 0 : n;
     }
 
-    private record QuestionKey(UUID correctOptionId, String categoryCode,
+    private record QuestionKey(UUID correctOptionId, String correctOptionText,
+                               String explanationTr, String categoryCode,
                                String skill, String level) {
     }
 }

@@ -330,6 +330,41 @@ public class ContentSeeder implements ApplicationRunner {
                     is_correct = EXCLUDED.is_correct,
                     order_no = EXCLUDED.order_no
                 """, batch);
+
+        retireOptionsNotInCsv(batch);
+    }
+
+    /**
+     * CSV'de artik bulunmayan sikkilari siler.
+     *
+     * Upsert tek basina yetmiyor: bir sikkin metni degistiginde yenisi
+     * eklenir ama eskisi kalir ve soru bes sikli goruunur. Tohumlamanin
+     * gercekten yakinsamasi icin fazlaligi da temizlemek gerekiyor.
+     * Gecmis denemelerde secilmis bir sik silinirse o cevabin secimi
+     * bosalir (V3), dogru/yanlis bilgisi durur.
+     */
+    private void retireOptionsNotInCsv(List<Object[]> batch) {
+        // Ayirici olarak satir sonu kullaniliyor: ne soru kodunda ne de
+        // sik metninde satir sonu bulunur.
+        String codes = batch.stream().map(r -> (String) r[3])
+                .collect(java.util.stream.Collectors.joining("\n"));
+        String texts = batch.stream().map(r -> (String) r[0])
+                .collect(java.util.stream.Collectors.joining("\n"));
+
+        int silinen = jdbc.update("""
+                DELETE FROM question_option o
+                USING question q
+                WHERE q.id = o.question_id
+                  AND NOT EXISTS (
+                      SELECT 1
+                      FROM unnest(string_to_array(?, chr(10)),
+                                  string_to_array(?, chr(10))) AS t(code, txt)
+                      WHERE t.code = q.code AND t.txt = o.option_text)
+                """, codes, texts);
+
+        if (silinen > 0) {
+            log.info("Guncel olmayan {} secenek silindi", silinen);
+        }
     }
 
     /** Sorunun testteki sirasi CSV'deki satir sirasidir. */
