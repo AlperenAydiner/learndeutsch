@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Program — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/pages/program.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap section">
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+
+    <div id="yukleniyor">
+        <h1>Program</h1>
+        <p style="color: var(--text-muted);">Yükleniyor…</p>
+    </div>
+
+    <!-- ---------- Program yoksa ---------- -->
+    <div class="empty" id="bos" hidden>
+        <h2>Henüz bir programın yok</h2>
+        <p id="bosAciklama">
+            Hedefini ve seviyeni belirledikten sonra sana gün gün ne
+            yapacağını söyleyen bir program çıkarabiliriz.
+        </p>
+        <div style="margin-top: var(--sp-5); display: flex; gap: var(--sp-3); justify-content: center; flex-wrap: wrap;">
+            <a class="btn btn--ghost" href="/app/baslangic.html">Hedefimi belirle</a>
+            <button class="btn btn--primary" type="button" id="uretBtn">Programı oluştur</button>
+        </div>
+    </div>
+
+    <!-- ---------- Program ---------- -->
+    <div id="program" hidden>
+        <div class="plan__head">
+            <div>
+                <h1 style="margin-bottom: var(--sp-2);">Program</h1>
+                <div class="plan__meta">
+                    <span><b id="metaGun">—</b>gün</span>
+                    <span><b id="metaSure">—</b>günlük süre</span>
+                    <span><b id="metaBitis">—</b>hedef tarih</span>
+                    <span><b id="metaSurum">—</b>sürüm</span>
+                </div>
+            </div>
+            <button class="btn btn--ghost" type="button" id="yenidenBtn">
+                Yeniden hesapla
+            </button>
+        </div>
+
+        <div class="verdict" id="fizibilite"></div>
+        <div id="takvim"></div>
+    </div>
+
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api, ApiError } from "/assets/js/core/api.js";
+
+    const TIP = {
+        NORMAL:    { sinif: "normal", etiket: null },
+        LIGHT:     { sinif: "light",  etiket: "hafif gün" },
+        MOCK_EXAM: { sinif: "mock",   etiket: "deneme" },
+        TEST:      { sinif: "mock",   etiket: "test" },
+    };
+
+    const BLOK_ADI = {
+        KELIME: "Kelime", GRAMER: "Gramer", HOEREN: "Hören", LESEN: "Lesen",
+        SCHREIBEN: "Schreiben", SPRECHEN: "Sprechen", SINAV_PRATIGI: "Sınav pratiği",
+    };
+
+    const hata = document.getElementById("hata");
+
+    const session = await requireAuth();
+    if (session) {
+        document.getElementById("uretBtn").addEventListener("click", uret);
+        document.getElementById("yenidenBtn").addEventListener("click", uret);
+        await yukle();
+    }
+
+    async function yukle() {
+        try {
+            const plan = await api.get("/plan");
+            goster(plan);
+        } catch (err) {
+            if (err instanceof ApiError && err.status === 404) {
+                await bosGoster();
+            } else {
+                hataGoster(err.message);
+            }
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    /** Program yoksa: hedef var mı diye bak, mesajı ona göre ayarla. */
+    async function bosGoster() {
+        try {
+            await api.get("/goals/active");
+        } catch (err) {
+            if (err instanceof ApiError && err.status === 404) {
+                document.getElementById("bosAciklama").textContent =
+                    "Önce hedefini belirlemen ve seviye ölçümünü yapman gerekiyor.";
+                document.getElementById("uretBtn").hidden = true;
+            }
+        }
+        document.getElementById("bos").hidden = false;
+    }
+
+    async function uret() {
+        const butonlar = [document.getElementById("uretBtn"),
+                          document.getElementById("yenidenBtn")];
+        butonlar.forEach((b) => { b.disabled = true; });
+        hata.hidden = true;
+
+        try {
+            const plan = await api.post("/plan/generate");
+            document.getElementById("bos").hidden = true;
+            goster(plan);
+        } catch (err) {
+            hataGoster(err.message);
+        } finally {
+            butonlar.forEach((b) => { b.disabled = false; });
+        }
+    }
+
+    function goster(plan) {
+        document.getElementById("program").hidden = false;
+
+        document.getElementById("metaGun").textContent = plan.totalDays;
+        document.getElementById("metaSure").textContent = sureMetni(plan.dailyMinutes);
+        document.getElementById("metaBitis").textContent = tarih(plan.endDate);
+        document.getElementById("metaSurum").textContent = "v" + plan.version;
+
+        fizibiliteGoster(plan);
+        takvimGoster(plan.days);
+    }
+
+    function fizibiliteGoster(plan) {
+        const kutu = document.getElementById("fizibilite");
+        const bilgi = {
+            OK: ["ok", "Hedefin ulaşılabilir",
+                 "Program rahat; tekrar için de yer var."],
+            TIGHT: ["tight", "Program sıkışık",
+                    "Boş gün yok. Birkaç gün aksatırsan geriye düşersin."],
+            UNREALISTIC: ["unrealistic", "Bu hedef bu süreye sığmıyor",
+                          "Programı yine de kurduk ama bazı konular dışarıda kaldı. "
+                          + "Ayarlar'dan süreni uzatabilir veya günlük süreni artırabilirsin."],
+        }[plan.feasibility];
+
+        kutu.className = "verdict verdict--" + bilgi[0];
+        kutu.innerHTML = `
+            <div class="verdict__title">${bilgi[1]}</div>
+            <div>${bilgi[2]}</div>`;
+    }
+
+    function takvimGoster(gunler) {
+        const bugun = new Date().toISOString().slice(0, 10);
+        const parcalar = [];
+
+        gunler.forEach((g, i) => {
+            if (i % 7 === 0) {
+                parcalar.push(`<div class="week">${Math.floor(i / 7) + 1}. hafta</div>`);
+            }
+
+            const tip = TIP[g.dayType] ?? TIP.NORMAL;
+            const durum = g.date === bugun ? " day--today"
+                        : g.date < bugun ? " day--past" : "";
+
+            const bloklar = g.tasks.map((t) =>
+                `<span class="chip">${BLOK_ADI[t.taskType] ?? t.taskType} ${t.plannedMinutes}dk</span>`
+            ).join("");
+
+            parcalar.push(`
+                <div class="day day--${tip.sinif}${durum}">
+                    <div class="day__no">
+                        <span class="day__no-value">${g.dayNumber}</span>
+                        <span class="day__no-date">${kisaTarih(g.date)}</span>
+                    </div>
+                    <div>
+                        <span class="day__title">${esc(g.titleTr ?? "—")}</span>
+                        ${tip.etiket ? `<span class="day__tag day__tag--${tip.sinif}">${tip.etiket}</span>` : ""}
+                        ${g.grammarSummary ? `<span class="day__grammar">${esc(g.grammarSummary)}</span>` : ""}
+                        <div class="day__blocks">${bloklar}</div>
+                    </div>
+                    <div class="day__minutes">${sureMetni(g.plannedMinutes)}</div>
+                </div>`);
+        });
+
+        document.getElementById("takvim").innerHTML = parcalar.join("");
+    }
+
+    // ---------- yardımcılar ----------
+
+    function sureMetni(dakika) {
+        if (dakika < 60) return dakika + " dk";
+        const saat = Math.floor(dakika / 60);
+        const kalan = dakika % 60;
+        return kalan === 0 ? `${saat} sa` : `${saat} sa ${kalan} dk`;
+    }
+
+    function tarih(iso) {
+        return new Date(iso).toLocaleDateString("tr-TR",
+            { day: "numeric", month: "long", year: "numeric" });
+    }
+
+    function kisaTarih(iso) {
+        return new Date(iso).toLocaleDateString("tr-TR",
+            { day: "numeric", month: "short" });
+    }
+
+    function hataGoster(mesaj) {
+        hata.textContent = mesaj;
+        hata.hidden = false;
+    }
+
+    function esc(s) {
+        const d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+    }
+</script>
+
+</body>
+</html>
