@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kelimeler — Ich spreche Deutsch</title>
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/pages/auth.css">
+    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+    <link rel="stylesheet" href="/assets/css/pages/words.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<main class="wrap section session">
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p id="yukleniyor" style="color: var(--text-muted);">Yükleniyor…</p>
+
+    <!-- ---------- Oturum ---------- -->
+    <div id="oturum" hidden>
+        <div class="session__bar">
+            <span id="sayac"></span>
+            <span class="bar"><span class="bar__fill" id="ilerleme" style="width:0%"></span></span>
+            <span id="kalanBilgi"></span>
+        </div>
+
+        <div class="card2">
+            <div class="card2__badge" id="rozet"></div>
+            <p class="card2__prompt" id="soru"></p>
+
+            <!-- Artikel sorusu: gercek secim, oz degerlendirme degil -->
+            <div class="artikel-choice" id="artikelSecim" hidden>
+                <button class="artikel-btn artikel-btn--der" type="button" data-artikel="DER">der</button>
+                <button class="artikel-btn artikel-btn--die" type="button" data-artikel="DIE">die</button>
+                <button class="artikel-btn artikel-btn--das" type="button" data-artikel="DAS">das</button>
+            </div>
+
+            <div class="card2__answer" id="cevapKutu" hidden>
+                <p class="card2__answer-value" id="cevap"></p>
+                <p class="card2__example" id="ornek"></p>
+            </div>
+        </div>
+
+        <button class="btn btn--primary btn--lg reveal" type="button" id="gosterBtn">
+            Cevabı göster
+        </button>
+
+        <div class="rate" id="degerlendirme" hidden>
+            <button class="rate__btn rate__btn--again" type="button" data-quality="0">
+                Bilmiyordum<b>baştan</b>
+            </button>
+            <button class="rate__btn" type="button" data-quality="3">
+                Zor hatırladım<b>yakında tekrar</b>
+            </button>
+            <button class="rate__btn" type="button" data-quality="4">
+                Hatırladım<b>normal</b>
+            </button>
+            <button class="rate__btn rate__btn--easy" type="button" data-quality="5">
+                Çok kolay<b>uzun aralık</b>
+            </button>
+        </div>
+
+        <p class="hint">Boşluk tuşu cevabı gösterir · 1–4 tuşları değerlendirir</p>
+    </div>
+
+    <!-- ---------- Bitti ---------- -->
+    <div class="done-box" id="bitti" hidden>
+        <div class="done-box__icon" aria-hidden="true">✓</div>
+        <h1 style="font-size: var(--fs-lg);" id="bittiBaslik">Bugünkü tekrarın bitti</h1>
+        <p style="color: var(--text-muted);" id="bittiAciklama"></p>
+        <div class="done-box__stats">
+            <div class="done-box__stat">
+                <b id="statCard">0</b><span>kart</span>
+            </div>
+            <div class="done-box__stat">
+                <b id="statDogru">0</b><span>bildin</span>
+            </div>
+            <div class="done-box__stat">
+                <b id="statToplam">0</b><span>öğrendiğin kelime</span>
+            </div>
+        </div>
+        <a class="btn btn--primary" href="/app/bugun.html">Bugüne dön</a>
+    </div>
+
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api, ApiError } from "/assets/js/core/api.js";
+
+    const ARTIKEL_SINIF = { DER: "artikel--der", DIE: "artikel--die", DAS: "artikel--das" };
+
+    let kartlar = [];
+    let sira = 0;
+    let dogru = 0;
+    let acik = false;
+    let baslangic = 0;
+    let ogrenilenToplam = 0;
+
+    const hata = document.getElementById("hata");
+
+    const session = await requireAuth();
+    if (session) {
+        await yukle();
+    }
+
+    async function yukle() {
+        try {
+            const oturum = await api.get("/words/session");
+            kartlar = oturum.cards;
+            ogrenilenToplam = oturum.learnedTotal;
+
+            if (kartlar.length === 0) {
+                bittiGoster(oturum.quotaReasonTr);
+                return;
+            }
+
+            document.getElementById("oturum").hidden = false;
+            document.getElementById("kalanBilgi").textContent = oturum.quotaReasonTr;
+            bagla();
+            ciz();
+        } catch (err) {
+            if (err instanceof ApiError && err.status === 404) {
+                bittiGoster(err.message);
+            } else {
+                hataGoster(err.message);
+            }
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    function bagla() {
+        document.getElementById("gosterBtn").addEventListener("click", gosterCevap);
+
+        document.querySelectorAll("[data-quality]").forEach((btn) => {
+            btn.addEventListener("click", () => cevapla(Number(btn.dataset.quality)));
+        });
+
+        document.querySelectorAll("[data-artikel]").forEach((btn) => {
+            btn.addEventListener("click", () => artikelSec(btn));
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.target.tagName === "INPUT") return;
+
+            if (e.code === "Space" && !acik) {
+                e.preventDefault();
+                gosterCevap();
+            } else if (acik && ["1", "2", "3", "4"].includes(e.key)) {
+                const kalite = [0, 3, 4, 5][Number(e.key) - 1];
+                cevapla(kalite);
+            }
+        });
+    }
+
+    // ---------- çizim ----------
+
+    function ciz() {
+        const kart = kartlar[sira];
+        acik = false;
+        baslangic = performance.now();
+
+        document.getElementById("sayac").textContent = `${sira + 1} / ${kartlar.length}`;
+        document.getElementById("ilerleme").style.width =
+            `${(sira / kartlar.length) * 100}%`;
+
+        const rozet = document.getElementById("rozet");
+        rozet.textContent = kart.isNew ? "yeni kelime"
+            : kart.direction === "ARTICLE" ? "artikel"
+            : kart.direction === "TR_DE" ? "Türkçe → Almanca" : "Almanca → Türkçe";
+        rozet.className = "card2__badge" + (kart.isNew ? " card2__badge--new" : "");
+
+        document.getElementById("soru").innerHTML = soruHtml(kart);
+        document.getElementById("cevapKutu").hidden = true;
+        document.getElementById("degerlendirme").hidden = true;
+
+        const artikelSoru = kart.direction === "ARTICLE";
+        document.getElementById("artikelSecim").hidden = !artikelSoru;
+        document.getElementById("gosterBtn").hidden = artikelSoru;
+
+        document.querySelectorAll("[data-artikel]").forEach((b) => {
+            b.disabled = false;
+            b.className = `artikel-btn artikel-btn--${b.dataset.artikel.toLowerCase()}`;
+        });
+    }
+
+    function soruHtml(kart) {
+        if (kart.direction === "TR_DE") {
+            return esc(kart.meaningTr);
+        }
+        // ARTICLE sorusunda artikel gizlenir, kelime tek basina gosterilir.
+        const artikel = kart.direction === "ARTICLE" ? "" : artikelHtml(kart);
+        const cogul = kart.pluralForm && kart.direction !== "ARTICLE"
+            ? `<span class="card2__plural">çoğul: die ${esc(kart.pluralForm)}</span>` : "";
+        return artikel + esc(kart.lemma) + cogul;
+    }
+
+    function artikelHtml(kart) {
+        if (!kart.article) return "";
+        const metin = kart.article.toLowerCase();
+        return `<span class="${ARTIKEL_SINIF[kart.article]}">${metin}</span> `;
+    }
+
+    function gosterCevap() {
+        const kart = kartlar[sira];
+        acik = true;
+
+        document.getElementById("cevap").innerHTML =
+            kart.direction === "TR_DE"
+                ? artikelHtml(kart) + esc(kart.lemma)
+                : esc(kart.meaningTr);
+
+        document.getElementById("ornek").innerHTML = kart.exampleDe
+            ? `${esc(kart.exampleDe)}<i>${esc(kart.exampleTr ?? "")}</i>` : "";
+
+        document.getElementById("cevapKutu").hidden = false;
+        document.getElementById("gosterBtn").hidden = true;
+        document.getElementById("degerlendirme").hidden = false;
+    }
+
+    /** Artikel sorusu gercekten olculur: dogru secim 4, yanlis 0 sayilir. */
+    function artikelSec(btn) {
+        const kart = kartlar[sira];
+        const dogruMu = btn.dataset.artikel === kart.article;
+
+        document.querySelectorAll("[data-artikel]").forEach((b) => {
+            b.disabled = true;
+            if (b.dataset.artikel === kart.article) {
+                b.classList.add("artikel-btn--correct");
+            } else if (b === btn) {
+                b.classList.add("artikel-btn--wrong");
+            }
+        });
+
+        document.getElementById("cevap").innerHTML = artikelHtml(kart) + esc(kart.lemma);
+        document.getElementById("ornek").innerHTML = kart.exampleDe
+            ? `${esc(kart.exampleDe)}<i>${esc(kart.exampleTr ?? "")}</i>` : "";
+        document.getElementById("cevapKutu").hidden = false;
+
+        setTimeout(() => cevapla(dogruMu ? 4 : 0), 900);
+    }
+
+    // ---------- cevap ----------
+
+    async function cevapla(kalite) {
+        const kart = kartlar[sira];
+        acik = false;
+
+        if (kalite >= 3) dogru++;
+
+        try {
+            await api.post(`/words/${kart.userWordId}/review`, {
+                quality: kalite,
+                direction: kart.direction,
+                responseMs: Math.round(performance.now() - baslangic),
+            });
+        } catch (err) {
+            hataGoster(err.message);
+            return;
+        }
+
+        sira++;
+        if (sira >= kartlar.length) {
+            document.getElementById("oturum").hidden = true;
+            bittiGoster("Yarın yeni tekrarlarla devam edeceğiz.");
+        } else {
+            ciz();
+        }
+    }
+
+    function bittiGoster(mesaj) {
+        document.getElementById("bittiAciklama").textContent = mesaj ?? "";
+        document.getElementById("statCard").textContent = sira;
+        document.getElementById("statDogru").textContent = dogru;
+        document.getElementById("statToplam").textContent = ogrenilenToplam;
+        document.getElementById("bitti").hidden = false;
+    }
+
+    function hataGoster(mesaj) {
+        hata.textContent = mesaj;
+        hata.hidden = false;
+    }
+
+    function esc(s) {
+        const d = document.createElement("div");
+        d.textContent = s ?? "";
+        return d.innerHTML;
+    }
+</script>
+
+</body>
+</html>

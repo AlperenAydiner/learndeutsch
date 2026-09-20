@@ -1,0 +1,209 @@
+/* =====================================================================
+   Kelime tekrar oturumu.
+   ===================================================================== */
+
+.session {
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+.session__bar {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-5);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+/* --- Kart --- */
+
+.card2 {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-7) var(--sp-5);
+    text-align: center;
+    box-shadow: var(--shadow);
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card2__badge {
+    font-size: var(--fs-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: var(--sp-4);
+}
+
+.card2__badge--new {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.card2__prompt {
+    font-size: var(--fs-2xl);
+    font-weight: 650;
+    line-height: 1.25;
+    margin: 0;
+    overflow-wrap: break-word;
+}
+
+.card2__plural {
+    display: block;
+    margin-top: var(--sp-2);
+    font-size: var(--fs-sm);
+    font-weight: 400;
+    color: var(--text-faint);
+}
+
+.card2__answer {
+    margin-top: var(--sp-5);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--border);
+}
+
+.card2__answer[hidden] {
+    display: none;
+}
+
+.card2__answer-value {
+    font-size: var(--fs-xl);
+    font-weight: 650;
+    margin: 0 0 var(--sp-4);
+}
+
+.card2__example {
+    margin: 0;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.card2__example i {
+    display: block;
+    color: var(--text-faint);
+    font-style: normal;
+}
+
+/* --- Artikel secimi --- */
+
+.artikel-choice {
+    display: flex;
+    gap: var(--sp-3);
+    justify-content: center;
+    margin-top: var(--sp-5);
+}
+
+.artikel-btn {
+    flex: 1;
+    max-width: 120px;
+    padding: var(--sp-4);
+    background: var(--surface-alt);
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.08s ease, border-color 0.12s ease;
+}
+
+.artikel-btn:hover { transform: translateY(-2px); }
+.artikel-btn[disabled] { cursor: default; transform: none; }
+
+.artikel-btn--der { color: var(--der); }
+.artikel-btn--die { color: var(--die); }
+.artikel-btn--das { color: var(--das); }
+
+.artikel-btn--correct {
+    border-color: var(--done);
+    background: var(--done-soft);
+}
+
+.artikel-btn--wrong {
+    border-color: var(--missed);
+    background: var(--missed-soft);
+}
+
+/* --- Degerlendirme --- */
+
+.rate {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: var(--sp-2);
+    margin-top: var(--sp-5);
+}
+
+.rate[hidden] { display: none; }
+
+.rate__btn {
+    padding: var(--sp-3) var(--sp-2);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.rate__btn:hover { border-color: var(--accent); }
+
+.rate__btn b {
+    display: block;
+    font-size: var(--fs-xs);
+    color: var(--text-faint);
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.rate__btn--again:hover { border-color: var(--missed); }
+.rate__btn--easy:hover  { border-color: var(--done); }
+
+.reveal {
+    width: 100%;
+    margin-top: var(--sp-5);
+}
+
+/* --- Bitiş --- */
+
+.done-box {
+    text-align: center;
+    padding: var(--sp-8) var(--sp-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.done-box__icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--sp-4);
+}
+
+.done-box__stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-6);
+    margin: var(--sp-5) 0;
+}
+
+.done-box__stat b {
+    display: block;
+    font-size: var(--fs-xl);
+}
+
+.done-box__stat span {
+    font-size: var(--fs-xs);
+    color: var(--text-muted);
+}
+
+.hint {
+    margin-top: var(--sp-4);
+    text-align: center;
+    font-size: var(--fs-xs);
+    color: var(--text-faint);
+}
