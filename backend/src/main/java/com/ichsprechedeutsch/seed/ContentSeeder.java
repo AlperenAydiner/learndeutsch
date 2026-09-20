@@ -321,6 +321,11 @@ public class ContentSeeder implements ApplicationRunner {
                     r.get("question_code"),
             });
         }
+        // Silme ONCE olmali. question_option'da (question_id, order_no)
+        // uzerinde de benzersizlik var: bir sikkin metni degistiginde
+        // yeni satir eski satirin sirasina carpiyor ve ekleme patliyordu.
+        retireOptionsNotInCsv(batch);
+
         jdbc.batchUpdate("""
                 INSERT INTO question_option (question_id, option_text, is_correct, order_no)
                 SELECT q.id, ?, ?, ?
@@ -330,8 +335,6 @@ public class ContentSeeder implements ApplicationRunner {
                     is_correct = EXCLUDED.is_correct,
                     order_no = EXCLUDED.order_no
                 """, batch);
-
-        retireOptionsNotInCsv(batch);
     }
 
     /**
@@ -342,6 +345,11 @@ public class ContentSeeder implements ApplicationRunner {
      * gercekten yakinsamasi icin fazlaligi da temizlemek gerekiyor.
      * Gecmis denemelerde secilmis bir sik silinirse o cevabin secimi
      * bosalir (V3), dogru/yanlis bilgisi durur.
+     *
+     * Not: bir sorunun sikklari yalnizca yeniden SIRALANIRSA (metinler
+     * ayni kalip order_no'lari yer degistirirse) silme ise yaramaz ve
+     * guncelleme yine siraya carpar. Boyle bir durumda sikklarin
+     * metinlerini de degistirmek gerekir.
      */
     private void retireOptionsNotInCsv(List<Object[]> batch) {
         // Ayirici olarak satir sonu kullaniliyor: ne soru kodunda ne de
