@@ -1,0 +1,362 @@
+[
+  {
+    "id": "q25",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Das Buch gehört ___ Lehrerin.",
+    "options": [
+      "der",
+      "die",
+      "dem",
+      "den"
+    ],
+    "answer": "der",
+    "acceptedAnswers": [],
+    "tags": [
+      "DATIV"
+    ],
+    "explanationTr": "gehören Dativ ister; dişil der olur.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q29",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Der Zug ___ pünktlich angekommen.",
+    "options": [
+      "ist",
+      "hat",
+      "haben",
+      "sind"
+    ],
+    "answer": "ist",
+    "acceptedAnswers": [],
+    "tags": [
+      "PERFEKT"
+    ],
+    "explanationTr": "ankommen hareket fiilidir: sein alır.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q30",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich habe das Buch ___. (lesen)",
+    "options": [
+      "gelesen",
+      "gelest",
+      "liest",
+      "las"
+    ],
+    "answer": "gelesen",
+    "acceptedAnswers": [],
+    "tags": [
+      "PERFEKT"
+    ],
+    "explanationTr": "lesen düzensizdir: Partizip II gelesen.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q31",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir ___ gestern im Kino.",
+    "options": [
+      "waren",
+      "wart",
+      "sind",
+      "hatten"
+    ],
+    "answer": "waren",
+    "acceptedAnswers": [],
+    "tags": [
+      "PRAETERITUM"
+    ],
+    "explanationTr": "sein Präteritum: wir waren.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q32",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Er ___ nicht kommen.",
+    "options": [
+      "konnte",
+      "kannte",
+      "könnte",
+      "konnten"
+    ],
+    "answer": "konnte",
+    "acceptedAnswers": [],
+    "tags": [
+      "PRAETERITUM"
+    ],
+    "explanationTr": "können Präteritum: er konnte.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q33",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Die Kinder spielen ___ Garten.",
+    "options": [
+      "im",
+      "in den",
+      "ins",
+      "in"
+    ],
+    "answer": "im",
+    "acceptedAnswers": [],
+    "tags": [
+      "WECHSELPRAEPOSITIONEN"
+    ],
+    "explanationTr": "Wo? sorusu: Dativ. in dem birleşip im olur.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q34",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich hänge das Bild ___ Wand.",
+    "options": [
+      "an die",
+      "an der",
+      "an dem",
+      "auf der"
+    ],
+    "answer": "an die",
+    "acceptedAnswers": [],
+    "tags": [
+      "WECHSELPRAEPOSITIONEN"
+    ],
+    "explanationTr": "Wohin? sorusu: Akkusativ. an die Wand.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q35",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Er sagt, dass er müde ___.",
+    "options": [
+      "ist",
+      "ist er",
+      "er ist",
+      "sein"
+    ],
+    "answer": "ist",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEBENSATZ"
+    ],
+    "explanationTr": "dass yan cümlesinde çekimli fiil en sona gider: ist.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q36",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich weiß nicht, ___ er kommt.",
+    "options": [
+      "ob",
+      "dass",
+      "wenn",
+      "weil"
+    ],
+    "answer": "ob",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEBENSATZ"
+    ],
+    "explanationTr": "Dolaylı evet-hayır sorusu için ob kullanılır.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q37",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich lerne Deutsch, ___ ich in Berlin arbeiten will.",
+    "options": [
+      "weil",
+      "dass",
+      "wenn",
+      "ob"
+    ],
+    "answer": "weil",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEBENSATZ"
+    ],
+    "explanationTr": "Sebep bildirir: weil.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q38",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Diese Wohnung ist ___ als die andere. (groß)",
+    "options": [
+      "größer",
+      "groß",
+      "am größten",
+      "mehr groß"
+    ],
+    "answer": "größer",
+    "acceptedAnswers": [],
+    "tags": [
+      "KOMPARATIV"
+    ],
+    "explanationTr": "groß karşılaştırması: größer.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q39",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Das ist das ___ Restaurant in der Stadt. (gut)",
+    "options": [
+      "beste",
+      "gut",
+      "besser",
+      "am besten"
+    ],
+    "answer": "beste",
+    "acceptedAnswers": [],
+    "tags": [
+      "KOMPARATIV"
+    ],
+    "explanationTr": "Üstünlük: am besten yerine sıfat olarak beste.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q40",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir treffen ___ um sieben.",
+    "options": [
+      "uns",
+      "sich",
+      "euch",
+      "mich"
+    ],
+    "answer": "uns",
+    "acceptedAnswers": [],
+    "tags": [
+      "REFLEXIV"
+    ],
+    "explanationTr": "sich treffen: wir treffen uns.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q41",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Interessierst du ___ für Sport?",
+    "options": [
+      "dich",
+      "dir",
+      "sich",
+      "mich"
+    ],
+    "answer": "dich",
+    "acceptedAnswers": [],
+    "tags": [
+      "REFLEXIV"
+    ],
+    "explanationTr": "sich interessieren: du interessierst dich.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q42",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Das ist ein ___ Haus. (schön)",
+    "options": [
+      "schönes",
+      "schön",
+      "schöne",
+      "schönen"
+    ],
+    "answer": "schönes",
+    "acceptedAnswers": [],
+    "tags": [
+      "ADJEKTIVDEKLINATION"
+    ],
+    "explanationTr": "Belirsiz artikel nötr Nominativ: schönes.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q43",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich mag den ___ Mantel. (blau)",
+    "options": [
+      "blauen",
+      "blau",
+      "blaue",
+      "blaues"
+    ],
+    "answer": "blauen",
+    "acceptedAnswers": [],
+    "tags": [
+      "ADJEKTIVDEKLINATION"
+    ],
+    "explanationTr": "Belirli artikel eril Akkusativ: -en eki.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q44",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich ___ gern einen Kaffee.",
+    "options": [
+      "hätte",
+      "habe",
+      "hatte",
+      "haben"
+    ],
+    "answer": "hätte",
+    "acceptedAnswers": [],
+    "tags": [
+      "KONJUNKTIV2"
+    ],
+    "explanationTr": "Nezaket: hätte gern.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q46",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Bitte ___ Sie dieses Formular aus.",
+    "options": [
+      "füllen",
+      "fühlen",
+      "fallen",
+      "falten"
+    ],
+    "answer": "füllen",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSCHATZ"
+    ],
+    "explanationTr": "Form doldurmak: ausfüllen.",
+    "estimatedMinutes": 1,
+    "verified": false
+  }
+]

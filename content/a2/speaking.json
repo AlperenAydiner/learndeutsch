@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sp-a2-01",
+    "level": "A2",
+    "titleTr": "Bir sorunu anlat ve çözüm iste",
+    "taskTr": "Bir mağazada ya da komşunla bir sorun yaşadığını düşün. Sorunu anlat, ne istediğini söyle ve nazik bir çözüm öner. Kendini kaydet, sonra dinle.",
+    "promptsDe": [
+      "Was ist genau passiert?",
+      "Wann und wo war das?",
+      "Was möchten Sie jetzt?",
+      "Welchen Vorschlag machen Sie?"
+    ],
+    "phrases": [
+      "Ich habe ein Problem mit ... .",
+      "Das Gerät funktioniert leider nicht.",
+      "Könnten Sie mir bitte helfen?",
+      "Vielleicht können wir ... ."
+    ],
+    "estimatedMinutes": 12,
+    "verified": false
+  },
+  {
+    "id": "sp-a2-02",
+    "level": "A2",
+    "titleTr": "Planlarını ve nedenlerini anlat",
+    "taskTr": "Önümüzdeki aylarda yapmak istediğin bir şeyi anlat: ne, ne zaman, neden ve nasıl hazırlanıyorsun. \"weil\" ve \"deshalb\" kullanmaya çalış.",
+    "promptsDe": [
+      "Was möchten Sie machen?",
+      "Warum ist das wichtig für Sie?",
+      "Wie bereiten Sie sich vor?",
+      "Welche Probleme könnte es geben?"
+    ],
+    "phrases": [
+      "Ich möchte ... , weil ... .",
+      "Deshalb lerne ich jeden Tag ... .",
+      "Zuerst ... , danach ... .",
+      "Ich hoffe, dass ... ."
+    ],
+    "estimatedMinutes": 12,
+    "verified": false
+  }
+]

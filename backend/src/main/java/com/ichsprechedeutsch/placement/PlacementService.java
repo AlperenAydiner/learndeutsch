@@ -1,330 +1,235 @@
 package com.ichsprechedeutsch.placement;
 
+import com.ichsprechedeutsch.activity.ActivityRules;
+import com.ichsprechedeutsch.activity.ActivityService;
+import com.ichsprechedeutsch.activity.ActivityService.SiteActivity;
+import com.ichsprechedeutsch.activity.ActivityStore;
+import com.ichsprechedeutsch.activity.ActivityType;
 import com.ichsprechedeutsch.common.error.NotFoundException;
 import com.ichsprechedeutsch.common.error.ValidationException;
-import com.ichsprechedeutsch.placement.api.PlacementResultResponse;
-import com.ichsprechedeutsch.placement.api.PlacementSubmitRequest;
-import com.ichsprechedeutsch.placement.api.PlacementTestResponse;
+import com.ichsprechedeutsch.common.model.Level;
+import com.ichsprechedeutsch.config.ActivityProperties;
+import com.ichsprechedeutsch.config.PlacementProperties;
+import com.ichsprechedeutsch.content.ContentCatalog;
+import com.ichsprechedeutsch.content.Question;
+import com.ichsprechedeutsch.level.LevelStore;
+import com.ichsprechedeutsch.onboarding.OnboardingStore;
+import com.ichsprechedeutsch.placement.PlacementEngine.Block;
+import com.ichsprechedeutsch.placement.PlacementEngine.Step;
+import com.ichsprechedeutsch.placement.PlacementStore.BlockState;
+import com.ichsprechedeutsch.placement.PlacementStore.Session;
+import com.ichsprechedeutsch.placement.PlacementStore.State;
+import java.security.SecureRandom;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 import java.util.UUID;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tools.jackson.databind.ObjectMapper;
 
 /**
- * Yerlestirme testi: sorulari sunar, cevaplari puanlar, sonucu kaydeder.
- *
- * Bu servisin ciktisi program ureticinin girdisidir: hangi konularin
- * atlanacagi buradaki kategori sonuclarindan belirlenir.
- *
- * JPA yerine JdbcTemplate kullaniliyor. Kural su: kullanicinin sahip
- * oldugu, zamanla degisen kayitlar (AppUser, LearningGoal, ileride Plan)
- * JPA ile; cok tabloyu birlestirip okuyan ve toplu yazan islemler
- * (icerik, olcme) JdbcTemplate ile yonetilir.
+ * Yerlestirme testi (SPEC 4.1). Sonuc yalniz KABA baslangic noktasidir:
+ * dusuk guvenle kaydedilir, beceri profilini doldurmaz (kanit uretmez).
+ * Tamamlanan test aktivite gecmisine otomatik yazilir (6.1).
  */
 @Service
 public class PlacementService {
 
-    private static final String PLACEMENT_TEST_CODE = "PLACEMENT";
-
-    /** Bir kategori bu oranin uzerindeyse konu biliniyor sayilir ve atlanir. */
-    private static final double MASTERED = 0.80;
-
-    /** Bu oranin uzerindeyse kismen biliniyor: sure yariya iner. */
-    private static final double PARTIAL = 0.50;
-
-    /** A2 sorularinda bu oranin uzerindeyse seviye A2 tahmin edilir. */
-    private static final double A2_THRESHOLD = 0.60;
-
-    private final JdbcTemplate jdbc;
-
-    public PlacementService(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
+    /** Istemciye giden soru: dogru cevap YOK. */
+    public record QuestionView(String id, String prompt, List<String> options, String kind) {
     }
 
-    // ------------------------------------------------------------------
-
-    @Transactional(readOnly = true)
-    public PlacementTestResponse loadTest() {
-        Map<String, Object> test = findTest();
-        UUID testId = (UUID) test.get("id");
-
-        List<Map<String, Object>> rows = jdbc.queryForList("""
-                SELECT q.id AS question_id, q.question_type, q.prompt_de,
-                       o.id AS option_id, o.option_text, tq.order_no, o.order_no AS opt_order
-                FROM test_question tq
-                JOIN question q ON q.id = tq.question_id
-                JOIN question_option o ON o.question_id = q.id
-                WHERE tq.test_id = ?
-                ORDER BY tq.order_no, o.order_no
-                """, testId);
-
-        // Soru sirasi korunsun diye LinkedHashMap.
-        Map<UUID, List<PlacementTestResponse.OptionView>> optionsByQuestion =
-                new LinkedHashMap<>();
-        Map<UUID, Map<String, Object>> questionInfo = new LinkedHashMap<>();
-
-        for (Map<String, Object> row : rows) {
-            UUID questionId = (UUID) row.get("question_id");
-            questionInfo.putIfAbsent(questionId, row);
-            optionsByQuestion
-                    .computeIfAbsent(questionId, k -> new ArrayList<>())
-                    .add(new PlacementTestResponse.OptionView(
-                            (UUID) row.get("option_id"),
-                            (String) row.get("option_text")));
-        }
-
-        List<PlacementTestResponse.QuestionView> questions = new ArrayList<>();
-        for (Map.Entry<UUID, Map<String, Object>> e : questionInfo.entrySet()) {
-            questions.add(new PlacementTestResponse.QuestionView(
-                    e.getKey(),
-                    (String) e.getValue().get("question_type"),
-                    (String) e.getValue().get("prompt_de"),
-                    optionsByQuestion.get(e.getKey())));
-        }
-
-        return new PlacementTestResponse(
-                testId,
-                (String) test.get("title_tr"),
-                (Integer) test.get("time_limit_minutes"),
-                questions);
+    public record BlockView(UUID sessionId, int blockNumber, List<QuestionView> questions,
+                            int askedSoFar, int maxQuestions) {
     }
 
-    // ------------------------------------------------------------------
-
-    @Transactional
-    public PlacementResultResponse submit(UUID userId, PlacementSubmitRequest request) {
-        Map<String, Object> test = findTest();
-        UUID testId = (UUID) test.get("id");
-
-        Map<UUID, QuestionKey> keys = loadAnswerKey(testId);
-
-        UUID attemptId = jdbc.queryForObject("""
-                INSERT INTO test_attempt (user_id, test_id, status)
-                VALUES (?, ?, 'IN_PROGRESS')
-                RETURNING id
-                """, UUID.class, userId, testId);
-
-        List<Object[]> answerRows = new ArrayList<>();
-        Map<String, int[]> perCategory = new LinkedHashMap<>();   // kod -> [dogru, toplam]
-        Map<String, int[]> perSkill = new LinkedHashMap<>();
-        Map<String, int[]> perLevel = new LinkedHashMap<>();
-        List<PlacementResultResponse.Review> review = new ArrayList<>();
-        int correct = 0;
-
-        for (PlacementSubmitRequest.Answer answer : request.answers()) {
-            QuestionKey key = keys.get(answer.questionId());
-            if (key == null) {
-                throw new ValidationException("Bu teste ait olmayan soru gonderildi");
-            }
-
-            boolean isCorrect = answer.selectedOptionId() != null
-                    && answer.selectedOptionId().equals(key.correctOptionId());
-            if (isCorrect) {
-                correct++;
-            }
-
-            answerRows.add(new Object[]{
-                    attemptId, answer.questionId(), answer.selectedOptionId(), isCorrect});
-
-            tally(perCategory, key.categoryCode(), isCorrect);
-            tally(perSkill, key.skill(), isCorrect);
-            tally(perLevel, key.level(), isCorrect);
-
-            review.add(new PlacementResultResponse.Review(
-                    answer.questionId(), isCorrect,
-                    key.correctOptionText(), key.explanationTr()));
-        }
-
-        jdbc.batchUpdate("""
-                INSERT INTO attempt_answer
-                    (attempt_id, question_id, selected_option_id, is_correct)
-                VALUES (?, ?, ?, ?)
-                ON CONFLICT (attempt_id, question_id) DO UPDATE SET
-                    selected_option_id = EXCLUDED.selected_option_id,
-                    is_correct = EXCLUDED.is_correct
-                """, answerRows);
-
-        int total = request.answers().size();
-        jdbc.update("""
-                UPDATE test_attempt
-                SET status = 'COMPLETED', finished_at = now(), score = ?, max_score = ?
-                WHERE id = ?
-                """, (double) correct, (double) total, attemptId);
-
-        List<PlacementResultResponse.CategoryResult> categories =
-                buildCategoryResults(perCategory);
-        List<String> mastered = categories.stream()
-                .filter(c -> "MASTERED".equals(c.status()))
-                .map(PlacementResultResponse.CategoryResult::code)
-                .toList();
-
-        String level = estimateLevel(perLevel);
-        Map<String, Double> skillScores = ratios(perSkill);
-
-        savePlacementResult(userId, attemptId, level, skillScores, mastered);
-        updateCategoryStats(userId, perCategory);
-
-        return new PlacementResultResponse(
-                attemptId, level, correct, total, skillScores, categories, mastered,
-                countSkippableUnits(mastered), review);
-    }
-
-    // ------------------------------------------------------------------
-
-    private Map<String, Object> findTest() {
-        List<Map<String, Object>> rows = jdbc.queryForList(
-                "SELECT id, title_tr, time_limit_minutes FROM test WHERE code = ?",
-                PLACEMENT_TEST_CODE);
-        if (rows.isEmpty()) {
-            throw new NotFoundException("Yerlestirme testi bulunamadi");
-        }
-        return rows.get(0);
-    }
-
-    private Map<UUID, QuestionKey> loadAnswerKey(UUID testId) {
-        Map<UUID, QuestionKey> keys = new LinkedHashMap<>();
-        jdbc.queryForList("""
-                SELECT q.id, q.skill, q.level, q.explanation_tr,
-                       mc.code AS category_code,
-                       o.id AS correct_option_id, o.option_text AS correct_option_text
-                FROM test_question tq
-                JOIN question q ON q.id = tq.question_id
-                JOIN mistake_category mc ON mc.id = q.mistake_category_id
-                JOIN question_option o ON o.question_id = q.id AND o.is_correct
-                WHERE tq.test_id = ?
-                """, testId).forEach(row -> keys.put(
-                (UUID) row.get("id"),
-                new QuestionKey(
-                        (UUID) row.get("correct_option_id"),
-                        (String) row.get("correct_option_text"),
-                        (String) row.get("explanation_tr"),
-                        (String) row.get("category_code"),
-                        (String) row.get("skill"),
-                        (String) row.get("level"))));
-        return keys;
-    }
-
-    private void tally(Map<String, int[]> counts, String key, boolean isCorrect) {
-        int[] c = counts.computeIfAbsent(key, k -> new int[2]);
-        if (isCorrect) {
-            c[0]++;
-        }
-        c[1]++;
-    }
-
-    private List<PlacementResultResponse.CategoryResult> buildCategoryResults(
-            Map<String, int[]> perCategory) {
-
-        Map<String, String> names = new LinkedHashMap<>();
-        jdbc.queryForList("SELECT code, name_tr FROM mistake_category")
-                .forEach(r -> names.put((String) r.get("code"), (String) r.get("name_tr")));
-
-        List<PlacementResultResponse.CategoryResult> out = new ArrayList<>();
-        perCategory.forEach((code, c) -> {
-            double ratio = c[1] == 0 ? 0 : (double) c[0] / c[1];
-            String status = ratio >= MASTERED ? "MASTERED"
-                    : ratio >= PARTIAL ? "PARTIAL" : "WEAK";
-            out.add(new PlacementResultResponse.CategoryResult(
-                    code, names.getOrDefault(code, code), c[0], c[1], status));
-        });
-        // Zayiftan gucluye: kullanici once nerede eksigi oldugunu gormeli.
-        out.sort((a, b) -> Double.compare(
-                (double) a.correct() / a.total(), (double) b.correct() / b.total()));
-        return out;
-    }
-
-    private String estimateLevel(Map<String, int[]> perLevel) {
-        int[] a2 = perLevel.getOrDefault("A2", new int[2]);
-        double a2Ratio = a2[1] == 0 ? 0 : (double) a2[0] / a2[1];
-        return a2Ratio >= A2_THRESHOLD ? "A2" : "A1";
-    }
-
-    private Map<String, Double> ratios(Map<String, int[]> counts) {
-        Map<String, Double> out = new LinkedHashMap<>();
-        counts.forEach((k, c) -> out.put(k,
-                c[1] == 0 ? 0.0 : Math.round((double) c[0] / c[1] * 100) / 100.0));
-        return out;
-    }
-
-    private void savePlacementResult(UUID userId, UUID attemptId, String level,
-                                     Map<String, Double> skillScores,
-                                     List<String> mastered) {
-        StringBuilder json = new StringBuilder("{");
-        skillScores.forEach((k, v) -> {
-            if (json.length() > 1) {
-                json.append(',');
-            }
-            json.append('"').append(k).append("\":").append(v);
-        });
-        json.append('}');
-
-        // JdbcTemplate String[] parametresini PostgreSQL dizisine cevirmez;
-        // virgulle birlestirip SQL tarafinda diziye donusturuyoruz.
-        jdbc.update("""
-                INSERT INTO placement_result
-                    (user_id, test_attempt_id, estimated_level, skill_scores,
-                     mastered_category_codes)
-                VALUES (?, ?, ?, ?::jsonb,
-                        COALESCE(string_to_array(NULLIF(?, ''), ','), '{}'))
-                """,
-                userId, attemptId, level, json.toString(),
-                String.join(",", mastered));
+    public record ReviewItem(String prompt, String yourAnswer, String correctAnswer, boolean correct,
+                             String explanationTr) {
     }
 
     /**
-     * Yerlestirme sonucu adaptif motorun ilk verisidir: zayif kategoriler
-     * daha yuksek agirlik alir ve program ureticide one cikar.
+     * @param result      A0 = "A1'in altinda"
+     * @param goalReached sonuc aktif hedefe esit ya da ustundeyse o hedef; degilse null.
+     *                    Hedef otomatik degismez; istemci kullaniciya sorar (K6).
      */
-    private void updateCategoryStats(UUID userId, Map<String, int[]> perCategory) {
-        List<Object[]> batch = new ArrayList<>();
-        perCategory.forEach((code, c) -> {
-            double ratio = c[1] == 0 ? 0 : (double) c[0] / c[1];
-            double weight = 1.0 + (1.0 - ratio) * 1.5;   // 1.00 (tam) .. 2.50 (hic)
-            batch.add(new Object[]{userId, code, c[0], c[1], Math.round(weight * 100) / 100.0});
-        });
-
-        jdbc.batchUpdate("""
-                INSERT INTO user_category_stat
-                    (user_id, mistake_category_id, correct, attempts, weight, updated_at)
-                SELECT ?, mc.id, ?, ?, ?, now()
-                FROM mistake_category mc
-                WHERE mc.code = ?
-                ON CONFLICT (user_id, mistake_category_id) DO UPDATE SET
-                    correct = user_category_stat.correct + EXCLUDED.correct,
-                    attempts = user_category_stat.attempts + EXCLUDED.attempts,
-                    weight = EXCLUDED.weight,
-                    updated_at = now()
-                """, batch.stream()
-                .map(r -> new Object[]{r[0], r[2], r[3], r[4], r[1]})
-                .toList());
+    public record ResultView(Level result, String reason, int correct, int total, List<Block> blocks,
+                             List<ReviewItem> review, Level goalReached) {
     }
 
-    /** Bilinen kategoriler yuzunden tamamen atlanabilecek birim sayisi. */
-    private int countSkippableUnits(List<String> mastered) {
-        if (mastered.isEmpty()) {
-            return 0;
+    /** Cevap sonrasi: ya yeni blok ya sonuc. */
+    public record AnswerOutcome(BlockView next, ResultView result) {
+    }
+
+    private final PlacementStore store;
+    private final ContentCatalog catalog;
+    private final PlacementEngine engine;
+    private final PlacementProperties config;
+    private final ActivityStore activityStore;
+    private final ActivityService activities;
+    private final ActivityProperties activityConfig;
+    private final LevelStore levels;
+    private final OnboardingStore onboarding;
+    private final ObjectMapper mapper;
+    private final Random random = new SecureRandom();
+
+    public PlacementService(PlacementStore store, ContentCatalog catalog, PlacementProperties config,
+                            ActivityStore activityStore, ActivityService activities,
+                            ActivityProperties activityConfig, LevelStore levels, OnboardingStore onboarding,
+                            ObjectMapper mapper) {
+        this.store = store;
+        this.catalog = catalog;
+        this.engine = new PlacementEngine(config);
+        this.config = config;
+        this.activityStore = activityStore;
+        this.activities = activities;
+        this.activityConfig = activityConfig;
+        this.levels = levels;
+        this.onboarding = onboarding;
+        this.mapper = mapper;
+    }
+
+    @Transactional
+    public BlockView start(UUID userId) {
+        store.abandonOpen(userId);
+        UUID studySession = activityStore.startSession(userId, "PLACEMENT");
+        Step first = engine.decide(List.of());
+        List<Question> questions = pick(userId, first.nextLevel(), List.of());
+        State state = new State(List.of(newBlock(first.nextLevel(), questions)));
+        UUID id = store.create(userId, studySession, state);
+        return view(id, 1, questions, 0);
+    }
+
+    /**
+     * Mevcut blogun cevaplari. Cevaplanmayan soru yanlis sayilir.
+     *
+     * @param interactions istemcinin kaydettigi etkilesim anlari (epoch ms); aktif sure icin
+     */
+    @Transactional
+    public AnswerOutcome answer(UUID userId, UUID sessionId, Map<String, String> answers,
+                                List<Long> interactions, LocalDate today) {
+        Session session = store.find(userId, sessionId)
+                .orElseThrow(() -> new NotFoundException("Test oturumu bulunamadı"));
+        if (!"IN_PROGRESS".equals(session.status())) {
+            throw new ValidationException("Bu test tamamlanmış ya da yarıda bırakılmış; yeniden başla");
         }
-        Integer n = jdbc.queryForObject("""
-                SELECT count(*) FROM content_unit cu
-                WHERE cu.is_new_content
-                  AND EXISTS (SELECT 1 FROM content_unit_category cc WHERE cc.content_unit_id = cu.id)
-                  AND NOT EXISTS (
-                      SELECT 1
-                      FROM content_unit_category cc
-                      JOIN mistake_category mc ON mc.id = cc.mistake_category_id
-                      WHERE cc.content_unit_id = cu.id
-                        AND mc.code <> ALL (string_to_array(?, ','))
-                  )
-                """, Integer.class, String.join(",", mastered));
-        return n == null ? 0 : n;
+
+        List<BlockState> blocks = new ArrayList<>(session.state().blocks());
+        BlockState current = blocks.getLast();
+        if (current.answered()) {
+            throw new IllegalStateException("Acik blok yok");
+        }
+        Set<String> expected = new HashSet<>(current.questionIds());
+        for (String qid : answers.keySet()) {
+            if (!expected.contains(qid)) {
+                throw new ValidationException("Bu bloğa ait olmayan soru gönderildi");
+            }
+        }
+
+        int correct = 0;
+        Map<String, String> given = new LinkedHashMap<>();
+        for (String qid : current.questionIds()) {
+            String a = answers.get(qid);
+            given.put(qid, a);
+            if (a != null && isCorrect(question(qid), a)) {
+                correct++;
+            }
+        }
+        List<Instant> events = interactions == null ? List.of()
+                : interactions.stream().sorted().map(Instant::ofEpochMilli).toList();
+        long active = ActivityRules.activeSeconds(events, activityConfig.idleGapMinutes());
+        blocks.set(blocks.size() - 1, new BlockState(current.level(), current.questionIds(), given, correct, active));
+
+        List<Block> done = blocks.stream()
+                .map(b -> new Block(b.level(), b.correct(), b.questionIds().size()))
+                .toList();
+        Step step = engine.decide(done);
+
+        if (!step.finished()) {
+            List<String> asked = blocks.stream().flatMap(b -> b.questionIds().stream()).toList();
+            List<Question> next = pick(userId, step.nextLevel(), asked);
+            if (next.isEmpty()) {
+                throw new IllegalStateException(step.nextLevel() + " seviyesinde yerlestirme sorusu yok");
+            }
+            blocks.add(newBlock(step.nextLevel(), next));
+            State state = new State(blocks);
+            store.saveState(sessionId, state);
+            return new AnswerOutcome(view(sessionId, blocks.size(), next, asked.size()), null);
+        }
+
+        State state = new State(blocks);
+        store.complete(sessionId, state, step.result());
+        return new AnswerOutcome(null, finish(userId, session, state, step, done, today));
     }
 
-    private record QuestionKey(UUID correctOptionId, String correctOptionText,
-                               String explanationTr, String categoryCode,
-                               String skill, String level) {
+    // ------------------------------------------------------------------
+
+    private ResultView finish(UUID userId, Session session, State state, Step step, List<Block> done,
+                              LocalDate today) {
+        int correct = done.stream().mapToInt(Block::correct).sum();
+        int total = done.stream().mapToInt(Block::total).sum();
+        long active = state.blocks().stream().mapToLong(BlockState::activeSeconds).sum();
+
+        Map<String, Object> details = new LinkedHashMap<>();
+        details.put("blocks", done);
+        details.put("reason", step.reason());
+        levels.insertAssessment(userId, "PLACEMENT", step.result(), correct, total,
+                mapper.writeValueAsString(details), today, session.id());
+
+        if (session.studySessionId() != null) {
+            activityStore.finishSession(userId, session.studySessionId(), active);
+        }
+        // Yerlestirme testi kanit uretmez (4.1); yalniz calisma gecmisine yazilir.
+        activities.recordSite(userId, new SiteActivity(ActivityType.SEVIYE_TESTI, today, active,
+                null, null, null, null, null, session.studySessionId()));
+
+        List<ReviewItem> review = new ArrayList<>();
+        for (BlockState b : state.blocks()) {
+            for (String qid : b.questionIds()) {
+                Question q = question(qid);
+                String yours = b.answers() == null ? null : b.answers().get(qid);
+                review.add(new ReviewItem(q.prompt(), yours, q.answer(),
+                        yours != null && isCorrect(q, yours), q.explanationTr()));
+            }
+        }
+
+        Level goalReached = onboarding.activeGoal(userId)
+                .map(OnboardingStore.Goal::target)
+                .filter(target -> step.result().isAtLeast(target))
+                .orElse(null);
+
+        return new ResultView(step.result(), step.reason(), correct, total, done, review, goalReached);
+    }
+
+    private List<Question> pick(UUID userId, Level level, List<String> askedThisSession) {
+        return QuestionPicker.pick(catalog.placementPool(level), config.blockSize(),
+                store.seenQuestionIds(userId), askedThisSession, random);
+    }
+
+    private static BlockState newBlock(Level level, List<Question> questions) {
+        return new BlockState(level, questions.stream().map(Question::id).toList(), null, null, 0);
+    }
+
+    private BlockView view(UUID sessionId, int number, List<Question> questions, int askedSoFar) {
+        List<QuestionView> qs = questions.stream()
+                .map(q -> new QuestionView(q.id(), q.prompt(), q.options(), q.placementKind()))
+                .toList();
+        return new BlockView(sessionId, number, qs, askedSoFar, config.maxQuestions());
+    }
+
+    private Question question(String id) {
+        return catalog.question(id)
+                .orElseThrow(() -> new IllegalStateException("Icerikte olmayan soru: " + id));
+    }
+
+    private static boolean isCorrect(Question q, String answer) {
+        return q.answer().equals(answer)
+                || (q.acceptedAnswers() != null && q.acceptedAnswers().contains(answer));
     }
 }

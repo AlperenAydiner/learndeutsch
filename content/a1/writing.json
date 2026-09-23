@@ -1,0 +1,40 @@
+[
+  {
+    "id": "s-a1-01",
+    "level": "A1",
+    "titleTr": "Kendini tanıtan kısa bir e-posta",
+    "taskTr": "Yeni bir dil kursuna başlıyorsun. Öğretmenine kendini tanıtan kısa bir e-posta yaz: adın, nereden geldiğin, ne iş yaptığın ve Almancayı neden öğrendiğin.",
+    "taskDe": "Schreiben Sie eine kurze E-Mail an Ihre neue Lehrerin. Stellen Sie sich vor: Name, Herkunft, Beruf und warum Sie Deutsch lernen.",
+    "minWords": 40,
+    "phrases": [
+      "Liebe Frau ... ,",
+      "ich heiße ...",
+      "Ich komme aus ...",
+      "Ich arbeite als ...",
+      "Ich lerne Deutsch, weil ...",
+      "Viele Grüße"
+    ],
+    "sampleAnswer": "Liebe Frau Meier,\n\nich heiße Elif und ich komme aus der Türkei. Ich wohne seit drei Monaten in Köln. Ich arbeite als Krankenschwester in einem Krankenhaus. Ich lerne Deutsch, weil ich mit meinen Kollegen und Patienten sprechen möchte. Am Abend habe ich Zeit für den Kurs.\n\nViele Grüße\nElif",
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "s-a1-02",
+    "level": "A1",
+    "titleTr": "Arkadaşına davet mesajı",
+    "taskTr": "Cumartesi günü evinde küçük bir yemek veriyorsun. Bir arkadaşını davet eden kısa bir mesaj yaz: ne zaman, saat kaçta, nerede ve ne getirmesini istediğin.",
+    "taskDe": "Am Samstag kochen Sie für Freunde. Schreiben Sie eine kurze Nachricht: Wann, um wie viel Uhr, wo und was soll Ihr Freund mitbringen?",
+    "minWords": 30,
+    "phrases": [
+      "Hallo ... ,",
+      "am Samstag ...",
+      "um ... Uhr",
+      "bei mir zu Hause",
+      "Kannst du ... mitbringen?",
+      "Bis bald!"
+    ],
+    "sampleAnswer": "Hallo Jonas,\n\nam Samstag koche ich für Freunde. Kommst du auch? Wir treffen uns um sieben Uhr bei mir zu Hause. Ich mache Suppe und Salat. Kannst du bitte Brot und etwas zu trinken mitbringen? Schreib mir bitte bis Freitag.\n\nBis bald!\nMert",
+    "estimatedMinutes": 15,
+    "verified": false
+  }
+]

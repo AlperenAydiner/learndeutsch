@@ -1,0 +1,95 @@
+[
+  {
+    "id": "r-c1-01",
+    "level": "C1",
+    "titleTr": "Dikkat ekonomisi ve ölçüm sorunu",
+    "topicTr": "Bilim iletişimi ve eleştirel okuma",
+    "text": "Kaum ein Befund wird so bereitwillig zitiert wie die angeblich sinkende Aufmerksamkeitsspanne des modernen Menschen. Die häufig kolportierte Zahl — wenige Sekunden, angeblich weniger als bei einem Goldfisch — lässt sich allerdings auf keine belastbare Studie zurückführen. Wer der Quelle nachgeht, landet bei einer Pressemitteilung, die ihrerseits auf eine nicht näher bezeichnete Erhebung verweist.\n\nDass die Behauptung dennoch zirkuliert, hat weniger mit ihrer Evidenz als mit ihrer Anschlussfähigkeit zu tun: Sie bestätigt eine verbreitete kulturkritische Erzählung über den Verfall der Konzentration. Solche Erzählungen sind resistent gegen Widerlegung, weil sie Erfahrungen deuten, die viele tatsächlich machen — etwa das Gefühl, bei der Arbeit ständig unterbrochen zu werden.\n\nDie seriöse Forschung zeichnet ein differenzierteres Bild. Aufmerksamkeit ist kein einheitliches Vermögen, das sich in Sekunden messen ließe, sondern ein Bündel von Prozessen, die je nach Aufgabe, Motivation und Kontext unterschiedlich funktionieren. Wer einen Text als langweilig empfindet, bricht früher ab; wer einer Serie folgt, bleibt stundenlang dabei. Nicht die Fähigkeit zur Konzentration ist also verschwunden, sondern die Umgebung hat sich verändert: Unterbrechungen sind billiger geworden, Belohnungen unmittelbarer.\n\nFür die Praxis folgt daraus etwas Unspektakuläres. Statt über den angeblichen Zerfall der Aufmerksamkeit zu klagen, lohnt es sich, Unterbrechungen zu verteuern — Benachrichtigungen abzuschalten, feste Zeitfenster zu vereinbaren, Aufgaben zu bündeln. Das klingt banal, wirkt aber nachweislich besser als jeder Appell an die Willenskraft.",
+    "estimatedMinutes": 15,
+    "questions": [
+      {
+        "id": "r-c1-01-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie bewertet der Autor die oft zitierte Zahl zur Aufmerksamkeitsspanne?",
+        "options": [
+          "Als gut belegt",
+          "Als nicht auf eine belastbare Studie zurückführbar",
+          "Als zu vorsichtig geschätzt",
+          "Als von der Forschung bestätigt"
+        ],
+        "answer": "Als nicht auf eine belastbare Studie zurückführbar",
+        "acceptedAnswers": [],
+        "explanationTr": "Kaynağı takip eden bir basın bülteninde, o da belirsiz bir ankete atıf yapıyor."
+      },
+      {
+        "id": "r-c1-01-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Warum hält sich die Behauptung laut Text trotzdem?",
+        "options": [
+          "Weil neue Studien sie stützen",
+          "Weil sie zu einer verbreiteten kulturkritischen Erzählung passt",
+          "Weil Fachleute sie verteidigen",
+          "Weil sie leicht zu messen ist"
+        ],
+        "answer": "Weil sie zu einer verbreiteten kulturkritischen Erzählung passt",
+        "acceptedAnswers": [],
+        "explanationTr": "\"weniger mit ihrer Evidenz als mit ihrer Anschlussfähigkeit\" — kanıtla değil, anlatıya uyumuyla ilgili."
+      },
+      {
+        "id": "r-c1-01-q3",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was sagt die seriöse Forschung über Aufmerksamkeit?",
+        "options": [
+          "Sie ist ein einheitliches, messbares Vermögen",
+          "Sie ist ein Bündel kontextabhängiger Prozesse",
+          "Sie nimmt bei allen Menschen gleich ab",
+          "Sie hängt allein von der Willenskraft ab"
+        ],
+        "answer": "Sie ist ein Bündel kontextabhängiger Prozesse",
+        "acceptedAnswers": [],
+        "explanationTr": "Göreve, motivasyona ve bağlama göre farklı işleyen süreçler demeti."
+      },
+      {
+        "id": "r-c1-01-q4",
+        "type": "TRUE_FALSE",
+        "prompt": "Der Autor behauptet, die Fähigkeit zur Konzentration sei verschwunden.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "Tam tersini söylüyor: yeti kaybolmadı, ortam değişti."
+      },
+      {
+        "id": "r-c1-01-q5",
+        "type": "GAP",
+        "prompt": "Für die Praxis empfiehlt der Autor, Unterbrechungen zu ___.",
+        "options": [],
+        "answer": "verteuern",
+        "acceptedAnswers": [],
+        "explanationTr": "Kesintileri \"pahalılaştırmak\": bildirimleri kapatmak, zaman blokları belirlemek."
+      },
+      {
+        "id": "r-c1-01-q6",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Welche rhetorische Haltung kennzeichnet den letzten Absatz?",
+        "options": [
+          "Polemisch zuspitzend",
+          "Nüchtern relativierend",
+          "Emotional appellierend",
+          "Resigniert"
+        ],
+        "answer": "Nüchtern relativierend",
+        "acceptedAnswers": [],
+        "explanationTr": "\"etwas Unspektakuläres\", \"klingt banal, wirkt aber nachweislich besser\" — serinkanlı ve ölçülü."
+      }
+    ],
+    "glossary": [
+      { "de": "kolportiert", "tr": "ağızdan ağıza yayılan, dolaşımdaki" },
+      { "de": "belastbar", "tr": "sağlam, dayanıklı (kanıt için)" },
+      { "de": "die Anschlussfähigkeit", "tr": "mevcut anlatıya uyum, bağlanabilirlik" },
+      { "de": "die Widerlegung", "tr": "çürütme" },
+      { "de": "differenziert", "tr": "ayrıntılı, nüanslı" },
+      { "de": "der Appell", "tr": "çağrı" }
+    ],
+    "verified": false
+  }
+]

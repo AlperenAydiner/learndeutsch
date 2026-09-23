@@ -1,0 +1,79 @@
+[
+  {
+    "id": "cd-a2-sp-1",
+    "level": "A2",
+    "skill": "SPRECHEN",
+    "textTr": "Tanıdık konularda kısa sohbetler yürütebilir, günlük durumlarda anlaşabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-sp-2",
+    "level": "A2",
+    "skill": "SPRECHEN",
+    "textTr": "Geçmişte yaşadığım bir olayı sırayla anlatabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-sp-3",
+    "level": "A2",
+    "skill": "SPRECHEN",
+    "textTr": "Bir sorunu anlatıp nazikçe çözüm isteyebilirim (mağaza, doktor, komşu).",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-sp-4",
+    "level": "A2",
+    "skill": "SPRECHEN",
+    "textTr": "Planlarımı ve nedenlerini basit bağlaçlarla açıklayabilirim (weil, deshalb).",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-sc-1",
+    "level": "A2",
+    "skill": "SCHREIBEN",
+    "textTr": "Kişisel bir mektup ya da e-postayla bir deneyimi anlatabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-sc-2",
+    "level": "A2",
+    "skill": "SCHREIBEN",
+    "textTr": "Resmî bir e-postada şikâyetimi ya da isteğimi nazikçe yazabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-sc-3",
+    "level": "A2",
+    "skill": "SCHREIBEN",
+    "textTr": "Kısa metinlerimi bağlaçlarla bağlayabilirim (und, aber, weil, deshalb).",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-le-1",
+    "level": "A2",
+    "skill": "LESEN",
+    "textTr": "İlanlarda, programlarda ve kısa haberlerde aradığım bilgiyi bulabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-le-2",
+    "level": "A2",
+    "skill": "LESEN",
+    "textTr": "Günlük konulardaki kısa metinlerin ana fikrini anlayabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-ho-1",
+    "level": "A2",
+    "skill": "HOEREN",
+    "textTr": "Net konuşulan duyuruları ve kısa mesajları anlayabilirim (tren, kurs, telesekreter).",
+    "verified": false
+  },
+  {
+    "id": "cd-a2-ho-2",
+    "level": "A2",
+    "skill": "HOEREN",
+    "textTr": "Tanıdık konulardaki günlük konuşmaların ana noktalarını takip edebilirim.",
+    "verified": false
+  }
+]

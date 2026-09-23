@@ -60,8 +60,10 @@
     --das: #15803d;
 
     /* --- Anlamsal: acik tema --- */
-    --bg:            var(--n-50);
-    --bg-subtle:     var(--n-100);
+    /* Minimal: zemin ve yuzey ayni beyaz; ayrim golgeyle degil ince
+       cizgiyle kurulur. */
+    --bg:            var(--n-0);
+    --bg-subtle:     var(--n-50);
     --surface:       var(--n-0);
     --surface-hover: var(--n-50);
     --border:        var(--n-200);
@@ -140,10 +142,10 @@
     --r-lg: 12px;
     --r-full: 999px;
 
-    /* --- Golge: cok kisitli; derinlik golgeyle degil cizgiyle kurulur --- */
-    --sh-sm: 0 1px 2px rgb(28 25 23 / 0.06);
-    --sh:    0 2px 8px rgb(28 25 23 / 0.07);
-    --sh-lg: 0 12px 32px rgb(28 25 23 / 0.10);
+    /* --- Golge yok: derinlik cizgiyle kurulur --- */
+    --sh-sm: none;
+    --sh:    none;
+    --sh-lg: none;
 
     /* --- Hareket --- */
     --t-fast: 120ms;
@@ -151,8 +153,11 @@
     --t-slow: 300ms;
     --ease: cubic-bezier(0.2, 0, 0.2, 1);
 
-    /* --- Olcu --- */
-    --page: 1200px;
+    /* --- Olcu ---
+       Genis ekranda kenarlar bos kalmasin diye kapsayici genis; satir
+       uzunlugu --prose ile sinirli, bosluk sutunlarla dolduruluyor. */
+    --page: 1600px;
+    --gutter: clamp(1rem, 3.5vw, 3.5rem);
     --prose: 68ch;
     --nav-h: 68px;
 }
@@ -195,9 +200,9 @@
         --die: #fb7185;
         --das: #4ade80;
 
-        --sh-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-        --sh:    0 2px 8px rgb(0 0 0 / 0.45);
-        --sh-lg: 0 12px 32px rgb(0 0 0 / 0.55);
+        --sh-sm: none;
+    --sh:    none;
+    --sh-lg: none;
     }
 }
 
@@ -235,7 +240,7 @@
     --die: #fb7185;
     --das: #4ade80;
 
-    --sh-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-    --sh:    0 2px 8px rgb(0 0 0 / 0.45);
-    --sh-lg: 0 12px 32px rgb(0 0 0 / 0.55);
+    --sh-sm: none;
+    --sh:    none;
+    --sh-lg: none;
 }

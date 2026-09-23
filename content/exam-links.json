@@ -1,0 +1,42 @@
+[
+  {
+    "id": "exam-goethe",
+    "institution": "Goethe-Institut",
+    "nameTr": "Goethe-Zertifikat",
+    "levels": ["A1", "A2", "B1", "B2", "C1"],
+    "url": "https://www.goethe.de/",
+    "noteTr": "Almanya'nın resmî kültür kurumu. Seviye sayfalarında ücretsiz örnek sınavlar (Modellsatz) yayımlar; sınav materyalini buraya kopyalamıyoruz, kaynaktan çalış.",
+    "free": true,
+    "verified": false
+  },
+  {
+    "id": "exam-telc",
+    "institution": "telc",
+    "nameTr": "telc Deutsch",
+    "levels": ["A1", "A2", "B1", "B2", "C1"],
+    "url": "https://www.telc.net/",
+    "noteTr": "Avrupa'da yaygın kabul gören sınav sağlayıcısı. Sitesinde seviye başına ücretsiz deneme sınavı (Übungstest) bulunur.",
+    "free": true,
+    "verified": false
+  },
+  {
+    "id": "exam-osd",
+    "institution": "ÖSD",
+    "nameTr": "Österreichisches Sprachdiplom Deutsch",
+    "levels": ["A1", "A2", "B1", "B2", "C1"],
+    "url": "https://www.osd.at/",
+    "noteTr": "Avusturya'nın resmî dil diploması. Model sınavlar ve sınav biçimi açıklamaları sitesinde.",
+    "free": true,
+    "verified": false
+  },
+  {
+    "id": "exam-dtz",
+    "institution": "BAMF",
+    "nameTr": "Deutsch-Test für Zuwanderer (DTZ)",
+    "levels": ["A2", "B1"],
+    "url": "https://www.bamf.de/",
+    "noteTr": "Almanya'da entegrasyon kursunu bitirenlerin girdiği sınav (A2–B1 arası ölçer). Oturum ve vatandaşlık işlemlerinde istenebilir.",
+    "free": true,
+    "verified": false
+  }
+]

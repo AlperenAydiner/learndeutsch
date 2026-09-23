@@ -1,0 +1,164 @@
+[
+  {
+    "id": "r-b1-01",
+    "level": "B1",
+    "titleTr": "Evden çalışma tartışması",
+    "topicTr": "İş hayatı ve görüş bildirme",
+    "text": "Seit der Pandemie arbeiten viele Menschen zumindest teilweise von zu Hause. Eine aktuelle Umfrage unter 1.200 Angestellten zeigt, dass rund zwei Drittel von ihnen das Homeoffice behalten möchten. Als größten Vorteil nennen sie den Wegfall des Arbeitswegs: Im Durchschnitt sparen sie dadurch fast eine Stunde pro Tag. Außerdem berichten viele, dass sie sich zu Hause besser konzentrieren können.\n\nEs gibt allerdings auch Kritik. Ein Teil der Befragten fühlt sich isoliert, weil der spontane Austausch mit Kolleginnen und Kollegen fehlt. Vor allem neue Mitarbeiterinnen und Mitarbeiter finden es schwierig, sich ohne persönliche Kontakte einzuarbeiten. Manche Führungskräfte befürchten zudem, dass die Teamarbeit leidet.\n\nDie meisten Unternehmen setzen deshalb inzwischen auf hybride Modelle: Zwei oder drei Tage im Büro, der Rest zu Hause. Fachleute halten das für einen sinnvollen Kompromiss, betonen aber, dass klare Regeln nötig sind. Wer zu Hause arbeitet, sollte feste Arbeitszeiten haben und nach Feierabend wirklich abschalten können.",
+    "estimatedMinutes": 10,
+    "questions": [
+      {
+        "id": "r-b1-01-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was ist laut Umfrage der größte Vorteil des Homeoffice?",
+        "options": [
+          "Mehr Gehalt",
+          "Kein Arbeitsweg",
+          "Bessere Technik",
+          "Mehr Kontakt zu Kollegen"
+        ],
+        "answer": "Kein Arbeitsweg",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Als größten Vorteil nennen sie den Wegfall des Arbeitswegs\"."
+      },
+      {
+        "id": "r-b1-01-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie viele der Befragten möchten das Homeoffice behalten?",
+        "options": ["Etwa ein Drittel", "Etwa die Hälfte", "Etwa zwei Drittel", "Fast alle"],
+        "answer": "Etwa zwei Drittel",
+        "acceptedAnswers": [],
+        "explanationTr": "\"rund zwei Drittel von ihnen das Homeoffice behalten möchten\"."
+      },
+      {
+        "id": "r-b1-01-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Neue Mitarbeiterinnen und Mitarbeiter haben es im Homeoffice besonders schwer.",
+        "options": ["richtig", "falsch"],
+        "answer": "richtig",
+        "acceptedAnswers": [],
+        "explanationTr": "Metinde yeni çalışanların kişisel temas olmadan işe alışmakta zorlandığı yazıyor."
+      },
+      {
+        "id": "r-b1-01-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was empfehlen die Fachleute?",
+        "options": [
+          "Nur noch im Büro zu arbeiten",
+          "Hybride Modelle mit klaren Regeln",
+          "Das Homeoffice abzuschaffen",
+          "Längere Arbeitszeiten"
+        ],
+        "answer": "Hybride Modelle mit klaren Regeln",
+        "acceptedAnswers": [],
+        "explanationTr": "Uzmanlar hibrit modeli makul buluyor ama net kuralların gerektiğini vurguluyor."
+      },
+      {
+        "id": "r-b1-01-q5",
+        "type": "GAP",
+        "prompt": "Wer zu Hause arbeitet, sollte nach Feierabend wirklich ___ können.",
+        "options": [],
+        "answer": "abschalten",
+        "acceptedAnswers": [],
+        "explanationTr": "abschalten burada \"kafayı işten ayırmak\" anlamında kullanılıyor."
+      },
+      {
+        "id": "r-b1-01-q6",
+        "type": "TRUE_FALSE",
+        "prompt": "Alle Führungskräfte sind mit dem Homeoffice zufrieden.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "Bazı yöneticiler takım çalışmasının zarar göreceğinden endişeli."
+      }
+    ],
+    "glossary": [
+      { "de": "die Umfrage", "tr": "anket" },
+      { "de": "der Wegfall", "tr": "ortadan kalkma" },
+      { "de": "sich einarbeiten", "tr": "işe alışmak" },
+      { "de": "die Führungskraft", "tr": "yönetici" },
+      { "de": "der Kompromiss", "tr": "uzlaşma" },
+      { "de": "abschalten", "tr": "kafayı dağıtmak, işten kopmak" }
+    ],
+    "verified": false
+  },
+  {
+    "id": "r-b1-02",
+    "level": "B1",
+    "titleTr": "Bisiklet mi, otobüs mü?",
+    "topicTr": "Şehir hayatı ve karşılaştırma",
+    "text": "Die Stadt Freiburg gilt in Deutschland als Vorbild für umweltfreundlichen Verkehr. Fast ein Drittel aller Wege wird dort mit dem Fahrrad zurückgelegt. Das hat Gründe: Seit den 1970er Jahren baut die Stadt Radwege aus, und in vielen Straßen dürfen Autos nur langsam fahren.\n\nTrotzdem ist nicht jeder zufrieden. Ältere Menschen und Familien mit kleinen Kindern sind weiter auf Busse und Bahnen angewiesen. Kritiker sagen, dass die Preise für den öffentlichen Nahverkehr in den letzten Jahren zu stark gestiegen sind. Wer nicht Rad fahren kann, zahlt also mehr.\n\nDie Stadtverwaltung verweist auf ein neues Ticket, das im Monat weniger kostet als zwei Tankfüllungen. Ob das reicht, wird sich zeigen. Klar ist: Wenn der Nahverkehr zuverlässig und bezahlbar bleibt, steigen mehr Menschen vom Auto um — und davon profitieren am Ende auch die Radfahrerinnen und Radfahrer, weil die Straßen leerer werden.",
+    "estimatedMinutes": 9,
+    "questions": [
+      {
+        "id": "r-b1-02-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Warum fahren in Freiburg viele Menschen Rad?",
+        "options": [
+          "Weil es keine Busse gibt",
+          "Weil die Stadt seit Jahrzehnten Radwege baut",
+          "Weil Autos verboten sind",
+          "Weil die Stadt klein ist"
+        ],
+        "answer": "Weil die Stadt seit Jahrzehnten Radwege baut",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Seit den 1970er Jahren baut die Stadt Radwege aus\"."
+      },
+      {
+        "id": "r-b1-02-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wer ist besonders auf Busse und Bahnen angewiesen?",
+        "options": [
+          "Studierende",
+          "Ältere Menschen und Familien mit kleinen Kindern",
+          "Touristen",
+          "Berufspendler"
+        ],
+        "answer": "Ältere Menschen und Familien mit kleinen Kindern",
+        "acceptedAnswers": [],
+        "explanationTr": "Metin bu iki grubu açıkça sayıyor."
+      },
+      {
+        "id": "r-b1-02-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Die Kritiker finden den Nahverkehr zu teuer.",
+        "options": ["richtig", "falsch"],
+        "answer": "richtig",
+        "acceptedAnswers": [],
+        "explanationTr": "\"die Preise ... zu stark gestiegen sind\"."
+      },
+      {
+        "id": "r-b1-02-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Womit vergleicht die Stadtverwaltung den Preis des neuen Tickets?",
+        "options": [
+          "Mit einem Fahrrad",
+          "Mit zwei Tankfüllungen",
+          "Mit einer Jahreskarte",
+          "Mit einem Taxi"
+        ],
+        "answer": "Mit zwei Tankfüllungen",
+        "acceptedAnswers": [],
+        "explanationTr": "\"weniger kostet als zwei Tankfüllungen\"."
+      },
+      {
+        "id": "r-b1-02-q5",
+        "type": "GAP",
+        "prompt": "Wenn mehr Menschen vom Auto ___, werden die Straßen leerer.",
+        "options": [],
+        "answer": "umsteigen",
+        "acceptedAnswers": [],
+        "explanationTr": "umsteigen: (başka bir araca) geçmek."
+      }
+    ],
+    "glossary": [
+      { "de": "das Vorbild", "tr": "örnek, model" },
+      { "de": "zurücklegen", "tr": "(yol) kat etmek" },
+      { "de": "angewiesen sein auf", "tr": "-e bağımlı olmak" },
+      { "de": "der Nahverkehr", "tr": "şehir içi toplu taşıma" },
+      { "de": "zuverlässig", "tr": "güvenilir" },
+      { "de": "umsteigen", "tr": "aktarma yapmak, geçmek" }
+    ],
+    "verified": false
+  }
+]

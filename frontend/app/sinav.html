@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sınav — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/assets/css/pages/learn.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<!--
+    Sinav bolumu (SPEC 7). Kendi sinavimizi resmi sinav gibi sunmuyoruz
+    (K5): burada hedef seviyedeki site ici pratikler ve kurumlarin kendi
+    ornek sinavlarina yonlendirme var. Telifli materyal kopyalanmaz.
+-->
+<main class="wrap" id="main">
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
+
+    <div id="icerik" hidden>
+        <header class="page-head">
+            <div>
+                <h1>Sınav</h1>
+                <p class="page-head__sub" id="ozet"></p>
+            </div>
+            <a class="btn btn--ghost btn--sm" href="/app/ogren.html">Öğren</a>
+        </header>
+
+        <div id="hedefDurumu"></div>
+
+        <h2 class="block__title block">Dört beceride hazırlık</h2>
+        <p class="block__note">
+            Her beceride hedef seviyedeki pratikler. Sonuçlar site içi çalışmadır;
+            resmî bir değerlendirme değildir.
+        </p>
+        <div id="beceriler"></div>
+
+        <h2 class="block__title block">Resmî sınavlar ve örnek testler</h2>
+        <p class="block__note" id="linkNot"></p>
+        <div id="linkler"></div>
+
+        <h2 class="block__title block">Sonucunu gir</h2>
+        <p class="block__note">
+            Deneme ya da resmî sınav sonucunu girersen seviye tahminine kanıt olarak katılır;
+            resmî sınav en güvenilir kanıttır.
+        </p>
+        <a class="btn btn--primary" href="/app/index.html#kayit">Bugün ne yaptın? formuna git</a>
+    </div>
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api } from "/assets/js/core/api.js";
+    import { BECERI, esc } from "/assets/js/core/etiket.js";
+
+    const session = await requireAuth();
+    if (session) {
+        try {
+            ciz(await api.get("/exam"));
+        } catch (err) {
+            document.getElementById("hata").textContent = err.message;
+            document.getElementById("hata").hidden = false;
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    function ciz(v) {
+        document.getElementById("icerik").hidden = false;
+        document.getElementById("ozet").textContent =
+            `Hedef seviye ${v.target}. Şu anki çalışma seviyen ${v.working}.`;
+        document.getElementById("linkNot").textContent = v.noteTr;
+
+        // K6: hedefe ulasildiginda sistem kullaniciyi otomatik yukseltmez.
+        document.getElementById("hedefDurumu").innerHTML = v.goalComplete
+            ? `<div class="notice notice--ok">
+                   <strong>Hedefine ulaştın.</strong> Dört becerinin tahmini ${v.target} seviyesinde
+                   ve yeterli kanıt var. Hedefin kendiliğinden değişmez: istersen aynı seviyede
+                   pekiştir, istersen Koçluk'tan yeni hedef seç.
+                   <div class="btn-row block">
+                       <a class="btn btn--ghost btn--sm" href="/app/kocluk.html">Hedefi değiştir</a>
+                   </div>
+               </div>`
+            : v.nearGoal
+                ? `<div class="notice notice--info">Hedefe yakınsın: bazı becerilerde tahmin
+                       ${v.target} seviyesinde. Eksik becerilerde kanıt toplamaya devam et.</div>`
+                : "";
+
+        document.getElementById("beceriler").innerHTML = v.skills.map((s) => `
+            <section class="examskill">
+                <div class="examskill__head">
+                    <h3>${BECERI[s.skill] ?? s.skill}</h3>
+                    <span class="badge badge--${s.ready ? "ok" : "muted"}">${s.ready ? "hedefe ulaştı" : "devam ediyor"}</span>
+                </div>
+                <p class="examskill__status">${esc(s.statusTr)} ${s.evidenceCount} kanıt.</p>
+                ${s.practice.length
+                    ? `<ul class="topics">${s.practice.map((t) => `
+                        <li class="topic">
+                            <div class="topic__main">
+                                <span class="topic__title">${esc(t.titleTr)}</span>
+                                <span class="topic__meta">${t.level} · ${t.estimatedMinutes} dk${t.verified ? "" : " · içerik kontrol edilmedi"}</span>
+                            </div>
+                            <div class="topic__right">
+                                <a class="btn btn--ghost btn--sm" href="/app/ogren.html#${beceriHash(s.skill)}:${encodeURIComponent(t.id)}">Çalış</a>
+                            </div>
+                        </li>`).join("")}</ul>`
+                    : `<p class="block__note">Bu seviyede hazır pratik yok; dışarıda çalışıp sonucunu girebilirsin.</p>`}
+            </section>`).join("");
+
+        document.getElementById("linkler").innerHTML = v.links.length
+            ? `<ul class="topics">${v.links.map((l) => `
+                <li class="topic">
+                    <div class="topic__main">
+                        <span class="topic__title">${esc(l.institution)} — ${esc(l.nameTr)}</span>
+                        <span class="topic__meta">${esc(l.noteTr)}</span>
+                    </div>
+                    <div class="topic__right">
+                        <a class="btn btn--ghost btn--sm" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">Siteye git</a>
+                    </div>
+                </li>`).join("")}</ul>`
+            : `<p class="block__note">Bu seviye için kayıtlı kurum yok.</p>`;
+    }
+
+    function beceriHash(skill) {
+        return { LESEN: "lesen", HOEREN: "hoeren", SCHREIBEN: "schreiben", SPRECHEN: "sprechen" }[skill] ?? "";
+    }
+</script>
+
+</body>
+</html>

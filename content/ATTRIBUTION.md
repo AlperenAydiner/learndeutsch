@@ -1,6 +1,6 @@
 # İçerik Kaynakları ve Lisans
 
-## Kelime listeleri (`words_a1.csv`, `words_a2.csv`)
+## Kelime listeleri (`a1/words.json`, `a2/words.json`; önceden words_a1.csv, words_a2.csv)
 
 **Türkçe anlamlar, örnek cümleler ve çevirileri bu proje için özgün olarak
 yazılmıştır.** Hiçbir ticari kaynaktan, ders kitabından veya sınav
@@ -19,7 +19,7 @@ düzeltildi. Wiktionary'nin listelediği ancak pratikte kullanılmayan
 çoğul biçimleri (`Milche`, `Kleidungen` gibi) A1/A2 seviyesi için
 bilinçli olarak alınmamıştır.
 
-## İçerik birimleri (`content_units.csv`)
+## İçerik birimleri (eski `content_units.csv`; Faz 1 ile kaldırıldı, gramer ağacına `grammar-tree.json` dönüştü)
 
 Goethe-Zertifikat A2'nin **kapsamı** referans alınmıştır: hangi gramer
 konularının ve kelime alanlarının bu seviyeye ait olduğu. Goethe'nin

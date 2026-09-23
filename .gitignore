@@ -1,5 +1,6 @@
 # --- Gizli bilgiler (asla repoya girmez) ---
 .env
+.env.*
 .env.local
 *.env
 backend/src/main/resources/application-local.yml
@@ -42,3 +43,6 @@ backend/build/
 
 # Indirilen skill paketleri (11 MB, ucuncu taraf) — repoda tutulmaz
 .claude/skills/
+
+# Arayuz dogrulamasinda kullanilan gecici sahte API yanitlari (MockDumpIT)
+frontend/_mock/

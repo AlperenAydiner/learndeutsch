@@ -1,0 +1,39 @@
+# =====================================================================
+# Backend'i uyanik, veritabanini aktif tutar (PROGRESS: acik soru 1).
+#
+# Render ucretsiz katmani 15 dakika hareketsizlikten sonra servisi
+# uykuya alir; uyanmasi 30-50 saniye surer. Supabase ucretsiz projesi
+# de 7 gun hic kullanilmazsa duraklatilir.
+#
+# Bu is 14 dakikada bir /actuator/health cagirir. Uc veritabanina da
+# dokundugu icin tek istek iki sorunu birden onler.
+#
+# NOT: GitHub Actions'ta cron dakikasi garanti degildir, gecikme olur;
+# sorun degil, amac servisi gunun tamaminda uyanik tutmak degil,
+# uyumasini seyrekletmektir.
+# =====================================================================
+
+name: Ping
+
+on:
+  schedule:
+    - cron: "*/14 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saglik ucunu cagir
+        env:
+          # Depo ayarlarindan tanimlanir: Settings > Secrets and variables > Variables
+          API: ${{ vars.API_BASE_URL }}
+        run: |
+          if [ -z "$API" ]; then
+            echo "API_BASE_URL tanimli degil; ping atlandi."
+            exit 0
+          fi
+          kod=$(curl -s -o /dev/null -w "%{http_code}" --max-time 90 "$API/actuator/health")
+          echo "yanit: $kod"
+          # 503 de kabul: servis ayakta ama bagimli bir bilesen gecici sorunlu olabilir.
+          case "$kod" in 200|503) exit 0 ;; *) exit 1 ;; esac

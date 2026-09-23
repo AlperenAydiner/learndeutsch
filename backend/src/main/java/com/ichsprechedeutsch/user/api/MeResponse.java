@@ -10,6 +10,8 @@ public record MeResponse(
         String email,
         String displayName,
         String timezone,
+        /** SPEC 12.2: demo hesabiysa arayuz gorunur bir DEMO etiketi gosterir. */
+        boolean demo,
         OffsetDateTime createdAt) {
 
     public static MeResponse from(AppUser user) {
@@ -18,6 +20,7 @@ public record MeResponse(
                 user.getEmail(),
                 user.getDisplayName(),
                 user.getTimezone(),
+                user.isDemo(),
                 user.getCreatedAt());
     }
 }

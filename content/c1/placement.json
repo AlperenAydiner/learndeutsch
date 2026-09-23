@@ -1,0 +1,100 @@
+[
+  {
+    "id": "p-c1-01", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Nach ___ der Unterlagen melden wir uns bei Ihnen.",
+    "options": ["Prüfung", "Prüfer", "geprüften", "prüfend"], "answer": "Prüfung", "acceptedAnswers": [],
+    "tags": ["NOMINALISIERUNG"],
+    "explanationTr": "Fiil isimleştirilir: prüfen → die Prüfung (nach Prüfung der Unterlagen).",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-02", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die Kosten sind deutlich gestiegen; ___ hat die Firma ihre Preise nicht erhöht.",
+    "options": ["dennoch", "deshalb", "folglich", "somit"], "answer": "dennoch", "acceptedAnswers": [],
+    "tags": ["KONNEKTOREN"],
+    "explanationTr": "Beklenene aykırılık: dennoch (buna rağmen). Diğerleri sonuç bildirir.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-03", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Wäre der Fehler früher bemerkt ___, hätte man viel Geld gespart.",
+    "options": ["worden", "geworden", "werden", "gewesen"], "answer": "worden", "acceptedAnswers": [],
+    "tags": ["PASSIV", "KONJUNKTIV2_VERGANGENHEIT"],
+    "explanationTr": "Geçmişte gerçekleşmemiş edilgen: wäre + Partizip II + worden.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-04", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die von der Kommission ___ Maßnahmen treten im Januar in Kraft.",
+    "options": ["beschlossenen", "beschließenden", "beschlossen", "beschließen"], "answer": "beschlossenen", "acceptedAnswers": [],
+    "tags": ["PARTIZIP_ATTRIBUT"],
+    "explanationTr": "Genişletilmiş sıfat öbeği: die … beschlossenen Maßnahmen (Partizip II, çoğul -en).",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-05", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die Tagung findet ___ Beteiligung zahlreicher Fachleute statt.",
+    "options": ["unter", "auf", "durch", "zu"], "answer": "unter", "acceptedAnswers": [],
+    "tags": ["NOMEN_VERB_VERBINDUNGEN"],
+    "explanationTr": "Kalıp: unter Beteiligung von / unter Beteiligung + Genitiv.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-06", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Der Erfolg des Projekts hängt maßgeblich ___ der Finanzierung ab.",
+    "options": ["von", "an", "auf", "mit"], "answer": "von", "acceptedAnswers": [],
+    "tags": ["VERBEN_MIT_PRAEPOSITION"],
+    "explanationTr": "abhängen von + Dativ.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-07", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die neuen Vorschriften sollen ab nächstem Jahr zur Anwendung ___.",
+    "options": ["kommen", "bringen", "führen", "stellen"], "answer": "kommen", "acceptedAnswers": [],
+    "tags": ["NOMEN_VERB_VERBINDUNGEN"],
+    "explanationTr": "Uygulanmak: zur Anwendung kommen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-08", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Es ist fraglich, ___ sich der Aufwand überhaupt lohnt.",
+    "options": ["ob", "dass", "wenn", "weil"], "answer": "ob", "acceptedAnswers": [],
+    "tags": ["NEBENSATZ"],
+    "explanationTr": "Belirsizlik bildiren dolaylı soru: ob.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-09", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "VOCABULARY",
+    "prompt": "Die Studie ___ die These, dass Schlafmangel die Konzentration beeinträchtigt.",
+    "options": ["untermauert", "unterläuft", "unterschlägt", "unterstellt"], "answer": "untermauert", "acceptedAnswers": [],
+    "tags": ["WORTSCHATZ"],
+    "explanationTr": "Bir tezi desteklemek, sağlamlaştırmak: untermauern.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-10", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "VOCABULARY",
+    "prompt": "Seine Argumente waren so ___, dass niemand widersprechen konnte.",
+    "options": ["stichhaltig", "hinfällig", "nachlässig", "beiläufig"], "answer": "stichhaltig", "acceptedAnswers": [],
+    "tags": ["WORTSCHATZ"],
+    "explanationTr": "Sağlam, çürütülemez: stichhaltig.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-c1-11", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "READING",
+    "prompt": "Aus einem Kommentar: „Wer glaubt, die Digitalisierung werde Arbeitsplätze lediglich vernichten, verkennt, dass zugleich neue Berufsfelder entstehen – wenngleich nicht notwendigerweise für dieselben Menschen.“ — Welche Aussage entspricht dem Text?",
+    "options": ["Es entstehen neue Berufe, aber nicht unbedingt für die, die ihre Stelle verlieren.", "Die Digitalisierung vernichtet ausschließlich Arbeitsplätze.", "Alle, die ihre Stelle verlieren, finden einen neuen Beruf.", "Die Digitalisierung hat keinen Einfluss auf den Arbeitsmarkt."],
+    "answer": "Es entstehen neue Berufe, aber nicht unbedingt für die, die ihre Stelle verlieren.", "acceptedAnswers": [],
+    "tags": ["LESEVERSTEHEN"],
+    "explanationTr": "\"wenngleich nicht notwendigerweise für dieselben Menschen\": yeni meslekler aynı kişilere yaramayabilir.",
+    "estimatedMinutes": 2, "verified": false
+  },
+  {
+    "id": "p-c1-12", "level": "C1", "type": "MULTIPLE_CHOICE", "placementKind": "READING",
+    "prompt": "Aus einem Bericht: „Die Maßnahme erwies sich als weitgehend wirkungslos, was weniger an ihrer Konzeption als an ihrer halbherzigen Umsetzung lag.“ — Warum war die Maßnahme wirkungslos?",
+    "options": ["Sie wurde nicht konsequent umgesetzt.", "Sie war schlecht geplant.", "Sie wurde zu früh beendet.", "Sie war zu teuer."],
+    "answer": "Sie wurde nicht konsequent umgesetzt.", "acceptedAnswers": [],
+    "tags": ["LESEVERSTEHEN"],
+    "explanationTr": "\"weniger an ihrer Konzeption als an ihrer halbherzigen Umsetzung\": sorun planda değil, isteksiz uygulamada.",
+    "estimatedMinutes": 2, "verified": false
+  }
+]

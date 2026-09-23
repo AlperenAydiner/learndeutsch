@@ -1,0 +1,148 @@
+[
+  {
+    "id": "r-a2-01",
+    "level": "A2",
+    "titleTr": "Taşınma günü",
+    "topicTr": "Ev, komşuluk, geçmiş zaman",
+    "text": "Letzten Monat bin ich umgezogen. Meine alte Wohnung war klein und laut, denn sie lag direkt an einer großen Straße. Die neue Wohnung liegt in einem ruhigen Viertel, nur zehn Minuten vom Zentrum entfernt. Am Umzugstag haben mir drei Freunde geholfen. Wir haben die Möbel in einen Transporter geladen und sind zweimal gefahren. Am Abend waren wir müde, aber glücklich. Leider funktionierte die Heizung nicht, deshalb habe ich sofort den Vermieter angerufen. Er hat versprochen, einen Techniker zu schicken. Zwei Tage später war alles in Ordnung. Jetzt gefällt mir die Wohnung sehr gut, nur der Weg zur Arbeit ist etwas länger als früher.",
+    "estimatedMinutes": 8,
+    "questions": [
+      {
+        "id": "r-a2-01-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Warum war die alte Wohnung laut?",
+        "options": [
+          "Sie lag an einer großen Straße",
+          "Die Nachbarn waren laut",
+          "Sie war im Zentrum",
+          "Die Heizung war kaputt"
+        ],
+        "answer": "Sie lag an einer großen Straße",
+        "acceptedAnswers": [],
+        "explanationTr": "\"denn sie lag direkt an einer großen Straße\" — gürültünün nedeni budur."
+      },
+      {
+        "id": "r-a2-01-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wer hat beim Umzug geholfen?",
+        "options": ["Die Familie", "Drei Freunde", "Der Vermieter", "Eine Umzugsfirma"],
+        "answer": "Drei Freunde",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Am Umzugstag haben mir drei Freunde geholfen.\""
+      },
+      {
+        "id": "r-a2-01-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Die Heizung hat am Anfang nicht funktioniert.",
+        "options": ["richtig", "falsch"],
+        "answer": "richtig",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Leider funktionierte die Heizung nicht\"."
+      },
+      {
+        "id": "r-a2-01-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was war das Problem mit der neuen Wohnung nach dem Umzug?",
+        "options": [
+          "Sie war zu klein",
+          "Sie war zu teuer",
+          "Der Weg zur Arbeit ist länger",
+          "Die Nachbarn waren unfreundlich"
+        ],
+        "answer": "Der Weg zur Arbeit ist länger",
+        "acceptedAnswers": [],
+        "explanationTr": "Son cümle: \"nur der Weg zur Arbeit ist etwas länger als früher\"."
+      },
+      {
+        "id": "r-a2-01-q5",
+        "type": "GAP",
+        "prompt": "Der Vermieter hat ___ , einen Techniker zu schicken.",
+        "options": [],
+        "answer": "versprochen",
+        "acceptedAnswers": [],
+        "explanationTr": "versprechen → Partizip II: versprochen."
+      }
+    ],
+    "glossary": [
+      { "de": "umziehen", "tr": "taşınmak" },
+      { "de": "das Viertel", "tr": "semt, mahalle" },
+      { "de": "der Vermieter", "tr": "ev sahibi (kiraya veren)" },
+      { "de": "die Heizung", "tr": "kalorifer" },
+      { "de": "versprechen", "tr": "söz vermek" }
+    ],
+    "verified": false
+  },
+  {
+    "id": "r-a2-02",
+    "level": "A2",
+    "titleTr": "İş ilanı ve başvuru",
+    "topicTr": "İş hayatı",
+    "text": "Das Café Sonne in der Innenstadt sucht ab September eine Servicekraft. Die Arbeitszeit ist von Montag bis Freitag, jeweils von 14 bis 20 Uhr. Am Wochenende ist das Café geschlossen. Gute Deutschkenntnisse sind wichtig, weil man viel mit Gästen spricht. Erfahrung ist nicht nötig, denn neue Mitarbeiter bekommen zwei Wochen Einarbeitung. Der Stundenlohn beträgt 14 Euro. Interessierte schicken bitte eine kurze Bewerbung per E-Mail an Frau Keller. Bewerbungen sind bis zum 20. August möglich. Wer schon einmal in der Gastronomie gearbeitet hat, kann das gern erwähnen, aber es ist keine Bedingung.",
+    "estimatedMinutes": 8,
+    "questions": [
+      {
+        "id": "r-a2-02-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wann arbeitet die Servicekraft?",
+        "options": [
+          "Am Wochenende",
+          "Montag bis Freitag nachmittags und abends",
+          "Nur am Vormittag",
+          "Jeden Tag von 8 bis 14 Uhr"
+        ],
+        "answer": "Montag bis Freitag nachmittags und abends",
+        "acceptedAnswers": [],
+        "explanationTr": "\"von Montag bis Freitag, jeweils von 14 bis 20 Uhr\"."
+      },
+      {
+        "id": "r-a2-02-q2",
+        "type": "TRUE_FALSE",
+        "prompt": "Man braucht Erfahrung in der Gastronomie.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Erfahrung ist nicht nötig\" ve \"es ist keine Bedingung\"."
+      },
+      {
+        "id": "r-a2-02-q3",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Warum sind Deutschkenntnisse wichtig?",
+        "options": [
+          "Weil man Berichte schreibt",
+          "Weil man viel mit Gästen spricht",
+          "Weil die Chefin kein Englisch kann",
+          "Weil man telefonieren muss"
+        ],
+        "answer": "Weil man viel mit Gästen spricht",
+        "acceptedAnswers": [],
+        "explanationTr": "Metin nedeni açıkça veriyor: \"weil man viel mit Gästen spricht\"."
+      },
+      {
+        "id": "r-a2-02-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Bis wann kann man sich bewerben?",
+        "options": ["Bis zum 10. August", "Bis zum 20. August", "Bis zum 1. September", "Bis zum 20. September"],
+        "answer": "Bis zum 20. August",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Bewerbungen sind bis zum 20. August möglich.\""
+      },
+      {
+        "id": "r-a2-02-q5",
+        "type": "GAP",
+        "prompt": "Der Stundenlohn ___ 14 Euro.",
+        "options": [],
+        "answer": "beträgt",
+        "acceptedAnswers": ["betraegt"],
+        "explanationTr": "betragen = (bir miktar) tutmak; \"Der Stundenlohn beträgt 14 Euro\"."
+      }
+    ],
+    "glossary": [
+      { "de": "die Servicekraft", "tr": "servis elemanı" },
+      { "de": "die Einarbeitung", "tr": "işe alıştırma, oryantasyon" },
+      { "de": "der Stundenlohn", "tr": "saatlik ücret" },
+      { "de": "die Bewerbung", "tr": "başvuru" },
+      { "de": "die Bedingung", "tr": "şart" }
+    ],
+    "verified": false
+  }
+]

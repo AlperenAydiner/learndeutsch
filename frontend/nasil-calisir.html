@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nasıl çalışır — Ich spreche Deutsch</title>
-    <meta name="description" content="Hedeften geriye planlama, günlük görevler, aralıklı kelime tekrarı ve ölçme. Sistem nasıl işler?">
+    <meta name="description" content="Seviye nasıl tahmin edilir, yerleştirme testi nasıl işler, koç önerilerini hangi kurallara göre verir, çalışma kaydı nasıl tutulur?">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,162 +27,265 @@
             <span class="eyebrow">Sistem</span>
             <h1>Nasıl çalışır</h1>
             <p class="lead">
-                Tek bir döngü: <strong>planla → çalış → işaretle → tekrar et →
-                ölç → ayarla</strong>. Her adımda kimin ne yaptığı bellidir.
+                Tek bir döngü: <strong>ölç → öner → çalış → kaydet → yeniden ölç</strong>.
+                Hiçbir adımda "yapay zekâ karar verdi" denmez; her öneri, yazılı bir
+                kuralın sonucudur ve hangi veriye dayandığını söyler.
             </p>
         </div>
     </section>
 
-    <!-- ============ Planlama ============ -->
+    <!-- ============ Seviye ============ -->
     <section class="section section--alt">
         <div class="wrap">
             <span class="eyebrow">Adım 1</span>
-            <h2>Hedeften geriye planlama</h2>
+            <h2>Seviye nasıl tahmin edilir</h2>
             <p class="lead">
-                Sen dört şey seçersin: hedef seviye, sınav türü, kaç gün,
-                günde kaç saat. Gerisini sistem hesaplar.
+                Seviye yalnız dört beceriden hesaplanır: <strong>Hören, Lesen,
+                Schreiben, Sprechen</strong>. Kelime ezberi, gramer alıştırması ve
+                artikel çalışması seviyeye dönüşmez — bunlar becerileri besleyen
+                çalışmalardır, ölçüsü değil.
             </p>
 
             <ol class="steps">
                 <li class="steps__item">
                     <span class="steps__no">1</span>
-                    <h3>Toplam iş yükü</h3>
-                    <p>Hedef seviyeye kadar gereken tüm içerik birimlerinin süresi toplanır.</p>
+                    <h3>Kanıt toplanır</h3>
+                    <p>Site içi test, deneme sınavı, öğretmen değerlendirmesi ya da resmî sınav sonucu.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">2</span>
-                    <h3>Bildiklerin düşülür</h3>
-                    <p>Yerleştirme testinde iyi gittiğin konular programdan çıkar, yarı bildiklerin hafifler.</p>
+                    <h3>Kanıt tartılır</h3>
+                    <p>Resmî sınav en ağır, öz değerlendirme en hafif basar. Bir yıldan eski kanıt sayılmaz.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">3</span>
-                    <h3>Gerçekçilik kontrolü</h3>
-                    <p>Kalan iş elindeki zamana sığmıyorsa sistem bunu söyler ve iki somut alternatif sunar.</p>
+                    <h3>Beceri seviyesi çıkar</h3>
+                    <p>Bir seviyeyi destekleyen kanıt, karşı kanıttan ağır basıyorsa o beceri o seviyede sayılır.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">4</span>
-                    <h3>Sınav günü sabitlenir</h3>
-                    <p>Prova, son tekrar ve deneme kampı sondan geriye doğru yerleştirilir.</p>
+                    <h3>Güven kademesi belirlenir</h3>
+                    <p>Yetersiz veri · Tahmin · Güvenilir. Tek bir kısa test seni "güvenilir" yapmaz.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">5</span>
-                    <h3>Günlere dağıtım</h3>
-                    <p>Kalan konular kalan günlere yayılır; her yedinci gün hafif gün olur.</p>
+                    <h3>Genel seviye</h3>
+                    <p>Ölçülebilen becerilerin ortancası. En az iki beceri ölçülmeden genel seviye verilmez.</p>
                 </li>
                 <li class="steps__item">
                     <span class="steps__no">6</span>
-                    <h3>Bloklara bölme</h3>
-                    <p>Günlük süren ne kadarsa bloklar ona göre ölçeklenir.</p>
+                    <h3>Tazelik kontrolü</h3>
+                    <p>45 gün geçtiyse ya da yeni kanıt birikmişse sistem yeniden ölçmeyi önerir.</p>
                 </li>
             </ol>
+
+            <div class="card card--pad artikel-demo">
+                <p class="day-note" style="margin-top:0;">
+                    <strong>Veri yoksa sonuç da yok.</strong> Hiç kanıt girmediysen
+                    sistem "A1'sin" demez, "henüz ölçemedik" der ve ölçmek için ne
+                    yapabileceğini söyler. Çıkan sonuç bir tahmindir; resmî CEFR
+                    seviyeni yalnız Goethe, telc, ÖSD gibi kurumların sınavları belirler.
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- ============ Isaretleme ============ -->
+    <!-- ============ Yerlestirme ============ -->
     <section class="section">
         <div class="wrap">
             <span class="eyebrow">Adım 2</span>
-            <h2>Görevleri işaretleme</h2>
+            <h2>Yerleştirme testi</h2>
             <p class="lead">
-                Serbest metin yazmazsın. Her görev için tek tık:
-                <strong>Yaptım</strong> / <strong>Yarım yaptım</strong> /
-                <strong>Yapamadım</strong>. Göreve göre bir de hazır seçenek gelir.
+                Başlangıç noktasını bulmak için kısa ve uyarlanan bir test.
+                Zorunlu değildir: "Sıfırdan başlıyorum" dersen test yok, doğrudan
+                A1 başlangıcından başlarsın.
             </p>
 
             <div class="card card--pad day-table">
                 <div class="day-row">
-                    <span class="day-row__time">Kelime</span>
-                    <span class="day-row__name">Otomatik</span>
-                    <span class="day-row__desc">Performans sitedeki tekrar oturumundan ölçülür</span>
+                    <span class="day-row__time">Blok</span>
+                    <span class="day-row__name">6 soru</span>
+                    <span class="day-row__desc">Sorular A2 seviyesinden başlar</span>
                 </div>
                 <div class="day-row">
-                    <span class="day-row__time">Gramer</span>
-                    <span class="day-row__name">Otomatik</span>
-                    <span class="day-row__desc">Günün konusuna ait kısa quiz, skor kaydedilir</span>
+                    <span class="day-row__time">Yukarı</span>
+                    <span class="day-row__name">6'da 5+</span>
+                    <span class="day-row__desc">Bir üst seviyeden yeni blok gelir</span>
                 </div>
                 <div class="day-row">
-                    <span class="day-row__time">Hören</span>
-                    <span class="day-row__name">Öz bildirim</span>
-                    <span class="day-row__desc">Ne kadar anladın? az / yarısı / çoğu</span>
+                    <span class="day-row__time">Aşağı</span>
+                    <span class="day-row__name">6'da 3-</span>
+                    <span class="day-row__desc">Bir alt seviyeden yeni blok gelir</span>
                 </div>
                 <div class="day-row">
-                    <span class="day-row__time">Lesen</span>
-                    <span class="day-row__name">Karma</span>
-                    <span class="day-row__desc">Kısa okuma soruları + ne kadar anladın</span>
+                    <span class="day-row__time">Sınır</span>
+                    <span class="day-row__name">En fazla 24 soru</span>
+                    <span class="day-row__desc">Test on beş dakikayı geçmemeli</span>
                 </div>
-                <div class="day-row">
-                    <span class="day-row__time">Schreiben</span>
-                    <span class="day-row__name">Öz bildirim</span>
-                    <span class="day-row__desc">Kaç metin yazdın? Kalıpları kullanabildin mi?</span>
-                </div>
-                <div class="day-row">
-                    <span class="day-row__time">Sprechen</span>
-                    <span class="day-row__name">Öz bildirim</span>
-                    <span class="day-row__desc">Kendini kaydettin mi? Nasıl geçti?</span>
-                </div>
-
                 <p class="day-note">
-                    Nereden çalıştığını, ne kadar sürdüğünü, hangi videoyu izlediğini
-                    sormuyoruz. Bir görevi işaretlemek birkaç saniye sürmeli.
+                    Her soruda <strong>"Bilmiyorum"</strong> seçeneği var — tahmin
+                    etmeye zorlanmazsın, çünkü rastgele tutan bir cevap ölçümü bozar.
+                    Sonuç <em>kaba bir başlangıç tahminidir</em> ve düşük güvenle
+                    kaydedilir; gerçek seviye, çalıştıkça biriken kanıtla netleşir.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ============ Kelime ============ -->
+    <!-- ============ Koc kurallari ============ -->
     <section class="section section--alt">
         <div class="wrap">
             <span class="eyebrow">Adım 3</span>
-            <h2>Kelimeler neden unutulmuyor</h2>
+            <h2>Koç önerisini nasıl seçer</h2>
             <p class="lead">
-                Kelimeleri sistem verir — sen liste hazırlamazsın. Her kelime
-                <strong>SM-2</strong> algoritmasıyla takip edilir: iyi bildiğin
-                kelime giderek daha seyrek, zorlandığın kelime daha sık karşına çıkar.
+                Günde <strong>en fazla üç öneri</strong>, her kategoriden en fazla bir
+                tane. Kurallar sırayla bakılır; ilk uyanlar öneriye dönüşür. Hiçbiri
+                uymuyorsa koç susar — doldurmak için öneri uydurmaz.
             </p>
 
-            <div class="card card--pad artikel-demo">
-                <p class="artikel-demo__label">İsimlerde artikel renk kodlu gösterilir</p>
-                <p class="artikel-demo__row">
-                    <span class="artikel--der">der</span> Bahnhof
-                    <span class="artikel-demo__sep">·</span>
-                    <span class="artikel--die">die</span> Straße
-                    <span class="artikel-demo__sep">·</span>
-                    <span class="artikel--das">das</span> Fahrrad
-                </p>
+            <div class="card card--pad day-table">
+                <div class="day-row">
+                    <span class="day-row__time">Seviye ölçümü</span>
+                    <span class="day-row__name">Ölçüm yoksa / eskiyse</span>
+                    <span class="day-row__desc">Yerleştirme ya da yeniden değerlendirme önerilir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Geri dönüş</span>
+                    <span class="day-row__name">3+ gün ara verdiysen</span>
+                    <span class="day-row__desc">Kısa bir gün önerilir, birikmiş tekrar birkaç güne yayılır</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Tekrar zamanı</span>
+                    <span class="day-row__name">Kelimelerin günü geldiyse</span>
+                    <span class="day-row__desc">Önce tekrar; yeni kelime tekrarın önüne geçmez</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Tekrarlayan hata</span>
+                    <span class="day-row__name">Aynı hata 3 oturumda</span>
+                    <span class="day-row__desc">O hataya odaklı kısa bir çalışma önerilir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Zayıf konu</span>
+                    <span class="day-row__name">Doğruluk %70'in altında</span>
+                    <span class="day-row__desc">Son 20 soruya bakılır, en az 10 cevap gerekir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Eksik kanıt</span>
+                    <span class="day-row__name">Bir beceri hiç ölçülmemişse</span>
+                    <span class="day-row__desc">O beceriyi ölçecek bir çalışma önerilir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">İhmal edilen beceri</span>
+                    <span class="day-row__name">7 gündür kaydı yoksa</span>
+                    <span class="day-row__desc">Dengeyi kurmak için o beceri öne çıkar</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Artikel</span>
+                    <span class="day-row__name">Artikel doğruluğu düşükse</span>
+                    <span class="day-row__desc">der/die/das alıştırması önerilir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Hedefe yakın</span>
+                    <span class="day-row__name">Hedef seviyeye ulaştıysan</span>
+                    <span class="day-row__desc">Sınav pratiği ve hedefi yükseltme önerilir</span>
+                </div>
                 <p class="day-note">
-                    Sorular iki yönlü sorulur: Almanca → Türkçe, Türkçe → Almanca.
-                    İsimlerde ayrıca artikelin kendisi sorulur — Türkçede cinsiyet
-                    olmadığı için "Bahnhof"u bilmekle "der Bahnhof"u bilmek ayrı
-                    beceridir. Günlük yeni kelime sayısı, o gün biriken tekrar
-                    yüküne göre otomatik kısılır; kelime bloğu planlanan süreyi aşmaz.
+                    Her öneride "neden" satırı vardır: hangi sayı, hangi tarih, hangi
+                    eksik veri bu öneriyi doğurdu. Beğenmediğin öneriyi yapmak zorunda
+                    değilsin; sistem seni cezalandırmaz.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- ============ Uyarlama ============ -->
+    <!-- ============ Plan ============ -->
     <section class="section">
         <div class="wrap">
             <span class="eyebrow">Adım 4</span>
-            <h2>Program kendini nasıl ayarlar</h2>
+            <h2>Haftalık ve günlük plan</h2>
 
             <div class="who">
                 <div class="card who__item">
-                    <h3>Zayıf konular</h3>
-                    <p>Her soru bir konuya bağlı. Hata yaptığın konular sonraki günlerde daha çok karşına çıkar.</p>
+                    <h3>Paylar seviyene göre</h3>
+                    <p>Başlangıçta kelime ve gramer ağır basar; ilerledikçe dinleme, konuşma ve yazma büyür.</p>
                 </div>
                 <div class="card who__item">
-                    <h3>Kaçan görevler</h3>
-                    <p>"Yapamadım" dediğin görevler kaybolmaz, bir sonraki hafif güne taşınır.</p>
+                    <h3>Günlük süre senin</h3>
+                    <p>Haftada kaç gün, günde kaç dakika çalışacağını sen söylersin; plan ona sığar.</p>
                 </div>
                 <div class="card who__item">
-                    <h3>Geri kalma</h3>
-                    <p>Programın gerisine düşersen uyarı gelir ve planı yeniden hesaplamayı önerir.</p>
+                    <h3>Öneriler önce</h3>
+                    <p>Günün planı önce koçun önerilerini yerleştirir, kalan süreyi en geri kalmış türe verir.</p>
                 </div>
                 <div class="card who__item">
-                    <h3>Denemeler</h3>
-                    <p>Aynı deneme körü körüne tekrarlanmaz; yanlışlarına göre yeni kombinasyon kurulur.</p>
+                    <h3>Zorunluluk yok</h3>
+                    <p>Plan bir öneridir. Uymadığın gün "başarısız" sayılmazsın; kayıt neyse o görünür.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ Kayit ============ -->
+    <section class="section section--alt">
+        <div class="wrap">
+            <span class="eyebrow">Adım 5</span>
+            <h2>Çalışma kaydı</h2>
+            <p class="lead">
+                "Ne kadar çalıştım?" sorusunun cevabı, "ne kadar biliyorum"dan
+                ayrı bir ekranda durur — ikisi karıştırılmaz.
+            </p>
+
+            <div class="card card--pad day-table">
+                <div class="day-row">
+                    <span class="day-row__time">Sitede</span>
+                    <span class="day-row__name">Otomatik</span>
+                    <span class="day-row__desc">Alıştırma yaptığında süre ve sonuç kendiliğinden kaydedilir</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Dışarıda</span>
+                    <span class="day-row__name">"Bugün ne yaptın?"</span>
+                    <span class="day-row__desc">Tür, süre, kaynak ve istersen kısa bir not — birkaç saniye</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Sınav sonucu</span>
+                    <span class="day-row__name">Kanıt olur</span>
+                    <span class="day-row__desc">Deneme veya resmî sınav sonucunu girersen seviye tahminine girer</span>
+                </div>
+                <p class="day-note">
+                    Verilerin senin: istediğin an tek dosya hâlinde
+                    <strong>dışa aktarabilir</strong>, geri yükleyebilir ya da
+                    hesabını sıfırlayabilirsin.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ Durum ============ -->
+    <section class="section">
+        <div class="wrap">
+            <span class="eyebrow">Dürüstlük</span>
+            <h2>Şu an ne hazır, ne yolda</h2>
+            <p class="lead">
+                Olmayan özelliği varmış gibi anlatmıyoruz. Bugün itibarıyla durum:
+            </p>
+
+            <div class="card card--pad day-table">
+                <div class="day-row">
+                    <span class="day-row__time">Hazır</span>
+                    <span class="day-row__name">Ölçme ve koçluk</span>
+                    <span class="day-row__desc">Hedef ve ritim, yerleştirme testi, seviye tahmini, koç önerileri, haftalık ve günlük plan, çalışma kaydı, dışa aktarma</span>
+                </div>
+                <div class="day-row">
+                    <span class="day-row__time">Yolda</span>
+                    <span class="day-row__name">Site içi çalışma</span>
+                    <span class="day-row__desc">Kelime tekrarı, gramer alıştırmaları, artikel çalışması ve hata hafızası</span>
+                </div>
+                <p class="day-note">
+                    Site içi modüller gelene kadar koç, o çalışmaları
+                    <strong>dışarıda</strong> yapmanı önerir ve sonucu kaydetmeni ister.
+                    Hazır olmayan bir şeyin istatistiğini uydurmayız: veri yoksa
+                    ekranda "henüz veri yok" yazar.
+                </p>
             </div>
         </div>
     </section>
@@ -193,7 +296,7 @@
             <div class="cta">
                 <div>
                     <h2 class="cta__title">Başlamaya hazır mısın?</h2>
-                    <p class="cta__sub">Kayıt iki dakika, yerleştirme testi on beş.</p>
+                    <p class="cta__sub">Kayıt iki dakika, yerleştirme testi on beş — istersen sonraya bırak.</p>
                 </div>
                 <a class="btn btn--accent btn--lg" href="/kayit.html">Ücretsiz başla</a>
             </div>

@@ -1,0 +1,359 @@
+[
+  {
+    "id": "p18",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Am Samstag ___ meine Eltern.",
+    "options": [
+      "besuche ich",
+      "ich besuche",
+      "ich besuchen",
+      "besuchen ich"
+    ],
+    "answer": "besuche ich",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSTELLUNG"
+    ],
+    "explanationTr": "Fiil her zaman ikinci öğedir; başta zaman varsa özne arkaya geçer.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p21",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir kommen aus ___ Türkei.",
+    "options": [
+      "der",
+      "die",
+      "dem",
+      "den"
+    ],
+    "answer": "der",
+    "acceptedAnswers": [],
+    "tags": [
+      "DATIV"
+    ],
+    "explanationTr": "aus Dativ ister; dişil die yerine der olur.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p22",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich helfe ___ Kind.",
+    "options": [
+      "das",
+      "den",
+      "dem",
+      "der"
+    ],
+    "answer": "dem",
+    "acceptedAnswers": [],
+    "tags": [
+      "DATIV"
+    ],
+    "explanationTr": "helfen fiili Dativ ister; nötr das yerine dem olur.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p24",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir ___ nach Hause gegangen.",
+    "options": [
+      "haben",
+      "sind",
+      "hat",
+      "ist"
+    ],
+    "answer": "sind",
+    "acceptedAnswers": [],
+    "tags": [
+      "PERFEKT"
+    ],
+    "explanationTr": "Hareket bildiren fiiller sein alır: gehen, fahren, kommen.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p25",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Sie hat den Brief ___. (schreiben)",
+    "options": [
+      "geschreibt",
+      "geschrieben",
+      "schreibt",
+      "schrieb"
+    ],
+    "answer": "geschrieben",
+    "acceptedAnswers": [],
+    "tags": [
+      "PERFEKT"
+    ],
+    "explanationTr": "schreiben düzensizdir: Partizip II geschrieben.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p27",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Gestern ___ ich krank.",
+    "options": [
+      "bin",
+      "war",
+      "bist",
+      "warst"
+    ],
+    "answer": "war",
+    "acceptedAnswers": [],
+    "tags": [
+      "PRAETERITUM"
+    ],
+    "explanationTr": "sein fiilinin Präteritum hâli: ich war.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p28",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Als Kind ___ ich viel Zeit.",
+    "options": [
+      "habe",
+      "hatte",
+      "hattest",
+      "hat"
+    ],
+    "answer": "hatte",
+    "acceptedAnswers": [],
+    "tags": [
+      "PRAETERITUM"
+    ],
+    "explanationTr": "haben fiilinin Präteritum hâli: ich hatte.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p29",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Das Buch liegt auf ___ Tisch.",
+    "options": [
+      "der",
+      "den",
+      "dem",
+      "des"
+    ],
+    "answer": "dem",
+    "acceptedAnswers": [],
+    "tags": [
+      "WECHSELPRAEPOSITIONEN"
+    ],
+    "explanationTr": "Wo? sorusuna cevap veriyorsa Dativ: auf dem Tisch.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p30",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich lege das Buch auf ___ Tisch.",
+    "options": [
+      "der",
+      "den",
+      "dem",
+      "des"
+    ],
+    "answer": "den",
+    "acceptedAnswers": [],
+    "tags": [
+      "WECHSELPRAEPOSITIONEN"
+    ],
+    "explanationTr": "Wohin? sorusuna cevap veriyorsa Akkusativ: auf den Tisch.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p31",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich bleibe zu Hause, weil ich krank ___.",
+    "options": [
+      "bin",
+      "ist",
+      "sein",
+      "bist"
+    ],
+    "answer": "bin",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEBENSATZ"
+    ],
+    "explanationTr": "weil yan cümlesinde çekimli fiil en sona gider.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p32",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich weiß, dass er morgen ___.",
+    "options": [
+      "kommt",
+      "kommen",
+      "kommt er",
+      "er kommt"
+    ],
+    "answer": "kommt",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEBENSATZ"
+    ],
+    "explanationTr": "dass yan cümlesinde fiil sondadır ve özne tekrarlanmaz.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p33",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ es regnet, bleiben wir zu Hause.",
+    "options": [
+      "Wenn",
+      "Weil",
+      "Dass",
+      "Ob"
+    ],
+    "answer": "Wenn",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEBENSATZ"
+    ],
+    "explanationTr": "Koşul için wenn kullanılır: eğer yağmur yağarsa.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p34",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Mein Bruder ist ___ als ich. (alt)",
+    "options": [
+      "alt",
+      "älter",
+      "am ältesten",
+      "alter"
+    ],
+    "answer": "älter",
+    "acceptedAnswers": [],
+    "tags": [
+      "KOMPARATIV"
+    ],
+    "explanationTr": "Karşılaştırmada -er eki; alt sesli harf değiştirir: älter.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p35",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich freue ___ auf das Wochenende.",
+    "options": [
+      "mir",
+      "mich",
+      "sich",
+      "dich"
+    ],
+    "answer": "mich",
+    "acceptedAnswers": [],
+    "tags": [
+      "REFLEXIV"
+    ],
+    "explanationTr": "sich freuen dönüşlüdür; ich için Akkusativ zamiri mich.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p36",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich habe einen ___ Wagen gekauft. (neu)",
+    "options": [
+      "neu",
+      "neue",
+      "neuen",
+      "neuer"
+    ],
+    "answer": "neuen",
+    "acceptedAnswers": [],
+    "tags": [
+      "ADJEKTIVDEKLINATION"
+    ],
+    "explanationTr": "Belirsiz artikel eril Akkusativ'den sonra sıfat -en alır.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p37",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wenn ich reich ___, würde ich viel reisen. (sein)",
+    "options": [
+      "wäre",
+      "bin",
+      "war",
+      "sein"
+    ],
+    "answer": "wäre",
+    "acceptedAnswers": [],
+    "tags": [
+      "KONJUNKTIV2"
+    ],
+    "explanationTr": "Gerçek dışı koşul Konjunktiv II ister: ich wäre.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p39",
+    "level": "A2",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Der Zug hat 20 Minuten ___.",
+    "options": [
+      "Verspätung",
+      "Termin",
+      "Richtung",
+      "Reise"
+    ],
+    "answer": "Verspätung",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSCHATZ"
+    ],
+    "explanationTr": "Gecikme: die Verspätung.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "VOCABULARY"
+  }
+]

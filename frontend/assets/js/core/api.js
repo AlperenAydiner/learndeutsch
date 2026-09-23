@@ -8,6 +8,7 @@
 
 import { CONFIG } from "./config.js";
 import { getAccessToken } from "./auth.js";
+import { demoTarihi } from "../components/demoSeridi.js";
 
 /**
  * Sunucu bu sureden uzun sessiz kalirsa kullaniciya haber verilir.
@@ -44,6 +45,10 @@ async function request(path, { method = "GET", body, auth = true } = {}) {
         if (!token) throw new ApiError("Oturum bulunamadı, tekrar giriş yap", 401);
         headers["Authorization"] = `Bearer ${token}`;
     }
+
+    // SPEC 12.2: simule tarih. Sunucu bunu YALNIZ demo hesabinda dikkate alir.
+    const demo = demoTarihi();
+    if (demo) headers["X-Demo-Date"] = demo;
 
     const uyandirma = setTimeout(
         () => API_EVENTS.dispatchEvent(new Event("uyaniyor")), UYANDIRMA_ESIGI_MS);
@@ -99,6 +104,7 @@ function safeJson(text) {
 export const api = {
     get: (path) => request(path),
     post: (path, body) => request(path, { method: "POST", body }),
+    put: (path, body) => request(path, { method: "PUT", body }),
     patch: (path, body) => request(path, { method: "PATCH", body }),
     delete: (path) => request(path, { method: "DELETE" }),
 };

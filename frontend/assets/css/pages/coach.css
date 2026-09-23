@@ -1,0 +1,165 @@
+/* =====================================================================
+   Koçluk sayfası.
+
+   "Ne kadar Almanca biliyorum?" ile "Ne kadar çalıştım?" görsel olarak
+   ayrı durmalı (SPEC 7): biri sol kenarında teal çizgi taşır, diğeri
+   nötr. Aynı ekranda karışmasınlar diye araları geniş.
+   ===================================================================== */
+
+.coach-block { margin-top: var(--s-8); }
+
+.coach-block--knowledge,
+.coach-block--work {
+    padding-left: var(--s-5);
+    border-left: 2px solid var(--border);
+}
+
+.coach-block--knowledge { border-left-color: var(--primary); }
+
+.coach-overall {
+    margin: var(--s-4) 0 var(--s-2);
+    font-size: var(--fs-md);
+    font-weight: 600;
+    max-width: var(--prose);
+}
+
+/* --- Beceri kartlari ------------------------------------------------ */
+
+.skillcards {
+    list-style: none;
+    margin: var(--s-5) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--s-3);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.skillcard {
+    padding: var(--s-4);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+}
+
+.skillcard__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.skillcard__head h3 { margin: 0; font-size: var(--fs-base); }
+.skillcard__value { margin: var(--s-3) 0 var(--s-1); font-weight: 700; }
+.skillcard__meta { margin: 0; font-size: var(--fs-xs); color: var(--text-faint); }
+
+.skillcard__basis { margin-top: var(--s-3); }
+.skillcard__basis summary { cursor: pointer; font-size: var(--fs-sm); color: var(--primary); }
+.skillcard__basis ul { margin: var(--s-2) 0 0; padding-left: var(--s-5); }
+.skillcard__basis li { font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: var(--s-1); }
+
+/* --- Hedef durumu --------------------------------------------------- */
+
+.goalstatus { list-style: none; margin: var(--s-3) 0 0; padding: 0; }
+
+.goalstatus__row {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: var(--s-3);
+    padding: var(--s-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+.goalstatus__row span:first-child { font-weight: 600; color: var(--text); }
+.goalstatus__row.is-ok span:nth-child(2) { color: var(--done); }
+.goalstatus__conf { font-size: var(--fs-xs); color: var(--text-faint); }
+
+/* --- Alışkanlık (son 7 gün) ----------------------------------------- */
+
+.habit__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--s-2);
+    margin: var(--s-4) 0 var(--s-2);
+}
+
+.habit__day { display: grid; justify-items: center; gap: var(--s-1); }
+
+.habit__bars {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: 90px;
+    background: var(--bg-subtle);
+    border-radius: var(--r-sm);
+    overflow: hidden;
+}
+
+.habit__part { display: block; min-height: 2px; background: var(--primary); }
+.habit__part--gramer { background: var(--p-600); }
+.habit__part--hoeren { background: var(--a-600); }
+.habit__part--lesen { background: var(--ok-600); }
+.habit__part--sprechen { background: var(--warn-600); }
+.habit__part--schreiben { background: var(--der); }
+
+.habit__label { font-size: var(--fs-xs); color: var(--text-faint); }
+.habit__total { font-size: var(--fs-xs); font-family: var(--font-mono); }
+
+.totals { list-style: none; margin: var(--s-3) 0 0; padding: 0; max-width: 360px; }
+
+.totals__row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--s-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.totals__row span:last-child { font-family: var(--font-mono); color: var(--text-muted); }
+
+/* --- Hedef ve ritim formu ------------------------------------------- */
+
+.goalform { display: grid; gap: var(--s-5); margin-top: var(--s-4); max-width: 720px; }
+
+@media (min-width: 1100px) {
+    .skillcards { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --- Öğrenme modüllerinin kendi istatistiği ------------------------- */
+
+.learnstats {
+    display: grid;
+    gap: var(--s-5);
+    margin-top: var(--s-3);
+    max-width: 640px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.learnstats__head { margin: 0 0 var(--s-2); font-size: var(--fs-sm); color: var(--text-muted); }
+.learnstats__list { list-style: none; margin: 0; padding: 0; }
+
+.learnstats__row {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.learnstats__row span:last-child { font-family: var(--font-mono); color: var(--text-muted); }
+.learnstats__link { grid-column: 1 / -1; margin: 0; font-size: var(--fs-sm); }
+
+/* --- Hata hafızası --------------------------------------------------- */
+
+.errors { list-style: none; margin: var(--s-3) 0 0; padding: 0; max-width: 640px; }
+
+.errors__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.errors__tag { font-weight: 600; flex: 1 1 auto; }
+.errors__meta { font-size: var(--fs-xs); color: var(--text-faint); font-family: var(--font-mono); }

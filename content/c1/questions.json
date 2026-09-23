@@ -1,0 +1,33 @@
+[
+  {
+    "id": "q87",
+    "level": "C1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ der Ergebnisse informieren wir alle Beteiligten.",
+    "options": ["Nach Auswertung", "Nachdem Auswertung", "Nach auswerten", "Nach ausgewertet"],
+    "answer": "Nach Auswertung",
+    "acceptedAnswers": [],
+    "tags": ["NOMINALISIERUNG"],
+    "explanationTr": "nachdem → nach + isim (die Auswertung); fiil biçimi kullanılmaz.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q88",
+    "level": "C1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Welcher Satz entspricht \"Trotz des Regens fand das Konzert statt\"?",
+    "options": [
+      "Obwohl es regnete, fand das Konzert statt.",
+      "Weil es regnete, fand das Konzert statt.",
+      "Wenn es regnet, findet das Konzert statt.",
+      "Nachdem es geregnet hatte, fand das Konzert statt."
+    ],
+    "answer": "Obwohl es regnete, fand das Konzert statt.",
+    "acceptedAnswers": [],
+    "tags": ["NOMINALISIERUNG"],
+    "explanationTr": "trotz → obwohl; isim öbeği yan cümleye çevrilir.",
+    "estimatedMinutes": 1,
+    "verified": false
+  }
+]

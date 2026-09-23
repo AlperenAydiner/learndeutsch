@@ -1,0 +1,63 @@
+[
+  {
+    "id": "h-a1-01",
+    "level": "A1",
+    "kind": "DICTATION",
+    "titleTr": "Kendini tanıtma",
+    "text": "Ich heiße Anna und ich komme aus Österreich.",
+    "textTr": "Adım Anna ve Avusturya'danım.",
+    "estimatedMinutes": 3,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-a1-02",
+    "level": "A1",
+    "kind": "DICTATION",
+    "titleTr": "Randevu saati",
+    "text": "Der Termin beim Arzt ist am Montag um halb neun.",
+    "textTr": "Doktor randevusu pazartesi sekiz buçukta.",
+    "estimatedMinutes": 3,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-a1-03",
+    "level": "A1",
+    "kind": "COMPREHENSION",
+    "titleTr": "Telesekreter mesajı",
+    "text": "Hallo Julia, hier ist Tom. Ich kann heute leider nicht kommen. Ich bin krank und bleibe zu Hause. Können wir uns am Freitag um sechs treffen? Ruf mich bitte an. Tschüss!",
+    "textTr": "Merhaba Julia, ben Tom. Bugün maalesef gelemiyorum. Hastayım ve evde kalıyorum. Cuma saat altıda buluşabilir miyiz? Lütfen beni ara. Hoşça kal!",
+    "estimatedMinutes": 4,
+    "questions": [
+      {
+        "id": "h-a1-03-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Warum kommt Tom heute nicht?",
+        "options": ["Er arbeitet", "Er ist krank", "Er hat keine Zeit", "Er ist im Urlaub"],
+        "answer": "Er ist krank",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Ich bin krank und bleibe zu Hause.\""
+      },
+      {
+        "id": "h-a1-03-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wann möchte Tom sich treffen?",
+        "options": ["Am Montag", "Am Mittwoch", "Am Freitag", "Am Sonntag"],
+        "answer": "Am Freitag",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Können wir uns am Freitag um sechs treffen?\""
+      },
+      {
+        "id": "h-a1-03-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Tom möchte einen Anruf.",
+        "options": ["richtig", "falsch"],
+        "answer": "richtig",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Ruf mich bitte an\" — beni ara diyor."
+      }
+    ],
+    "verified": false
+  }
+]

@@ -1,0 +1,100 @@
+[
+  {
+    "id": "p-b1-01", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Das ist der Mann, ___ ich gestern geholfen habe.",
+    "options": ["dem", "den", "der", "dessen"], "answer": "dem", "acceptedAnswers": [],
+    "tags": ["RELATIVSATZ"],
+    "explanationTr": "helfen Dativ ister; eril tekil Dativ ilgi zamiri: dem.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-02", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Das Haus ___ im Jahr 1990 gebaut.",
+    "options": ["wurde", "hat", "worden", "werden"], "answer": "wurde", "acceptedAnswers": [],
+    "tags": ["PASSIV"],
+    "explanationTr": "Geçmiş zamanda edilgen: wurde + Partizip II.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-03", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Ich habe keine Lust, heute ins Kino ___.",
+    "options": ["zu gehen", "gehen", "gegangen", "zu gehe"], "answer": "zu gehen", "acceptedAnswers": [],
+    "tags": ["INFINITIV_ZU"],
+    "explanationTr": "Lust haben + zu + mastar: ... ins Kino zu gehen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-04", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Wegen ___ Regens bleiben wir zu Hause.",
+    "options": ["des", "dem", "den", "der"], "answer": "des", "acceptedAnswers": [],
+    "tags": ["GENITIV"],
+    "explanationTr": "wegen Genitiv alır; der Regen → des Regens.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-05", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Wenn ich mehr Zeit gehabt ___, wäre ich mitgekommen.",
+    "options": ["hätte", "wäre", "habe", "hatte"], "answer": "hätte", "acceptedAnswers": [],
+    "tags": ["KONJUNKTIV2_VERGANGENHEIT"],
+    "explanationTr": "Geçmişte gerçekleşmemiş koşul: hätte + Partizip II.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-06", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "___ er krank war, ist er zur Arbeit gegangen.",
+    "options": ["Obwohl", "Weil", "Damit", "Deshalb"], "answer": "Obwohl", "acceptedAnswers": [],
+    "tags": ["KONNEKTOREN"],
+    "explanationTr": "Beklenene aykırılık: obwohl (-e rağmen). Deshalb ana cümle bağlacıdır, fiili sona atmaz.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-07", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Nachdem wir gegessen ___, sind wir spazieren gegangen.",
+    "options": ["hatten", "waren", "hätten", "wurden"], "answer": "hatten", "acceptedAnswers": [],
+    "tags": ["PLUSQUAMPERFEKT"],
+    "explanationTr": "Geçmişteki bir olaydan daha önceki olay: Plusquamperfekt (hatten gegessen).",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-08", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Ich warte schon lange ___ deine Antwort.",
+    "options": ["auf", "für", "an", "um"], "answer": "auf", "acceptedAnswers": [],
+    "tags": ["VERBEN_MIT_PRAEPOSITION"],
+    "explanationTr": "warten auf + Akkusativ.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-09", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "VOCABULARY",
+    "prompt": "Ich muss meinen Pass verlängern lassen, weil er bald ___.",
+    "options": ["abläuft", "ausgeht", "aufhört", "wegläuft"], "answer": "abläuft", "acceptedAnswers": [],
+    "tags": ["WORTSCHATZ"],
+    "explanationTr": "Belgenin süresi dolmak: ablaufen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-10", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "VOCABULARY",
+    "prompt": "Er hat die Prüfung nicht bestanden, deshalb muss er sie ___.",
+    "options": ["wiederholen", "erholen", "abholen", "überholen"], "answer": "wiederholen", "acceptedAnswers": [],
+    "tags": ["WORTSCHATZ"],
+    "explanationTr": "Sınavı tekrar etmek: eine Prüfung wiederholen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b1-11", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "READING",
+    "prompt": "Aushang: „Die Bibliothek bleibt vom 1. bis 14. August wegen Renovierung geschlossen. Bücher können in dieser Zeit im Rathaus zurückgegeben werden.“ — Was kann man am 5. August tun?",
+    "options": ["Bücher im Rathaus zurückgeben", "Bücher in der Bibliothek ausleihen", "Bücher in der Bibliothek zurückgeben", "an einer Führung durch die Bibliothek teilnehmen"],
+    "answer": "Bücher im Rathaus zurückgeben", "acceptedAnswers": [],
+    "tags": ["LESEVERSTEHEN"],
+    "explanationTr": "Kütüphane 1–14 Ağustos kapalı; kitaplar bu sürede belediyeye iade edilebilir.",
+    "estimatedMinutes": 2, "verified": false
+  },
+  {
+    "id": "p-b1-12", "level": "B1", "type": "MULTIPLE_CHOICE", "placementKind": "READING",
+    "prompt": "E-Mail: „Liebe Anna, leider kann ich am Samstag nicht zu deiner Feier kommen, weil meine Schwester an diesem Tag heiratet. Ich rufe dich nächste Woche an. Tim“ — Warum kommt Tim nicht?",
+    "options": ["Seine Schwester heiratet.", "Er ist krank.", "Er muss arbeiten.", "Er ist im Urlaub."],
+    "answer": "Seine Schwester heiratet.", "acceptedAnswers": [],
+    "tags": ["LESEVERSTEHEN"],
+    "explanationTr": "Metin: \"weil meine Schwester an diesem Tag heiratet\".",
+    "estimatedMinutes": 2, "verified": false
+  }
+]

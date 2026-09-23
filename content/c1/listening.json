@@ -1,0 +1,90 @@
+[
+  {
+    "id": "h-c1-01",
+    "level": "C1",
+    "kind": "DICTATION",
+    "titleTr": "Akademik çekince",
+    "text": "Die Ergebnisse legen einen Zusammenhang nahe, ohne dass sich daraus bereits eine Ursache ableiten ließe.",
+    "textTr": "Sonuçlar bir ilişkiye işaret ediyor, ancak bundan bir neden çıkarılabilmiş değil.",
+    "estimatedMinutes": 8,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-c1-02",
+    "level": "C1",
+    "kind": "COMPREHENSION",
+    "titleTr": "Konferans konuşmasından bir bölüm",
+    "text": "Lassen Sie mich mit einer Einschränkung beginnen: Was ich hier vorstelle, ist eine Zwischenauswertung, keine abgeschlossene Studie. Wir haben in zwölf Betrieben untersucht, wie sich verbindliche Fokuszeiten auf die Qualität der Arbeit auswirken. Der auffälligste Befund ist nicht die gemessene Produktivität, sondern die Zahl der Rückfragen: Sie ging um etwa ein Viertel zurück, weil Aufgaben von Anfang an klarer formuliert wurden. Interessanterweise berichteten gerade jene Teams von Entlastung, die anfangs am skeptischsten waren. Ich warne allerdings vor einer voreiligen Verallgemeinerung. Unsere Stichprobe ist klein, die Betriebe stammen überwiegend aus der Softwarebranche, und wir konnten nicht kontrollieren, ob parallel andere Änderungen eingeführt wurden. Belastbar ist zum jetzigen Zeitpunkt vor allem eines: Wer Fokuszeiten einführt, sollte sie verbindlich machen — freiwillige Regelungen blieben in unseren Daten wirkungslos.",
+    "textTr": "Bir çekinceyle başlayayım: Burada sunduğum ara değerlendirme, tamamlanmış bir çalışma değil. On iki işletmede, bağlayıcı odak zamanlarının iş kalitesine etkisini inceledik. En dikkat çekici bulgu ölçülen verimlilik değil, geri soru sayısı: Görevler baştan daha net tanımlandığı için yaklaşık dörtte bir azaldı. İlginçtir, rahatlama bildirenler en başta en şüpheci olan ekiplerdi. Yine de aceleci genellemeye karşı uyarıyorum. Örneklemimiz küçük, işletmeler ağırlıkla yazılım sektöründen ve paralel başka değişiklikler yapılıp yapılmadığını kontrol edemedik. Şu an sağlam olan tek şey şu: Odak zamanı getiren onu bağlayıcı kılmalı; gönüllü düzenlemeler verilerimizde etkisiz kaldı.",
+    "estimatedMinutes": 10,
+    "questions": [
+      {
+        "id": "h-c1-02-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie ordnet die Sprecherin ihre Ergebnisse ein?",
+        "options": [
+          "Als abgeschlossene Studie",
+          "Als Zwischenauswertung",
+          "Als Wiederholung früherer Studien",
+          "Als reine Vermutung ohne Daten"
+        ],
+        "answer": "Als Zwischenauswertung",
+        "acceptedAnswers": [],
+        "explanationTr": "İlk cümlede çekinceyle belirtiyor: ara değerlendirme."
+      },
+      {
+        "id": "h-c1-02-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Welcher Befund ist laut Sprecherin am auffälligsten?",
+        "options": [
+          "Die gemessene Produktivität",
+          "Der Rückgang der Rückfragen",
+          "Die Zufriedenheit der Führungskräfte",
+          "Die Zahl der Überstunden"
+        ],
+        "answer": "Der Rückgang der Rückfragen",
+        "acceptedAnswers": [],
+        "explanationTr": "Geri soruların yaklaşık dörtte bir azalması."
+      },
+      {
+        "id": "h-c1-02-q3",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wovor warnt sie ausdrücklich?",
+        "options": [
+          "Vor zu langen Fokuszeiten",
+          "Vor einer voreiligen Verallgemeinerung",
+          "Vor der Softwarebranche",
+          "Vor freiwilligen Regelungen in allen Fällen"
+        ],
+        "answer": "Vor einer voreiligen Verallgemeinerung",
+        "acceptedAnswers": [],
+        "explanationTr": "Küçük örneklem ve kontrol edilemeyen paralel değişiklikler nedeniyle."
+      },
+      {
+        "id": "h-c1-02-q4",
+        "type": "TRUE_FALSE",
+        "prompt": "Freiwillige Fokuszeiten zeigten in den Daten eine deutliche Wirkung.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"freiwillige Regelungen blieben in unseren Daten wirkungslos\"."
+      },
+      {
+        "id": "h-c1-02-q5",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was überraschte die Sprecherin?",
+        "options": [
+          "Dass die skeptischsten Teams Entlastung berichteten",
+          "Dass niemand teilnehmen wollte",
+          "Dass die Produktivität stark sank",
+          "Dass alle Betriebe aus einer Branche kamen"
+        ],
+        "answer": "Dass die skeptischsten Teams Entlastung berichteten",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Interessanterweise berichteten gerade jene Teams von Entlastung, die anfangs am skeptischsten waren.\""
+      }
+    ],
+    "verified": false
+  }
+]

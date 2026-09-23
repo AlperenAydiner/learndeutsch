@@ -1,0 +1,100 @@
+[
+  {
+    "id": "p-b2-01", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Der vor zwei Jahren ___ Roman wurde inzwischen verfilmt.",
+    "options": ["erschienene", "erscheinende", "erschienen", "erscheinend"], "answer": "erschienene", "acceptedAnswers": [],
+    "tags": ["PARTIZIP_ATTRIBUT"],
+    "explanationTr": "Tamamlanmış olay: Partizip II sıfat olarak çekimlenir (der erschienene Roman).",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-02", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die Geschäftsführung hat noch keine Entscheidung ___.",
+    "options": ["getroffen", "genommen", "gegeben", "gestellt"], "answer": "getroffen", "acceptedAnswers": [],
+    "tags": ["NOMEN_VERB_VERBINDUNGEN"],
+    "explanationTr": "Karar vermek: eine Entscheidung treffen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-03", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die Rechnung muss bis Freitag bezahlt ___.",
+    "options": ["werden", "worden", "haben", "wird"], "answer": "werden", "acceptedAnswers": [],
+    "tags": ["PASSIV"],
+    "explanationTr": "Modal fiilli edilgen: muss + Partizip II + werden.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-04", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Er spricht nicht nur Englisch, ___ auch Französisch.",
+    "options": ["sondern", "aber", "und", "oder"], "answer": "sondern", "acceptedAnswers": [],
+    "tags": ["ZWEITEILIGE_KONNEKTOREN"],
+    "explanationTr": "nicht nur … sondern auch.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-05", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "___ des Regens sind wir spazieren gegangen, obwohl wir nass wurden.",
+    "options": ["Trotz", "Wegen", "Statt", "Außerhalb"], "answer": "Trotz", "acceptedAnswers": [],
+    "tags": ["PRAEPOSITIONEN_GENITIV"],
+    "explanationTr": "Aykırılık bildiren Genitiv edatı: trotz (-e rağmen).",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-06", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Die Kollegin, ___ Mann Arzt ist, arbeitet in der Buchhaltung.",
+    "options": ["deren", "dessen", "die", "der"], "answer": "deren", "acceptedAnswers": [],
+    "tags": ["RELATIVSATZ"],
+    "explanationTr": "Dişil öğeye bağlı iyelik ilgi zamiri: deren (kimin kocası).",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-07", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Er tut so, als ___ er alles wüsste.",
+    "options": ["ob", "wenn", "dass", "wie"], "answer": "ob", "acceptedAnswers": [],
+    "tags": ["ALS_OB"],
+    "explanationTr": "Gerçek olmayan karşılaştırma: als ob + Konjunktiv II.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-08", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "GRAMMAR",
+    "prompt": "Wir müssen uns erst ___ die neuen Regeln gewöhnen.",
+    "options": ["an", "auf", "für", "zu"], "answer": "an", "acceptedAnswers": [],
+    "tags": ["VERBEN_MIT_PRAEPOSITION"],
+    "explanationTr": "sich gewöhnen an + Akkusativ.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-09", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "VOCABULARY",
+    "prompt": "Der Vertrag kann jederzeit mit einer Frist von drei Monaten ___ werden.",
+    "options": ["gekündigt", "entlassen", "gelöscht", "gestrichen"], "answer": "gekündigt", "acceptedAnswers": [],
+    "tags": ["WORTSCHATZ"],
+    "explanationTr": "Sözleşmeyi feshetmek: einen Vertrag kündigen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-10", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "VOCABULARY",
+    "prompt": "Die Regierung will die Arbeitslosigkeit stärker ___.",
+    "options": ["bekämpfen", "bestreiten", "bewerben", "bestehen"], "answer": "bekämpfen", "acceptedAnswers": [],
+    "tags": ["WORTSCHATZ"],
+    "explanationTr": "Bir sorunla mücadele etmek: bekämpfen.",
+    "estimatedMinutes": 1, "verified": false
+  },
+  {
+    "id": "p-b2-11", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "READING",
+    "prompt": "Aus einem Zeitungsartikel: „Immer mehr Unternehmen erlauben ihren Mitarbeitern, zwei Tage pro Woche von zu Hause aus zu arbeiten. Kritiker befürchten jedoch, dass dadurch der Kontakt im Team leidet.“ — Was befürchten die Kritiker?",
+    "options": ["Die Zusammenarbeit im Team wird schlechter.", "Die Mitarbeiter arbeiten weniger.", "Die Unternehmen verlieren Geld.", "Die Mitarbeiter wollen nicht mehr ins Büro."],
+    "answer": "Die Zusammenarbeit im Team wird schlechter.", "acceptedAnswers": [],
+    "tags": ["LESEVERSTEHEN"],
+    "explanationTr": "Metin: \"dass dadurch der Kontakt im Team leidet\" — ekip içi temas zarar görür.",
+    "estimatedMinutes": 2, "verified": false
+  },
+  {
+    "id": "p-b2-12", "level": "B2", "type": "MULTIPLE_CHOICE", "placementKind": "READING",
+    "prompt": "Hinweis: „Die Teilnahme ist kostenlos, eine Anmeldung ist jedoch bis zum 10. März erforderlich. Später eingehende Anmeldungen können leider nicht berücksichtigt werden.“ — Was stimmt?",
+    "options": ["Man muss sich bis zum 10. März anmelden.", "Die Teilnahme kostet Geld.", "Man kann sich auch nach dem 10. März anmelden.", "Eine Anmeldung ist nicht nötig."],
+    "answer": "Man muss sich bis zum 10. März anmelden.", "acceptedAnswers": [],
+    "tags": ["LESEVERSTEHEN"],
+    "explanationTr": "Katılım ücretsiz ama 10 Mart'a kadar kayıt zorunlu; geç kayıtlar kabul edilmiyor.",
+    "estimatedMinutes": 2, "verified": false
+  }
+]

@@ -43,169 +43,38 @@
     color: var(--text-faint);
 }
 
-/* --- Urun gorseli: gercek ekranin CSS ile cizilmis hali -------------- */
+/* --- Urun ornegi: koc kartinin birebir bicimi ----------------------- */
 
-.shot {
-    background: var(--surface);
+.demo {
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    box-shadow: var(--sh-lg);
+    background: var(--surface);
     overflow: hidden;
 }
 
-.shot__bar {
-    display: flex;
-    align-items: center;
-    gap: var(--s-2);
-    padding: var(--s-3) var(--s-4);
-    background: var(--bg-subtle);
+.demo__label {
+    margin: 0;
+    padding: var(--s-3) var(--s-5);
     border-bottom: 1px solid var(--border);
-}
-
-.shot__dot {
-    width: 9px; height: 9px;
-    border-radius: 50%;
-    background: var(--border-strong);
-}
-
-.shot__label {
-    margin-left: auto;
+    background: var(--bg-subtle);
     font-size: var(--fs-xs);
-    /* Acik gri serit uzerinde text-faint 4.4:1 kaliyordu. */
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-}
-
-.shot__body { padding: var(--s-5); }
-
-.shot__day {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--s-3);
-    margin-bottom: var(--s-2);
-}
-
-.shot__daynum {
-    font-size: var(--fs-xs);
-    font-weight: 700;
-    letter-spacing: var(--ls-wide);
+    letter-spacing: .06em;
     text-transform: uppercase;
     color: var(--text-faint);
 }
 
-.shot__streak { font-size: var(--fs-xs); color: var(--primary); font-weight: 700; }
+.demo__body { display: grid; gap: var(--s-3); padding: var(--s-5); }
 
-.shot__topic {
-    font-size: var(--fs-lg);
-    font-weight: 700;
-    letter-spacing: var(--ls-tight);
-    margin-bottom: var(--s-4);
+.demo__card {
+    padding: var(--s-4);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
 }
 
-.shot__meter {
-    height: 6px;
-    background: var(--bg-subtle);
-    border-radius: var(--r-full);
-    overflow: hidden;
-    margin-bottom: var(--s-5);
-}
-
-.shot__meter span {
-    display: block;
-    height: 100%;
-    width: 42%;
-    background: var(--primary);
-    border-radius: var(--r-full);
-}
-
-.shot__task {
-    display: grid;
-    grid-template-columns: 20px 1fr auto;
-    align-items: center;
-    gap: var(--s-3);
-    padding: var(--s-3) 0;
-    border-top: 1px solid var(--border);
-    font-size: var(--fs-sm);
-}
-
-.shot__check {
-    width: 18px; height: 18px;
-    border: 1.5px solid var(--border-strong);
-    border-radius: var(--r-sm);
-}
-
-.shot__task--done .shot__check {
-    background: var(--ok);
-    border-color: var(--ok);
-    position: relative;
-}
-
-.shot__task--done .shot__check::after {
-    content: "";
-    position: absolute;
-    left: 5px; top: 1px;
-    width: 5px; height: 10px;
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
-
-.shot__task--done .shot__name { color: var(--text-faint); text-decoration: line-through; }
-
-.shot__min { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-faint); }
-
-/* --- Ne degil / Ne -------------------------------------------------- */
-
-.compare {
-    display: grid;
-    gap: var(--s-6);
-}
-
-@media (min-width: 760px) {
-    .compare { grid-template-columns: 1fr 1fr; gap: var(--s-8); }
-}
-
-.compare__head {
-    display: flex;
-    align-items: center;
-    gap: var(--s-2);
-    font-size: var(--fs-md);
-    margin-bottom: var(--s-4);
-    padding-bottom: var(--s-3);
-    border-bottom: 2px solid;
-}
-
-.compare__head--no  { color: var(--err); border-color: var(--err); }
-.compare__head--yes { color: var(--ok);  border-color: var(--ok); }
-
-.compare__list { list-style: none; margin: 0; padding: 0; }
-
-.compare__list li {
-    position: relative;
-    padding-left: var(--s-5);
-    margin-bottom: var(--s-3);
-    color: var(--text-muted);
-    font-size: var(--fs-sm);
-}
-
-.compare__list li::before {
-    position: absolute;
-    left: 0;
-    font-weight: 700;
-}
-
-.compare__list--no li::before  { content: "×"; color: var(--err); }
-.compare__list--yes li::before { content: "✓"; color: var(--ok); }
-
-.compare__note {
-    grid-column: 1 / -1;
-    margin: var(--s-4) 0 0;
-    padding-top: var(--s-5);
-    border-top: 1px solid var(--border);
-    text-align: center;
-    font-size: var(--fs-md);
-}
+.demo__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); }
+.demo__min { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-faint); }
+.demo__title { margin: var(--s-3) 0 var(--s-1); font-weight: 600; }
+.demo__why { margin: 0; font-size: var(--fs-sm); color: var(--text-muted); }
 
 /* --- Adimlar -------------------------------------------------------- */
 
@@ -229,15 +98,12 @@
 }
 
 .steps__no {
-    display: inline-grid;
-    place-items: center;
-    width: 30px; height: 30px;
+    display: block;
     margin-bottom: var(--s-3);
-    background: var(--primary-soft);
     color: var(--primary);
-    border-radius: var(--r-sm);
+    font-family: var(--font-mono);
     font-size: var(--fs-sm);
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .steps__item h3 { font-size: var(--fs-base); margin-bottom: var(--s-2); }
@@ -303,10 +169,8 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--s-5);
-    padding: var(--s-7);
-    background: var(--primary-soft);
-    border: 1px solid var(--primary-border);
-    border-radius: var(--r-lg);
+    padding: var(--s-7) 0;
+    border-block: 1px solid var(--border);
 }
 
 .cta__title { margin: 0; font-size: var(--fs-xl); max-width: 20ch; }
@@ -333,3 +197,22 @@
 }
 
 .artikel-demo__sep { color: var(--text-faint); margin-inline: var(--s-2); }
+
+/* --- Koçluk nedir: üç sütun ----------------------------------------- */
+
+.lead--wide { max-width: 68ch; }
+
+.pillars {
+    display: grid;
+    gap: var(--s-5);
+    margin-top: var(--s-6);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.pillar h3 {
+    margin: 0 0 var(--s-2);
+    font-size: var(--fs-base);
+    color: var(--primary);
+}
+
+.pillar p { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); }

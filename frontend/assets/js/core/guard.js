@@ -9,6 +9,7 @@
 import { getSession, signOut } from "./auth.js";
 import { mountNav } from "../components/nav.js";
 import { mountWakeBanner } from "../components/wakeBanner.js";
+import { demoSeridiniKur } from "../components/demoSeridi.js";
 
 /**
  * Korumali sayfalarin basinda cagrilir. Oturum yoksa giris sayfasina
@@ -28,6 +29,8 @@ export async function requireAuth() {
 
     mountNav({ loggedIn: true });
     bindLogout();
+    // Demo hesabinda gorunur DEMO etiketi (SPEC 12.2); gercek hesapta hicbir sey cizilmez.
+    demoSeridiniKur();
     // Sunucu uykudan uyanirken kullaniciyi bos ekranla birakmayalim.
     mountWakeBanner();
     return session;
@@ -37,7 +40,7 @@ export async function requireAuth() {
  * Herkese acik sayfalarda kullanilir: giris yapmis kullaniciyi
  * panele gonderir (ornegin giris sayfasina tekrar gelirse).
  */
-export async function redirectIfLoggedIn(target = "/app/bugun.html") {
+export async function redirectIfLoggedIn(target = "/app/index.html") {
     const session = await getSession();
     if (session) {
         window.location.replace(target);
@@ -47,7 +50,7 @@ export async function redirectIfLoggedIn(target = "/app/bugun.html") {
 }
 
 /** Giris sonrasi nereye donulecegini soyler. */
-export function popReturnUrl(fallback = "/app/bugun.html") {
+export function popReturnUrl(fallback = "/app/index.html") {
     const saved = sessionStorage.getItem("donusAdresi");
     sessionStorage.removeItem("donusAdresi");
     return saved && saved.startsWith("/app/") ? saved : fallback;

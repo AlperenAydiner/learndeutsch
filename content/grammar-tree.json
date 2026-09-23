@@ -1,0 +1,353 @@
+[
+  {
+    "id": "SEIN_HABEN",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "sein ve haben",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "VERBKONJUGATION",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Fiil çekimi (Präsens)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "ARTIKEL",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Artikel (der/die/das)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PLURAL",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Çoğul biçimleri",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "NEGATION",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Olumsuzluk (nicht/kein)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "W_FRAGEN",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Soru sözcükleri ve soru kurma",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "WORTSTELLUNG",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Cümlede fiil pozisyonu",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "AKKUSATIV",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Akkusativ (-i hâli)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "POSSESSIV",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "İyelik (mein/dein/sein)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "MODALVERBEN",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Modal fiiller",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "TRENNBARE_VERBEN",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Ayrılabilen fiiller",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "ZEITANGABEN",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Zaman ifadeleri ve edatları",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "IMPERATIV",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Emir kipi",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "DATIV",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Dativ (-e hâli)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PERFEKT",
+    "kind": "GRAMMAR",
+    "level": "A1",
+    "titleTr": "Perfekt (geçmiş zaman)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PRAETERITUM",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Präteritum (war/hatte/modal)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "WECHSELPRAEPOSITIONEN",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Yön/yer edatları",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "NEBENSATZ",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Yan cümle (weil/dass/wenn/ob)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "KOMPARATIV",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Karşılaştırma ve üstünlük",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "REFLEXIV",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Dönüşlü fiiller",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "ADJEKTIVDEKLINATION",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Sıfat çekimi",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "KONJUNKTIV2",
+    "kind": "GRAMMAR",
+    "level": "A2",
+    "titleTr": "Konjunktiv II (nezaket)",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "RELATIVSATZ",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Relativsatz (ilgi cümlesi)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PASSIV",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Passiv (edilgen)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "INFINITIV_ZU",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Infinitiv mit zu",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "GENITIV",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Genitiv (-in hâli)",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "KONJUNKTIV2_VERGANGENHEIT",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Konjunktiv II geçmiş zaman",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "KONNEKTOREN",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Bağlaçlar (obwohl, trotzdem, deshalb)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PLUSQUAMPERFEKT",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Plusquamperfekt",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "VERBEN_MIT_PRAEPOSITION",
+    "kind": "GRAMMAR",
+    "level": "B1",
+    "titleTr": "Edatlı fiiller (warten auf …)",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PARTIZIP_ATTRIBUT",
+    "kind": "GRAMMAR",
+    "level": "B2",
+    "titleTr": "Sıfat-fiil (Partizip) öbekleri",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "NOMEN_VERB_VERBINDUNGEN",
+    "kind": "GRAMMAR",
+    "level": "B2",
+    "titleTr": "İsim-fiil birleşimleri",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "ZWEITEILIGE_KONNEKTOREN",
+    "kind": "GRAMMAR",
+    "level": "B2",
+    "titleTr": "İki parçalı bağlaçlar",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "PRAEPOSITIONEN_GENITIV",
+    "kind": "GRAMMAR",
+    "level": "B2",
+    "titleTr": "Genitiv alan edatlar (trotz, wegen)",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "ALS_OB",
+    "kind": "GRAMMAR",
+    "level": "B2",
+    "titleTr": "als ob / als wenn",
+    "core": false,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "NOMINALISIERUNG",
+    "kind": "GRAMMAR",
+    "level": "C1",
+    "titleTr": "İsimleştirme",
+    "core": true,
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "WORTSCHATZ",
+    "kind": "VOCABULARY",
+    "level": null,
+    "titleTr": "Kelime bilgisi",
+    "core": false,
+    "estimatedMinutes": 0,
+    "verified": false
+  },
+  {
+    "id": "LESEVERSTEHEN",
+    "kind": "READING",
+    "level": null,
+    "titleTr": "Okuduğunu anlama",
+    "core": false,
+    "estimatedMinutes": 0,
+    "verified": false
+  },
+  {
+    "id": "HOERVERSTEHEN",
+    "kind": "LISTENING",
+    "level": null,
+    "titleTr": "Dinlediğini anlama",
+    "core": false,
+    "estimatedMinutes": 0,
+    "verified": false
+  }
+]

@@ -1,0 +1,237 @@
+/* =====================================================================
+   Öğren sayfası: modül kartları, kelime/artikel oturumu.
+
+   Oturumda tek kart ekranda durur; ekran kendiliğinden ilerlemez.
+   Doğru cevap her zaman görünür kalır (yanlış yaptığında öğrenilecek
+   şey odur).
+   ===================================================================== */
+
+/* --- Modul kartlari -------------------------------------------------- */
+
+.modules {
+    display: grid;
+    gap: var(--s-4);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.module {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+    padding: var(--s-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+}
+
+.module__title { margin: 0; font-size: var(--fs-lg); }
+.module__desc { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); }
+.module--soon { background: transparent; border-style: dashed; }
+.module .btn-row { margin-top: auto; }
+
+.module__stats { margin: var(--s-2) 0 0; }
+
+.kv {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-2) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.kv dt { color: var(--text-muted); margin: 0; }
+.kv dd { margin: 0; font-family: var(--font-mono); }
+
+/* --- Oturum ---------------------------------------------------------- */
+
+.session__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    margin-bottom: var(--s-2);
+}
+
+.session__count { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--text-faint); }
+
+.wordcard {
+    margin-top: var(--s-5);
+    max-width: 640px;
+}
+
+.wordcard__meta {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-xs);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.wordcard__lemma {
+    margin: 0;
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    letter-spacing: var(--ls-tight);
+}
+
+.wordcard__meaning { margin: var(--s-3) 0 0; font-size: var(--fs-md); }
+.wordcard__extra { margin: var(--s-2) 0 0; font-size: var(--fs-sm); color: var(--text-muted); }
+.wordcard__hint { margin: var(--s-3) 0 0; font-size: var(--fs-sm); color: var(--text-faint); }
+.wordcard__q { margin: var(--s-5) 0 var(--s-2); font-weight: 600; }
+
+.wordcard__example {
+    margin: var(--s-4) 0 0;
+    padding-left: var(--s-4);
+    border-left: 2px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.wordcard__example span { color: var(--text-muted); }
+
+.wordcard__reveal {
+    margin-top: var(--s-5);
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--border);
+}
+
+.pill--lg { padding: var(--s-3) var(--s-6); font-size: var(--fs-md); font-weight: 700; }
+.pill.is-on { border-color: var(--primary); color: var(--primary); }
+
+/* --- Geri bildirim --------------------------------------------------- */
+
+.feedback {
+    max-width: 640px;
+    margin-top: var(--s-4);
+    padding: var(--s-5);
+    border: 1px solid var(--border);
+    border-left-width: 3px;
+    border-radius: var(--r);
+}
+
+.feedback--ok   { border-left-color: var(--ok); }
+.feedback--no   { border-left-color: var(--err); }
+.feedback--soft { border-left-color: var(--warn); }
+
+.feedback__line { margin: 0; font-weight: 600; }
+.feedback__note { margin: var(--s-2) 0 0; font-size: var(--fs-sm); color: var(--text-muted); }
+.feedback .btn { margin-top: var(--s-4); }
+
+/* --- Gramer: konu listesi -------------------------------------------- */
+
+.topics { list-style: none; margin: var(--s-3) 0 0; padding: 0; }
+
+.topic {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.topic__main { display: grid; gap: 2px; }
+.topic__title { font-weight: 600; }
+.topic__meta { font-size: var(--fs-xs); color: var(--text-faint); }
+.topic__right { display: flex; align-items: center; gap: var(--s-3); }
+.topic__soon { font-size: var(--fs-xs); color: var(--text-faint); }
+
+/* --- Gramer: konu döngüsü -------------------------------------------- */
+
+.lesson { max-width: 680px; margin-top: var(--s-5); }
+.lesson__title { margin: 0; font-size: var(--fs-xl); }
+.lesson__level { font-size: var(--fs-sm); color: var(--text-faint); font-weight: 500; }
+.lesson__text { margin: var(--s-4) 0 0; }
+
+.lesson__check {
+    margin: var(--s-3) 0 0;
+    font-size: var(--fs-sm);
+    color: var(--warn);
+}
+
+.lesson__note {
+    margin: var(--s-4) 0 0;
+    padding: var(--s-4);
+    background: var(--bg-subtle);
+    border-radius: var(--r);
+    font-size: var(--fs-sm);
+}
+
+.lesson__examples { list-style: none; margin: var(--s-4) 0 0; padding: 0; }
+
+.lesson__examples li {
+    display: grid;
+    gap: 2px;
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.lesson__examples span { font-weight: 600; }
+.lesson__examples em { font-style: normal; font-size: var(--fs-sm); color: var(--text-muted); }
+.lesson__unverified { margin: var(--s-4) 0 0; font-size: var(--fs-xs); color: var(--text-faint); }
+
+.order__line {
+    margin: var(--s-4) 0;
+    padding: var(--s-4);
+    min-height: 3rem;
+    background: var(--bg-subtle);
+    border-radius: var(--r);
+    font-weight: 600;
+}
+
+.umlauts { margin-top: var(--s-3); }
+.umlauts .pill { min-width: 3rem; }
+
+/* --- Dört beceri ----------------------------------------------------- */
+
+.reading { margin: var(--s-5) 0; max-width: 680px; }
+.reading__text { line-height: 1.75; font-size: var(--fs-md); }
+
+.reading__gloss { margin-top: var(--s-4); }
+.reading__gloss summary { cursor: pointer; font-size: var(--fs-sm); color: var(--primary); }
+.reading__gloss ul { margin: var(--s-3) 0 0; padding-left: var(--s-5); font-size: var(--fs-sm); }
+.reading__gloss li { margin-bottom: var(--s-1); color: var(--text-muted); }
+
+.writing__area { min-height: 220px; resize: vertical; font-family: inherit; line-height: 1.6; }
+
+.rubric { display: grid; gap: var(--s-3); margin-top: var(--s-3); max-width: 680px; }
+
+.rubric__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.rubric__name { font-weight: 600; font-size: var(--fs-sm); }
+
+.cando { display: grid; gap: var(--s-3); margin-top: var(--s-3); max-width: 680px; }
+
+.cando__row {
+    display: grid;
+    gap: var(--s-2);
+    padding: var(--s-4) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.cando__text { font-size: var(--fs-sm); }
+
+/* Sonuç kutusu */
+.result { max-width: 680px; }
+.result__score { margin: 0; font-size: var(--fs-xl); font-weight: 700; }
+.result__score span { font-size: var(--fs-sm); color: var(--text-faint); font-weight: 500; }
+.result__note { margin: var(--s-2) 0 0; font-size: var(--fs-sm); color: var(--text-muted); }
+.result__note--ok { color: var(--ok); }
+.sample { margin: var(--s-3) 0 0; font-size: var(--fs-sm); line-height: 1.7; }
+
+/* Dikte karşılaştırması */
+.dictation { margin: var(--s-3) 0 0; line-height: 2.2; }
+.dictation__w { padding: 2px 6px; border-radius: var(--r-sm); font-size: var(--fs-sm); }
+.dictation__w--ok { background: var(--ok-soft); color: var(--ok); }
+.dictation__w--close { background: var(--warn-soft); color: var(--warn); }
+.dictation__w--no { background: var(--err-soft); color: var(--err); }
+.dictation__w--extra { background: var(--bg-subtle); color: var(--text-faint); text-decoration: line-through; }

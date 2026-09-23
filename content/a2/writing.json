@@ -1,0 +1,40 @@
+[
+  {
+    "id": "s-a2-01",
+    "level": "A2",
+    "titleTr": "Şikâyet e-postası",
+    "taskTr": "İnternetten aldığın bir ürün bozuk geldi. Mağazaya bir e-posta yaz: ne aldığın, sorunun ne olduğu, ne zaman aldığın ve ne yapılmasını istediğin. Nazik ol ama net yaz.",
+    "taskDe": "Sie haben online ein Produkt gekauft, aber es ist kaputt. Schreiben Sie eine E-Mail an den Shop: Was haben Sie gekauft, was ist das Problem, wann war die Bestellung und was wünschen Sie sich?",
+    "minWords": 60,
+    "phrases": [
+      "Sehr geehrte Damen und Herren,",
+      "am ... habe ich ... bestellt.",
+      "Leider ist das Gerät ...",
+      "Ich möchte Sie bitten, ...",
+      "Über eine schnelle Antwort würde ich mich freuen.",
+      "Mit freundlichen Grüßen"
+    ],
+    "sampleAnswer": "Sehr geehrte Damen und Herren,\n\nam 3. Mai habe ich bei Ihnen einen Wasserkocher bestellt (Bestellnummer 48213). Das Paket ist gestern angekommen, aber leider funktioniert das Gerät nicht: Es schaltet sich nach zehn Sekunden aus.\n\nIch möchte Sie bitten, mir einen neuen Wasserkocher zu schicken oder das Geld zurückzuerstatten. Den kaputten Kocher sende ich gern zurück.\n\nÜber eine schnelle Antwort würde ich mich freuen.\n\nMit freundlichen Grüßen\nElif Yılmaz",
+    "estimatedMinutes": 25,
+    "verified": false
+  },
+  {
+    "id": "s-a2-02",
+    "level": "A2",
+    "titleTr": "Bir deneyimi anlatan mesaj",
+    "taskTr": "Geçen hafta sonu yaptığın bir şeyi (gezi, ziyaret, etkinlik) bir arkadaşına anlat: nereye gittin, kiminle, ne yaptın, nasıl geçti. Geçmiş zaman kullan.",
+    "taskDe": "Erzählen Sie einem Freund von Ihrem letzten Wochenende: Wohin sind Sie gegangen, mit wem, was haben Sie gemacht und wie war es?",
+    "minWords": 60,
+    "phrases": [
+      "Hallo ... ,",
+      "am Wochenende bin ich ...",
+      "Zuerst ... , dann ...",
+      "Das Wetter war ...",
+      "Am besten hat mir ... gefallen.",
+      "Liebe Grüße"
+    ],
+    "sampleAnswer": "Hallo Sara,\n\nam Wochenende bin ich mit meinem Bruder nach Bremen gefahren. Wir sind früh losgefahren und waren um zehn Uhr da. Zuerst haben wir die Altstadt angeschaut, dann haben wir in einem kleinen Café Kuchen gegessen. Am Nachmittag hat es leider geregnet, deshalb sind wir ins Museum gegangen.\n\nAm besten hat mir der Markt gefallen. Nächstes Mal kommst du mit, okay?\n\nLiebe Grüße\nMert",
+    "estimatedMinutes": 25,
+    "verified": false
+  }
+]

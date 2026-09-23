@@ -1,0 +1,43 @@
+[
+  {
+    "id": "sp-c1-01",
+    "level": "C1",
+    "titleTr": "Kısa sunum: konum al ve çekinceni belirt",
+    "taskTr": "Beş dakikalık bir sunum yap: konuyu çerçevele, kendi konumunu net söyle, iki gerekçe ver, bir çekince (hangi noktada emin değilsin) ekle ve soru alacak biçimde bitir. Kendini kaydet; ardından yapıyı ve çekince cümlelerini kontrol et.",
+    "promptsDe": [
+      "Wie rahmen Sie das Thema ein und warum ist es relevant?",
+      "Welche Position vertreten Sie und mit welchen zwei Gründen?",
+      "Wo ist Ihre Evidenz schwach und was folgt daraus?",
+      "Welche Frage würden Sie dem Publikum stellen?"
+    ],
+    "phrases": [
+      "Ich möchte das Thema zunächst einordnen: ...",
+      "Meine These lautet — bei aller gebotenen Vorsicht — dass ...",
+      "Dafür sprechen im Wesentlichen zwei Gründe: erstens ... , zweitens ...",
+      "Einschränkend muss ich sagen, dass die Datenlage ...",
+      "Damit möchte ich es bewenden lassen und freue mich auf Ihre Fragen."
+    ],
+    "estimatedMinutes": 25,
+    "verified": false
+  },
+  {
+    "id": "sp-c1-02",
+    "level": "C1",
+    "titleTr": "Karşı argümanı adil biçimde aktar ve yanıtla",
+    "taskTr": "Katılmadığın bir görüşü önce savunucusunun kabul edeceği biçimde özetle (\"steelman\"), sonra iki noktada karşılık ver ve nerede haklı olduğunu kabul et. Üç dakika konuş, kendini kaydet.",
+    "promptsDe": [
+      "Wie würde die Gegenseite ihre Position selbst formulieren?",
+      "Welcher Teil davon ist berechtigt?",
+      "An welchen zwei Punkten widersprechen Sie und warum?",
+      "Was müsste geschehen, damit Sie Ihre Meinung ändern?"
+    ],
+    "phrases": [
+      "Die Gegenseite würde vermutlich so argumentieren: ...",
+      "Daran ist so viel richtig, dass ...",
+      "Entscheidend scheint mir jedoch der Unterschied zwischen ... und ... .",
+      "Meine Auffassung würde ich revidieren, wenn ..."
+    ],
+    "estimatedMinutes": 20,
+    "verified": false
+  }
+]

@@ -40,6 +40,10 @@ public class AppUser {
     @Column(name = "timezone", nullable = false)
     private String timezone = "Europe/Istanbul";
 
+    /** SPEC 12.2: demo hesabi. Ornek veri yalniz burada uretilir. */
+    @Column(name = "is_demo", nullable = false)
+    private boolean demo = false;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private OffsetDateTime createdAt;
 
@@ -106,5 +110,9 @@ public class AppUser {
 
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
+    }
+
+    public boolean isDemo() {
+        return demo;
     }
 }

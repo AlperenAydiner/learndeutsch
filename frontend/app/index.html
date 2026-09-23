@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ana Sayfa — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/assets/css/pages/home-app.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<!--
+    Ana Sayfa (kullanici, SPEC Bolum 7): hedef + kisa durum, "Bugun ne
+    yaptin?", son aktiviteler. Koc onerileri ve gunluk plan Faz 2'de
+    eklenir; zorlayici bir "Calismaya basla" dugmesi yoktur.
+-->
+<main class="wrap section" id="main">
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
+
+    <div class="home" id="icerik" hidden>
+
+        <!-- Durum -->
+        <section class="home__status">
+            <div class="page-head">
+                <div>
+                    <h1 id="selam">Merhaba</h1>
+                    <p class="page-head__sub" id="hedefOzet"></p>
+                </div>
+                <a class="btn btn--ghost" href="/app/kocluk.html">Koçluk</a>
+            </div>
+
+            <div id="uyarilar"></div>
+
+            <h2 class="block__title">Koçun önerisi</h2>
+            <div id="oneriler"></div>
+
+            <h2 class="block__title block">Bugünkü önerilen plan</h2>
+            <p class="block__note" id="planNot"></p>
+            <div id="plan"></div>
+
+            <h2 class="block__title block">Dil becerilerin</h2>
+            <p class="block__note" id="genel"></p>
+            <ul class="skills" id="beceriler"></ul>
+            <p class="block__note" id="eksik"></p>
+        </section>
+
+        <!-- Bugun ne yaptin? -->
+        <section class="home__log">
+            <h2 class="block__title" id="formBaslik">Bugün ne yaptın?</h2>
+            <p class="block__note">Sitenin dışında yaptığın çalışmayı birkaç dokunuşla ekle. Sitede yaptıkların kendiliğinden kaydedilir.</p>
+
+            <form class="logform" id="form" novalidate>
+                <div class="logform__row">
+                    <span class="logform__label">Ne çalıştın?</span>
+                    <div class="pills" data-field="type"></div>
+                </div>
+                <div class="logform__row">
+                    <span class="logform__label">Ne kadar?</span>
+                    <div class="pills" data-field="durationMinutes"></div>
+                </div>
+                <div class="logform__row">
+                    <span class="logform__label">Nereden?</span>
+                    <div class="pills" data-field="sourceKind"></div>
+                </div>
+                <div class="logform__row">
+                    <span class="logform__label">Seviye <small>(isteğe bağlı)</small></span>
+                    <div class="pills" data-field="level"></div>
+                </div>
+
+                <div class="logform__row" data-when="SPRECHEN" hidden>
+                    <span class="logform__label">Kiminle?</span>
+                    <div class="pills" data-field="speakingPartner"></div>
+                    <input class="field__input logform__text" id="konu" maxlength="120"
+                           placeholder="Konu (isteğe bağlı), ör. tatil planı">
+                </div>
+                <div class="logform__row" data-when="GRAMER" hidden>
+                    <label class="logform__label" for="gramerKonu">Hangi konu?</label>
+                    <select class="field__input" id="gramerKonu"></select>
+                </div>
+
+                <details class="logform__more" id="sonucAc">
+                    <summary>Sonuç ekle (ör. 8/10)</summary>
+                    <p class="block__note" id="sonucNotu"></p>
+                    <div class="logform__score">
+                        <input class="field__input" type="number" id="puan" min="0" step="0.5" inputmode="decimal" aria-label="Puan">
+                        <span>/</span>
+                        <input class="field__input" type="number" id="azami" min="1" step="0.5" inputmode="decimal" aria-label="Azami puan">
+                    </div>
+                    <span class="logform__label">Sonuç nereden?</span>
+                    <div class="pills" data-field="resultSource"></div>
+                </details>
+
+                <div class="logform__row">
+                    <span class="logform__label">Ne zaman?</span>
+                    <div class="pills">
+                        <button type="button" class="pill" data-gun="0" aria-pressed="true">Bugün</button>
+                        <button type="button" class="pill" data-gun="1" aria-pressed="false">Dün</button>
+                        <input class="field__input logform__date" type="date" id="tarih" aria-label="Tarih">
+                    </div>
+                </div>
+
+                <div class="logform__row">
+                    <label class="logform__label" for="not">Not <small>(isteğe bağlı)</small></label>
+                    <input class="field__input" id="not" maxlength="200" placeholder="ör. Nicos Weg 12. bölüm">
+                </div>
+
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="submit" id="kaydet">Kaydet</button>
+                    <button class="btn btn--quiet" type="button" id="vazgec" hidden>Vazgeç</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Son aktiviteler -->
+        <section class="home__recent">
+            <h2 class="block__title">Son 7 gün</h2>
+            <ul class="acts" id="aktiviteler"></ul>
+        </section>
+    </div>
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api } from "/assets/js/core/api.js";
+    import { tarihYaz } from "/assets/js/core/tarih.js";
+    import { oneriListesi, planListesi } from "/assets/js/components/kocKartlari.js";
+    import {
+        BECERI, TUR, SECILEBILIR_TURLER, KAYNAK, SONUC_KAYNAGI, ORTAK, AMAC, SEVIYELER,
+        seviyeAdi, beceriMetni, guvenMetni, genelMetni, eksikBecerilerMetni, esc,
+    } from "/assets/js/core/etiket.js";
+
+    const SURELER = [10, 15, 20, 30, 45, 60, 90, 120];
+    const BECERILER = ["HOEREN", "LESEN", "SCHREIBEN", "SPRECHEN"];
+    let bugun = null;
+    let duzenlenen = null;
+    const secim = {};
+
+    const session = await requireAuth();
+    if (session) {
+        try {
+            const durum = await api.get("/onboarding");
+            if (!durum.completed) {
+                location.replace("/app/baslangic.html");
+            } else {
+                await yukle(durum);
+            }
+        } catch (err) {
+            hata(err.message);
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    async function yukle(durum) {
+        const [seviye, secenekler, koc] = await Promise.all([
+            api.get("/level"), api.get("/activities/options"), api.get("/coach"),
+        ]);
+        bugun = secenekler.today;
+        document.getElementById("icerik").hidden = false;
+        durumCiz(durum, seviye);
+        kocCiz(koc);
+        formKur(secenekler);
+        await aktiviteleriCiz();
+    }
+
+    // ---------- durum ----------
+
+    function durumCiz(d, s) {
+        const ad = session?.user?.user_metadata?.display_name;
+        document.getElementById("selam").textContent = ad ? `Merhaba ${ad}` : "Merhaba";
+        const r = d.rhythm;
+        document.getElementById("hedefOzet").innerHTML =
+            `Hedef: <strong>${d.goal.target}</strong> · ${AMAC[d.goal.purpose]} · `
+            + `günde ${r.dailyMinutes === 90 ? "90+" : r.dailyMinutes} dk, haftada ${r.daysPerWeek} gün`
+            + (d.path.length > 1 ? ` · yol: ${d.path.join(" → ")}` : "");
+
+        const uyarilar = [];
+        if (s.working.recommendPlacement) {
+            uyarilar.push(`Yerleştirme testini henüz çözmedin; içerik önerileri varsayılan olarak ${s.working.level}'den başlıyor.
+                <a href="/app/yerlestirme.html">Testi çöz</a>`);
+        }
+        if (s.reassessment?.due) {
+            uyarilar.push(`Son değerlendirmenden bu yana ${s.reassessment.reason === "DAYS"
+                ? `${s.reassessment.daysSince} gün geçti` : `${s.reassessment.newEvidence} yeni sonuç girdin`}.
+                Yeniden değerlendirme iyi olur: <a href="/app/yerlestirme.html">yerleştirme testi</a>`);
+        }
+        if (s.goal?.complete) {
+            uyarilar.push(`Hedef seviyene ulaştın — platform içi verilerine göre. Hedefini korumak ya da
+                <a href="/app/baslangic.html?duzenle=1&adim=3">değiştirmek</a> senin seçimin.`);
+        }
+        document.getElementById("uyarilar").innerHTML =
+            uyarilar.map((u) => `<p class="notice notice--info">${u}</p>`).join("");
+
+        document.getElementById("genel").textContent = genelMetni(s.overall);
+        document.getElementById("eksik").textContent = eksikBecerilerMetni(s.overall);
+        document.getElementById("beceriler").innerHTML = s.skills.map((k) => `
+            <li class="skill skill--${k.confidence.toLowerCase()}">
+                <span class="skill__name">${BECERI[k.skill]}</span>
+                <span class="skill__value">${beceriMetni(k)}</span>
+                <span class="skill__meta">${k.evidenceCount ? `${guvenMetni(k.confidence)} · ${k.evidenceCount} kanıt` : ""}</span>
+            </li>`).join("");
+    }
+
+    /** Koçun önerileri (en fazla 3) ve bugünkü plan. Zorunluluk yok (SPEC 5.4). */
+    function kocCiz(koc) {
+        document.getElementById("oneriler").innerHTML = oneriListesi(koc.recommendations);
+        document.getElementById("plan").innerHTML = planListesi(koc.daily);
+        document.getElementById("planNot").textContent =
+            `Öneri, zorunluluk değil: bugün için ${koc.daily.totalMinutes} dakikalık bir dağılım.`;
+    }
+
+    // ---------- form ----------
+
+    function formKur(secenekler) {
+        pills("type", SECILEBILIR_TURLER.map((v) => [v, TUR[v]]), true);
+        pills("durationMinutes", SURELER.map((v) => [v, `${v} dk`]), true);
+        pills("sourceKind", Object.entries(KAYNAK), true);
+        pills("level", SEVIYELER.map((v) => [v, v]), false);
+        pills("speakingPartner", Object.entries(ORTAK), false);
+        pills("resultSource", Object.entries(SONUC_KAYNAGI).filter(([k]) => k !== "SITE_TEST"), true);
+
+        document.getElementById("gramerKonu").innerHTML = `<option value="">Konu seçme</option>`
+            + secenekler.grammarTopics.map((t) => `<option value="${esc(t.id)}">${esc(t.level)} · ${esc(t.title)}</option>`).join("");
+
+        const tarih = document.getElementById("tarih");
+        tarih.max = bugun;
+        tarih.value = bugun;
+        document.querySelectorAll("[data-gun]").forEach((b) => b.addEventListener("click", () => {
+            const d = new Date(bugun + "T00:00:00Z");
+            d.setUTCDate(d.getUTCDate() - Number(b.dataset.gun));
+            tarih.value = d.toISOString().slice(0, 10);
+            gunDugmeleri();
+        }));
+        tarih.addEventListener("change", gunDugmeleri);
+
+        document.getElementById("form").addEventListener("submit", kaydet);
+        document.getElementById("vazgec").addEventListener("click", formuSifirla);
+        kosullu();
+    }
+
+    function pills(alan, secenekler, zorunlu) {
+        const kutu = document.querySelector(`[data-field="${alan}"]`);
+        kutu.innerHTML = secenekler.map(([v, t]) =>
+            `<button type="button" class="pill" data-v="${esc(String(v))}" aria-pressed="false">${esc(t)}</button>`).join("");
+        kutu.querySelectorAll(".pill").forEach((b) => b.addEventListener("click", () => {
+            const ayni = secim[alan] === b.dataset.v;
+            // Zorunlu alanlar tek dokunusla degisir; istege baglilar ikinci dokunusta kalkar.
+            secim[alan] = ayni && !zorunlu ? null : b.dataset.v;
+            isaretle(alan);
+            if (alan === "type") kosullu();
+        }));
+    }
+
+    function isaretle(alan) {
+        document.querySelectorAll(`[data-field="${alan}"] .pill`).forEach((b) =>
+            b.setAttribute("aria-pressed", String(b.dataset.v === secim[alan])));
+    }
+
+    function kosullu() {
+        document.querySelectorAll("[data-when]").forEach((el) => { el.hidden = el.dataset.when !== secim.type; });
+        const beceri = BECERILER.includes(secim.type);
+        document.getElementById("sonucNotu").textContent = beceri
+            ? "Seviye ve sonuç girersen bu kayıt beceri kanıtı olur ve seviye tahminine katılır."
+            : "Gramer ve kelime sonuçları çalışma istatistiğine yazılır; dil seviyeni değiştirmez.";
+    }
+
+    function gunDugmeleri() {
+        const v = document.getElementById("tarih").value;
+        document.querySelectorAll("[data-gun]").forEach((b) => {
+            const d = new Date(bugun + "T00:00:00Z");
+            d.setUTCDate(d.getUTCDate() - Number(b.dataset.gun));
+            b.setAttribute("aria-pressed", String(d.toISOString().slice(0, 10) === v));
+        });
+    }
+
+    async function kaydet(e) {
+        e.preventDefault();
+        document.getElementById("hata").hidden = true;
+        const puan = document.getElementById("puan").value;
+        const azami = document.getElementById("azami").value;
+        const body = {
+            date: document.getElementById("tarih").value,
+            type: secim.type ?? null,
+            durationMinutes: secim.durationMinutes ? Number(secim.durationMinutes) : null,
+            sourceKind: secim.sourceKind ?? null,
+            level: secim.level ?? null,
+            score: puan === "" ? null : Number(puan),
+            maxScore: azami === "" ? null : Number(azami),
+            resultSource: puan === "" && azami === "" ? null : (secim.resultSource ?? null),
+            speakingPartner: secim.type === "SPRECHEN" ? (secim.speakingPartner ?? null) : null,
+            speakingTopic: secim.type === "SPRECHEN" ? document.getElementById("konu").value : null,
+            grammarTopicId: secim.type === "GRAMER" ? (document.getElementById("gramerKonu").value || null) : null,
+            note: document.getElementById("not").value,
+        };
+        if (!body.type || !body.durationMinutes || !body.sourceKind) {
+            hata("Ne çalıştığını, ne kadar sürdüğünü ve nereden çalıştığını seç.");
+            return;
+        }
+        const btn = document.getElementById("kaydet");
+        btn.disabled = true;
+        try {
+            if (duzenlenen) {
+                await api.put(`/activities/${duzenlenen}`, body);
+            } else {
+                await api.post("/activities", body);
+            }
+            formuSifirla();
+            // Kanit ve plan degismis olabilir: durumu da tazele.
+            durumCiz(await api.get("/onboarding"), await api.get("/level"));
+            kocCiz(await api.get("/coach"));
+            await aktiviteleriCiz();
+        } catch (err) {
+            hata(err.message);
+        } finally {
+            btn.disabled = false;
+        }
+    }
+
+    function formuSifirla() {
+        duzenlenen = null;
+        for (const k of Object.keys(secim)) delete secim[k];
+        document.querySelectorAll(".logform [data-field]").forEach((k) => isaretle(k.dataset.field));
+        ["puan", "azami", "not", "konu"].forEach((id) => { document.getElementById(id).value = ""; });
+        document.getElementById("gramerKonu").value = "";
+        document.getElementById("tarih").value = bugun;
+        document.getElementById("sonucAc").open = false;
+        document.getElementById("formBaslik").textContent = "Bugün ne yaptın?";
+        document.getElementById("kaydet").textContent = "Kaydet";
+        document.getElementById("vazgec").hidden = true;
+        gunDugmeleri();
+        kosullu();
+    }
+
+    function duzenle(a) {
+        duzenlenen = a.id;
+        Object.assign(secim, {
+            type: a.type, durationMinutes: String(a.durationMinutes), sourceKind: a.sourceKind,
+            level: a.level, speakingPartner: a.speakingPartner, resultSource: a.resultSource,
+        });
+        document.querySelectorAll(".logform [data-field]").forEach((k) => isaretle(k.dataset.field));
+        document.getElementById("tarih").value = a.date;
+        document.getElementById("puan").value = a.score ?? "";
+        document.getElementById("azami").value = a.maxScore ?? "";
+        document.getElementById("not").value = a.note ?? "";
+        document.getElementById("konu").value = a.speakingTopic ?? "";
+        document.getElementById("gramerKonu").value = a.grammarTopicId ?? "";
+        document.getElementById("sonucAc").open = a.score != null;
+        document.getElementById("formBaslik").textContent = "Kaydı düzenle";
+        document.getElementById("kaydet").textContent = "Değişikliği kaydet";
+        document.getElementById("vazgec").hidden = false;
+        gunDugmeleri();
+        kosullu();
+        document.getElementById("form").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // ---------- aktiviteler ----------
+
+    async function aktiviteleriCiz() {
+        const d = new Date(bugun + "T00:00:00Z");
+        d.setUTCDate(d.getUTCDate() - 6);
+        const liste = await api.get(`/activities?from=${d.toISOString().slice(0, 10)}&to=${bugun}`);
+        const kutu = document.getElementById("aktiviteler");
+        if (liste.length === 0) {
+            kutu.innerHTML = `<li class="loading">Son 7 günde kayıt yok.</li>`;
+            return;
+        }
+        kutu.innerHTML = liste.map((a) => `
+            <li class="act" data-id="${a.id}">
+                <div class="act__main">
+                    <span class="act__type">${TUR[a.type]}</span>
+                    <span class="act__meta">${a.date === bugun ? "bugün" : tarihYaz(a.date, { day: "numeric", month: "short" })}
+                        · ${a.durationMinutes} dk
+                        ${a.origin === "SITE" ? "· sitede" : a.sourceKind ? "· " + KAYNAK[a.sourceKind] : ""}
+                        ${a.level ? "· " + seviyeAdi(a.level) : ""}
+                        ${a.score != null ? `· ${a.score}/${a.maxScore} (${SONUC_KAYNAGI[a.resultSource] ?? ""})` : ""}</span>
+                    ${a.note ? `<span class="act__note">${esc(a.note)}</span>` : ""}
+                </div>
+                <div class="act__actions">
+                    ${a.origin === "EXTERNAL" ? `<button class="btn btn--quiet" type="button" data-duzenle>Düzenle</button>` : ""}
+                    <button class="btn btn--quiet" type="button" data-sil>Sil</button>
+                </div>
+            </li>`).join("");
+
+        kutu.querySelectorAll("[data-duzenle]").forEach((b) => b.addEventListener("click", () => {
+            duzenle(liste.find((a) => a.id === b.closest("[data-id]").dataset.id));
+        }));
+        kutu.querySelectorAll("[data-sil]").forEach((b) => b.addEventListener("click", async () => {
+            if (!confirm("Bu kayıt silinsin mi? Ona bağlı beceri kanıtı da silinir.")) return;
+            try {
+                await api.delete(`/activities/${b.closest("[data-id]").dataset.id}`);
+                durumCiz(await api.get("/onboarding"), await api.get("/level"));
+                kocCiz(await api.get("/coach"));
+                await aktiviteleriCiz();
+            } catch (err) {
+                hata(err.message);
+            }
+        }));
+    }
+
+    function hata(mesaj) {
+        const h = document.getElementById("hata");
+        h.textContent = mesaj;
+        h.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+</script>
+
+</body>
+</html>

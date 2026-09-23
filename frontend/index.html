@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ich spreche Deutsch — Almanca çalışma takip sistemi</title>
-    <meta name="description" content="Almanca öğrenenler için çalışma takip sistemi. Hedefine göre program çıkarır, günlük görevlerini takip eder, kelimeleri aralıklı tekrarla kalıcı hale getirir.">
+    <title>Ich spreche Deutsch — Ücretsiz Almanca koçu</title>
+    <meta name="description" content="Almanca öğrenenler için ücretsiz koç: seviyeni kanıta dayanarak tahmin eder, bugün ne çalışman gerektiğini gerekçesiyle söyler. Nereden çalıştığın sana kalmış.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,221 +25,88 @@
     <section class="hero">
         <div class="wrap hero__grid">
             <div>
-                <span class="eyebrow">Almanca çalışma takip sistemi</span>
-                <h1 class="hero__title">Almancayı sen çalış. <em>Programı biz kuralım.</em></h1>
+                <h1 class="hero__title">🇩🇪 %100 ücretsiz <em>Almanca koçu</em></h1>
                 <p class="hero__lead">
-                    Burası ders anlatan bir site değil. Hedefini söyle, seviyeni
-                    ölçelim, sana gün gün ne yapacağını söyleyen bir program
-                    çıkaralım. Sen dışarıda çalış — takibi, tekrarı ve ölçmeyi
-                    biz üstlenelim.
+                    Almanca'da nerede olduğunu tahmin eder, bugün neye vakit
+                    ayırmanın en mantıklısı olduğunu <strong>gerekçesiyle</strong>
+                    söyler. Nereden çalışacağın — YouTube, kitap, kurs, öğretmen —
+                    senin seçimin.
                 </p>
                 <div class="btn-row">
                     <a class="btn btn--accent btn--lg" href="/kayit.html">Ücretsiz başla</a>
                     <a class="btn btn--ghost btn--lg" href="/nasil-calisir.html">Nasıl çalışır?</a>
                 </div>
                 <p class="hero__note">
-                    Kredi kartı yok · Hedefini sonradan değiştirebilirsin
+                    Ücretli paket yok · Tek hesap, telefonda ve bilgisayarda aynı ilerleme
                 </p>
             </div>
 
-            <!-- Urunun kendisi: kayit olmadan once neye benzedigini gor -->
-            <div class="shot" aria-label="Uygulamanın Bugün ekranı" role="img">
-                <div class="shot__bar" aria-hidden="true">
-                    <span class="shot__dot"></span>
-                    <span class="shot__dot"></span>
-                    <span class="shot__dot"></span>
-                    <span class="shot__label">bugün</span>
-                </div>
-                <div class="shot__body" aria-hidden="true">
-                    <div class="shot__day">
-                        <span class="shot__daynum">9. gün / 30</span>
-                        <span class="shot__streak">8 günlük seri</span>
+            <!-- Urunun gercek ciktisinin ornegi: uydurma ekran degil, koc kartinin
+                 birebir bicimi. Rakamlar ornek oldugu icin ustte yaziyor. -->
+            <div class="demo" aria-label="Koç önerilerinin örnek görünümü" role="img">
+                <p class="demo__label" aria-hidden="true">örnek — koçun bugünkü önerisi</p>
+                <div class="demo__body" aria-hidden="true">
+                    <div class="demo__card">
+                        <div class="demo__head">
+                            <span class="badge badge--primary">Tekrar zamanı</span>
+                            <span class="demo__min">20 dk</span>
+                        </div>
+                        <p class="demo__title">Bugün 34 kelimenin tekrarı var</p>
+                        <p class="demo__why">Neden: 34 kelimenin tekrar günü geldi.</p>
                     </div>
-                    <div class="shot__topic">Dativ edatları</div>
-                    <div class="shot__meter"><span></span></div>
-
-                    <div class="shot__task shot__task--done">
-                        <span class="shot__check"></span>
-                        <span class="shot__name">Kelime</span>
-                        <span class="shot__min">60 dk</span>
+                    <div class="demo__card">
+                        <div class="demo__head">
+                            <span class="badge badge--primary">Zayıf konu</span>
+                            <span class="demo__min">25 dk</span>
+                        </div>
+                        <p class="demo__title">Dativ edatları üzerinde çalış</p>
+                        <p class="demo__why">Neden: son 20 soruda bu konudaki doğruluğun %55.</p>
                     </div>
-                    <div class="shot__task shot__task--done">
-                        <span class="shot__check"></span>
-                        <span class="shot__name">Gramer</span>
-                        <span class="shot__min">90 dk</span>
-                    </div>
-                    <div class="shot__task">
-                        <span class="shot__check"></span>
-                        <span class="shot__name">Hören</span>
-                        <span class="shot__min">60 dk</span>
-                    </div>
-                    <div class="shot__task">
-                        <span class="shot__check"></span>
-                        <span class="shot__name">Lesen</span>
-                        <span class="shot__min">60 dk</span>
-                    </div>
-                    <div class="shot__task">
-                        <span class="shot__check"></span>
-                        <span class="shot__name">Schreiben</span>
-                        <span class="shot__min">45 dk</span>
+                    <div class="demo__card">
+                        <div class="demo__head">
+                            <span class="badge badge--primary">İhmal edilen beceri</span>
+                            <span class="demo__min">20 dk</span>
+                        </div>
+                        <p class="demo__title">Hören: dinleme yap</p>
+                        <p class="demo__why">Neden: 9 gündür dinleme kaydın yok.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============ Ne değil / Ne ============ -->
+    <!-- ============ Koçluk nedir ============ -->
     <section class="section section--alt">
         <div class="wrap">
-            <div class="compare">
-                <div>
-                    <h2 class="compare__head compare__head--no">Ne değil</h2>
-                    <ul class="compare__list compare__list--no">
-                        <li>Almanca öğreten bir kurs değil.</li>
-                        <li>Konu anlatımı, video ders veya uzun okuma metni vermez.</li>
-                        <li>Kendi programını kendin tasarladığın bir planlayıcı değil.</li>
-                        <li>Not tuttuğun bir günlük değil — serbest metin yazmazsın.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="compare__head compare__head--yes">Ne</h2>
-                    <ul class="compare__list compare__list--yes">
-                        <li>Hedefinden geriye planlayan bir program üreticisi.</li>
-                        <li>Her gün ne yapacağını söyleyen bir görev listesi.</li>
-                        <li>Kelimeleri unutmadan tekrar ettiren bir hafıza sistemi.</li>
-                        <li>Gerçekten ilerleyip ilerlemediğini ölçen bir terazi.</li>
-                    </ul>
-                </div>
-                <p class="compare__note">
-                    Kısacası: bir öğretmen değil,
-                    <strong>disiplinli bir çalışma yol arkadaşı</strong>.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ Nasıl çalışır ============ -->
-    <section class="section">
-        <div class="wrap">
-            <span class="eyebrow">Döngü</span>
-            <h2>Nasıl çalışır</h2>
-            <p class="lead">
-                Altı adım. Üçü bizde, üçü sende.
+            <span class="eyebrow">Koçluk</span>
+            <h2>Kurs değil, koç</h2>
+            <p class="lead lead--wide">
+                Burada Almanca öğretilmez; <strong>nerede olduğun ölçülür ve sıradaki adım söylenir</strong>.
+                Site içindeki alıştırmalarla ya da kendi kaynağınla çalış — kurs, kitap, podcast, öğretmen —
+                sonuçları buraya kaydet, gerisini koç hesaplasın.
             </p>
 
-            <ol class="steps">
-                <li class="steps__item">
-                    <span class="steps__no">1</span>
-                    <h3>Hedefini seç</h3>
-                    <p>Hangi seviyeye, kaç günde ulaşmak istiyorsun? Günde kaç saat ayırabilirsin?</p>
-                </li>
-                <li class="steps__item">
-                    <span class="steps__no">2</span>
-                    <h3>Seviyeni ölçelim</h3>
-                    <p>39 soruluk yerleştirme testi. Zaten bildiğin konuları programdan çıkarırız.</p>
-                </li>
-                <li class="steps__item">
-                    <span class="steps__no">3</span>
-                    <h3>Programını al</h3>
-                    <p>Gün gün, blok blok. Hedefin gerçekçi değilse bunu açıkça söyleriz.</p>
-                </li>
-                <li class="steps__item">
-                    <span class="steps__no">4</span>
-                    <h3>Dışarıda çalış</h3>
-                    <p>YouTube, kurs, kitap, podcast — nereden çalıştığın senin bileceğin iş.</p>
-                </li>
-                <li class="steps__item">
-                    <span class="steps__no">5</span>
-                    <h3>Tek tıkla işaretle</h3>
-                    <p>Yaptım / Yarım yaptım / Yapamadım. Görev başına birkaç saniye.</p>
-                </li>
-                <li class="steps__item">
-                    <span class="steps__no">6</span>
-                    <h3>Program kendini ayarlar</h3>
-                    <p>Zayıf konulara ağırlık verir, kaçırdığın görevleri yeniden dağıtır.</p>
-                </li>
-            </ol>
-        </div>
-    </section>
-
-    <!-- ============ Örnek gün ============ -->
-    <section class="section section--alt">
-        <div class="wrap">
-            <span class="eyebrow">Örnek</span>
-            <h2>Bir günün nasıl görünür</h2>
-            <p class="lead">
-                9. gün — <strong>Dativ edatları: mit / nach / aus / bei / von / zu</strong>.
-                Kelime teması ulaşım ve yön. Günde 6,5 saat ayıran biri için:
-            </p>
-
-            <div class="card card--pad day-table">
-                <div class="day-row">
-                    <span class="day-row__time">60 dk</span>
-                    <span class="day-row__name">Kelime</span>
-                    <span class="day-row__desc">18 yeni kelime + 47 tekrar</span>
+            <div class="pillars">
+                <div class="pillar">
+                    <h3>Ölçer</h3>
+                    <p>
+                        Seviye yalnız dört beceriden hesaplanır: Lesen, Hören, Schreiben, Sprechen.
+                        Her tahmin hangi kanıta dayandığını gösterir; veri yoksa sayı uydurulmaz.
+                    </p>
                 </div>
-                <div class="day-row">
-                    <span class="day-row__time">90 dk</span>
-                    <span class="day-row__name">Gramer</span>
-                    <span class="day-row__desc">Dativ edatları + günün quiz'i</span>
+                <div class="pillar">
+                    <h3>Önerir</h3>
+                    <p>
+                        Bugün için en fazla üç iş, her birinin yanında nedeni: hangi konuda kaç soruda
+                        kaç doğru yaptığın, hangi beceride kaç gündür kayıt olmadığı.
+                    </p>
                 </div>
-                <div class="day-row">
-                    <span class="day-row__time">60 dk</span>
-                    <span class="day-row__name">Hören</span>
-                    <span class="day-row__desc">Ulaşım diyalogları</span>
-                </div>
-                <div class="day-row">
-                    <span class="day-row__time">60 dk</span>
-                    <span class="day-row__name">Lesen</span>
-                    <span class="day-row__desc">Yolculuk metinleri</span>
-                </div>
-                <div class="day-row">
-                    <span class="day-row__time">45 dk</span>
-                    <span class="day-row__name">Schreiben</span>
-                    <span class="day-row__desc">Yol tarifi mesajı</span>
-                </div>
-                <div class="day-row">
-                    <span class="day-row__time">45 dk</span>
-                    <span class="day-row__name">Sprechen</span>
-                    <span class="day-row__desc">Nasıl gittiğini anlat</span>
-                </div>
-                <div class="day-row">
-                    <span class="day-row__time">30 dk</span>
-                    <span class="day-row__name">Sınav pratiği</span>
-                    <span class="day-row__desc">Dativ alıştırmaları</span>
-                </div>
-
-                <p class="day-note">
-                    Günde 2 saatin mi var? Bloklar cılızlaşmaz — sistem konuyu
-                    birkaç güne yayar, Schreiben ve Sprechen gün aşırı gelir.
-                    Yedi yarım blok yerine dört dolu blok.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ Kimin için ============ -->
-    <section class="section">
-        <div class="wrap">
-            <span class="eyebrow">Kitle</span>
-            <h2>Kimin için</h2>
-
-            <div class="who">
-                <div class="card who__item">
-                    <h3>Sınav tarihi olan</h3>
-                    <p>Goethe A2'ye 30 gün kaldıysa, geriye doğru planlamak senin işin değil.</p>
-                </div>
-                <div class="card who__item">
-                    <h3>Dağılan</h3>
-                    <p>Her gün "bugün ne çalışsam" diye düşünmekten yorulduysan.</p>
-                </div>
-                <div class="card who__item">
-                    <h3>Unutan</h3>
-                    <p>Öğrendiğin kelimeler iki hafta sonra buhar oluyorsa.</p>
-                </div>
-                <div class="card who__item">
-                    <h3>Ölçemeyen</h3>
-                    <p>Aylardır çalışıyorsun ama gerçekten ilerliyor musun, bilmiyorsan.</p>
+                <div class="pillar">
+                    <h3>Takip eder</h3>
+                    <p>
+                        Ne kadar çalıştığın, ne kadar bildiğinden ayrı durur. Plan bir öneridir;
+                        uymadığın gün başarısız sayılmazsın.
+                    </p>
                 </div>
             </div>
         </div>
@@ -250,8 +117,8 @@
         <div class="wrap">
             <div class="cta">
                 <div>
-                    <h2 class="cta__title">Hedefini söyle, gerisini bırak.</h2>
-                    <p class="cta__sub">Kayıt iki dakika, yerleştirme testi on beş.</p>
+                    <h2 class="cta__title">Hedefini söyle, sıradaki adımı biz söyleyelim.</h2>
+                    <p class="cta__sub">Kayıt iki dakika. Yerleştirme testini istersen sonraya bırak.</p>
                 </div>
                 <a class="btn btn--accent btn--lg" href="/kayit.html">Ücretsiz başla</a>
             </div>

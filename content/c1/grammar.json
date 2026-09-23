@@ -1,0 +1,36 @@
+[
+  {
+    "topicId": "NOMINALISIERUNG",
+    "level": "C1",
+    "explanationTr": "Resmî ve bilimsel dilde eylem çoğu zaman isme çevrilir: prüfen → die Prüfung, entscheiden → die Entscheidung, ankommen → die Ankunft. Yan cümle de isim öbeğine dönüşür: Nachdem wir die Daten geprüft hatten, ... → Nach der Prüfung der Daten ... Bağlaç ve edat eşleşmeleri: weil → wegen/aufgrund, wenn → bei/im Falle, obwohl → trotz, nachdem → nach, bevor → vor, damit → zu/zwecks. Ters yönde (isimden fiile çevirme) metni okunur kılar; sınavda iki yönü de isterler.",
+    "turkishNoteTr": "Türkçede de resmî dil isimleştirmeyi sever: \"verilerin incelenmesinden sonra\". Fark: Almancada isimleştirme artikel ve Genitiv gerektirir, bu yüzden hâl bilgisi şart.",
+    "examples": [
+      { "de": "Nach der Prüfung der Unterlagen entscheiden wir.", "tr": "Belgelerin incelenmesinden sonra karar veriyoruz." },
+      { "de": "Wegen der hohen Nachfrage wurde die Frist verlängert.", "tr": "Yüksek talep nedeniyle süre uzatıldı." },
+      { "de": "Bei Nichterscheinen verfällt der Anspruch.", "tr": "Gelinmemesi hâlinde hak düşer." }
+    ],
+    "production": [
+      {
+        "id": "p-nominal-1",
+        "type": "GAP",
+        "promptTr": "Yan cümleyi isim öbeğine çevir: \"Nachdem die Waren geliefert wurden, ...\"",
+        "prompt": "___ der Waren prüfen wir die Rechnung.",
+        "parts": null,
+        "answer": "Nach der Lieferung",
+        "acceptedAnswers": ["nach der Lieferung"],
+        "explanationTr": "nachdem → nach; liefern → die Lieferung (Genitiv: der Waren)."
+      },
+      {
+        "id": "p-nominal-2",
+        "type": "GAP",
+        "promptTr": "Bağlacı edata çevir: \"weil das Wetter schlecht war\".",
+        "prompt": "___ des schlechten Wetters fiel das Spiel aus.",
+        "parts": null,
+        "answer": "Wegen",
+        "acceptedAnswers": ["wegen", "Aufgrund", "aufgrund"],
+        "explanationTr": "weil → wegen/aufgrund + Genitiv."
+      }
+    ],
+    "verified": false
+  }
+]

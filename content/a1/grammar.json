@@ -1,0 +1,512 @@
+[
+  {
+    "topicId": "SEIN_HABEN",
+    "level": "A1",
+    "explanationTr": "sein (olmak) ve haben (sahip olmak) Almancanın en sık iki fiilidir ve düzensiz çekilir. sein: ich bin, du bist, er/sie/es ist, wir sind, ihr seid, sie/Sie sind. haben: ich habe, du hast, er/sie/es hat, wir haben, ihr habt, sie/Sie haben.",
+    "turkishNoteTr": "Türkçede \"yorgunum\" derken ayrı bir fiil kullanmayız, ek yeter. Almancada cümlede mutlaka bir fiil bulunur: \"Ich bin müde.\"",
+    "examples": [
+      { "de": "Ich bin Alperen und ich bin müde.", "tr": "Ben Alperen'im ve yorgunum." },
+      { "de": "Wir haben Zeit, aber er hat keine Zeit.", "tr": "Bizim vaktimiz var ama onun vakti yok." },
+      { "de": "Seid ihr zu Hause?", "tr": "Evde misiniz?" }
+    ],
+    "production": [
+      {
+        "id": "p-sein-1",
+        "type": "GAP",
+        "promptTr": "Boşluğa sein fiilinin doğru biçimini yaz.",
+        "prompt": "Du ___ sehr nett.",
+        "parts": null,
+        "answer": "bist",
+        "acceptedAnswers": [],
+        "explanationTr": "du → bist."
+      },
+      {
+        "id": "p-sein-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Parçaları doğru sıraya koy.",
+        "prompt": null,
+        "parts": ["habe", "Ich", "einen", "Bruder"],
+        "answer": "Ich habe einen Bruder.",
+        "acceptedAnswers": [],
+        "explanationTr": "Çekimli fiil ikinci sırada: Ich (1) habe (2) einen Bruder."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "VERBKONJUGATION",
+    "level": "A1",
+    "explanationTr": "Düzenli fiiller kökten sonra kişi eki alır: ich -e, du -st, er/sie/es -t, wir -en, ihr -t, sie/Sie -en. Kökü -t veya -d ile biten fiillerde telaffuz için -e- eklenir: du arbeitest, er arbeitet. Bazı fiillerde kök sesli harfi değişir: fahren → du fährst, er fährt; sprechen → du sprichst, er spricht.",
+    "turkishNoteTr": "Türkçedeki kişi ekleri gibi düşünebilirsin (gel-iyor-um / gel-iyor-sun), ama Almancada özne zamiri yine de yazılır.",
+    "examples": [
+      { "de": "Ich lerne Deutsch, du lernst Englisch.", "tr": "Ben Almanca öğreniyorum, sen İngilizce." },
+      { "de": "Er arbeitet in Berlin.", "tr": "O Berlin'de çalışıyor." },
+      { "de": "Sie spricht sehr schnell.", "tr": "O çok hızlı konuşuyor." }
+    ],
+    "production": [
+      {
+        "id": "p-konj-1",
+        "type": "GAP",
+        "promptTr": "Fiili doğru çek: wohnen.",
+        "prompt": "Wir ___ in Izmir.",
+        "parts": null,
+        "answer": "wohnen",
+        "acceptedAnswers": [],
+        "explanationTr": "wir → -en: wohnen."
+      },
+      {
+        "id": "p-konj-2",
+        "type": "GAP",
+        "promptTr": "Fiili doğru çek: sprechen.",
+        "prompt": "Du ___ gut Deutsch.",
+        "parts": null,
+        "answer": "sprichst",
+        "acceptedAnswers": [],
+        "explanationTr": "sprechen düzensizdir: du sprichst, er spricht."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "ARTIKEL",
+    "level": "A1",
+    "explanationTr": "Her ismin bir artikeli vardır: der (eril), die (dişil), das (nötr). Belirsiz artikel ein/eine'dir: ein Mann, eine Frau, ein Kind. Artikel ezberlenir; kelimeyi her zaman artikeliyle birlikte öğren. Yardımcı olan birkaç eğilim: -ung, -heit, -keit, -schaft ile bitenler die; -chen ve -lein ile bitenler das; günler, aylar, mevsimler der.",
+    "turkishNoteTr": "Türkçede dil bilgisel cinsiyet yoktur. \"Bahnhof\"u bilmek ile \"der Bahnhof\"u bilmek ayrı iki bilgidir; bu yüzden artikel ayrı çalışılır.",
+    "examples": [
+      { "de": "Der Bahnhof ist groß.", "tr": "Tren garı büyük." },
+      { "de": "Die Wohnung ist neu.", "tr": "Daire yeni." },
+      { "de": "Das Mädchen liest ein Buch.", "tr": "Kız bir kitap okuyor." }
+    ],
+    "production": [
+      {
+        "id": "p-artikel-1",
+        "type": "GAP",
+        "promptTr": "Doğru artikeli yaz.",
+        "prompt": "___ Zeitung liegt auf dem Tisch.",
+        "parts": null,
+        "answer": "Die",
+        "acceptedAnswers": ["die"],
+        "explanationTr": "Zeitung dişildir: die Zeitung."
+      },
+      {
+        "id": "p-artikel-2",
+        "type": "GAP",
+        "promptTr": "Belirsiz artikeli yaz (ein/eine).",
+        "prompt": "Ich suche ___ Wohnung.",
+        "parts": null,
+        "answer": "eine",
+        "acceptedAnswers": [],
+        "explanationTr": "die Wohnung dişil; Akkusativ'de dişil değişmez: eine Wohnung."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "PLURAL",
+    "level": "A1",
+    "explanationTr": "Çoğulda artikel her zaman die olur. Çoğul eki kelimeye göre değişir: -e (der Tisch → die Tische), -er (das Kind → die Kinder, çoğu zaman Umlaut ile: das Haus → die Häuser), -n/-en (die Frau → die Frauen), -s (das Auto → die Autos) ya da eksiz (der Lehrer → die Lehrer). -ung, -heit, -keit ile bitenler -en alır.",
+    "turkishNoteTr": "Türkçede tek bir çoğul eki vardır (-ler/-lar). Almancada ek kelimeye bağlıdır, bu yüzden çoğul biçim kelimeyle birlikte ezberlenir.",
+    "examples": [
+      { "de": "Ein Kind spielt, zwei Kinder spielen.", "tr": "Bir çocuk oynuyor, iki çocuk oynuyor." },
+      { "de": "Die Häuser sind alt.", "tr": "Evler eski." },
+      { "de": "Wir kaufen zwei Autos.", "tr": "İki araba alıyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-plural-1",
+        "type": "GAP",
+        "promptTr": "Çoğul biçimi yaz: die Stadt.",
+        "prompt": "Ich kenne viele ___.",
+        "parts": null,
+        "answer": "Städte",
+        "acceptedAnswers": ["Staedte"],
+        "explanationTr": "die Stadt → die Städte (Umlaut + -e)."
+      },
+      {
+        "id": "p-plural-2",
+        "type": "GAP",
+        "promptTr": "Çoğul biçimi yaz: das Buch.",
+        "prompt": "Auf dem Tisch liegen drei ___.",
+        "parts": null,
+        "answer": "Bücher",
+        "acceptedAnswers": ["Buecher"],
+        "explanationTr": "das Buch → die Bücher (Umlaut + -er)."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "NEGATION",
+    "level": "A1",
+    "explanationTr": "Fiili, sıfatı ya da belirli bir ismi olumsuzlarken nicht kullanılır. Belirsiz artikelli ya da artikelsiz bir ismi olumsuzlarken kein kullanılır: ein Auto → kein Auto, Zeit → keine Zeit. nicht cümlenin sonuna yakın durur ama sıfattan ve yer bildiriminden önce gelir.",
+    "turkishNoteTr": "Türkçede olumsuzluk fiile ek olarak girer (gelmiyorum). Almancada ayrı bir kelime gelir ve yeri kuralla belirlenir.",
+    "examples": [
+      { "de": "Ich habe keine Zeit.", "tr": "Vaktim yok." },
+      { "de": "Das ist nicht mein Auto.", "tr": "Bu benim arabam değil." },
+      { "de": "Er kommt heute nicht.", "tr": "O bugün gelmiyor." }
+    ],
+    "production": [
+      {
+        "id": "p-negation-1",
+        "type": "GAP",
+        "promptTr": "nicht ya da kein/keine: doğru olanı yaz.",
+        "prompt": "Wir haben ___ Geld.",
+        "parts": null,
+        "answer": "kein",
+        "acceptedAnswers": [],
+        "explanationTr": "Geld artikelsiz bir isim: kein Geld."
+      },
+      {
+        "id": "p-negation-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Cümleyi kur.",
+        "prompt": null,
+        "parts": ["nicht", "Der", "Film", "ist", "interessant"],
+        "answer": "Der Film ist nicht interessant.",
+        "acceptedAnswers": [],
+        "explanationTr": "nicht sıfattan önce gelir."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "W_FRAGEN",
+    "level": "A1",
+    "explanationTr": "Soru sözcükleri: wer (kim), was (ne), wo (nerede), wohin (nereye), woher (nereden), wann (ne zaman), wie (nasıl), warum (neden), wie viel / wie viele (ne kadar / kaç tane). W sorusunda sıra: soru sözcüğü + fiil + özne. Evet/hayır sorusunda fiil en başa gelir: Kommst du?",
+    "turkishNoteTr": "Türkçede evet/hayır sorusu \"mı/mi\" ile kurulur, kelime sırası değişmez. Almancada fiil başa geçer.",
+    "examples": [
+      { "de": "Woher kommst du?", "tr": "Nerelisin? / Nereden geliyorsun?" },
+      { "de": "Wann beginnt der Kurs?", "tr": "Kurs ne zaman başlıyor?" },
+      { "de": "Hast du morgen Zeit?", "tr": "Yarın vaktin var mı?" }
+    ],
+    "production": [
+      {
+        "id": "p-wfragen-1",
+        "type": "GAP",
+        "promptTr": "Uygun soru sözcüğünü yaz.",
+        "prompt": "___ wohnst du? — In Ankara.",
+        "parts": null,
+        "answer": "Wo",
+        "acceptedAnswers": ["wo"],
+        "explanationTr": "Yer soruluyor, hareket yok: wo."
+      },
+      {
+        "id": "p-wfragen-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Evet/hayır sorusu kur.",
+        "prompt": null,
+        "parts": ["du", "Trinkst", "Kaffee"],
+        "answer": "Trinkst du Kaffee?",
+        "acceptedAnswers": [],
+        "explanationTr": "Fiil birinci sırada, sonra özne."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "WORTSTELLUNG",
+    "level": "A1",
+    "explanationTr": "Ana cümlede çekimli fiil her zaman ikinci sıradadır. Birinci sırada özne olabileceği gibi zaman ya da yer bildiren bir öğe de olabilir; bu durumda özne fiilden sonra gelir: Heute gehe ich ins Kino. İkinci bir fiil (modal fiilin mastarı, Perfekt'in Partizip'i) cümlenin sonuna gider.",
+    "turkishNoteTr": "Türkçede fiil genelde sondadır ve sıra esnektir. Almancada \"ikinci sıra\" kuralı katıdır: Heute ich gehe... yanlıştır.",
+    "examples": [
+      { "de": "Ich gehe am Montag zum Arzt.", "tr": "Pazartesi doktora gidiyorum." },
+      { "de": "Am Montag gehe ich zum Arzt.", "tr": "Pazartesi doktora gidiyorum." },
+      { "de": "Heute will ich früh schlafen.", "tr": "Bugün erken uyumak istiyorum." }
+    ],
+    "production": [
+      {
+        "id": "p-wortstellung-1",
+        "type": "WORD_ORDER",
+        "promptTr": "Cümleyi \"Morgen\" ile başlat.",
+        "prompt": null,
+        "parts": ["Morgen", "wir", "fahren", "nach", "Berlin"],
+        "answer": "Morgen fahren wir nach Berlin.",
+        "acceptedAnswers": [],
+        "explanationTr": "Zaman bildirimi birinci sıradaysa fiil yine ikinci, özne üçüncü sırada olur."
+      },
+      {
+        "id": "p-wortstellung-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Cümleyi kur.",
+        "prompt": null,
+        "parts": ["muss", "Er", "heute", "arbeiten"],
+        "answer": "Er muss heute arbeiten.",
+        "acceptedAnswers": [],
+        "explanationTr": "Modal fiil ikinci sırada, mastar sonda."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "AKKUSATIV",
+    "level": "A1",
+    "explanationTr": "Akkusativ nesne hâlidir. Yalnız eril artikel değişir: der → den, ein → einen. Dişil, nötr ve çoğul aynı kalır: die, das, die. Akkusativ isteyen sık fiiller: haben, kaufen, sehen, brauchen, essen. Akkusativ isteyen edatlar: für, ohne, gegen, um, durch.",
+    "turkishNoteTr": "Türkçedeki -i hâline yakındır (kitabı okuyorum) ama birebir örtüşmez: Almancada hâl artikelde görünür, isimde değil.",
+    "examples": [
+      { "de": "Ich brauche einen Stuhl.", "tr": "Bir sandalyeye ihtiyacım var." },
+      { "de": "Siehst du den Mann dort?", "tr": "Oradaki adamı görüyor musun?" },
+      { "de": "Das Geschenk ist für die Lehrerin.", "tr": "Hediye öğretmen için." }
+    ],
+    "production": [
+      {
+        "id": "p-akkusativ-1",
+        "type": "GAP",
+        "promptTr": "Artikeli Akkusativ'e göre yaz.",
+        "prompt": "Ich kaufe ___ Tisch.",
+        "parts": null,
+        "answer": "den",
+        "acceptedAnswers": [],
+        "explanationTr": "der Tisch eril; Akkusativ'de der → den."
+      },
+      {
+        "id": "p-akkusativ-2",
+        "type": "GAP",
+        "promptTr": "Artikeli doğru yaz.",
+        "prompt": "Wir haben ___ Hund. (ein)",
+        "parts": null,
+        "answer": "einen",
+        "acceptedAnswers": [],
+        "explanationTr": "der Hund eril, nesne konumunda: einen Hund."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "POSSESSIV",
+    "level": "A1",
+    "explanationTr": "İyelik sözcükleri: mein, dein, sein (onun/eril), ihr (onun/dişil), unser, euer, ihr, Ihr (nazik). Bunlar ein gibi çekilir: dişil ve çoğulda -e eklenir (meine Mutter, meine Eltern), eril Akkusativ'de -en (meinen Bruder).",
+    "turkishNoteTr": "Türkçede iyelik ekle kurulur (anne-m). Almancada ayrı bir kelimedir ve sahip olunan şeyin cinsiyetine göre çekilir, sahibin cinsiyetine göre değil.",
+    "examples": [
+      { "de": "Das ist meine Schwester.", "tr": "Bu benim kız kardeşim." },
+      { "de": "Ich besuche meinen Bruder.", "tr": "Erkek kardeşimi ziyaret ediyorum." },
+      { "de": "Wo sind eure Bücher?", "tr": "Kitaplarınız nerede?" }
+    ],
+    "production": [
+      {
+        "id": "p-possessiv-1",
+        "type": "GAP",
+        "promptTr": "İyelik sözcüğünü doğru çek: mein.",
+        "prompt": "___ Mutter kocht gut.",
+        "parts": null,
+        "answer": "Meine",
+        "acceptedAnswers": ["meine"],
+        "explanationTr": "die Mutter dişil: meine Mutter."
+      },
+      {
+        "id": "p-possessiv-2",
+        "type": "GAP",
+        "promptTr": "İyelik sözcüğünü doğru çek: dein.",
+        "prompt": "Ich kenne ___ Vater.",
+        "parts": null,
+        "answer": "deinen",
+        "acceptedAnswers": [],
+        "explanationTr": "der Vater eril ve nesne: deinen Vater."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "MODALVERBEN",
+    "level": "A1",
+    "explanationTr": "Modal fiiller bir eylemi isteme, zorunluluk ya da izinle birlikte anlatır: können (yapabilmek), müssen (zorunda olmak), wollen (istemek), möchten (istemek/nazik), dürfen (izinli olmak), sollen (gerekmek). Tekilde kök sesli harfi çoğu zaman değişir (ich kann, ich muss, ich will) ve ich ile er/sie/es biçimleri eksizdir. Asıl fiil mastar hâlinde cümlenin sonundadır.",
+    "turkishNoteTr": "Türkçede bu anlamlar fiile eklenir (gel-ebil-irim). Almancada ikinci bir fiil gelir ve mastar sona gider.",
+    "examples": [
+      { "de": "Ich kann gut schwimmen.", "tr": "İyi yüzebilirim." },
+      { "de": "Du musst jetzt gehen.", "tr": "Şimdi gitmelisin." },
+      { "de": "Möchten Sie einen Kaffee?", "tr": "Bir kahve ister misiniz?" }
+    ],
+    "production": [
+      {
+        "id": "p-modal-1",
+        "type": "GAP",
+        "promptTr": "Modal fiili çek: müssen.",
+        "prompt": "Er ___ heute arbeiten.",
+        "parts": null,
+        "answer": "muss",
+        "acceptedAnswers": [],
+        "explanationTr": "er müssen değil: ich muss, du musst, er muss."
+      },
+      {
+        "id": "p-modal-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Cümleyi kur.",
+        "prompt": null,
+        "parts": ["Wir", "können", "morgen", "kommen"],
+        "answer": "Wir können morgen kommen.",
+        "acceptedAnswers": [],
+        "explanationTr": "Modal ikinci sırada, mastar en sonda."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "TRENNBARE_VERBEN",
+    "level": "A1",
+    "explanationTr": "Ayrılabilen fiillerde ön ek ana cümlede ayrılır ve sona gider: aufstehen → Ich stehe um sieben auf. Sık ön ekler: auf-, an-, ein-, aus-, mit-, zu-, vor-, ab-. Modal fiille ya da yan cümlede fiil bütün kalır: Ich muss früh aufstehen.",
+    "turkishNoteTr": "Türkçede böyle bir bölünme yoktur; ön ekin cümle sonuna kayması Almancaya özgüdür ve anlamı değiştirir (stehen: durmak, aufstehen: kalkmak).",
+    "examples": [
+      { "de": "Ich stehe um sieben Uhr auf.", "tr": "Saat yedide kalkıyorum." },
+      { "de": "Der Zug kommt um zehn an.", "tr": "Tren onda varıyor." },
+      { "de": "Ich muss früh aufstehen.", "tr": "Erken kalkmam gerekiyor." }
+    ],
+    "production": [
+      {
+        "id": "p-trennbar-1",
+        "type": "WORD_ORDER",
+        "promptTr": "Cümleyi kur: einkaufen.",
+        "prompt": null,
+        "parts": ["kaufe", "Ich", "im", "Supermarkt", "ein"],
+        "answer": "Ich kaufe im Supermarkt ein.",
+        "acceptedAnswers": [],
+        "explanationTr": "Ön ek ein- cümlenin sonunda durur."
+      },
+      {
+        "id": "p-trennbar-2",
+        "type": "GAP",
+        "promptTr": "Ayrılan ön eki yaz: anrufen.",
+        "prompt": "Ich rufe dich morgen ___.",
+        "parts": null,
+        "answer": "an",
+        "acceptedAnswers": [],
+        "explanationTr": "anrufen ayrılır: ich rufe ... an."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "ZEITANGABEN",
+    "level": "A1",
+    "explanationTr": "Saatlerde um (um acht Uhr), günlerde ve günün bölümlerinde am (am Montag, am Abend; ama in der Nacht), aylarda ve mevsimlerde im (im Mai, im Sommer), yıllarda edat kullanılmaz (2026 ya da im Jahr 2026). Sıklık: immer, oft, manchmal, selten, nie.",
+    "turkishNoteTr": "Türkçede \"pazartesi günü\" derken edat gerekmez; Almancada am/um/im doğru seçilmelidir.",
+    "examples": [
+      { "de": "Der Kurs beginnt um neun Uhr.", "tr": "Kurs saat dokuzda başlıyor." },
+      { "de": "Am Freitag habe ich frei.", "tr": "Cuma günü iznim var." },
+      { "de": "Im Sommer fahren wir ans Meer.", "tr": "Yazın denize gidiyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-zeit-1",
+        "type": "GAP",
+        "promptTr": "Doğru edatı yaz (um / am / im).",
+        "prompt": "___ Samstag spielen wir Fußball.",
+        "parts": null,
+        "answer": "Am",
+        "acceptedAnswers": ["am"],
+        "explanationTr": "Günlerde am kullanılır."
+      },
+      {
+        "id": "p-zeit-2",
+        "type": "GAP",
+        "promptTr": "Doğru edatı yaz (um / am / im).",
+        "prompt": "Der Film beginnt ___ 20 Uhr.",
+        "parts": null,
+        "answer": "um",
+        "acceptedAnswers": [],
+        "explanationTr": "Saatlerde um kullanılır."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "IMPERATIV",
+    "level": "A1",
+    "explanationTr": "Emir kipi üç biçimde kurulur. du: fiil kökü, çoğunlukla eksiz (Komm!, Geh!, Nimm!); ihr: -t (Kommt!); Sie: fiil + Sie (Kommen Sie!). Ayrılabilen fiillerde ön ek sona gider: Steh bitte auf! bitte eklemek cümleyi nazikleştirir.",
+    "turkishNoteTr": "Türkçedeki \"gel / gelin\" ayrımı gibi düşünebilirsin: du samimi, Sie nazik biçimdir.",
+    "examples": [
+      { "de": "Komm bitte her!", "tr": "Lütfen buraya gel!" },
+      { "de": "Nehmen Sie Platz!", "tr": "Buyurun, oturun!" },
+      { "de": "Macht die Tür zu!", "tr": "Kapıyı kapatın!" }
+    ],
+    "production": [
+      {
+        "id": "p-imperativ-1",
+        "type": "GAP",
+        "promptTr": "du için emir kipi yaz: warten.",
+        "prompt": "___ bitte einen Moment!",
+        "parts": null,
+        "answer": "Warte",
+        "acceptedAnswers": ["warte"],
+        "explanationTr": "du biçimi: warte."
+      },
+      {
+        "id": "p-imperativ-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Sie için nazik emir cümlesi kur.",
+        "prompt": null,
+        "parts": ["Sprechen", "Sie", "bitte", "langsam"],
+        "answer": "Sprechen Sie bitte langsam.",
+        "acceptedAnswers": [],
+        "explanationTr": "Sie biçiminde fiil başta, hemen ardından Sie gelir."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "DATIV",
+    "level": "A1",
+    "explanationTr": "Dativ dolaylı nesne hâlidir. Artikeller: der → dem, die → der, das → dem, çoğul die → den (+ isme -n: den Kindern). Dativ isteyen sık fiiller: helfen, danken, gehören, gefallen, antworten. Dativ isteyen edatlar: mit, nach, aus, bei, von, zu, seit.",
+    "turkishNoteTr": "Türkçedeki -e hâline yakındır (arkadaşıma yardım ediyorum) ama birebir örtüşmez: gefallen ve gehören gibi fiillerde Türkçe çeviri farklı kurulur.",
+    "examples": [
+      { "de": "Ich helfe meiner Mutter.", "tr": "Anneme yardım ediyorum." },
+      { "de": "Das Buch gehört dem Lehrer.", "tr": "Kitap öğretmene ait." },
+      { "de": "Wir fahren mit dem Bus.", "tr": "Otobüsle gidiyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-dativ-1",
+        "type": "GAP",
+        "promptTr": "Artikeli Dativ'e göre yaz.",
+        "prompt": "Ich gebe ___ Kind einen Apfel.",
+        "parts": null,
+        "answer": "dem",
+        "acceptedAnswers": [],
+        "explanationTr": "das Kind nötr; Dativ'de das → dem."
+      },
+      {
+        "id": "p-dativ-2",
+        "type": "GAP",
+        "promptTr": "Artikeli Dativ'e göre yaz.",
+        "prompt": "Wir sprechen mit ___ Lehrerin.",
+        "parts": null,
+        "answer": "der",
+        "acceptedAnswers": [],
+        "explanationTr": "mit Dativ ister; dişil die → der."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "PERFEKT",
+    "level": "A1",
+    "explanationTr": "Konuşma dilinde geçmiş zaman Perfekt ile kurulur: haben ya da sein + Partizip II. Düzenli fiillerde Partizip ge- + kök + -t (gemacht), düzensizlerde ge- + kök + -en ve çoğu zaman sesli harf değişir (gegangen, gesprochen). Yer değiştirme ve durum değişimi bildiren fiiller sein alır: gehen, fahren, kommen, bleiben, sein. -ieren ile biten fiillerde ge- yoktur: studiert.",
+    "turkishNoteTr": "Türkçede geçmiş zaman tek ekle kurulur (git-ti-m). Almancada iki parça vardır ve ikinci parça cümlenin sonuna gider.",
+    "examples": [
+      { "de": "Ich habe gestern Deutsch gelernt.", "tr": "Dün Almanca çalıştım." },
+      { "de": "Wir sind nach Berlin gefahren.", "tr": "Berlin'e gittik." },
+      { "de": "Hast du das Buch gelesen?", "tr": "Kitabı okudun mu?" }
+    ],
+    "production": [
+      {
+        "id": "p-perfekt-1",
+        "type": "GAP",
+        "promptTr": "Yardımcı fiili yaz (haben / sein).",
+        "prompt": "Er ___ gestern ins Kino gegangen.",
+        "parts": null,
+        "answer": "ist",
+        "acceptedAnswers": [],
+        "explanationTr": "gehen yer değiştirme bildirir: sein ile kurulur."
+      },
+      {
+        "id": "p-perfekt-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Perfekt cümlesi kur.",
+        "prompt": null,
+        "parts": ["habe", "Ich", "einen", "Brief", "geschrieben"],
+        "answer": "Ich habe einen Brief geschrieben.",
+        "acceptedAnswers": [],
+        "explanationTr": "haben ikinci sırada, Partizip II sonda."
+      }
+    ],
+    "verified": false
+  }
+]

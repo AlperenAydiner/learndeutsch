@@ -1,0 +1,82 @@
+[
+  {
+    "id": "h-b2-01",
+    "level": "B2",
+    "kind": "DICTATION",
+    "titleTr": "Toplantı özeti",
+    "text": "Angesichts der gestiegenen Kosten schlägt die Abteilung vor, das Projekt um ein Quartal zu verschieben.",
+    "textTr": "Artan maliyetler göz önüne alındığında bölüm, projenin bir çeyrek ertelenmesini öneriyor.",
+    "estimatedMinutes": 6,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-b2-02",
+    "level": "B2",
+    "kind": "DICTATION",
+    "titleTr": "Resmî bilgilendirme",
+    "text": "Sofern die Unterlagen vollständig eingereicht wurden, erhalten Sie den Bescheid innerhalb von vier Wochen.",
+    "textTr": "Belgeler eksiksiz teslim edildiyse kararı dört hafta içinde alırsınız.",
+    "estimatedMinutes": 6,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-b2-03",
+    "level": "B2",
+    "kind": "COMPREHENSION",
+    "titleTr": "Panelden bir konuşma",
+    "text": "Ich möchte drei Punkte ansprechen. Erstens: Die Zahl der Anträge ist im vergangenen Jahr um knapp fünfzehn Prozent gestiegen, vor allem bei jüngeren Antragstellern. Zweitens: Die Bearbeitungszeit hat sich dadurch verlängert, im Schnitt von sechs auf neun Wochen. Das ist ärgerlich, aber nachvollziehbar, denn zusätzliches Personal war kurzfristig nicht verfügbar. Drittens, und das ist mir am wichtigsten: Wir haben ein Online-Verfahren eingeführt, das seit Juli läuft. Erste Auswertungen zeigen, dass digital eingereichte Anträge deutlich schneller bearbeitet werden. Ich rate deshalb dringend dazu, den Online-Weg zu nutzen, auch wenn der Papierweg weiterhin möglich bleibt.",
+    "textTr": "Üç noktaya değinmek istiyorum. Birincisi: Başvuru sayısı geçen yıl yaklaşık %15 arttı, özellikle genç başvuranlarda. İkincisi: İşlem süresi bu yüzden ortalama altı haftadan dokuz haftaya çıktı. Can sıkıcı ama anlaşılır, çünkü kısa vadede ek personel bulunamadı. Üçüncüsü ve benim için en önemlisi: Temmuzdan beri çalışan çevrimiçi bir süreç başlattık. İlk değerlendirmeler, dijital verilen başvuruların belirgin biçimde daha hızlı işlendiğini gösteriyor. Bu yüzden çevrimiçi yolu kullanmanızı önemle tavsiye ediyorum; kâğıt yolu da açık kalmaya devam ediyor.",
+    "estimatedMinutes": 8,
+    "questions": [
+      {
+        "id": "h-b2-03-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie stark ist die Zahl der Anträge gestiegen?",
+        "options": ["Um fünf Prozent", "Um knapp fünfzehn Prozent", "Um fünfzig Prozent", "Sie ist gesunken"],
+        "answer": "Um knapp fünfzehn Prozent",
+        "acceptedAnswers": [],
+        "explanationTr": "\"um knapp fünfzehn Prozent gestiegen\" — yaklaşık yüzde on beş."
+      },
+      {
+        "id": "h-b2-03-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Warum hat sich die Bearbeitungszeit verlängert?",
+        "options": [
+          "Weil die Technik ausgefallen ist",
+          "Weil kurzfristig kein zusätzliches Personal verfügbar war",
+          "Weil die Anträge unvollständig waren",
+          "Weil das Büro umgezogen ist"
+        ],
+        "answer": "Weil kurzfristig kein zusätzliches Personal verfügbar war",
+        "acceptedAnswers": [],
+        "explanationTr": "Konuşmacı gerekçeyi açıkça veriyor."
+      },
+      {
+        "id": "h-b2-03-q3",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was empfiehlt der Sprecher?",
+        "options": [
+          "Den Antrag auf Papier zu stellen",
+          "Den Online-Weg zu nutzen",
+          "Mit dem Antrag zu warten",
+          "Persönlich vorbeizukommen"
+        ],
+        "answer": "Den Online-Weg zu nutzen",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Ich rate deshalb dringend dazu, den Online-Weg zu nutzen\"."
+      },
+      {
+        "id": "h-b2-03-q4",
+        "type": "TRUE_FALSE",
+        "prompt": "Der Papierweg ist abgeschafft worden.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"auch wenn der Papierweg weiterhin möglich bleibt\" — kâğıt yolu duruyor."
+      }
+    ],
+    "verified": false
+  }
+]

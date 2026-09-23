@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sp-a1-01",
+    "level": "A1",
+    "titleTr": "Kendini tanıt",
+    "taskTr": "Bir dakika boyunca kendini tanıt: adın, yaşın, nereden geldiğin, nerede oturduğun, ne iş yaptığın ve hobilerin. Kendini kaydet, sonra dinle.",
+    "promptsDe": [
+      "Wie heißen Sie und wie alt sind Sie?",
+      "Woher kommen Sie und wo wohnen Sie jetzt?",
+      "Was machen Sie beruflich?",
+      "Was machen Sie gern in Ihrer Freizeit?"
+    ],
+    "phrases": [
+      "Ich heiße ... und ich bin ... Jahre alt.",
+      "Ich komme aus ... , aber ich wohne in ... .",
+      "Ich arbeite als ... / Ich studiere ... .",
+      "In meiner Freizeit ... ich gern."
+    ],
+    "estimatedMinutes": 10,
+    "verified": false
+  },
+  {
+    "id": "sp-a1-02",
+    "level": "A1",
+    "titleTr": "Günlük programını anlat",
+    "taskTr": "Sıradan bir gününü anlat: ne zaman kalkıyorsun, ne yiyorsun, nereye gidiyorsun, akşam ne yapıyorsun. Saatleri ve günleri kullanmaya çalış.",
+    "promptsDe": [
+      "Wann stehen Sie auf?",
+      "Was frühstücken Sie?",
+      "Wie kommen Sie zur Arbeit oder zur Schule?",
+      "Was machen Sie am Abend?"
+    ],
+    "phrases": [
+      "Ich stehe um ... Uhr auf.",
+      "Zum Frühstück esse ich ... .",
+      "Ich fahre mit dem Bus / mit der Bahn.",
+      "Am Abend ... ich meistens ... ."
+    ],
+    "estimatedMinutes": 10,
+    "verified": false
+  }
+]

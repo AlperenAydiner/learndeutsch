@@ -1,0 +1,43 @@
+[
+  {
+    "id": "sp-b2-01",
+    "level": "B2",
+    "titleTr": "Tartışmayı yönet: tez, karşı tez, sonuç",
+    "taskTr": "Üç dakika konuş: bir konuyu tanıt, kendi tezini iki gerekçeyle savun, en güçlü karşı tezi kendin dile getirip yanıtla, kısa bir sonuçla bitir. Kendini kaydet ve yapıyı dinleyerek kontrol et.",
+    "promptsDe": [
+      "Worum geht es und warum ist das Thema aktuell?",
+      "Welche These vertreten Sie und warum?",
+      "Welches ist das stärkste Gegenargument?",
+      "Wie entkräften Sie es und was folgt daraus?"
+    ],
+    "phrases": [
+      "Das Thema ist deshalb aktuell, weil ...",
+      "Ich vertrete die Auffassung, dass ...",
+      "Dagegen könnte man einwenden, dass ...",
+      "Dieser Einwand greift jedoch zu kurz, da ...",
+      "Insgesamt lässt sich festhalten, dass ..."
+    ],
+    "estimatedMinutes": 20,
+    "verified": false
+  },
+  {
+    "id": "sp-b2-02",
+    "level": "B2",
+    "titleTr": "Veri ve eğilim yorumla",
+    "taskTr": "Bir sayı ya da eğilim seç (kira artışı, ulaşım kullanımı, enerji tüketimi). İki dakika konuş: veriyi tanıt, en dikkat çeken değişimi vurgula, olası nedenleri sırala ve bir sonuç çıkar. Tahminle veriyi ayırarak konuş.",
+    "promptsDe": [
+      "Welche Daten beschreiben Sie und aus welchem Zeitraum?",
+      "Welche Entwicklung fällt besonders auf?",
+      "Welche Ursachen kommen infrage?",
+      "Welche Schlussfolgerung ziehen Sie und was bleibt unsicher?"
+    ],
+    "phrases": [
+      "Die Zahlen beziehen sich auf den Zeitraum von ... bis ... .",
+      "Auffällig ist vor allem, dass ...",
+      "Eine mögliche Ursache dafür könnte sein, dass ...",
+      "Sicher ist allerdings nur, dass ... ; alles Weitere ist Interpretation."
+    ],
+    "estimatedMinutes": 20,
+    "verified": false
+  }
+]

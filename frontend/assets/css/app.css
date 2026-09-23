@@ -178,8 +178,17 @@
 
 /* --- Ayarlar sayfasi ------------------------------------------------ */
 
-/* Form agirlikli sayfa; satirlar 1200px boyunca uzamasin. */
-.settings { max-width: 720px; }
+/* Bolumler genis ekranda yan yana; tek sutunda 1600px'e yayilmasin. */
+@media (min-width: 900px) {
+    .settings {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--s-5);
+        align-items: start;
+    }
+    .settings > :not(.settings__section) { grid-column: 1 / -1; }
+    .settings .settings__section { margin-bottom: 0; }
+}
 
 .settings__section { margin-bottom: var(--s-5); }
 .settings__section .block__title { margin-bottom: var(--s-2); }
@@ -191,13 +200,33 @@
     padding: var(--s-4);
     background: var(--surface);
     border: 1px solid var(--border);
-    border-left: 3px solid var(--border-strong);
     border-radius: var(--r);
     margin-bottom: var(--s-3);
 }
 
-.qrev--ok    { border-left-color: var(--done); }
-.qrev--wrong { border-left-color: var(--missed); }
+/* Dogru/yanlis: sol serit yerine sorunun onunde nokta. */
+.qrev__q::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: var(--s-2);
+    border-radius: 50%;
+    vertical-align: 0.1em;
+}
+.qrev--ok    .qrev__q::before { background: var(--done); }
+.qrev--wrong .qrev__q::before { background: var(--missed); }
+
+/* Inceleme listesi genis ekranda iki sutun. */
+@media (min-width: 1100px) {
+    #inceleme {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--s-3);
+        align-items: start;
+    }
+    #inceleme .qrev { margin-bottom: 0; }
+}
 
 .qrev__q {
     font-family: var(--font-mono);
@@ -222,3 +251,167 @@
     font-size: var(--fs-sm);
     color: var(--text-muted);
 }
+
+/* --- Gelisim: genis ekranda bolumler iki sutun ---------------------- */
+@media (min-width: 1100px) {
+    #panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--s-8);
+        align-items: start;
+    }
+    #panel > .page-head,
+    #panel > #icgoruler,
+    #panel > #sayilar,
+    #panel > .block--full { grid-column: 1 / -1; }
+}
+
+/* --- Tek dokunuslu secim (pill) ------------------------------------
+   Formlarda serbest metin yerine hazir secenekler (SPEC 6.2). */
+
+.pill {
+    min-height: 36px;
+    padding: 0 var(--s-3);
+    background: var(--bg-subtle);
+    border: 1px solid transparent;
+    border-radius: var(--r-full);
+    font: inherit;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background-color var(--t-fast) var(--ease),
+                border-color var(--t-fast) var(--ease),
+                color var(--t-fast) var(--ease);
+}
+
+.pill:hover { border-color: var(--border-strong); color: var(--text); }
+
+.pill[aria-pressed="true"] {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.pill--quiet { background: transparent; border-color: var(--border); }
+.pill[disabled] { opacity: 0.5; cursor: progress; }
+
+.pills { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+/* --- Yerlestirme testi listesi ------------------------------------- */
+
+.ptest { list-style: none; margin: 0 0 var(--s-6); padding: 0; counter-reset: q; }
+
+.ptest__item {
+    padding: var(--s-5) 0;
+    border-bottom: 1px solid var(--border);
+    counter-increment: q;
+}
+
+.ptest__prompt {
+    margin: 0 0 var(--s-3);
+    font-size: var(--fs-md);
+    line-height: var(--lh-snug);
+}
+
+.ptest__prompt::before {
+    content: counter(q) ".";
+    margin-right: var(--s-2);
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+}
+
+.ptest__options { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+/* --- Koc onerileri ve plan (Ana Sayfa + Kocluk) --------------------- */
+
+.recs { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+
+.rec {
+    padding: var(--s-5);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+}
+
+.rec__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.rec__minutes { font-family: var(--font-mono); font-size: var(--fs-sm); color: var(--text-faint); }
+.rec__title { font-size: var(--fs-md); margin: var(--s-3) 0 var(--s-2); }
+.rec__reason { margin: 0 0 var(--s-4); color: var(--text-muted); font-size: var(--fs-sm); max-width: var(--prose); }
+.rec__action { display: grid; gap: var(--s-2); }
+.rec__hint { font-size: var(--fs-sm); }
+.rec__log { font-size: var(--fs-xs); color: var(--text-faint); }
+
+.plan, .week { list-style: none; margin: 0; padding: 0; }
+
+.planline {
+    display: grid;
+    grid-template-columns: 64px 110px 1fr auto;
+    gap: var(--s-3);
+    align-items: baseline;
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.planline__min { font-family: var(--font-mono); color: var(--primary); font-weight: 600; }
+.planline__type { font-weight: 600; }
+.planline__hint { color: var(--text-muted); }
+.planline__done { color: var(--done); font-size: var(--fs-xs); }
+
+.weekline {
+    display: grid;
+    grid-template-columns: 110px 1fr 120px;
+    gap: var(--s-3);
+    align-items: center;
+    padding: var(--s-2) 0;
+    font-size: var(--fs-sm);
+}
+
+.weekline__bar { height: 6px; background: var(--bg-subtle); border-radius: var(--r-full); overflow: hidden; }
+.weekline__bar span { display: block; height: 100%; background: var(--primary); border-radius: var(--r-full); }
+.weekline__num { font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--text-faint); text-align: right; }
+
+@media (max-width: 620px) {
+    .planline { grid-template-columns: 56px 1fr; }
+    .planline__hint, .planline__done { grid-column: 2; }
+    .weekline { grid-template-columns: 90px 1fr; }
+    .weekline__num { grid-column: 2; text-align: left; }
+}
+
+/* Bosluk doldurma isareti: yerlestirme, quiz ve gramer alistirmalarinda ortak. */
+.quiz__gap {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* --- DEMO şeridi (SPEC 12.2) ----------------------------------------- */
+
+.demobar {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+    padding: var(--s-3) var(--s-5);
+    background: var(--warn-soft);
+    border-bottom: 1px solid var(--warn);
+    font-size: var(--fs-sm);
+}
+
+.demobar__tag {
+    padding: 2px 8px;
+    border-radius: var(--r-sm);
+    background: var(--warn);
+    color: var(--bg);
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    letter-spacing: .08em;
+}
+
+.demobar__text { color: var(--text-muted); flex: 1 1 260px; }
+.demobar__field { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--fs-xs); }
+.demobar__field input { padding: 4px 8px; border: 1px solid var(--border); border-radius: var(--r-sm); background: var(--surface); color: var(--text); }

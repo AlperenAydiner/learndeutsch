@@ -1,0 +1,77 @@
+[
+  {
+    "id": "h-a2-01",
+    "level": "A2",
+    "kind": "DICTATION",
+    "titleTr": "Tren duyurusu",
+    "text": "Der Zug nach München fährt heute von Gleis sieben ab und hat zehn Minuten Verspätung.",
+    "textTr": "Münih treni bugün yedinci perondan kalkıyor ve on dakika rötarlı.",
+    "estimatedMinutes": 4,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-a2-02",
+    "level": "A2",
+    "kind": "DICTATION",
+    "titleTr": "Doktorda",
+    "text": "Ich habe seit drei Tagen Kopfschmerzen und kann nachts nicht gut schlafen.",
+    "textTr": "Üç gündür başım ağrıyor ve geceleri iyi uyuyamıyorum.",
+    "estimatedMinutes": 4,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-a2-03",
+    "level": "A2",
+    "kind": "COMPREHENSION",
+    "titleTr": "Kurs bilgilendirmesi",
+    "text": "Guten Tag und herzlich willkommen. Der Deutschkurs beginnt am Montag um neun Uhr in Raum zwölf. Bitte bringen Sie das Buch und ein Wörterbuch mit. In der ersten Woche machen wir einen kurzen Test, aber er zählt nicht für die Note. Wenn Sie einmal nicht kommen können, schreiben Sie bitte eine E-Mail an das Büro. Der Kurs dauert insgesamt acht Wochen.",
+    "textTr": "İyi günler ve hoş geldiniz. Almanca kursu pazartesi saat dokuzda 12 numaralı derslikte başlıyor. Lütfen kitabı ve bir sözlük getirin. İlk hafta kısa bir test yapacağız ama notu etkilemiyor. Gelemeyeceğiniz olursa lütfen büroya e-posta yazın. Kurs toplam sekiz hafta sürüyor.",
+    "estimatedMinutes": 5,
+    "questions": [
+      {
+        "id": "h-a2-03-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wo findet der Kurs statt?",
+        "options": ["In Raum zwei", "In Raum zwölf", "In Raum zwanzig", "Im Büro"],
+        "answer": "In Raum zwölf",
+        "acceptedAnswers": [],
+        "explanationTr": "\"in Raum zwölf\" — on iki numaralı derslik."
+      },
+      {
+        "id": "h-a2-03-q2",
+        "type": "TRUE_FALSE",
+        "prompt": "Der Test in der ersten Woche zählt für die Note.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"aber er zählt nicht für die Note\"."
+      },
+      {
+        "id": "h-a2-03-q3",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was soll man mitbringen?",
+        "options": [
+          "Einen Laptop",
+          "Das Buch und ein Wörterbuch",
+          "Nur einen Stift",
+          "Eine Anmeldung"
+        ],
+        "answer": "Das Buch und ein Wörterbuch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Bitte bringen Sie das Buch und ein Wörterbuch mit.\""
+      },
+      {
+        "id": "h-a2-03-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie lange dauert der Kurs?",
+        "options": ["Vier Wochen", "Sechs Wochen", "Acht Wochen", "Zehn Wochen"],
+        "answer": "Acht Wochen",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Der Kurs dauert insgesamt acht Wochen.\""
+      }
+    ],
+    "verified": false
+  }
+]

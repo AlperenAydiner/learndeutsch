@@ -1,0 +1,562 @@
+[
+  {
+    "id": "q01",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir ___ aus der Türkei.",
+    "options": [
+      "sind",
+      "bin",
+      "seid",
+      "ist"
+    ],
+    "answer": "sind",
+    "acceptedAnswers": [],
+    "tags": [
+      "SEIN_HABEN"
+    ],
+    "explanationTr": "sein: wir sind, ihr seid, sie sind.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q02",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ du Geschwister?",
+    "options": [
+      "Hast",
+      "Habt",
+      "Hat",
+      "Haben"
+    ],
+    "answer": "Hast",
+    "acceptedAnswers": [],
+    "tags": [
+      "SEIN_HABEN"
+    ],
+    "explanationTr": "haben: du hast. Soru cümlesinde fiil başa gelir.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q03",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ihr ___ sehr schnell. (lernen)",
+    "options": [
+      "lernt",
+      "lerne",
+      "lernst",
+      "lernen"
+    ],
+    "answer": "lernt",
+    "acceptedAnswers": [],
+    "tags": [
+      "VERBKONJUGATION"
+    ],
+    "explanationTr": "Düzenli fiil, 2. çoğul şahıs: -t eki.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q04",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Meine Mutter ___ jeden Tag Zeitung. (lesen)",
+    "options": [
+      "liest",
+      "lese",
+      "lesen",
+      "last"
+    ],
+    "answer": "liest",
+    "acceptedAnswers": [],
+    "tags": [
+      "VERBKONJUGATION"
+    ],
+    "explanationTr": "lesen düzensizdir: er/sie liest.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q05",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ Zeitung liegt auf dem Tisch.",
+    "options": [
+      "Die",
+      "Der",
+      "Das",
+      "Den"
+    ],
+    "answer": "Die",
+    "acceptedAnswers": [],
+    "tags": [
+      "ARTIKEL"
+    ],
+    "explanationTr": "-ung ile biten isimler dişildir: die Zeitung.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q06",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ Mädchen spielt im Garten.",
+    "options": [
+      "Das",
+      "Der",
+      "Die",
+      "Dem"
+    ],
+    "answer": "Das",
+    "acceptedAnswers": [],
+    "tags": [
+      "ARTIKEL"
+    ],
+    "explanationTr": "-chen ile biten isimler nötrdür: das Mädchen.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q07",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Eine Frau, zwei ___.",
+    "options": [
+      "Frauen",
+      "Fraue",
+      "Frauns",
+      "Frau"
+    ],
+    "answer": "Frauen",
+    "acceptedAnswers": [],
+    "tags": [
+      "PLURAL"
+    ],
+    "explanationTr": "Frau çoğulu Frauen: -en eklenir.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q08",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ein Kind, drei ___.",
+    "options": [
+      "Kinder",
+      "Kinden",
+      "Kindes",
+      "Kind"
+    ],
+    "answer": "Kinder",
+    "acceptedAnswers": [],
+    "tags": [
+      "PLURAL"
+    ],
+    "explanationTr": "Kind çoğulu Kinder: -er eklenir.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q09",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich komme heute ___.",
+    "options": [
+      "nicht",
+      "kein",
+      "keine",
+      "nichts"
+    ],
+    "answer": "nicht",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEGATION"
+    ],
+    "explanationTr": "Fiili olumsuzlarken nicht kullanılır.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q10",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Das ist ___ Problem.",
+    "options": [
+      "kein",
+      "keine",
+      "nicht",
+      "keinen"
+    ],
+    "answer": "kein",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEGATION"
+    ],
+    "explanationTr": "Problem nötr; belirsiz isimde kein kullanılır.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q11",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ kostet das Buch?",
+    "options": [
+      "Wie viel",
+      "Wie",
+      "Was für",
+      "Wann"
+    ],
+    "answer": "Wie viel",
+    "acceptedAnswers": [],
+    "tags": [
+      "W_FRAGEN"
+    ],
+    "explanationTr": "Fiyat sorarken Wie viel kullanılır.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q12",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ gehst du? — Nach Hause.",
+    "options": [
+      "Wohin",
+      "Wo",
+      "Woher",
+      "Wann"
+    ],
+    "answer": "Wohin",
+    "acceptedAnswers": [],
+    "tags": [
+      "W_FRAGEN"
+    ],
+    "explanationTr": "Wohin: nereye. Wo nerede demektir.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q13",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich trinke ___ Kaffee.",
+    "options": [
+      "einen",
+      "ein",
+      "einem",
+      "eine"
+    ],
+    "answer": "einen",
+    "acceptedAnswers": [],
+    "tags": [
+      "AKKUSATIV"
+    ],
+    "explanationTr": "Kaffee eril; Akkusativ'de einen olur.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q14",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Kennst du ___ Frau dort?",
+    "options": [
+      "die",
+      "der",
+      "dem",
+      "den"
+    ],
+    "answer": "die",
+    "acceptedAnswers": [],
+    "tags": [
+      "AKKUSATIV"
+    ],
+    "explanationTr": "Dişil artikel Akkusativ'de değişmez: die.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q15",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wo ist ___ Auto?",
+    "options": [
+      "dein",
+      "deine",
+      "deinen",
+      "deinem"
+    ],
+    "answer": "dein",
+    "acceptedAnswers": [],
+    "tags": [
+      "POSSESSIV"
+    ],
+    "explanationTr": "Auto nötr; iyelik zamiri ekstra ek almaz: dein.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q16",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich rufe ___ Bruder an.",
+    "options": [
+      "meinen",
+      "mein",
+      "meine",
+      "meinem"
+    ],
+    "answer": "meinen",
+    "acceptedAnswers": [],
+    "tags": [
+      "POSSESSIV"
+    ],
+    "explanationTr": "Bruder eril ve Akkusativ: meinen.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q17",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir ___ morgen früh aufstehen.",
+    "options": [
+      "müssen",
+      "muss",
+      "musst",
+      "müsst"
+    ],
+    "answer": "müssen",
+    "acceptedAnswers": [],
+    "tags": [
+      "MODALVERBEN"
+    ],
+    "explanationTr": "müssen: wir müssen.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q18",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ ich hier rauchen?",
+    "options": [
+      "Darf",
+      "Darfst",
+      "Dürfe",
+      "Dürfen"
+    ],
+    "answer": "Darf",
+    "acceptedAnswers": [],
+    "tags": [
+      "MODALVERBEN"
+    ],
+    "explanationTr": "İzin sorarken dürfen kullanılır: Darf ich?",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q19",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Der Film ___ um acht ___. (anfangen)",
+    "options": [
+      "fängt ... an",
+      "anfängt",
+      "fangt ... an",
+      "anfangt"
+    ],
+    "answer": "fängt ... an",
+    "acceptedAnswers": [],
+    "tags": [
+      "TRENNBARE_VERBEN"
+    ],
+    "explanationTr": "anfangen ayrılabilen fiildir: fängt ... an.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q20",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wann ___ du zurück?",
+    "options": [
+      "kommst",
+      "kommt",
+      "zurückkommst",
+      "komme"
+    ],
+    "answer": "kommst",
+    "acceptedAnswers": [],
+    "tags": [
+      "TRENNBARE_VERBEN"
+    ],
+    "explanationTr": "zurückkommen: kommst du zurück.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q21",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Heute ___ ich keine Zeit.",
+    "options": [
+      "habe",
+      "ich habe",
+      "habe ich",
+      "hat"
+    ],
+    "answer": "habe",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSTELLUNG"
+    ],
+    "explanationTr": "Fiil ikinci öğe; zaman başta olunca özne arkaya geçer.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q22",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich habe ___ Montag frei.",
+    "options": [
+      "am",
+      "um",
+      "im",
+      "an"
+    ],
+    "answer": "am",
+    "acceptedAnswers": [],
+    "tags": [
+      "ZEITANGABEN"
+    ],
+    "explanationTr": "Günler için am kullanılır: am Montag.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q23",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Der Kurs dauert ___ Januar ___ März.",
+    "options": [
+      "von ... bis",
+      "ab ... zu",
+      "seit ... nach",
+      "aus ... in"
+    ],
+    "answer": "von ... bis",
+    "acceptedAnswers": [],
+    "tags": [
+      "ZEITANGABEN"
+    ],
+    "explanationTr": "von ... bis: ocaktan marta.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q24",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich gehe ___ Arzt.",
+    "options": [
+      "zum",
+      "zur",
+      "zu der",
+      "nach"
+    ],
+    "answer": "zum",
+    "acceptedAnswers": [],
+    "tags": [
+      "DATIV"
+    ],
+    "explanationTr": "zu Dativ ister; zu dem birleşip zum olur.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q26",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ bitte die Tür zu! (zumachen)",
+    "options": [
+      "Mach",
+      "Machst",
+      "Machen",
+      "Macht"
+    ],
+    "answer": "Mach",
+    "acceptedAnswers": [],
+    "tags": [
+      "IMPERATIV"
+    ],
+    "explanationTr": "zumachen: du emri Mach ... zu.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q27",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ Sie bitte hier! (warten)",
+    "options": [
+      "Warten",
+      "Wartet",
+      "Warte",
+      "Wartest"
+    ],
+    "answer": "Warten",
+    "acceptedAnswers": [],
+    "tags": [
+      "IMPERATIV"
+    ],
+    "explanationTr": "Sie için emir: fiil + Sie. Warten Sie!",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q28",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Was ___ du gestern gemacht?",
+    "options": [
+      "hast",
+      "bist",
+      "hat",
+      "habt"
+    ],
+    "answer": "hast",
+    "acceptedAnswers": [],
+    "tags": [
+      "PERFEKT"
+    ],
+    "explanationTr": "machen haben alır: hast du gemacht.",
+    "estimatedMinutes": 1,
+    "verified": false
+  },
+  {
+    "id": "q45",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich kaufe Brot ___ Bäckerei.",
+    "options": [
+      "in der",
+      "in die",
+      "im",
+      "in dem"
+    ],
+    "answer": "in der",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSCHATZ"
+    ],
+    "explanationTr": "Fırın: die Bäckerei. in der Bäckerei.",
+    "estimatedMinutes": 1,
+    "verified": false
+  }
+]

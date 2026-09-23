@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Öğren — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/assets/css/pages/learn.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<!--
+    Ogren (SPEC 7): kelime tekrari (SRS, 8.1) ve artikel pratigi.
+    Ogrenme aktivitesidir: seviye kaniti uretmez (K2, 8.5). Gramer,
+    Lesen, Hören, Schreiben, Sprechen ve Sinav kendi fazlarinda eklenir;
+    olmayan modul icin link konmaz (K4).
+-->
+<main class="wrap" id="main">
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
+
+    <!-- ======== Genel bakis ======== -->
+    <section id="bakis" hidden>
+        <header class="page-head">
+            <div>
+                <h1>Öğren</h1>
+                <p class="page-head__sub" id="ozet"></p>
+            </div>
+        </header>
+
+        <div class="modules">
+            <article class="module">
+                <h2 class="module__title">🧠 Kelimeler</h2>
+                <p class="module__desc">
+                    Bugünün tekrarları ve günlük yeni kelimelerin. Tekrar aralığı
+                    verdiğin nota göre uzar: Bildim → daha seyrek, Bilemedim → baştan.
+                </p>
+                <dl class="module__stats" id="kelimeIstatistik"></dl>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" id="kelimeBasla">Kelime oturumu</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">🔤 Artikel</h2>
+                <p class="module__desc">
+                    der / die / das pratiği. Türkçede dil bilgisel cinsiyet yok,
+                    bu yüzden "Bahnhof"u bilmek ile "der Bahnhof"u bilmek ayrı beceri.
+                </p>
+                <dl class="module__stats" id="artikelIstatistik"></dl>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" id="artikelBasla">Artikel pratiği</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">📖 Gramer</h2>
+                <p class="module__desc">
+                    Konu konu kısa döngü: açıklama → örnek → mini soru → hata açıklaması
+                    → kontrollü üretim. Uzun ders sayfası yok.
+                </p>
+                <dl class="module__stats" id="gramerIstatistik"></dl>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" id="gramerBasla">Gramer konuları</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">📰 Lesen</h2>
+                <p class="module__desc">
+                    Seviyene uygun metinler ve soruları. Otomatik puanlanır ve
+                    <strong>Lesen kanıtı</strong> olarak seviye tahminine girer.
+                </p>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" data-beceri="lesen">Okuma çalış</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">🎧 Hören</h2>
+                <p class="module__desc">
+                    Tarayıcının Almanca sesiyle dinleme ve dikte. Ses sentetik olduğu için
+                    sonuç kanıt sayılmaz; çalışma geçmişine yazılır.
+                </p>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" data-beceri="hoeren">Dinleme çalış</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">✍️ Schreiben</h2>
+                <p class="module__desc">
+                    Yazma görevi, hazır kalıplar ve örnek cevap. Metnini rubrikle kendin
+                    değerlendirirsin; bu düşük güvenli bir kanıt sayılır.
+                </p>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" data-beceri="schreiben">Yazma çalış</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">🗣️ Sprechen</h2>
+                <p class="module__desc">
+                    Konuşma görevi ve "şunu yapabiliyorum" öz değerlendirmesi. Site konuşmanı
+                    dinlemez; değerlendirmeyi sen yaparsın.
+                </p>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="button" data-beceri="sprechen">Konuşma çalış</button>
+                </div>
+            </article>
+
+            <article class="module">
+                <h2 class="module__title">🎯 Sınav</h2>
+                <p class="module__desc">
+                    Hedef seviyendeki pratikler bir arada, resmî sınav kurumlarının kendi örnek
+                    testlerine yönlendirme ve sonuç girişi. Kendi sınavımızı resmî gibi sunmuyoruz.
+                </p>
+                <div class="btn-row">
+                    <a class="btn btn--primary" href="/app/sinav.html">Sınav hazırlığı</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ======== Kelime oturumu ======== -->
+    <section id="kelimeOturum" hidden>
+        <div class="session__top">
+            <span class="session__count" id="kelimeSayac"></span>
+            <button class="btn btn--ghost btn--sm" type="button" data-bitir="kelime">Oturumu bitir</button>
+        </div>
+        <span class="bar"><span class="bar__fill" id="kelimeIlerleme" style="width:0%"></span></span>
+
+        <article class="card card--pad wordcard" id="kelimeKart"></article>
+        <div id="kelimeSonuc"></div>
+    </section>
+
+    <!-- ======== Artikel oturumu ======== -->
+    <section id="artikelOturum" hidden>
+        <div class="session__top">
+            <span class="session__count" id="artikelSayac"></span>
+            <button class="btn btn--ghost btn--sm" type="button" data-bitir="artikel">Oturumu bitir</button>
+        </div>
+        <span class="bar"><span class="bar__fill" id="artikelIlerleme" style="width:0%"></span></span>
+
+        <article class="card card--pad wordcard" id="artikelKart"></article>
+        <div id="artikelSonuc"></div>
+    </section>
+
+    <!-- ======== Gramer: konu listesi ======== -->
+    <section id="gramerKonular" hidden>
+        <header class="page-head">
+            <div>
+                <h1>Gramer</h1>
+                <p class="page-head__sub" id="gramerOzet"></p>
+            </div>
+            <button class="btn btn--ghost btn--sm" type="button" id="gramerGeri">Öğren'e dön</button>
+        </header>
+        <div id="konuListesi"></div>
+    </section>
+
+    <!-- ======== Gramer: konu döngüsü ======== -->
+    <section id="gramerDers" hidden>
+        <div class="session__top">
+            <span class="session__count" id="gramerSayac"></span>
+            <button class="btn btn--ghost btn--sm" type="button" data-bitir="gramer">Oturumu bitir</button>
+        </div>
+        <span class="bar"><span class="bar__fill" id="gramerIlerleme" style="width:0%"></span></span>
+
+        <article class="lesson" id="dersBasligi"></article>
+        <article class="card card--pad wordcard" id="gramerKart"></article>
+        <div id="gramerSonuc"></div>
+    </section>
+
+    <!-- ======== Dört beceri (bileşen çizer) ======== -->
+    <section id="beceriAlani" hidden></section>
+
+    <!-- ======== Oturum ozeti ======== -->
+    <section id="ozetEkran" hidden>
+        <header class="page-head">
+            <div>
+                <h1>Oturum bitti</h1>
+                <p class="page-head__sub" id="ozetMetin"></p>
+            </div>
+        </header>
+        <div class="btn-row">
+            <button class="btn btn--primary" type="button" id="devamEt">Öğren'e dön</button>
+            <a class="btn btn--ghost" href="/app/index.html">Ana Sayfa</a>
+        </div>
+    </section>
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api } from "/assets/js/core/api.js";
+    import { esc } from "/assets/js/core/etiket.js";
+    import { beceriKur, beceriListesi, beceriGorevAc } from "/assets/js/components/beceriler.js";
+
+    const NOTLAR = [
+        { grade: "BILEMEDIM", label: "Bilemedim", sinif: "btn--ghost" },
+        { grade: "ZORLANDIM", label: "Zorlandım", sinif: "btn--ghost" },
+        { grade: "BILDIM", label: "Bildim", sinif: "btn--primary" },
+    ];
+    const ARTIKELLER = ["der", "die", "das"];
+
+    let oturum = null;          // { tip, id, kartlar, sira, etkilesimler, dogru, toplam }
+
+    const session = await requireAuth();
+    if (session) {
+        document.getElementById("kelimeBasla").addEventListener("click", () => kelimeBasla());
+        document.getElementById("gramerBasla").addEventListener("click", () => gramerListesi());
+        beceriKur(document.getElementById("beceriAlani"), () => bakisaDon());
+        document.querySelectorAll("[data-beceri]").forEach((b) =>
+            b.addEventListener("click", () => beceriAc(b.dataset.beceri)));
+        document.getElementById("gramerGeri").addEventListener("click", () => bakisaDon());
+        document.getElementById("artikelBasla").addEventListener("click", () => artikelBasla());
+        document.getElementById("devamEt").addEventListener("click", () => bakisaDon());
+        document.querySelectorAll("[data-bitir]").forEach((b) =>
+            b.addEventListener("click", () => bitir(false)));
+        await bakisaDon();
+
+        // Koc onerisi dogrudan module baglar: #kelime / #artikel / #gramer[:KONU]
+        if (location.hash === "#kelime") await kelimeBasla();
+        else if (location.hash === "#artikel") await artikelBasla();
+        else if (location.hash.startsWith("#gramer")) {
+            const konu = location.hash.split(":")[1];
+            if (konu) await konuAc(konu);
+            else await gramerListesi();
+        } else {
+            // #lesen ya da #lesen:GOREV_ID (Sınav sayfasından belirli görev)
+            const [tur, gorev] = location.hash.slice(1).split(":");
+            if (["lesen", "hoeren", "schreiben", "sprechen"].includes(tur)) {
+                await beceriAc(tur);
+                if (gorev) await beceriGorevAc(tur, gorev);
+            }
+        }
+    }
+
+    /** Dört beceri: liste ve çalışma ekranlarını bileşen çizer. */
+    async function beceriAc(tur) {
+        try {
+            gizle(["bakis", "kelimeOturum", "artikelOturum", "gramerKonular", "gramerDers", "ozetEkran"]);
+            oturum = null;
+            await beceriListesi(tur);
+        } catch (err) {
+            document.getElementById("bakis").hidden = false;
+            hata(err.message);
+        }
+    }
+
+    // ---------- genel bakis ----------
+
+    async function bakisaDon() {
+        location.hash = "";
+        gizle(["kelimeOturum", "artikelOturum", "gramerKonular", "gramerDers", "beceriAlani", "ozetEkran"]);
+        oturum = null;
+        try {
+            const [kelime, artikel, gramer] = await Promise.all([
+                api.get("/words/stats"), api.get("/article/stats"), api.get("/grammar/stats"),
+            ]);
+            istatistikCiz(kelime, artikel, gramer);
+        } catch (err) {
+            hata(err.message);
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+            document.getElementById("bakis").hidden = false;
+        }
+    }
+
+    function istatistikCiz(kelime, artikel, gramer) {
+        document.getElementById("ozet").textContent = kelime.dueToday > 0
+            ? `Bugün ${kelime.dueToday} kelimenin tekrar zamanı geldi.`
+            : "Bugün tekrar zamanı gelen kelime yok; yeni kelime çalışabilirsin.";
+
+        document.getElementById("kelimeIstatistik").innerHTML = satirlar([
+            ["Tekrar bekleyen", `${kelime.dueToday}`],
+            ["Çalıştığın kelime", `${kelime.studied}`],
+            ["Güçlü kelime", `${kelime.strong}`],
+        ]);
+
+        const t = artikel.total;
+        document.getElementById("artikelIstatistik").innerHTML = satirlar([
+            ...ARTIKELLER.map((a) => {
+                const w = artikel.byArticle[a];
+                return [`<span class="artikel--${a}">${a}</span>`,
+                    w.answers ? `%${Math.round((w.correct / w.answers) * 100)} · son ${w.answers} yanıt` : "veri yok"];
+            }),
+            ["Toplam yanıt", `${t.answers}`],
+        ]);
+
+        document.getElementById("gramerIstatistik").innerHTML = satirlar([
+            ["Çalıştığın konu", `${gramer.studiedTopics}`],
+            ["Tamamladığın", `${gramer.completedTopics}`],
+            ["Kontrol zamanı gelen", `${gramer.dueChecks}`],
+            ["Açık hata etiketi", `${gramer.activeErrors}`],
+        ]);
+    }
+
+    function satirlar(ciftler) {
+        return ciftler.map(([k, v]) => `<div class="kv"><dt>${k}</dt><dd>${v}</dd></div>`).join("");
+    }
+
+    // ---------- kelime oturumu ----------
+
+    async function kelimeBasla() {
+        try {
+            const s = await api.post("/words/session");
+            oturum = {
+                tip: "kelime", id: s.sessionId, kartlar: s.cards, sira: 0,
+                etkilesimler: [Date.now()], dogru: 0, toplam: 0,
+                not: s.postponed > 0
+                    ? `Bugün ${s.reviewCount} tekrar (toplam ${s.dueTotal}; ${s.postponed} tanesi sonraki günlere kaldı) ve ${s.newCount} yeni kelime.`
+                    : `Bugün ${s.reviewCount} tekrar ve ${s.newCount} yeni kelime.`,
+            };
+            gizle(["bakis", "artikelOturum", "gramerKonular", "gramerDers", "beceriAlani", "ozetEkran"]);
+            document.getElementById("kelimeOturum").hidden = false;
+            kelimeKartiCiz();
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    function kelimeKartiCiz() {
+        const k = oturum.kartlar[oturum.sira];
+        ilerleme("kelime", oturum.sira, oturum.kartlar.length);
+        document.getElementById("kelimeSonuc").innerHTML = "";
+
+        const artikelSorusu = k.askArticle && !k.isNew;
+        document.getElementById("kelimeKart").innerHTML = `
+            <p class="wordcard__meta">${k.isNew ? "Yeni kelime" : `Tekrar · ${k.level}`}${k.verified ? "" : " · içerik kontrol edilmedi"}</p>
+            <p class="wordcard__lemma">${k.isNew && k.article ? `<span class="artikel--${k.article}">${k.article}</span> ` : ""}${esc(k.lemma)}</p>
+            ${k.isNew ? yeniKelimeGovde(k) : `
+                <p class="wordcard__hint">Anlamını hatırlamaya çalış.</p>
+                ${artikelSorusu ? `
+                    <p class="wordcard__q">Artikeli hangisi?</p>
+                    <div class="btn-row" id="artikelSecim">
+                        ${ARTIKELLER.map((a) => `<button type="button" class="pill" data-artikel="${a}">${a}</button>`).join("")}
+                    </div>` : ""}
+                <div class="btn-row block">
+                    <button class="btn btn--primary" type="button" id="goster">Cevabı göster</button>
+                </div>`}`;
+
+        if (k.isNew) {
+            document.getElementById("yeniBildim").addEventListener("click", () => kelimeCevapla("BILDIM"));
+            document.getElementById("yeniOgrendim").addEventListener("click", () => kelimeCevapla("ZORLANDIM"));
+        } else {
+            if (artikelSorusu) {
+                document.querySelectorAll("[data-artikel]").forEach((b) => b.addEventListener("click", () => {
+                    oturum.artikel = b.dataset.artikel;
+                    document.querySelectorAll("[data-artikel]").forEach((x) =>
+                        x.classList.toggle("is-on", x === b));
+                    oturum.etkilesimler.push(Date.now());
+                }));
+            }
+            document.getElementById("goster").addEventListener("click", () => cevabiGoster(k));
+        }
+    }
+
+    function yeniKelimeGovde(k) {
+        return `
+            <p class="wordcard__meaning">${esc(k.meaningTr)}</p>
+            ${k.plural ? `<p class="wordcard__extra">Çoğul: ${esc(k.plural)}</p>` : ""}
+            ${k.exampleDe ? `<p class="wordcard__example">${esc(k.exampleDe)}<br><span>${esc(k.exampleTr ?? "")}</span></p>` : ""}
+            <div class="btn-row block">
+                <button class="btn btn--ghost" type="button" id="yeniOgrendim">Yeni öğrendim</button>
+                <button class="btn btn--primary" type="button" id="yeniBildim">Zaten biliyordum</button>
+            </div>`;
+    }
+
+    function cevabiGoster(k) {
+        oturum.etkilesimler.push(Date.now());
+        document.getElementById("kelimeKart").insertAdjacentHTML("beforeend", `
+            <div class="wordcard__reveal">
+                ${k.article ? `<p class="wordcard__extra">Artikel: <span class="artikel--${k.article}">${k.article}</span>${oturum.artikel ? (oturum.artikel === k.article ? " · doğru seçtin" : ` · sen “${esc(oturum.artikel)}” dedin`) : ""}</p>` : ""}
+                <p class="wordcard__meaning">${esc(k.meaningTr)}</p>
+                ${k.plural ? `<p class="wordcard__extra">Çoğul: ${esc(k.plural)}</p>` : ""}
+                ${k.exampleDe ? `<p class="wordcard__example">${esc(k.exampleDe)}<br><span>${esc(k.exampleTr ?? "")}</span></p>` : ""}
+                <p class="wordcard__q">Ne kadar hatırladın?</p>
+                <div class="btn-row" id="notlar">
+                    ${NOTLAR.map((n) => `<button type="button" class="btn ${n.sinif}" data-grade="${n.grade}">${n.label}</button>`).join("")}
+                </div>
+            </div>`);
+        document.getElementById("goster").disabled = true;
+        document.querySelectorAll("[data-grade]").forEach((b) =>
+            b.addEventListener("click", () => kelimeCevapla(b.dataset.grade)));
+    }
+
+    async function kelimeCevapla(grade) {
+        const k = oturum.kartlar[oturum.sira];
+        oturum.etkilesimler.push(Date.now());
+        document.querySelectorAll("[data-grade], #yeniBildim, #yeniOgrendim").forEach((b) => (b.disabled = true));
+        try {
+            const r = await api.post("/words/answer", {
+                sessionId: oturum.id, wordId: k.wordId, grade,
+                articleGiven: oturum.artikel ?? null,
+            });
+            oturum.artikel = null;
+            oturum.toplam += 1;
+            if (r.effectiveGrade === "BILDIM") oturum.dogru += 1;
+
+            const dusuruldu = r.effectiveGrade !== grade;
+            document.getElementById("kelimeSonuc").innerHTML = `
+                <div class="feedback ${r.effectiveGrade === "BILDIM" ? "feedback--ok" : "feedback--soft"}">
+                    <p class="feedback__line">${r.intervalDays} gün sonra tekrar${r.strong ? " · güçlü kelime" : ""}.</p>
+                    ${dusuruldu ? `<p class="feedback__note">Kelimeyi bildin ama artikeli yanlıştı; bu yüzden “Zorlandım” sayıldı.</p>` : ""}
+                    <button class="btn btn--primary" type="button" id="sonraki">Devam</button>
+                </div>`;
+            document.getElementById("sonraki").addEventListener("click", sonrakiKart);
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    function sonrakiKart() {
+        oturum.sira += 1;
+        if (oturum.sira >= oturum.kartlar.length) {
+            bitir();
+        } else {
+            kelimeKartiCiz();
+        }
+    }
+
+    // ---------- artikel oturumu ----------
+
+    async function artikelBasla() {
+        try {
+            const s = await api.post("/article/session");
+            oturum = {
+                tip: "artikel", id: s.sessionId, kartlar: s.items, sira: 0,
+                etkilesimler: [Date.now()], dogru: 0, toplam: 0,
+                not: `${s.items.length} kelime.`,
+            };
+            gizle(["bakis", "kelimeOturum", "gramerKonular", "gramerDers", "beceriAlani", "ozetEkran"]);
+            document.getElementById("artikelOturum").hidden = false;
+            artikelKartiCiz();
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    function artikelKartiCiz() {
+        const k = oturum.kartlar[oturum.sira];
+        ilerleme("artikel", oturum.sira, oturum.kartlar.length);
+        document.getElementById("artikelSonuc").innerHTML = "";
+        document.getElementById("artikelKart").innerHTML = `
+            <p class="wordcard__meta">${k.level}${k.verified ? "" : " · içerik kontrol edilmedi"}</p>
+            <p class="wordcard__lemma">___ ${esc(k.lemma)}</p>
+            <p class="wordcard__meaning">${esc(k.meaningTr)}</p>
+            <div class="btn-row block">
+                ${ARTIKELLER.map((a) => `<button type="button" class="pill pill--lg artikel--${a}" data-a="${a}">${a}</button>`).join("")}
+            </div>`;
+        document.querySelectorAll("[data-a]").forEach((b) =>
+            b.addEventListener("click", () => artikelCevapla(b.dataset.a)));
+    }
+
+    async function artikelCevapla(given) {
+        const k = oturum.kartlar[oturum.sira];
+        oturum.etkilesimler.push(Date.now());
+        document.querySelectorAll("[data-a]").forEach((b) => (b.disabled = true));
+        try {
+            const r = await api.post("/article/answer", { sessionId: oturum.id, wordId: k.wordId, given });
+            oturum.toplam += 1;
+            if (r.correct) oturum.dogru += 1;
+
+            // Dogru cevap her zaman gorunur ve ekran kendiliginden ilerlemez.
+            document.getElementById("artikelSonuc").innerHTML = `
+                <div class="feedback ${r.correct ? "feedback--ok" : "feedback--no"}">
+                    <p class="feedback__line">
+                        ${r.correct ? "Doğru." : `Yanlış — sen “${esc(given)}” dedin.`}
+                        Doğrusu: <span class="artikel--${r.article}">${r.article}</span> ${esc(k.lemma)}
+                    </p>
+                    ${r.exampleDe ? `<p class="feedback__note">${esc(r.exampleDe)}${r.exampleTr ? `<br>${esc(r.exampleTr)}` : ""}</p>` : ""}
+                    <button class="btn btn--primary" type="button" id="sonraki">Devam</button>
+                </div>`;
+            document.getElementById("sonraki").addEventListener("click", () => {
+                oturum.sira += 1;
+                if (oturum.sira >= oturum.kartlar.length) {
+                    bitir();
+                } else {
+                    artikelKartiCiz();
+                }
+            });
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    // ---------- gramer ----------
+
+    const UMLAUTLAR = ["ä", "ö", "ü", "ß", "Ä", "Ö", "Ü"];
+
+    async function gramerListesi() {
+        try {
+            const konular = await api.get("/grammar/topics");
+            gizle(["bakis", "kelimeOturum", "artikelOturum", "gramerDers", "beceriAlani", "ozetEkran"]);
+            document.getElementById("gramerKonular").hidden = false;
+
+            const bekleyen = konular.filter((k) => k.dueCheck).length;
+            document.getElementById("gramerOzet").textContent = bekleyen
+                ? `${bekleyen} konunun kontrol tekrarı zamanı geldi.`
+                : "Çalışma seviyene kadar olan konular. Kontrol tekrarları tamamladığın konular için gelir.";
+
+            const gruplar = {};
+            konular.forEach((k) => (gruplar[k.level] ??= []).push(k));
+            document.getElementById("konuListesi").innerHTML = Object.entries(gruplar).map(([seviye, liste]) => `
+                <h2 class="block__title block">${seviye}</h2>
+                <ul class="topics">${liste.map(konuSatiri).join("")}</ul>`).join("");
+
+            document.querySelectorAll("[data-konu]").forEach((b) =>
+                b.addEventListener("click", () => konuAc(b.dataset.konu)));
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    function konuSatiri(k) {
+        const oran = k.answers ? Math.round((k.correct / k.answers) * 100) : null;
+        const durum = k.dueCheck ? `<span class="badge badge--warn">kontrol zamanı</span>`
+            : k.completedOn ? `<span class="badge badge--ok">tamamlandı</span>`
+            : k.answers ? `<span class="badge badge--muted">${k.answers} yanıt · %${oran}</span>`
+            : "";
+        return `
+            <li class="topic">
+                <div class="topic__main">
+                    <span class="topic__title">${esc(k.titleTr)}</span>
+                    <span class="topic__meta">${k.core ? "çekirdek konu · " : ""}${k.estimatedMinutes} dk${k.verified ? "" : " · içerik kontrol edilmedi"}</span>
+                </div>
+                <div class="topic__right">
+                    ${durum}
+                    ${k.hasLesson
+                        ? `<button class="btn btn--ghost btn--sm" type="button" data-konu="${esc(k.id)}">Çalış</button>`
+                        : `<span class="topic__soon">içerik hazır değil</span>`}
+                </div>
+            </li>`;
+    }
+
+    async function konuAc(topicId) {
+        try {
+            const ders = await api.post(`/grammar/topics/${topicId}/session`);
+            oturum = {
+                tip: "gramer", id: ders.sessionId, topicId, kartlar: ders.steps, sira: 0,
+                etkilesimler: [Date.now()], dogru: 0, toplam: 0, secilen: [],
+            };
+            gizle(["bakis", "kelimeOturum", "artikelOturum", "gramerKonular", "beceriAlani", "ozetEkran"]);
+            document.getElementById("gramerDers").hidden = false;
+            document.getElementById("dersBasligi").innerHTML = `
+                <h1 class="lesson__title">${esc(ders.titleTr)} <span class="lesson__level">${ders.level}</span></h1>
+                ${ders.checkRound ? `<p class="lesson__check">Bu bir kontrol tekrarı: konuyu daha önce tamamladın.</p>` : ""}
+                <p class="lesson__text">${esc(ders.explanationTr)}</p>
+                ${ders.turkishNoteTr ? `<p class="lesson__note"><strong>Türkçeyle karşılaştır:</strong> ${esc(ders.turkishNoteTr)}</p>` : ""}
+                <ul class="lesson__examples">
+                    ${ders.examples.map((e) => `<li><span>${esc(e.de)}</span><em>${esc(e.tr)}</em></li>`).join("")}
+                </ul>
+                ${ders.verified ? "" : `<p class="lesson__unverified">Bu içerik henüz kontrol edilmedi.</p>`}`;
+            gramerKartiCiz();
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    function gramerKartiCiz() {
+        const adim = oturum.kartlar[oturum.sira];
+        oturum.secilen = [];
+        ilerleme("gramer", oturum.sira, oturum.kartlar.length);
+        document.getElementById("gramerSonuc").innerHTML = "";
+
+        const govde = adim.kind === "QUESTION"
+            ? `<p class="wordcard__q">${esc(adim.prompt).replace(/___/g, '<span class="quiz__gap">___</span>')}</p>
+               <div class="btn-row">
+                   ${(adim.options ?? []).map((o) => `<button type="button" class="pill" data-secim="${esc(o)}">${esc(o)}</button>`).join("")}
+               </div>`
+            : adim.type === "WORD_ORDER"
+                ? `<p class="wordcard__hint">${esc(adim.promptTr)}</p>
+                   <p class="order__line" id="siraCumle">…</p>
+                   <div class="btn-row" id="parcalar">
+                       ${adim.parts.map((p, i) => `<button type="button" class="pill" data-parca="${i}">${esc(p)}</button>`).join("")}
+                   </div>
+                   <div class="btn-row block">
+                       <button class="btn btn--ghost btn--sm" type="button" id="geriAl">Geri al</button>
+                       <button class="btn btn--primary" type="button" id="gramerGonder">Cevapla</button>
+                   </div>`
+                : `<p class="wordcard__hint">${esc(adim.promptTr)}</p>
+                   <p class="wordcard__q">${esc(adim.prompt).replace(/___/g, '<span class="quiz__gap">___</span>')}</p>
+                   <input class="field__input" id="yazili" type="text" autocomplete="off" spellcheck="false">
+                   <div class="btn-row umlauts">
+                       ${UMLAUTLAR.map((u) => `<button type="button" class="pill pill--quiet" data-umlaut="${u}">${u}</button>`).join("")}
+                   </div>
+                   <div class="btn-row block">
+                       <button class="btn btn--primary" type="button" id="gramerGonder">Cevapla</button>
+                   </div>`;
+
+        document.getElementById("gramerKart").innerHTML = `
+            <p class="wordcard__meta">${adim.kind === "QUESTION" ? "Mini soru" : "Kontrollü üretim"}</p>
+            ${govde}`;
+
+        if (adim.kind === "QUESTION") {
+            document.querySelectorAll("[data-secim]").forEach((b) =>
+                b.addEventListener("click", () => gramerCevapla(b.dataset.secim)));
+        } else if (adim.type === "WORD_ORDER") {
+            document.querySelectorAll("[data-parca]").forEach((b) => b.addEventListener("click", () => {
+                oturum.secilen.push(adim.parts[Number(b.dataset.parca)]);
+                b.disabled = true;
+                siraYaz();
+            }));
+            document.getElementById("geriAl").addEventListener("click", () => {
+                const son = oturum.secilen.pop();
+                const dugme = [...document.querySelectorAll("[data-parca]")]
+                    .find((x) => x.disabled && adim.parts[Number(x.dataset.parca)] === son);
+                if (dugme) dugme.disabled = false;
+                siraYaz();
+            });
+            document.getElementById("gramerGonder").addEventListener("click", () =>
+                gramerCevapla(oturum.secilen.join(" ")));
+        } else {
+            const alan = document.getElementById("yazili");
+            document.querySelectorAll("[data-umlaut]").forEach((b) => b.addEventListener("click", () => {
+                alan.value += b.dataset.umlaut;
+                alan.focus();
+            }));
+            alan.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") gramerCevapla(alan.value);
+            });
+            document.getElementById("gramerGonder").addEventListener("click", () => gramerCevapla(alan.value));
+            alan.focus();
+        }
+    }
+
+    function siraYaz() {
+        document.getElementById("siraCumle").textContent = oturum.secilen.join(" ") || "…";
+    }
+
+    async function gramerCevapla(given) {
+        const adim = oturum.kartlar[oturum.sira];
+        oturum.etkilesimler.push(Date.now());
+        document.querySelectorAll("#gramerKart button, #gramerKart input").forEach((b) => (b.disabled = true));
+        try {
+            const r = await api.post("/grammar/answer", {
+                sessionId: oturum.id, topicId: oturum.topicId, itemId: adim.id, given,
+            });
+            oturum.toplam += 1;
+            if (r.correct) oturum.dogru += 1;
+
+            const uyari = (r.warnings ?? []).map((w) => w === "BUYUK_KUCUK_HARF"
+                ? "Almancada isimler büyük harfle başlar; yazımına dikkat."
+                : "ä/ö/ü/ß yerine ae/oe/ue/ss yazdın; kabul edildi ama doğrusunu yazmaya çalış.").join(" ");
+            const sonAdim = oturum.sira + 1 >= oturum.kartlar.length;
+
+            // Dogru cevap her zaman gorunur; ekran kendiliginden ilerlemez (K-022).
+            document.getElementById("gramerSonuc").innerHTML = `
+                <div class="feedback ${r.correct ? "feedback--ok" : "feedback--no"}">
+                    <p class="feedback__line">
+                        ${r.correct ? "Doğru." : `Yanlış — senin cevabın: “${esc(given || "boş")}”.`}
+                        Doğrusu: <b>${esc(r.answer)}</b>
+                    </p>
+                    ${r.explanationTr ? `<p class="feedback__note">${esc(r.explanationTr)}</p>` : ""}
+                    ${uyari ? `<p class="feedback__note">${uyari}</p>` : ""}
+                    <button class="btn btn--primary" type="button" id="sonraki">
+                        ${sonAdim ? "Konuyu tamamla" : "Devam"}
+                    </button>
+                </div>`;
+            document.getElementById("sonraki").addEventListener("click", () => {
+                if (sonAdim) {
+                    bitir(true);
+                } else {
+                    oturum.sira += 1;
+                    gramerKartiCiz();
+                }
+            });
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    // ---------- ortak ----------
+
+    function ilerleme(tip, sira, toplam) {
+        document.getElementById(`${tip}Sayac`).textContent = `${sira + 1} / ${toplam}`;
+        document.getElementById(`${tip}Ilerleme`).style.width = `${(sira / toplam) * 100}%`;
+    }
+
+    async function bitir(tamamlandi = false) {
+        if (!oturum) return;
+        const { tip, id, topicId, etkilesimler, dogru, toplam } = oturum;
+        const yol = tip === "kelime" ? "/words" : tip === "artikel" ? "/article" : "/grammar";
+        oturum = null;
+        try {
+            etkilesimler.push(Date.now());
+            await api.post(`${yol}/session/${id}/finish`, {
+                interactions: etkilesimler,
+                completed: tip === "gramer" && tamamlandi,
+                topicId: topicId ?? null,
+            });
+        } catch (err) {
+            hata(err.message);
+        }
+        gizle(["bakis", "kelimeOturum", "artikelOturum", "gramerKonular", "gramerDers", "beceriAlani"]);
+        document.getElementById("ozetEkran").hidden = false;
+        document.getElementById("ozetMetin").textContent = toplam === 0
+            ? "Kayıt edilecek cevap yok. Süre çalışma geçmişine yazıldı."
+            : `${toplam} kartın ${dogru} tanesini bildin. Süre çalışma geçmişine otomatik yazıldı; `
+              + "bu bir öğrenme aktivitesidir, seviye ölçümü değildir.";
+        window.scrollTo({ top: 0 });
+    }
+
+    function gizle(idler) {
+        idler.forEach((i) => (document.getElementById(i).hidden = true));
+    }
+
+    function hata(mesaj) {
+        const h = document.getElementById("hata");
+        h.textContent = mesaj;
+        h.hidden = false;
+        window.scrollTo({ top: 0 });
+    }
+</script>
+
+</body>
+</html>

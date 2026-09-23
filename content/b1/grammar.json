@@ -1,0 +1,274 @@
+[
+  {
+    "topicId": "RELATIVSATZ",
+    "level": "B1",
+    "explanationTr": "İlgi cümlesi bir ismi ayrıntılandırır ve virgülle ayrılır; çekimli fiil sona gider. İlgi zamiri, ilgi cümlesindeki göreve göre hâl alır ama cinsiyet ve sayıyı anlattığı isimden alır: der Mann, der dort steht (özne) / der Mann, den ich kenne (nesne) / der Mann, dem ich helfe (Dativ). Nötrde das, dişilde die, çoğulda die; çoğul Dativ denen olur.",
+    "turkishNoteTr": "Türkçede ilgi cümlesi ortaç ekiyle kurulur ve isimden önce gelir (tanıdığım adam). Almancada isimden sonra gelir ve zamirle bağlanır.",
+    "examples": [
+      { "de": "Das ist der Kollege, der neu bei uns arbeitet.", "tr": "Bu, bizde yeni çalışan meslektaş." },
+      { "de": "Der Film, den wir gestern gesehen haben, war spannend.", "tr": "Dün izlediğimiz film heyecanlıydı." },
+      { "de": "Die Frau, der ich geholfen habe, hat sich bedankt.", "tr": "Yardım ettiğim kadın teşekkür etti." }
+    ],
+    "production": [
+      {
+        "id": "p-relativ-1",
+        "type": "GAP",
+        "promptTr": "İlgi zamirini yaz.",
+        "prompt": "Das ist das Buch, ___ ich gestern gekauft habe.",
+        "parts": null,
+        "answer": "das",
+        "acceptedAnswers": [],
+        "explanationTr": "das Buch nötr, ilgi cümlesinde nesne: Akkusativ'de das."
+      },
+      {
+        "id": "p-relativ-2",
+        "type": "WORD_ORDER",
+        "promptTr": "İlgi cümlesini kur.",
+        "prompt": null,
+        "parts": ["der", "Mann", "wohnt", "der", "neben", "uns"],
+        "answer": "der Mann, der neben uns wohnt",
+        "acceptedAnswers": ["der Mann der neben uns wohnt"],
+        "explanationTr": "İlgi zamiri özne (der), çekimli fiil sonda (wohnt)."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "PASSIV",
+    "level": "B1",
+    "explanationTr": "Edilgen çatı eylemi yapanı değil, eylemin kendisini öne çıkarır: werden + Partizip II. Präsens: Das Haus wird gebaut. Präteritum: Das Haus wurde gebaut. Perfekt: Das Haus ist gebaut worden (geworden değil, worden). Eylemi yapan gerekiyorsa von + Dativ eklenir: Das Haus wird von einer Firma gebaut.",
+    "turkishNoteTr": "Türkçede edilgen çatı fiile -il/-in ekiyle kurulur (yapıldı). Almancada yardımcı fiil werden gelir ve asıl fiil Partizip II olur.",
+    "examples": [
+      { "de": "Das Formular wird online ausgefüllt.", "tr": "Form çevrimiçi doldurulur." },
+      { "de": "Die Straße wurde letztes Jahr repariert.", "tr": "Cadde geçen yıl onarıldı." },
+      { "de": "Das Paket ist gestern verschickt worden.", "tr": "Paket dün gönderildi." }
+    ],
+    "production": [
+      {
+        "id": "p-passiv-1",
+        "type": "GAP",
+        "promptTr": "Edilgen yardımcı fiilini yaz (Präsens).",
+        "prompt": "Die Rechnung ___ jeden Monat bezahlt.",
+        "parts": null,
+        "answer": "wird",
+        "acceptedAnswers": [],
+        "explanationTr": "Tekil özne + Präsens edilgen: wird + Partizip II."
+      },
+      {
+        "id": "p-passiv-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Edilgen cümle kur (Präteritum).",
+        "prompt": null,
+        "parts": ["Das", "Museum", "wurde", "1920", "eröffnet"],
+        "answer": "Das Museum wurde 1920 eröffnet.",
+        "acceptedAnswers": [],
+        "explanationTr": "wurde ikinci sırada, Partizip II sonda."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "INFINITIV_ZU",
+    "level": "B1",
+    "explanationTr": "Bazı fiil ve ifadelerden sonra ikinci fiil zu + mastar olur ve cümlenin sonunda durur: Ich habe vor, nächstes Jahr umzuziehen. Ayrılabilen fiillerde zu araya girer: anzurufen, einzukaufen. Modal fiillerden sonra zu KULLANILMAZ (Ich muss arbeiten). um ... zu amaç bildirir: Ich lerne Deutsch, um in Wien zu studieren.",
+    "turkishNoteTr": "Türkçede \"-mek/-mak\" mastarı fiilin önünde bir ekle biter (çalışmak istiyorum). Almancada zu ayrı bir kelimedir ve öbek sona atılır.",
+    "examples": [
+      { "de": "Ich habe vergessen, dich anzurufen.", "tr": "Seni aramayı unuttum." },
+      { "de": "Es ist wichtig, jeden Tag zu üben.", "tr": "Her gün alıştırma yapmak önemli." },
+      { "de": "Sie spart Geld, um ein Auto zu kaufen.", "tr": "Araba almak için para biriktiriyor." }
+    ],
+    "production": [
+      {
+        "id": "p-infinitiv-1",
+        "type": "GAP",
+        "promptTr": "Boşluğa zu + mastar biçimini yaz: anrufen.",
+        "prompt": "Ich habe keine Zeit, dich heute ___.",
+        "parts": null,
+        "answer": "anzurufen",
+        "acceptedAnswers": [],
+        "explanationTr": "Ayrılabilen fiilde zu araya girer: an-zu-rufen."
+      },
+      {
+        "id": "p-infinitiv-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Amaç cümlesi kur.",
+        "prompt": null,
+        "parts": ["Ich", "gehe", "früh", "um", "zu", "schlafen"],
+        "answer": "Ich gehe früh, um zu schlafen.",
+        "acceptedAnswers": ["Ich gehe früh um zu schlafen"],
+        "explanationTr": "um ... zu + mastar amaç bildirir, mastar sonda."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "GENITIV",
+    "level": "B1",
+    "explanationTr": "Genitiv aitlik bildirir. Eril ve nötrde artikel des olur ve isme -s/-es eklenir: das Auto des Vaters, der Titel des Buches. Dişil ve çoğulda artikel der olur, isim değişmez: die Farbe der Tür, die Namen der Kinder. Konuşma dilinde çoğu zaman von + Dativ tercih edilir: das Auto von meinem Vater. Genitiv isteyen edatlar: wegen, während, trotz, statt.",
+    "turkishNoteTr": "Türkçedeki iki ekli tamlamaya benzer (baba-nın araba-sı): Almancada da hem artikel hem isim değişir, ama sıra terstir.",
+    "examples": [
+      { "de": "Das ist das Fahrrad meines Bruders.", "tr": "Bu, erkek kardeşimin bisikleti." },
+      { "de": "Während der Pause telefoniere ich.", "tr": "Mola sırasında telefonla konuşurum." },
+      { "de": "Wegen des Regens bleiben wir zu Hause.", "tr": "Yağmur yüzünden evde kalıyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-genitiv-1",
+        "type": "GAP",
+        "promptTr": "Artikeli Genitiv'e göre yaz.",
+        "prompt": "Das ist die Tasche ___ Lehrerin.",
+        "parts": null,
+        "answer": "der",
+        "acceptedAnswers": [],
+        "explanationTr": "Dişil Genitiv: die → der (isim değişmez)."
+      },
+      {
+        "id": "p-genitiv-2",
+        "type": "GAP",
+        "promptTr": "Genitiv biçimini tamamla: der Hund.",
+        "prompt": "Der Name ___ Hundes ist Rex.",
+        "parts": null,
+        "answer": "des",
+        "acceptedAnswers": [],
+        "explanationTr": "Eril Genitiv: der → des, isim -es alır."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "KONJUNKTIV2_VERGANGENHEIT",
+    "level": "B1",
+    "explanationTr": "Geçmişe yönelik gerçek olmayan durumlar hätte / wäre + Partizip II ile kurulur: Ich hätte mehr gelernt. Wenn ile pişmanlık: Wenn ich mehr gelernt hätte, hätte ich die Prüfung bestanden. Modal fiille: Ich hätte kommen können (çift mastar, sonda).",
+    "turkishNoteTr": "Türkçedeki \"-seydim ... -irdi\" yapısına karşılık gelir: \"Çalışsaydım geçerdim.\" Almancada iki cümlede de Konjunktiv II kullanılır.",
+    "examples": [
+      { "de": "Wenn ich Zeit gehabt hätte, wäre ich gekommen.", "tr": "Vaktim olsaydı gelirdim." },
+      { "de": "Das hätte ich nicht gedacht.", "tr": "Bunu düşünmezdim / beklemezdim." },
+      { "de": "Du hättest mich anrufen können.", "tr": "Beni arayabilirdin." }
+    ],
+    "production": [
+      {
+        "id": "p-k2v-1",
+        "type": "GAP",
+        "promptTr": "Yardımcı fiili Konjunktiv II'de yaz (haben).",
+        "prompt": "Ich ___ dir gern geholfen.",
+        "parts": null,
+        "answer": "hätte",
+        "acceptedAnswers": ["haette"],
+        "explanationTr": "haben → hätte + Partizip II."
+      },
+      {
+        "id": "p-k2v-2",
+        "type": "GAP",
+        "promptTr": "Yardımcı fiili yaz (sein).",
+        "prompt": "Wenn es nicht geregnet hätte, ___ wir spazieren gegangen.",
+        "parts": null,
+        "answer": "wären",
+        "acceptedAnswers": ["waeren"],
+        "explanationTr": "gehen sein ile kurulur: wären gegangen."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "KONNEKTOREN",
+    "level": "B1",
+    "explanationTr": "Bağlaçlar cümle sırasını belirler. Yan cümle kuranlar fiili sona atar: weil, obwohl, damit, sodass, falls. İkinci sırayı işgal edenlerden sonra özne fiilden sonra gelir: deshalb, trotzdem, dann, danach. Hiç etkilemeyenler: und, aber, oder, denn, sondern.",
+    "turkishNoteTr": "Türkçede bağlaçlar kelime sırasını değiştirmez. Almancada hangi bağlacı seçtiğin fiilin nereye gideceğini belirler; bu yüzden bağlaç listesi sıraya göre ezberlenir.",
+    "examples": [
+      { "de": "Ich bleibe zu Hause, weil ich krank bin.", "tr": "Evde kalıyorum çünkü hastayım." },
+      { "de": "Ich bin krank, deshalb bleibe ich zu Hause.", "tr": "Hastayım, bu yüzden evde kalıyorum." },
+      { "de": "Obwohl es regnet, gehen wir spazieren.", "tr": "Yağmur yağmasına rağmen yürüyüşe çıkıyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-konnektor-1",
+        "type": "WORD_ORDER",
+        "promptTr": "deshalb ile cümleyi kur.",
+        "prompt": null,
+        "parts": ["deshalb", "gehe", "ich", "früh", "schlafen"],
+        "answer": "deshalb gehe ich früh schlafen",
+        "acceptedAnswers": ["Deshalb gehe ich früh schlafen."],
+        "explanationTr": "deshalb birinci sırada, fiil ikinci, özne üçüncü sırada."
+      },
+      {
+        "id": "p-konnektor-2",
+        "type": "GAP",
+        "promptTr": "Uygun bağlacı yaz (weil / deshalb / trotzdem).",
+        "prompt": "Es war kalt, ___ sind wir schwimmen gegangen.",
+        "parts": null,
+        "answer": "trotzdem",
+        "acceptedAnswers": [],
+        "explanationTr": "Zıtlık var ve fiil hemen arkadan geliyor: trotzdem."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "PLUSQUAMPERFEKT",
+    "level": "B1",
+    "explanationTr": "Geçmişte bir olaydan daha önce olan şeyi anlatır: hatte / war + Partizip II. Çoğu zaman nachdem ile kullanılır: Nachdem ich gegessen hatte, bin ich losgegangen. Ana cümle Perfekt ya da Präteritum olur.",
+    "turkishNoteTr": "Türkçedeki \"-mıştı\" ekine karşılık gelir: \"yemiştim\". Sıralamayı netleştirmek için kullanılır.",
+    "examples": [
+      { "de": "Nachdem er die Arbeit beendet hatte, ging er nach Hause.", "tr": "İşi bitirdikten sonra eve gitti." },
+      { "de": "Ich hatte den Schlüssel vergessen.", "tr": "Anahtarı unutmuştum." },
+      { "de": "Wir waren schon angekommen, als der Regen begann.", "tr": "Yağmur başladığında biz çoktan varmıştık." }
+    ],
+    "production": [
+      {
+        "id": "p-plusquam-1",
+        "type": "GAP",
+        "promptTr": "Yardımcı fiili Plusquamperfekt'te yaz (haben).",
+        "prompt": "Nachdem ich gefrühstückt ___, bin ich zur Arbeit gefahren.",
+        "parts": null,
+        "answer": "hatte",
+        "acceptedAnswers": [],
+        "explanationTr": "frühstücken haben ile kurulur: hatte gefrühstückt."
+      },
+      {
+        "id": "p-plusquam-2",
+        "type": "GAP",
+        "promptTr": "Yardımcı fiili yaz (sein).",
+        "prompt": "Der Zug ___ schon abgefahren, als wir ankamen.",
+        "parts": null,
+        "answer": "war",
+        "acceptedAnswers": [],
+        "explanationTr": "abfahren yer değiştirme bildirir: war abgefahren."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "VERBEN_MIT_PRAEPOSITION",
+    "level": "B1",
+    "explanationTr": "Birçok fiil belirli bir edatla kalıplaşır ve o edat hâli belirler: warten auf (+Akk), sich freuen auf (+Akk), denken an (+Akk), sich interessieren für (+Akk), teilnehmen an (+Dat), gehören zu (+Dat), sprechen mit (+Dat). Soru sorarken nesne kişi değilse wo(r)+edat kullanılır: Worauf wartest du? Cevap da da(r)+edat ile kısaltılır: Ich warte darauf.",
+    "turkishNoteTr": "Türkçede bu bilgi genelde hâl ekinde gizlidir (birini beklemek). Almancada hem edat hem hâl fiile bağlıdır ve ikisi birlikte ezberlenir.",
+    "examples": [
+      { "de": "Ich warte auf den Bus.", "tr": "Otobüsü bekliyorum." },
+      { "de": "Sie nimmt an einem Kurs teil.", "tr": "Bir kursa katılıyor." },
+      { "de": "Worüber sprecht ihr?", "tr": "Ne hakkında konuşuyorsunuz?" }
+    ],
+    "production": [
+      {
+        "id": "p-verbprap-1",
+        "type": "GAP",
+        "promptTr": "Doğru edatı yaz.",
+        "prompt": "Ich freue mich ___ das Wochenende.",
+        "parts": null,
+        "answer": "auf",
+        "acceptedAnswers": [],
+        "explanationTr": "sich freuen auf + Akkusativ: gelecekteki bir şeyi dört gözle beklemek."
+      },
+      {
+        "id": "p-verbprap-2",
+        "type": "GAP",
+        "promptTr": "Soru sözcüğünü yaz (wo(r)+edat).",
+        "prompt": "___ interessierst du dich? — Für Geschichte.",
+        "parts": null,
+        "answer": "Wofür",
+        "acceptedAnswers": ["wofür", "wofuer", "Wofuer"],
+        "explanationTr": "sich interessieren für → nesne şey olduğu için wofür."
+      }
+    ],
+    "verified": false
+  }
+]

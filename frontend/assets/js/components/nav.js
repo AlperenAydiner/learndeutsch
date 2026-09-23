@@ -11,12 +11,11 @@ const PUBLIC_LINKS = [
     { href: "/nasil-calisir.html", label: "Nasıl çalışır" },
 ];
 
+/** SPEC 7: ana menu Ana Sayfa · Ogren · Kocluk. */
 const APP_LINKS = [
-    { href: "/app/bugun.html", label: "Bugün" },
-    { href: "/app/program.html", label: "Program" },
-    { href: "/app/kelimeler.html", label: "Kelimeler" },
-    { href: "/app/testler.html", label: "Testler" },
-    { href: "/app/gelisim.html", label: "Gelişim" },
+    { href: "/app/index.html", label: "Ana Sayfa" },
+    { href: "/app/ogren.html", label: "Öğren" },
+    { href: "/app/kocluk.html", label: "Koçluk" },
 ];
 
 /**
@@ -34,7 +33,7 @@ export function mountNav({ loggedIn = false, userName = "" } = {}) {
         <a class="skip-link" href="#main">İçeriğe geç</a>
         <header class="topbar${loggedIn ? " topbar--app" : ""}">
             <div class="wrap topbar__inner">
-                <a class="brand" href="${loggedIn ? "/app/bugun.html" : "/index.html"}">
+                <a class="brand" href="${loggedIn ? "/app/index.html" : "/index.html"}">
                     <span class="brand__mark" aria-hidden="true">ID</span>
                     <span>Ich spreche Deutsch</span>
                 </a>

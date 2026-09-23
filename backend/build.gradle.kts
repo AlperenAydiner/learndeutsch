@@ -39,12 +39,17 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-// Icerik CSV'leri depoda tek yerde durur: /content.
-// Buradan jar'in icine /seed altina kopyalanir; boylece icerik eklemek
-// icin CSV'ye satir eklemek yeterli olur, kod degismez.
+// Icerik JSON dosyalari depoda tek yerde durur: /content (K-004).
+// Jar'in icine classpath:content/ altina kopyalanir; ContentCatalog oradan
+// okur. Icerik veritabanina yazilmaz.
 tasks.named<ProcessResources>("processResources") {
 	from("../content") {
-		include("*.csv")
-		into("seed")
+		include("**/*.json")
+		into("content")
 	}
+}
+
+// Icerik dogrulayici (ContentValidatorTest) depodaki /content'i okur.
+tasks.withType<Test> {
+	systemProperty("content.dir", file("../content").absolutePath)
 }

@@ -1,0 +1,174 @@
+[
+  {
+    "id": "r-b2-01",
+    "level": "B2",
+    "titleTr": "Dört günlük çalışma haftası tartışması",
+    "topicTr": "Çalışma dünyası ve argümantasyon",
+    "text": "Die Debatte über die Vier-Tage-Woche wird in Deutschland seit einigen Jahren intensiv geführt. Befürworter verweisen auf Pilotprojekte im Ausland, bei denen die Produktivität trotz kürzerer Arbeitszeit konstant blieb oder sogar leicht stieg. Ihr zentrales Argument lautet: Wer erholter zur Arbeit kommt, arbeitet konzentrierter und macht weniger Fehler.\n\nKritiker halten dem entgegen, dass sich solche Ergebnisse nicht auf alle Branchen übertragen lassen. In der Pflege, im Handwerk oder im Einzelhandel sei die Arbeit an Anwesenheit gebunden; hier führe eine Verkürzung entweder zu Personalmangel oder zu höheren Kosten. Zudem sei unklar, ob die gemessene Produktivitätssteigerung tatsächlich auf die kürzere Woche zurückzuführen sei oder auf begleitende Reformen wie effizientere Besprechungen.\n\nEinige Unternehmen haben deshalb einen mittleren Weg gewählt: Sie reduzieren die Wochenarbeitszeit nur teilweise oder führen die Vier-Tage-Woche zunächst befristet ein, um Erfahrungen zu sammeln. Ökonominnen und Ökonomen betonen, dass entscheidend sei, wie die Umstellung gestaltet werde. Wird die gleiche Arbeit einfach auf vier Tage verteilt, steigt die tägliche Belastung — und der erhoffte Erholungseffekt bleibt aus.",
+    "estimatedMinutes": 12,
+    "questions": [
+      {
+        "id": "r-b2-01-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was ist das zentrale Argument der Befürworter?",
+        "options": [
+          "Kürzere Arbeitszeit senkt die Kosten",
+          "Erholte Beschäftigte arbeiten konzentrierter",
+          "Vier Tage sind gesetzlich vorgeschrieben",
+          "Die Branchen sind alle gleich"
+        ],
+        "answer": "Erholte Beschäftigte arbeiten konzentrierter",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Wer erholter zur Arbeit kommt, arbeitet konzentrierter\"."
+      },
+      {
+        "id": "r-b2-01-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Welchen Einwand nennen die Kritiker?",
+        "options": [
+          "Die Ergebnisse gelten nicht für alle Branchen",
+          "Die Beschäftigten wollen keine Freizeit",
+          "Pilotprojekte sind verboten",
+          "Die Produktivität ist überall gesunken"
+        ],
+        "answer": "Die Ergebnisse gelten nicht für alle Branchen",
+        "acceptedAnswers": [],
+        "explanationTr": "Bakım, zanaat ve perakende gibi alanlarda iş, fiziksel varlığa bağlı."
+      },
+      {
+        "id": "r-b2-01-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Laut Text ist eindeutig bewiesen, dass die kürzere Woche die Produktivität erhöht.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "Metin, artışın eşlik eden reformlardan da kaynaklanabileceğini söylüyor: kesin değil."
+      },
+      {
+        "id": "r-b2-01-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was meinen die Ökonominnen und Ökonomen mit dem \"mittleren Weg\"?",
+        "options": [
+          "Die Arbeitszeit ganz abzuschaffen",
+          "Die Umstellung befristet oder teilweise zu testen",
+          "Nur große Firmen dürfen das einführen",
+          "Die Arbeit auf drei Tage zu verteilen"
+        ],
+        "answer": "Die Umstellung befristet oder teilweise zu testen",
+        "acceptedAnswers": [],
+        "explanationTr": "Bazı şirketler haftalık süreyi kısmen azaltıyor ya da modeli süreli deniyor."
+      },
+      {
+        "id": "r-b2-01-q5",
+        "type": "GAP",
+        "prompt": "Wird die gleiche Arbeit einfach auf vier Tage verteilt, steigt die tägliche ___.",
+        "options": [],
+        "answer": "Belastung",
+        "acceptedAnswers": ["belastung"],
+        "explanationTr": "die Belastung: yük, baskı."
+      },
+      {
+        "id": "r-b2-01-q6",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Welche Haltung nimmt der Text insgesamt ein?",
+        "options": [
+          "Eindeutig dafür",
+          "Eindeutig dagegen",
+          "Abwägend: es kommt auf die Umsetzung an",
+          "Der Text nennt keine Argumente"
+        ],
+        "answer": "Abwägend: es kommt auf die Umsetzung an",
+        "acceptedAnswers": [],
+        "explanationTr": "Metin iki tarafı da aktarıp \"nasıl uygulandığı belirleyici\" diyor."
+      }
+    ],
+    "glossary": [
+      { "de": "die Befürworter", "tr": "savunucular" },
+      { "de": "entgegenhalten", "tr": "karşı çıkmak, karşı argüman sunmak" },
+      { "de": "die Branche", "tr": "sektör" },
+      { "de": "zurückzuführen sein auf", "tr": "-den kaynaklanmak" },
+      { "de": "befristet", "tr": "süreli, geçici" },
+      { "de": "die Umstellung", "tr": "geçiş, değişiklik" }
+    ],
+    "verified": false
+  },
+  {
+    "id": "r-b2-02",
+    "level": "B2",
+    "titleTr": "Şehirlerde konut sorunu",
+    "topicTr": "Toplum ve veri yorumlama",
+    "text": "In vielen deutschen Großstädten ist Wohnraum knapp geworden. Zwischen 2015 und 2023 stiegen die Angebotsmieten in den sieben größten Städten im Durchschnitt um mehr als vierzig Prozent, während die Einkommen deutlich langsamer wuchsen. Besonders betroffen sind Haushalte mit geringem Einkommen: Sie geben inzwischen häufig über ein Drittel ihres Nettoeinkommens für die Miete aus.\n\nDie Gründe sind vielschichtig. Zum einen ziehen mehr Menschen in die Städte, weil dort Arbeitsplätze und Ausbildungsmöglichkeiten konzentriert sind. Zum anderen wurde jahrelang zu wenig gebaut, und Bauland ist teuer. Hinzu kommt, dass Wohnungen zunehmend als Kapitalanlage gekauft werden, was den Markt zusätzlich anspannt.\n\nPolitische Antworten reichen von der Mietpreisbremse über den geförderten Wohnungsbau bis zu einer strengeren Regulierung von Kurzzeitvermietungen. Fachleute sind sich uneinig, welches Instrument am wirksamsten ist. Weitgehende Einigkeit besteht allerdings darin, dass einzelne Maßnahmen nicht genügen: Ohne einen deutlichen Anstieg der Neubauzahlen bleibt die Entlastung begrenzt.",
+    "estimatedMinutes": 12,
+    "questions": [
+      {
+        "id": "r-b2-02-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie haben sich Mieten und Einkommen laut Text entwickelt?",
+        "options": [
+          "Beide stiegen gleich stark",
+          "Die Mieten stiegen schneller als die Einkommen",
+          "Die Einkommen stiegen schneller",
+          "Beide sind gesunken"
+        ],
+        "answer": "Die Mieten stiegen schneller als die Einkommen",
+        "acceptedAnswers": [],
+        "explanationTr": "Kiralar %40'tan fazla artarken gelirler belirgin biçimde daha yavaş büyüdü."
+      },
+      {
+        "id": "r-b2-02-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Welche Gruppe ist besonders betroffen?",
+        "options": [
+          "Studierende im Ausland",
+          "Haushalte mit geringem Einkommen",
+          "Eigentümer großer Wohnungen",
+          "Pendler auf dem Land"
+        ],
+        "answer": "Haushalte mit geringem Einkommen",
+        "acceptedAnswers": [],
+        "explanationTr": "Metin düşük gelirli haneleri açıkça sayıyor."
+      },
+      {
+        "id": "r-b2-02-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Fachleute sind sich einig, welches politische Instrument am besten wirkt.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Fachleute sind sich uneinig\" — hangi aracın en etkili olduğunda anlaşamıyorlar."
+      },
+      {
+        "id": "r-b2-02-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Worin besteht weitgehende Einigkeit?",
+        "options": [
+          "Dass einzelne Maßnahmen nicht ausreichen",
+          "Dass die Mietpreisbremse abgeschafft werden muss",
+          "Dass niemand mehr in Städte ziehen sollte",
+          "Dass Bauland billig ist"
+        ],
+        "answer": "Dass einzelne Maßnahmen nicht ausreichen",
+        "acceptedAnswers": [],
+        "explanationTr": "Yeni konut sayısı belirgin artmadan rahatlama sınırlı kalıyor."
+      },
+      {
+        "id": "r-b2-02-q5",
+        "type": "GAP",
+        "prompt": "Wohnungen werden zunehmend als ___ gekauft.",
+        "options": [],
+        "answer": "Kapitalanlage",
+        "acceptedAnswers": ["kapitalanlage"],
+        "explanationTr": "die Kapitalanlage: yatırım aracı."
+      }
+    ],
+    "glossary": [
+      { "de": "der Wohnraum", "tr": "konut alanı" },
+      { "de": "die Angebotsmiete", "tr": "ilan edilen kira" },
+      { "de": "vielschichtig", "tr": "çok katmanlı, karmaşık" },
+      { "de": "anspannen", "tr": "gerginleştirmek" },
+      { "de": "die Maßnahme", "tr": "önlem" },
+      { "de": "die Entlastung", "tr": "rahatlama, yük hafifletme" }
+    ],
+    "verified": false
+  }
+]

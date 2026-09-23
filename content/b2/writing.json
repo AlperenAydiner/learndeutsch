@@ -1,0 +1,40 @@
+[
+  {
+    "id": "s-b2-01",
+    "level": "B2",
+    "titleTr": "Argümantasyon: iki tarafı tartış",
+    "taskTr": "\"Dört günlük çalışma haftası\" konusunda bir yazı yaz: konuyu tanıt, iki güçlü destekleyici ve iki güçlü karşı argüman ver, sonra kendi sonucunu gerekçelendir. Argümanları örnekle destekle.",
+    "taskDe": "Schreiben Sie einen argumentativen Text zur Vier-Tage-Woche: Einleitung, je zwei Pro- und Kontra-Argumente mit Beispielen, begründetes Fazit.",
+    "minWords": 180,
+    "phrases": [
+      "In letzter Zeit wird viel darüber diskutiert, ob ...",
+      "Für ... spricht vor allem, dass ...",
+      "Ein gewichtiges Gegenargument ist, dass ...",
+      "Dies lässt sich am Beispiel ... zeigen.",
+      "Abwägend komme ich zu dem Schluss, dass ...",
+      "Voraussetzung dafür wäre allerdings, dass ..."
+    ],
+    "sampleAnswer": "In letzter Zeit wird viel darüber diskutiert, ob eine Vier-Tage-Woche sinnvoll ist. Die Debatte betrifft nicht nur Büroberufe, sondern auch Bereiche, in denen Anwesenheit unverzichtbar ist.\n\nFür das Modell spricht vor allem, dass erholte Beschäftigte konzentrierter arbeiten. Pilotprojekte im Ausland deuten darauf hin, dass die Produktivität trotz kürzerer Arbeitszeit stabil bleiben kann. Hinzu kommt ein Vorteil bei der Personalsuche: Wer Fachkräfte gewinnen will, muss heute mehr bieten als ein durchschnittliches Gehalt.\n\nEin gewichtiges Gegenargument ist, dass sich solche Ergebnisse nicht auf jede Branche übertragen lassen. In der Pflege etwa führt eine Verkürzung entweder zu Personalmangel oder zu höheren Kosten. Außerdem besteht die Gefahr, dass dieselbe Arbeit lediglich auf vier Tage verteilt wird; dann steigt die tägliche Belastung, und der Erholungseffekt bleibt aus.\n\nAbwägend komme ich zu dem Schluss, dass die Vier-Tage-Woche kein allgemeingültiges Rezept ist, in vielen Bereichen aber einen Versuch wert wäre. Voraussetzung dafür wäre allerdings, dass Abläufe wirklich umgestellt und nicht nur komprimiert werden.\n\nEntscheidend ist deshalb die Umsetzung: Wer die Wochenarbeitszeit verkürzt, muss zugleich Besprechungen straffen, Zuständigkeiten klären und Vertretungsregeln festlegen. Geschieht das nicht, verschiebt sich die Belastung lediglich, statt zu sinken. Ein befristeter Testlauf mit klaren Kennzahlen erscheint mir daher sinnvoller als eine schnelle, flächendeckende Einführung.",
+    "estimatedMinutes": 45,
+    "verified": false
+  },
+  {
+    "id": "s-b2-02",
+    "level": "B2",
+    "titleTr": "Resmî yazı: itiraz ve talep",
+    "taskTr": "Bir kuruma yaptığın başvuru reddedildi. Resmî bir itiraz yazısı yaz: kararı kısaca özetle, iki somut gerekçeyle itiraz et, hangi belgeleri eklediğini belirt ve net bir talep ile kapat.",
+    "taskDe": "Ihr Antrag wurde abgelehnt. Schreiben Sie einen formellen Widerspruch: Bezug auf den Bescheid, zwei konkrete Begründungen, Hinweis auf Anlagen, klare Forderung.",
+    "minWords": 140,
+    "phrases": [
+      "Sehr geehrte Damen und Herren,",
+      "hiermit lege ich Widerspruch gegen den Bescheid vom ... ein.",
+      "Die Ablehnung wird damit begründet, dass ...",
+      "Dem möchte ich entgegenhalten, dass ...",
+      "Als Nachweis füge ich ... bei.",
+      "Ich bitte Sie daher, den Bescheid aufzuheben und ..."
+    ],
+    "sampleAnswer": "Sehr geehrte Damen und Herren,\n\nhiermit lege ich Widerspruch gegen den Bescheid vom 12. März 2026 (Aktenzeichen 2026/4471) ein, mit dem mein Antrag auf Kostenübernahme abgelehnt wurde.\n\nDie Ablehnung wird damit begründet, dass die Maßnahme nicht notwendig sei. Dem möchte ich entgegenhalten, dass die behandelnde Ärztin die Notwendigkeit in ihrem Bericht vom 2. März ausdrücklich bestätigt hat. Zweitens wurde offenbar nicht berücksichtigt, dass ich die Maßnahme bereits im Vorjahr begonnen und nur aus organisatorischen Gründen unterbrochen habe.\n\nDarüber hinaus weise ich darauf hin, dass mir im Beratungsgespräch am 20. Februar eine Kostenübernahme ausdrücklich in Aussicht gestellt wurde. Eine Begründung, warum davon nun abgewichen wird, enthält der Bescheid nicht.\n\nAls Nachweis füge ich den ärztlichen Bericht sowie die Bestätigung der Einrichtung bei.\n\nIch bitte Sie daher, den Bescheid aufzuheben und die Kosten wie beantragt zu übernehmen. Für Rückfragen stehe ich Ihnen gern zur Verfügung.\n\nMit freundlichen Grüßen\nElif Yılmaz",
+    "estimatedMinutes": 45,
+    "verified": false
+  }
+]

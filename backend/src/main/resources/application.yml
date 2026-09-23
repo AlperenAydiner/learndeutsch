@@ -59,3 +59,83 @@ management:
 logging:
   level:
     com.ichsprechedeutsch: DEBUG
+
+# =====================================================================
+# SPEC Ek A — config varsayilanlari (K7). Esik, aralik ve limitler
+# koda yazilmaz; buradan okunur. Ek A'dan sapmalar DECISIONS'ta.
+# =====================================================================
+
+level:
+  pass-threshold: 0.60
+  tier-weights: { HIGH: 1.0, MEDIUM: 0.6, LOW: 0.3 }
+  unverified-downgrade: true
+  max-evidence-age-months: 12
+  reliable: { min-positive: 2, recent-days: 30, require-medium-or-high: true }
+  overall: { method: MEDIAN, min-skills: 2 }
+  can-do-scores: { "YES": 1.0, "PARTIAL": 0.5, "NO": 0.0 }   # tirnak: YAML YES/NO anahtarlarini boolean okur
+  schreiben-rubric:
+    criteria: 4
+    max-per-criterion: 3
+    # SPEC 4.2'deki dort olcut; arayuzde bu adlarla gosterilir.
+    criteria-names: ["Görevi tamamlama", "Tutarlılık", "Kelime çeşitliliği", "Gramer doğruluğu"]
+  default-working-level-some-knowledge: A1
+  reassessment: { days: 45, new-evidence: 6 }
+  goal-completion: { min-positive: 2, recent-days: 30, min-confidence: ESTIMATED, require-core-grammar: false }
+  near-goal-skills: 3
+  source-tiers:
+    OFFICIAL_EXAM: HIGH
+    TEACHER: MEDIUM
+    MODELLTEST: MEDIUM
+    SITE_TEST: MEDIUM
+    APP_TEST: LOW
+    SELF_ASSESSMENT: LOW
+  self-scored-productive-modelltest-tier: LOW
+
+# K-003: Ek A'da blok 5 / en fazla 25; sans etkisini azaltmak icin 6 / 24.
+placement:
+  start-level: A2
+  block-size: 6
+  pass-threshold: 0.60
+  up-threshold: 0.80
+  max-questions: 24
+
+activity:
+  idle-gap-minutes: 5
+  max-note-length: 200
+
+coach:
+  max-recommendations: 3
+  max-per-category: 1
+  # ASSESSMENT: SPEC 4.6/4.7'deki yerlestirme/yeniden degerlendirme onerisi;
+  # 5.3'teki sekiz kuralin disinda, en basa kondu (K-016).
+  rule-order: [ASSESSMENT, COMEBACK, DUE_REVIEWS, RECURRING_ERROR, WEAK_GRAMMAR, MISSING_EVIDENCE, IDLE_SKILL, WEAK_ARTICLE, NEAR_GOAL]
+  grammar: { size: 20, threshold: 0.70, min-answers: 10 }
+  article: { size: 20, threshold: 0.70, min-answers: 10 }
+  recurring-error-sessions: 3
+  error-resolved-streak: 3
+  skill-idle-days: 7
+  comeback-days: 3
+  grammar-check-days: [7, 30]
+  week-start: MONDAY
+  # Ek A disinda kalan, Faz 2'de eklenen ayarlar (K-017):
+  comeback-day-fraction: 0.5      # geri donus gunu, gunluk surenin bu kadari
+  comeback-spread-days: 3         # birikmis tekrarlar bu kadar gune yayilir
+  plan-block-minutes: 5           # gunluk plan dakikalari bu katlara yuvarlanir
+  plan-min-item-minutes: 10       # bundan kisa plan kalemi olusturulmaz
+  recommendation-share-boost: 5   # aktif oneri turunun haftalik payina eklenen puan
+  exam-practice-fraction: 0.5     # hedefe yakinken sinav pratigi, gunluk surenin bu kadari
+  weekly-shares:
+    basic:        { kelime: 30, gramer: 30, hoeren: 15, lesen: 10, sprechen: 10, schreiben: 5 }
+    intermediate: { kelime: 20, gramer: 25, hoeren: 15, lesen: 15, sprechen: 15, schreiben: 10 }
+    advanced:     { kelime: 15, gramer: 15, hoeren: 20, lesen: 15, sprechen: 20, schreiben: 15 }
+  shares-by-level: { A0: basic, A1: basic, A2: intermediate, B1: intermediate, B2: advanced, C1: advanced }
+
+srs:
+  intervals-days: [1, 3, 7, 14, 30, 60, 120]
+  strong-word-days: 30
+  daily-new-by-minutes: { 15: 5, 30: 8, 45: 10, 60: 12, 90: 15 }
+  daily-review-limit: 50
+
+answer:
+  letter-case: ACCEPT_WARN
+  umlaut-transcription: ACCEPT_WARN

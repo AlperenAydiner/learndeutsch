@@ -1,0 +1,240 @@
+[
+  {
+    "topicId": "PRAETERITUM",
+    "level": "A2",
+    "explanationTr": "Präteritum yazı dilinin geçmiş zamanıdır; konuşmada ise sein, haben ve modal fiiller neredeyse hep Präteritum ile kullanılır: war, hatte, konnte, musste, wollte, durfte, sollte. Düzenli fiillerde kök + -te + kişi eki (machte, machtest), düzensizlerde kök sesli harfi değişir (gehen → ging, kommen → kam).",
+    "turkishNoteTr": "Türkçede \"gittim\" tek biçimdir. Almancada aynı anlam için iki geçmiş zaman vardır: konuşmada Perfekt, yazıda Präteritum; ama war/hatte/konnte konuşmada da tercih edilir.",
+    "examples": [
+      { "de": "Gestern war ich krank.", "tr": "Dün hastaydım." },
+      { "de": "Wir hatten keine Zeit.", "tr": "Vaktimiz yoktu." },
+      { "de": "Als Kind konnte ich gut schwimmen.", "tr": "Çocukken iyi yüzebiliyordum." }
+    ],
+    "production": [
+      {
+        "id": "p-praeteritum-1",
+        "type": "GAP",
+        "promptTr": "sein fiilini Präteritum'da yaz.",
+        "prompt": "Letztes Jahr ___ wir in Wien.",
+        "parts": null,
+        "answer": "waren",
+        "acceptedAnswers": [],
+        "explanationTr": "wir → waren."
+      },
+      {
+        "id": "p-praeteritum-2",
+        "type": "GAP",
+        "promptTr": "müssen fiilini Präteritum'da yaz.",
+        "prompt": "Ich ___ gestern lange arbeiten.",
+        "parts": null,
+        "answer": "musste",
+        "acceptedAnswers": [],
+        "explanationTr": "müssen → musste (Umlaut düşer)."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "WECHSELPRAEPOSITIONEN",
+    "level": "A2",
+    "explanationTr": "Dokuz edat hem Akkusativ hem Dativ alabilir: in, an, auf, über, unter, vor, hinter, neben, zwischen. Hareket ve yön varsa (wohin?) Akkusativ, konum sabitse (wo?) Dativ kullanılır: Ich gehe in die Schule (yön) / Ich bin in der Schule (konum).",
+    "turkishNoteTr": "Türkçede bu ayrım isme gelen ekle görülür: okula (yön) / okulda (konum). Almancada edat aynı kalır, değişen artikeldir.",
+    "examples": [
+      { "de": "Ich hänge das Bild an die Wand.", "tr": "Resmi duvara asıyorum." },
+      { "de": "Das Bild hängt an der Wand.", "tr": "Resim duvarda asılı." },
+      { "de": "Die Katze läuft unter den Tisch.", "tr": "Kedi masanın altına koşuyor." }
+    ],
+    "production": [
+      {
+        "id": "p-wechsel-1",
+        "type": "GAP",
+        "promptTr": "Artikeli doğru hâlde yaz.",
+        "prompt": "Die Bücher liegen auf ___ Tisch.",
+        "parts": null,
+        "answer": "dem",
+        "acceptedAnswers": [],
+        "explanationTr": "Konum soruluyor (wo?): Dativ, der → dem."
+      },
+      {
+        "id": "p-wechsel-2",
+        "type": "GAP",
+        "promptTr": "Artikeli doğru hâlde yaz.",
+        "prompt": "Ich lege das Buch auf ___ Tisch.",
+        "parts": null,
+        "answer": "den",
+        "acceptedAnswers": [],
+        "explanationTr": "Yön soruluyor (wohin?): Akkusativ, der → den."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "NEBENSATZ",
+    "level": "A2",
+    "explanationTr": "Yan cümlede çekimli fiil en sona gider. Sık bağlaçlar: weil (çünkü), dass (-dığı), wenn (eğer / -dığında), ob (-ıp -madığı), obwohl (rağmen). Yan cümle başta gelirse ana cümlenin fiili hemen virgülden sonra durur: Weil ich krank bin, bleibe ich zu Hause. denn de \"çünkü\" demektir ama yan cümle kurmaz: sıra değişmez.",
+    "turkishNoteTr": "Türkçede yan cümle ekle kurulur (hasta olduğum için). Almancada bağlaç başa gelir ve fiil sona atılır.",
+    "examples": [
+      { "de": "Ich bleibe zu Hause, weil ich krank bin.", "tr": "Evde kalıyorum çünkü hastayım." },
+      { "de": "Ich weiß nicht, ob er kommt.", "tr": "Gelip gelmeyeceğini bilmiyorum." },
+      { "de": "Wenn ich Zeit habe, rufe ich dich an.", "tr": "Vaktim olursa seni ararım." }
+    ],
+    "production": [
+      {
+        "id": "p-nebensatz-1",
+        "type": "WORD_ORDER",
+        "promptTr": "weil ile yan cümleyi kur.",
+        "prompt": null,
+        "parts": ["weil", "ich", "müde", "bin"],
+        "answer": "weil ich müde bin",
+        "acceptedAnswers": ["weil ich müde bin."],
+        "explanationTr": "Yan cümlede çekimli fiil (bin) sonda durur."
+      },
+      {
+        "id": "p-nebensatz-2",
+        "type": "GAP",
+        "promptTr": "Bağlacı yaz (weil / dass / ob).",
+        "prompt": "Er sagt, ___ er morgen kommt.",
+        "parts": null,
+        "answer": "dass",
+        "acceptedAnswers": [],
+        "explanationTr": "Bir bilgi aktarılıyor: dass."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "KOMPARATIV",
+    "level": "A2",
+    "explanationTr": "Karşılaştırma: sıfat + -er + als (schneller als). Üstünlük: am + sıfat + -sten ya da isimden önce der/die/das + -ste (am schnellsten, der schnellste Zug). Kısa sıfatlar çoğu zaman Umlaut alır: alt → älter, groß → größer. Düzensizler: gut → besser → am besten, viel → mehr → am meisten, gern → lieber → am liebsten. Eşitlik: so ... wie.",
+    "turkishNoteTr": "Türkçede \"daha\" ve \"en\" ayrı kelimelerdir. Almancada ek kullanılır ve karşılaştırmada als (=-den) gelir: größer als ich.",
+    "examples": [
+      { "de": "Berlin ist größer als Bremen.", "tr": "Berlin, Bremen'den büyüktür." },
+      { "de": "Er spricht besser als ich.", "tr": "O benden daha iyi konuşuyor." },
+      { "de": "Das ist der schnellste Weg.", "tr": "Bu en hızlı yol." }
+    ],
+    "production": [
+      {
+        "id": "p-komparativ-1",
+        "type": "GAP",
+        "promptTr": "Sıfatı karşılaştırma biçiminde yaz: alt.",
+        "prompt": "Mein Bruder ist ___ als ich.",
+        "parts": null,
+        "answer": "älter",
+        "acceptedAnswers": ["aelter"],
+        "explanationTr": "alt → älter (Umlaut + -er)."
+      },
+      {
+        "id": "p-komparativ-2",
+        "type": "GAP",
+        "promptTr": "Üstünlük biçimini yaz: gut.",
+        "prompt": "Von allen Schülern lernt sie ___.",
+        "parts": null,
+        "answer": "am besten",
+        "acceptedAnswers": [],
+        "explanationTr": "gut → besser → am besten."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "REFLEXIV",
+    "level": "A2",
+    "explanationTr": "Dönüşlü fiiller sich ile kullanılır: sich freuen, sich interessieren, sich waschen, sich treffen. Zamir kişiye göre değişir: mich, dich, sich, uns, euch, sich. Bazı fiiller belirli bir edatla kalıplaşır: sich freuen auf (+Akk), sich interessieren für (+Akk), sich ärgern über (+Akk).",
+    "turkishNoteTr": "Türkçede bu anlam çoğu zaman -n / -ın ekiyle verilir (yıkan-mak). Almancada ayrı bir zamir gelir ve kişiye göre çekilir.",
+    "examples": [
+      { "de": "Ich freue mich auf das Wochenende.", "tr": "Hafta sonunu dört gözle bekliyorum." },
+      { "de": "Wir treffen uns um acht.", "tr": "Sekizde buluşuyoruz." },
+      { "de": "Interessierst du dich für Musik?", "tr": "Müzikle ilgileniyor musun?" }
+    ],
+    "production": [
+      {
+        "id": "p-reflexiv-1",
+        "type": "GAP",
+        "promptTr": "Dönüşlü zamiri yaz.",
+        "prompt": "Er wäscht ___ die Hände.",
+        "parts": null,
+        "answer": "sich",
+        "acceptedAnswers": [],
+        "explanationTr": "er/sie/es ve çoğul üçüncü kişide zamir: sich."
+      },
+      {
+        "id": "p-reflexiv-2",
+        "type": "GAP",
+        "promptTr": "Dönüşlü zamiri yaz.",
+        "prompt": "Ich interessiere ___ für Geschichte.",
+        "parts": null,
+        "answer": "mich",
+        "acceptedAnswers": [],
+        "explanationTr": "ich → mich."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "ADJEKTIVDEKLINATION",
+    "level": "A2",
+    "explanationTr": "İsimden önce gelen sıfat ek alır. Belirli artikelden sonra ek çoğunlukla -e, Akkusativ eril ile Dativ ve çoğulda -en olur: der neue Tisch, den neuen Tisch, mit dem neuen Tisch. Belirsiz artikelden sonra sıfat artikelin taşıyamadığı bilgiyi taşır: ein neuer Tisch, eine neue Lampe, ein neues Auto. Sıfat fiilden sonra gelirse ek almaz: Der Tisch ist neu.",
+    "turkishNoteTr": "Türkçede sıfat hiç değişmez (yeni masa, yeni masayı). Almancada ek hem hâle hem artikele bağlıdır; bu yüzden en çok hata yapılan konulardan biridir.",
+    "examples": [
+      { "de": "Das ist ein neuer Computer.", "tr": "Bu yeni bir bilgisayar." },
+      { "de": "Ich kaufe den roten Pullover.", "tr": "Kırmızı kazağı alıyorum." },
+      { "de": "Wir wohnen in einer kleinen Wohnung.", "tr": "Küçük bir dairede oturuyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-adjektiv-1",
+        "type": "GAP",
+        "promptTr": "Sıfatı doğru çek: alt.",
+        "prompt": "Ich lese ein ___ Buch.",
+        "parts": null,
+        "answer": "altes",
+        "acceptedAnswers": [],
+        "explanationTr": "das Buch nötr, ein bilgi taşımıyor: sıfat -es alır."
+      },
+      {
+        "id": "p-adjektiv-2",
+        "type": "GAP",
+        "promptTr": "Sıfatı doğru çek: groß.",
+        "prompt": "Wir wohnen in dem ___ Haus.",
+        "parts": null,
+        "answer": "großen",
+        "acceptedAnswers": ["grossen"],
+        "explanationTr": "Dativ'de belirli artikelden sonra sıfat -en alır."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "KONJUNKTIV2",
+    "level": "A2",
+    "explanationTr": "Konjunktiv II nazik istek, öneri ve gerçek olmayan durum için kullanılır. En sık biçimler: wäre, hätte, könnte, würde, möchte. Çoğu fiilde würde + mastar tercih edilir: Ich würde gern mitkommen. Nazik ricada: Könnten Sie mir helfen?",
+    "turkishNoteTr": "Türkçedeki \"-ebilir miydiniz / isterdim\" inceliğine karşılık gelir. Burada zaman değil, nezaket ve varsayım anlatılır.",
+    "examples": [
+      { "de": "Könnten Sie mir bitte helfen?", "tr": "Bana yardım edebilir misiniz?" },
+      { "de": "Ich hätte gern einen Kaffee.", "tr": "Bir kahve alabilir miyim?" },
+      { "de": "An deiner Stelle würde ich warten.", "tr": "Senin yerinde olsam beklerdim." }
+    ],
+    "production": [
+      {
+        "id": "p-konjunktiv2-1",
+        "type": "GAP",
+        "promptTr": "haben fiilini Konjunktiv II'de yaz.",
+        "prompt": "Ich ___ gern ein Glas Wasser.",
+        "parts": null,
+        "answer": "hätte",
+        "acceptedAnswers": ["haette"],
+        "explanationTr": "Nazik istek: ich hätte gern."
+      },
+      {
+        "id": "p-konjunktiv2-2",
+        "type": "WORD_ORDER",
+        "promptTr": "Nazik bir soru kur.",
+        "prompt": null,
+        "parts": ["Könnten", "Sie", "das", "bitte", "wiederholen"],
+        "answer": "Könnten Sie das bitte wiederholen?",
+        "acceptedAnswers": ["Koennten Sie das bitte wiederholen?"],
+        "explanationTr": "Soru olduğu için fiil başta; mastar sonda."
+      }
+    ],
+    "verified": false
+  }
+]

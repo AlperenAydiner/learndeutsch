@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yerleştirme testi — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/assets/css/pages/onboarding.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<!--
+    Adaptif yerlestirme testi (SPEC 4.1, K-003). Sorular 6'lik bloklar
+    halinde gelir; her bloktan sonra seviye yukselir ya da duser. Dogru
+    cevaplar ancak test bitince gosterilir.
+-->
+<main class="wrap wizard" id="main">
+
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p class="loading" id="yukleniyor">Test hazırlanıyor…</p>
+
+    <!-- Blok -->
+    <section id="blok" hidden>
+        <h1 class="wizard__title">Yerleştirme testi</h1>
+        <div class="quiz__progress">
+            <span id="sayac"></span>
+            <span class="bar"><span class="bar__fill" id="ilerleme" style="width:0%"></span></span>
+        </div>
+        <p class="quiz__hint">Emin değilsen "Bilmiyorum"u seç; tahmin etmek sonucu yanıltır.</p>
+        <ol class="ptest" id="sorular"></ol>
+        <button class="btn btn--primary btn--lg" type="button" id="gonder">Devam</button>
+    </section>
+
+    <!-- Sonuc -->
+    <section id="sonuc" hidden>
+        <h1 class="wizard__title">Başlangıç noktan</h1>
+        <div class="result__level">
+            <span class="result__level-value" id="seviye">—</span>
+            <span class="result__level-label">yerleştirme testi · düşük güven · kaba başlangıç noktası</span>
+        </div>
+        <p class="block__note" id="aciklama"></p>
+        <div id="hedefBildirimi"></div>
+        <div class="btn-row block" id="sonrasi"></div>
+
+        <h2 class="block__title block">Soru soru</h2>
+        <p class="block__note">Her sorunun doğru cevabı ve kısa açıklaması.</p>
+        <div id="inceleme"></div>
+    </section>
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api } from "/assets/js/core/api.js";
+    import { seviyeAdi, esc } from "/assets/js/core/etiket.js";
+
+    const BILMIYORUM = "";   // sunucu yanlis sayar
+    const donus = new URLSearchParams(location.search).get("donus");
+    let oturum = null;
+    let cevaplar = {};
+    let etkilesimler = [];
+
+    const session = await requireAuth();
+    if (session) {
+        try {
+            blokGoster(await api.post("/placement/start"));
+        } catch (err) {
+            hata(err.message);
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+        document.getElementById("gonder").addEventListener("click", gonder);
+    }
+
+    function blokGoster(b) {
+        oturum = b.sessionId;
+        cevaplar = {};
+        etkilesimler = [Date.now()];
+        document.getElementById("blok").hidden = false;
+        document.getElementById("sayac").textContent =
+            `${b.askedSoFar + 1}–${b.askedSoFar + b.questions.length}. sorular · en fazla ${b.maxQuestions}`;
+        document.getElementById("ilerleme").style.width = `${(b.askedSoFar / b.maxQuestions) * 100}%`;
+
+        document.getElementById("sorular").innerHTML = b.questions.map((q) => `
+            <li class="ptest__item" data-q="${esc(q.id)}">
+                <p class="ptest__prompt">${esc(q.prompt).replace(/___/g, '<span class="quiz__gap">___</span>')}</p>
+                <div class="ptest__options">
+                    ${q.options.map((o) => `<button type="button" class="pill" data-a="${esc(o)}" aria-pressed="false">${esc(o)}</button>`).join("")}
+                    <button type="button" class="pill pill--quiet" data-a="${BILMIYORUM}" aria-pressed="false">Bilmiyorum</button>
+                </div>
+            </li>`).join("");
+
+        document.querySelectorAll(".ptest__item").forEach((li) => {
+            li.querySelectorAll("[data-a]").forEach((btn) => btn.addEventListener("click", () => {
+                cevaplar[li.dataset.q] = btn.dataset.a;
+                etkilesimler.push(Date.now());
+                li.querySelectorAll("[data-a]").forEach((x) => x.setAttribute("aria-pressed", String(x === btn)));
+            }));
+        });
+        window.scrollTo({ top: 0 });
+    }
+
+    async function gonder() {
+        const hepsi = [...document.querySelectorAll(".ptest__item")].map((li) => li.dataset.q);
+        const eksik = hepsi.filter((id) => !(id in cevaplar));
+        if (eksik.length) {
+            hata(`${eksik.length} soru cevapsız. Bilmiyorsan "Bilmiyorum"u seç.`);
+            return;
+        }
+        document.getElementById("hata").hidden = true;
+        const btn = document.getElementById("gonder");
+        btn.disabled = true;
+        etkilesimler.push(Date.now());
+        try {
+            const sonuc = await api.post(`/placement/${oturum}/answers`,
+                { answers: cevaplar, interactions: etkilesimler });
+            if (sonuc.next) {
+                blokGoster(sonuc.next);
+            } else {
+                sonucGoster(sonuc.result);
+            }
+        } catch (err) {
+            hata(err.message);
+        } finally {
+            btn.disabled = false;
+        }
+    }
+
+    function sonucGoster(r) {
+        document.getElementById("blok").hidden = true;
+        document.getElementById("sonuc").hidden = false;
+        document.getElementById("seviye").textContent = r.result === "A0" ? "A1'in altında" : `${r.result} civarı`;
+        document.getElementById("aciklama").textContent =
+            `${r.total} sorudan ${r.correct} doğru. ${r.reason} Platform içi kaba bir tahmindir; resmi bir `
+            + "değerlendirme değildir ve dil becerisi profilini doldurmaz.";
+
+        // K6: hedef otomatik degismez, kullaniciya sorulur.
+        if (r.goalReached) {
+            document.getElementById("hedefBildirimi").innerHTML = `
+                <div class="notice notice--info">Test sonucun hedefin ${r.goalReached} ile aynı ya da
+                    üstünde. Hedefin kendiliğinden değişmez; korumak mı, değiştirmek mi istediğini sen seç.</div>
+                <div class="btn-row">
+                    <a class="btn btn--ghost" href="/app/index.html">Hedefimi koru</a>
+                    <a class="btn btn--primary" href="/app/baslangic.html?duzenle=1&adim=3">Hedefimi değiştir</a>
+                </div>`;
+        }
+        document.getElementById("sonrasi").innerHTML = donus === "baslangic"
+            ? `<a class="btn btn--primary btn--lg" href="/app/baslangic.html?adim=3">Hedefini seç</a>`
+            : `<a class="btn btn--primary" href="/app/index.html">Ana Sayfa</a>`;
+
+        document.getElementById("inceleme").innerHTML = r.review.map((i) => `
+            <div class="qrev qrev--${i.correct ? "ok" : "wrong"}">
+                <p class="qrev__q">${esc(i.prompt)}</p>
+                ${i.correct ? "" : `<p class="qrev__line qrev__line--no">Senin cevabın:
+                    <b>${i.yourAnswer ? esc(i.yourAnswer) : "bilmiyorum"}</b></p>`}
+                <p class="qrev__line qrev__line--ok">Doğru cevap: <b>${esc(i.correctAnswer)}</b></p>
+                ${i.explanationTr ? `<p class="qrev__exp">${esc(i.explanationTr)}</p>` : ""}
+            </div>`).join("");
+        window.scrollTo({ top: 0 });
+    }
+
+    function hata(mesaj) {
+        const h = document.getElementById("hata");
+        h.textContent = mesaj;
+        h.hidden = false;
+    }
+</script>
+
+</body>
+</html>

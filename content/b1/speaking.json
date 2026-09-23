@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sp-b1-01",
+    "level": "B1",
+    "titleTr": "Bir konuda görüş bildir ve gerekçelendir",
+    "taskTr": "Bir konu seç (toplu taşıma, evden çalışma, sosyal medya) ve iki dakika konuş: durumu özetle, kendi görüşünü söyle, en az iki gerekçe ver, bir karşı görüşü de belirtip yanıtla. Kendini kaydet ve dinle.",
+    "promptsDe": [
+      "Wie ist die Situation heute?",
+      "Was ist Ihre Meinung und warum?",
+      "Welche Gegenargumente gibt es?",
+      "Wie würden Sie darauf antworten?"
+    ],
+    "phrases": [
+      "Ich bin der Meinung, dass ...",
+      "Das liegt vor allem daran, dass ...",
+      "Man könnte zwar sagen, dass ... , aber ...",
+      "Aus diesem Grund finde ich ..."
+    ],
+    "estimatedMinutes": 15,
+    "verified": false
+  },
+  {
+    "id": "sp-b1-02",
+    "level": "B1",
+    "titleTr": "Bir deneyimi ayrıntılı anlat",
+    "taskTr": "Yaşadığın bir sorunu ve nasıl çözdüğünü anlat: ne oldu, ne hissettin, hangi adımları attın, sonuç ne oldu, bugün ne yapardın. Geçmiş zaman ve bağlaçlar kullan.",
+    "promptsDe": [
+      "Was ist passiert und wann?",
+      "Wie haben Sie sich dabei gefühlt?",
+      "Welche Schritte haben Sie unternommen?",
+      "Was würden Sie heute anders machen?"
+    ],
+    "phrases": [
+      "Vor einiger Zeit ist mir Folgendes passiert: ...",
+      "Zuerst ... , danach ... , schließlich ...",
+      "Das war ziemlich ärgerlich, weil ...",
+      "Heute würde ich wahrscheinlich ..."
+    ],
+    "estimatedMinutes": 15,
+    "verified": false
+  }
+]

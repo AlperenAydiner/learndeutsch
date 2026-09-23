@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
@@ -57,6 +58,14 @@ public class GlobalExceptionHandler {
     ResponseEntity<ApiError> handleAccessDenied(AccessDeniedException e) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
                 .body(ApiError.of(403, "FORBIDDEN", "Bu islem icin yetkin yok"));
+    }
+
+    /** Bozuk ya da tip uyusmayan JSON govdesi istemci hatasidir (400). */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    ResponseEntity<ApiError> handleUnreadable(HttpMessageNotReadableException e) {
+        log.debug("Okunamayan istek govdesi: {}", e.getMessage());
+        return ResponseEntity.badRequest()
+                .body(ApiError.of(400, "VALIDATION_ERROR", "İstek gövdesi okunamadı; alanları kontrol et"));
     }
 
     @ExceptionHandler(Exception.class)

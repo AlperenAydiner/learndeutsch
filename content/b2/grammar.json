@@ -1,0 +1,172 @@
+[
+  {
+    "topicId": "PARTIZIP_ATTRIBUT",
+    "level": "B2",
+    "explanationTr": "Partizip bir sıfat gibi ismin önüne konur ve sıfat çekimi alır. Partizip I (Infinitiv + d) etken ve süregelen anlam verir: das weinende Kind (ağlayan çocuk). Partizip II edilgen ya da tamamlanmış anlam verir: das reparierte Auto (tamir edilmiş araba). Öbek uzayabilir: der gestern von uns reparierte Wagen. Bu yapı yazı dilinde sıktır; konuşmada çoğu zaman ilgi cümlesi tercih edilir.",
+    "turkishNoteTr": "Türkçedeki ortaçlara çok yakındır: -an/-en (ağlayan) Partizip I, -mış/-ılan (tamir edilmiş) Partizip II. İkisinde de öbek ismin önünde durur.",
+    "examples": [
+      { "de": "Das schlafende Baby soll man nicht wecken.", "tr": "Uyuyan bebeği uyandırmamak gerekir." },
+      { "de": "Die gestern gelieferten Möbel stehen im Flur.", "tr": "Dün teslim edilen mobilyalar koridorda duruyor." },
+      { "de": "Wir suchen einen gut ausgebildeten Techniker.", "tr": "İyi eğitimli bir teknisyen arıyoruz." }
+    ],
+    "production": [
+      {
+        "id": "p-partizip-1",
+        "type": "GAP",
+        "promptTr": "Partizip I biçimini yaz: lachen.",
+        "prompt": "Das ___ Kind lief über den Hof.",
+        "parts": null,
+        "answer": "lachende",
+        "acceptedAnswers": [],
+        "explanationTr": "lachen → lachend + sıfat eki: das lachende Kind."
+      },
+      {
+        "id": "p-partizip-2",
+        "type": "GAP",
+        "promptTr": "Partizip II biçimini yaz: reparieren.",
+        "prompt": "Der ___ Drucker funktioniert wieder.",
+        "parts": null,
+        "answer": "reparierte",
+        "acceptedAnswers": [],
+        "explanationTr": "Edilgen ve tamamlanmış: der reparierte Drucker."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "NOMEN_VERB_VERBINDUNGEN",
+    "level": "B2",
+    "explanationTr": "Bazı anlamlar tek fiil yerine isim + fiil kalıbıyla söylenir: eine Entscheidung treffen (karar vermek), in Frage stellen (sorgulamak), zur Verfügung stehen (hizmete hazır olmak), Rücksicht nehmen auf (göz önünde bulundurmak), eine Rolle spielen (rol oynamak), Abschied nehmen (veda etmek). Bu kalıplarda fiil seçimi ezberlenir; başka fiil kullanmak yanlış olur.",
+    "turkishNoteTr": "Türkçede de aynı mantık var: \"karar vermek\", \"dikkate almak\". Kelime kelime çeviri yanıltır — machen yerine treffen, yapmak yerine vermek gibi.",
+    "examples": [
+      { "de": "Wir müssen bis Freitag eine Entscheidung treffen.", "tr": "Cumaya kadar bir karar vermeliyiz." },
+      { "de": "Das Team steht Ihnen jederzeit zur Verfügung.", "tr": "Ekip her zaman hizmetinizde." },
+      { "de": "Bitte nehmen Sie Rücksicht auf die Nachbarn.", "tr": "Lütfen komşuları göz önünde bulundurun." }
+    ],
+    "production": [
+      {
+        "id": "p-nomenverb-1",
+        "type": "GAP",
+        "promptTr": "Kalıbın fiilini yaz.",
+        "prompt": "Die Kosten spielen bei dieser Frage keine ___.",
+        "parts": null,
+        "answer": "Rolle",
+        "acceptedAnswers": ["rolle"],
+        "explanationTr": "eine Rolle spielen: rol oynamak, önemi olmak."
+      },
+      {
+        "id": "p-nomenverb-2",
+        "type": "GAP",
+        "promptTr": "Doğru fiili yaz (machen / treffen / nehmen).",
+        "prompt": "Der Vorstand hat gestern eine wichtige Entscheidung ___.",
+        "parts": null,
+        "answer": "getroffen",
+        "acceptedAnswers": [],
+        "explanationTr": "eine Entscheidung treffen → Partizip II: getroffen."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "ZWEITEILIGE_KONNEKTOREN",
+    "level": "B2",
+    "explanationTr": "İki parçalı bağlaçlar cümlenin iki öğesini birbirine bağlar: sowohl ... als auch (hem ... hem de), weder ... noch (ne ... ne de), entweder ... oder (ya ... ya da), nicht nur ... sondern auch (sadece ... değil, aynı zamanda), je ... desto (ne kadar ... o kadar). weder ... noch zaten olumsuzdur, ayrıca nicht eklenmez. je ... desto'da je'li bölüm yan cümledir (fiil sonda), desto'lu bölümde fiil hemen sonra gelir.",
+    "turkishNoteTr": "Türkçedeki \"hem ... hem\", \"ne ... ne\" ikililerine benzer. Fark: Almancada ikinci parçanın cümle sırasını da belirlemesi.",
+    "examples": [
+      { "de": "Sie spricht sowohl Türkisch als auch Deutsch.", "tr": "Hem Türkçe hem Almanca konuşuyor." },
+      { "de": "Er hat weder angerufen noch geschrieben.", "tr": "Ne aradı ne yazdı." },
+      { "de": "Je mehr ich übe, desto sicherer werde ich.", "tr": "Ne kadar çok alıştırma yaparsam o kadar güvenli oluyorum." }
+    ],
+    "production": [
+      {
+        "id": "p-zweiteilig-1",
+        "type": "GAP",
+        "promptTr": "Eksik parçayı yaz.",
+        "prompt": "Wir fahren entweder mit dem Zug ___ mit dem Bus.",
+        "parts": null,
+        "answer": "oder",
+        "acceptedAnswers": [],
+        "explanationTr": "entweder ... oder: ya ... ya da."
+      },
+      {
+        "id": "p-zweiteilig-2",
+        "type": "WORD_ORDER",
+        "promptTr": "je ... desto cümlesini kur.",
+        "prompt": null,
+        "parts": ["Je", "früher", "wir", "anfangen", "desto", "besser", "ist", "es"],
+        "answer": "Je früher wir anfangen, desto besser ist es.",
+        "acceptedAnswers": ["Je früher wir anfangen desto besser ist es"],
+        "explanationTr": "je bölümünde fiil sonda (anfangen), desto bölümünde fiil hemen sıfattan sonra."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "PRAEPOSITIONEN_GENITIV",
+    "level": "B2",
+    "explanationTr": "Yazı dilinde sık kullanılan Genitiv edatları: während (sırasında), wegen (yüzünden), trotz (rağmen), statt/anstatt (yerine), innerhalb (içinde), außerhalb (dışında), aufgrund (nedeniyle), infolge (sonucunda). Konuşmada bunların çoğu Dativ ile de duyulur (wegen dem Regen), ama resmî yazıda Genitiv doğru kabul edilir.",
+    "turkishNoteTr": "Türkçede bu ilişkiler çoğunlukla \"-in yüzünden / -e rağmen\" gibi son çekim edatlarıyla kurulur; Almancada edat isimden önce gelir ve hâli belirler.",
+    "examples": [
+      { "de": "Während der Sitzung wurde ein Protokoll geführt.", "tr": "Toplantı sırasında tutanak tutuldu." },
+      { "de": "Trotz des schlechten Wetters kam die Lieferung pünktlich.", "tr": "Kötü havaya rağmen teslimat zamanında geldi." },
+      { "de": "Innerhalb einer Woche erhalten Sie eine Antwort.", "tr": "Bir hafta içinde yanıt alırsınız." }
+    ],
+    "production": [
+      {
+        "id": "p-genitivprap-1",
+        "type": "GAP",
+        "promptTr": "Artikeli Genitiv'e göre yaz.",
+        "prompt": "Wegen ___ Umbaus bleibt das Geschäft geschlossen.",
+        "parts": null,
+        "answer": "des",
+        "acceptedAnswers": [],
+        "explanationTr": "der Umbau eril: Genitiv des Umbaus."
+      },
+      {
+        "id": "p-genitivprap-2",
+        "type": "GAP",
+        "promptTr": "Uygun edatı yaz (während / trotz / statt).",
+        "prompt": "___ einer Antwort bekam ich nur ein Achselzucken.",
+        "parts": null,
+        "answer": "Statt",
+        "acceptedAnswers": ["statt", "Anstatt", "anstatt"],
+        "explanationTr": "\"Cevap yerine\" anlamı: statt/anstatt + Genitiv."
+      }
+    ],
+    "verified": false
+  },
+  {
+    "topicId": "ALS_OB",
+    "level": "B2",
+    "explanationTr": "als ob / als wenn gerçek olmayan bir benzetme kurar ve Konjunktiv II ister: Er tut so, als ob er alles wüsste. ob düşerse fiil hemen als'tan sonra gelir: Er tut so, als wüsste er alles. Geçmiş için hätte/wäre + Partizip II kullanılır: Sie sah aus, als hätte sie geweint.",
+    "turkishNoteTr": "Türkçedeki \"-mış gibi\" yapısına karşılık gelir: \"her şeyi biliyormuş gibi davranıyor\". Almancada ayrıca kip (Konjunktiv II) değişir.",
+    "examples": [
+      { "de": "Er tut so, als ob er müde wäre.", "tr": "Yorgunmuş gibi davranıyor." },
+      { "de": "Sie sprach, als wäre nichts passiert.", "tr": "Hiçbir şey olmamış gibi konuştu." },
+      { "de": "Es sieht aus, als hätte es geregnet.", "tr": "Yağmur yağmış gibi görünüyor." }
+    ],
+    "production": [
+      {
+        "id": "p-alsob-1",
+        "type": "GAP",
+        "promptTr": "Fiili Konjunktiv II'de yaz (sein).",
+        "prompt": "Er tut so, als ob er der Chef ___.",
+        "parts": null,
+        "answer": "wäre",
+        "acceptedAnswers": ["waere"],
+        "explanationTr": "als ob + Konjunktiv II: wäre."
+      },
+      {
+        "id": "p-alsob-2",
+        "type": "WORD_ORDER",
+        "promptTr": "ob olmadan kur (fiil als'tan hemen sonra).",
+        "prompt": null,
+        "parts": ["Sie", "sah", "aus", "als", "hätte", "sie", "geweint"],
+        "answer": "Sie sah aus, als hätte sie geweint.",
+        "acceptedAnswers": ["Sie sah aus als hätte sie geweint"],
+        "explanationTr": "ob düşünce çekimli fiil (hätte) als'tan hemen sonra gelir."
+      }
+    ],
+    "verified": false
+  }
+]

@@ -1,278 +1,238 @@
 package com.ichsprechedeutsch.vocabulary;
 
+import com.ichsprechedeutsch.activity.ActivityRules;
+import com.ichsprechedeutsch.activity.ActivityService;
+import com.ichsprechedeutsch.activity.ActivityService.SiteActivity;
+import com.ichsprechedeutsch.activity.ActivityStore;
+import com.ichsprechedeutsch.activity.ActivityType;
 import com.ichsprechedeutsch.common.error.NotFoundException;
 import com.ichsprechedeutsch.common.error.ValidationException;
-import com.ichsprechedeutsch.vocabulary.api.ReviewAnswerRequest;
-import com.ichsprechedeutsch.vocabulary.api.ReviewResultResponse;
-import com.ichsprechedeutsch.vocabulary.api.SessionResponse;
+import com.ichsprechedeutsch.common.model.Level;
+import com.ichsprechedeutsch.config.ActivityProperties;
+import com.ichsprechedeutsch.config.SrsProperties;
+import com.ichsprechedeutsch.content.ContentCatalog;
+import com.ichsprechedeutsch.content.Word;
+import com.ichsprechedeutsch.learning.LearningAnswerStore;
+import com.ichsprechedeutsch.learning.LearningAnswerStore.Kind;
+import com.ichsprechedeutsch.level.LevelService;
+import com.ichsprechedeutsch.onboarding.OnboardingStore;
+import com.ichsprechedeutsch.srs.Grade;
+import com.ichsprechedeutsch.srs.SrsLadder;
+import com.ichsprechedeutsch.srs.SrsLadder.Next;
+import com.ichsprechedeutsch.vocabulary.VocabularyPlanner.DueCard;
+import com.ichsprechedeutsch.vocabulary.VocabularyPlanner.Plan;
+import com.ichsprechedeutsch.vocabulary.VocabularyStore.Progress;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Kelime tekrar oturumu.
+ * Kelime oturumu (SPEC 8.1). Tekrar oturumu SRS durumunu degistirir;
+ * sonuclar seviye kaniti uretmez (K2, 8.5).
  *
- * Kelimeleri kullanici eklemez, sistem verir: gunun konusunun temasindan
- * ve seviyesinden secilir. Gunluk yeni kelime sayisi bekleyen tekrar
- * yukune gore otomatik kisilir.
+ * <p>Kelime icerigi katalogdan gelir (K-004); veritabaninda yalniz
+ * kullanicinin merdiven durumu ve verdigi cevaplar durur.
  */
 @Service
 public class VocabularyService {
 
-    /** Kelime blogu bulunamazsa varsayilan sure. */
-    private static final int DEFAULT_BLOCK_MINUTES = 30;
-
-    private final JdbcTemplate jdbc;
-    private final Sm2Scheduler scheduler = new Sm2Scheduler();
-    private final VocabularyQuota quotaCalculator = new VocabularyQuota();
-
-    public VocabularyService(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
+    /**
+     * Oturumdaki bir kart.
+     *
+     * @param isNew      ilk kez calisiliyor (tanitim karti)
+     * @param askArticle isimse once artikel sorulur (Turkcede cinsiyet yok)
+     */
+    public record Card(String wordId, String lemma, String article, String plural, String partOfSpeech,
+                       String meaningTr, String exampleDe, String exampleTr, Level level, boolean verified,
+                       boolean isNew, int step, boolean askArticle) {
     }
 
-    // ------------------------------------------------------------------
-    // Oturum
-    // ------------------------------------------------------------------
-
-    @Transactional
-    public SessionResponse session(UUID userId) {
-        String targetLevel = targetLevel(userId);
-        LocalDate today = LocalDate.now();
-
-        int blockMinutes = todaysVocabBlockMinutes(userId, today);
-        int dueCount = countDue(userId, today);
-        int available = countAvailable(userId, targetLevel);
-
-        VocabularyQuota.Quota quota =
-                quotaCalculator.calculate(blockMinutes, dueCount, available);
-
-        if (quota.newWords() > 0) {
-            introduceNewWords(userId, targetLevel, quota.newWords(), today);
-        }
-
-        List<SessionResponse.Card> cards = loadCards(userId, today);
-
-        return new SessionResponse(
-                cards, quota.newWords(), dueCount, blockMinutes,
-                quota.reasonTr(), learnedTotal(userId));
-    }
-
-    /** Gunun kelime blogunun suresi; plan yoksa makul bir varsayilan. */
-    private int todaysVocabBlockMinutes(UUID userId, LocalDate date) {
-        List<Integer> minutes = jdbc.queryForList("""
-                SELECT t.planned_minutes
-                FROM task t
-                JOIN plan_day d ON d.id = t.plan_day_id
-                JOIN plan p ON p.id = d.plan_id
-                WHERE p.user_id = ? AND p.status = 'ACTIVE'
-                  AND d.date = ? AND t.task_type = 'KELIME'
-                """, Integer.class, userId, date);
-
-        return minutes.isEmpty() ? DEFAULT_BLOCK_MINUTES : minutes.get(0);
-    }
-
-    private int countDue(UUID userId, LocalDate date) {
-        Integer n = jdbc.queryForObject("""
-                SELECT count(*) FROM user_word
-                WHERE user_id = ? AND state <> 'SUSPENDED'
-                  AND due_date IS NOT NULL AND due_date <= ?
-                """, Integer.class, userId, date);
-        return n == null ? 0 : n;
-    }
-
-    private int countAvailable(UUID userId, String targetLevel) {
-        Integer n = jdbc.queryForObject("""
-                SELECT count(*) FROM word w
-                WHERE w.level = ANY (string_to_array(?, ','))
-                  AND NOT EXISTS (
-                      SELECT 1 FROM user_word uw
-                      WHERE uw.user_id = ? AND uw.word_id = w.id
-                  )
-                """, Integer.class, levelsUpTo(targetLevel), userId);
-        return n == null ? 0 : n;
+    public record SessionView(UUID sessionId, List<Card> cards, int reviewCount, int newCount,
+                              int dueTotal, int postponed, int dailyNewLimit, int dailyReviewLimit) {
     }
 
     /**
-     * Yeni kelimeleri kullaniciya acar.
-     *
-     * Sira onemli: once bugunun konusunun temasindaki kelimeler gelir.
-     * Gunun gramer konusuyla kelime temasinin ortusmesi, ikisinin de
-     * daha kolay oturmasini saglar.
+     * @param effectiveGrade artikel yanlissa "Bildim" -> "Zorlandim" (SPEC 8.1)
      */
-    private void introduceNewWords(UUID userId, String targetLevel, int count,
-                                   LocalDate today) {
-        jdbc.update("""
-                INSERT INTO user_word (user_id, word_id, due_date, state)
-                SELECT ?, w.id, ?, 'NEW'
-                FROM word w
-                LEFT JOIN (
-                    SELECT cu.vocab_theme
-                    FROM plan_day d
-                    JOIN plan p ON p.id = d.plan_id
-                    JOIN content_unit cu ON cu.id = d.content_unit_id
-                    WHERE p.user_id = ? AND p.status = 'ACTIVE' AND d.date = ?
-                ) today_theme ON true
-                WHERE w.level = ANY (string_to_array(?, ','))
-                  AND NOT EXISTS (
-                      SELECT 1 FROM user_word uw
-                      WHERE uw.user_id = ? AND uw.word_id = w.id
-                  )
-                ORDER BY (w.theme IS DISTINCT FROM today_theme.vocab_theme), w.level, w.lemma
-                LIMIT ?
-                ON CONFLICT (user_id, word_id) DO NOTHING
-                """,
-                userId, today, userId, today, levelsUpTo(targetLevel), userId, count);
+    public record AnswerView(String wordId, Grade effectiveGrade, Boolean articleCorrect, String article,
+                             int step, LocalDate due, int intervalDays, boolean strong) {
     }
 
-    private List<SessionResponse.Card> loadCards(UUID userId, LocalDate today) {
-        List<Map<String, Object>> rows = jdbc.queryForList("""
-                SELECT uw.id AS user_word_id, uw.repetition, uw.state,
-                       w.lemma, w.word_type, w.article, w.plural_form, w.meaning_tr,
-                       w.example_de, w.example_tr
-                FROM user_word uw
-                JOIN word w ON w.id = uw.word_id
-                WHERE uw.user_id = ? AND uw.state <> 'SUSPENDED'
-                  AND (uw.due_date IS NULL OR uw.due_date <= ?)
-                ORDER BY (uw.state = 'NEW'), uw.due_date NULLS FIRST, w.lemma
-                """, userId, today);
-
-        List<SessionResponse.Card> cards = new ArrayList<>(rows.size());
-        for (Map<String, Object> row : rows) {
-            boolean isNoun = "NOUN".equals(row.get("word_type"));
-            int repetition = (Integer) row.get("repetition");
-            String direction = ReviewDirection.pick(repetition, isNoun);
-
-            cards.add(new SessionResponse.Card(
-                    (UUID) row.get("user_word_id"),
-                    direction,
-                    (String) row.get("lemma"),
-                    (String) row.get("article"),
-                    (String) row.get("plural_form"),
-                    (String) row.get("meaning_tr"),
-                    (String) row.get("example_de"),
-                    (String) row.get("example_tr"),
-                    "NEW".equals(row.get("state"))));
-        }
-        return cards;
+    public record Stats(int studied, int strong, int dueToday, int reviews) {
     }
 
-    private int learnedTotal(UUID userId) {
-        Integer n = jdbc.queryForObject("""
-                SELECT count(*) FROM user_word
-                WHERE user_id = ? AND repetition > 0
-                """, Integer.class, userId);
-        return n == null ? 0 : n;
-    }
+    private final VocabularyStore store;
+    private final LearningAnswerStore answers;
+    private final ContentCatalog catalog;
+    private final SrsLadder ladder;
+    private final OnboardingStore onboarding;
+    private final LevelService levels;
+    private final ActivityStore sessions;
+    private final ActivityService activities;
+    private final ActivityProperties activityConfig;
 
-    // ------------------------------------------------------------------
-    // Cevap
-    // ------------------------------------------------------------------
+    public VocabularyService(VocabularyStore store, LearningAnswerStore answers, ContentCatalog catalog,
+                             SrsProperties srs, OnboardingStore onboarding, LevelService levels,
+                             ActivityStore sessions, ActivityService activities,
+                             ActivityProperties activityConfig) {
+        this.store = store;
+        this.answers = answers;
+        this.catalog = catalog;
+        this.ladder = new SrsLadder(srs);
+        this.onboarding = onboarding;
+        this.levels = levels;
+        this.sessions = sessions;
+        this.activities = activities;
+        this.activityConfig = activityConfig;
+    }
 
     @Transactional
-    public ReviewResultResponse review(UUID userId, UUID userWordId,
-                                       ReviewAnswerRequest request) {
-        if (request.quality() < 0 || request.quality() > 5) {
-            throw new ValidationException("Cevap kalitesi 0-5 arasinda olmali");
+    public SessionView start(UUID userId, LocalDate today) {
+        Plan plan = plan(userId, today);
+        if (plan.size() == 0) {
+            throw new NotFoundException("Bugün çalışılacak kelime yok; yarın yeni tekrarlar gelecek");
         }
+        UUID sessionId = sessions.startSession(userId, "VOCABULARY");
 
-        Map<String, Object> row = findOwned(userId, userWordId);
-
-        Sm2Scheduler.State current = new Sm2Scheduler.State(
-                ((Number) row.get("ease_factor")).doubleValue(),
-                (Integer) row.get("interval_days"),
-                (Integer) row.get("repetition"),
-                (Integer) row.get("lapses"),
-                (String) row.get("state"));
-
-        Sm2Scheduler.State next = scheduler.review(current, request.quality());
-        LocalDate due = LocalDate.now().plusDays(next.intervalDays());
-
-        jdbc.update("""
-                UPDATE user_word
-                SET ease_factor = ?, interval_days = ?, repetition = ?, lapses = ?,
-                    state = ?, due_date = ?, last_reviewed_at = now()
-                WHERE id = ?
-                """,
-                next.easeFactor(), next.intervalDays(), next.repetition(),
-                next.lapses(), next.state(), due, userWordId);
-
-        boolean correct = request.quality() >= Sm2Scheduler.PASS_THRESHOLD;
-
-        jdbc.update("""
-                INSERT INTO word_review_log
-                    (user_word_id, direction, quality, correct, response_ms)
-                VALUES (?, ?, ?, ?, ?)
-                """, userWordId, request.direction(), request.quality(), correct,
-                request.responseMs());
-
-        updateVocabStat(userId, correct);
-
-        return new ReviewResultResponse(
-                next.intervalDays(), due, next.easeFactor(), correct,
-                nextDueMessage(next.intervalDays()));
+        List<Card> cards = new ArrayList<>();
+        for (DueCard c : plan.reviews()) {
+            word(c.wordId()).ifPresent(w -> cards.add(card(w, false, c.step())));
+        }
+        for (String id : plan.newWords()) {
+            word(id).ifPresent(w -> cards.add(card(w, true, 0)));
+        }
+        return new SessionView(sessionId, cards,
+                (int) cards.stream().filter(c -> !c.isNew()).count(),
+                (int) cards.stream().filter(Card::isNew).count(),
+                plan.dueTotal(), plan.postponed(), dailyNew(userId), ladder.dailyReviewLimit());
     }
 
-    private Map<String, Object> findOwned(UUID userId, UUID userWordId) {
-        List<Map<String, Object>> rows = jdbc.queryForList("""
-                SELECT ease_factor, interval_days, repetition, lapses, state
-                FROM user_word WHERE id = ? AND user_id = ?
-                """, userWordId, userId);
-
-        if (rows.isEmpty()) {
-            throw new NotFoundException("Kelime bulunamadi");
+    /**
+     * Bir kartin sonucu.
+     *
+     * @param articleGiven isimlerde kullanicinin sectigi artikel (null: sorulmadi)
+     */
+    @Transactional
+    public AnswerView answer(UUID userId, UUID sessionId, String wordId, Grade grade, String articleGiven,
+                             LocalDate today) {
+        if (grade == null) {
+            throw new ValidationException("Bilemedim / Zorlandım / Bildim seçeneklerinden birini işaretle");
         }
-        return rows.get(0);
+        Word word = word(wordId).orElseThrow(() -> new NotFoundException("Kelime bulunamadı"));
+        if (sessionId != null && !answers.ownsSession(userId, sessionId)) {
+            throw new ValidationException("Bu oturum sana ait değil");
+        }
+
+        Boolean articleCorrect = null;
+        if (word.article() != null && articleGiven != null && !articleGiven.isBlank()) {
+            articleCorrect = word.article().equalsIgnoreCase(articleGiven.trim());
+            answers.insert(userId, sessionId, Kind.ARTICLE, wordId, word.article(), articleCorrect,
+                    articleGiven.trim(), today);
+        }
+
+        // Kelime dogru ama artikel yanlissa "Zorlandim" sayilir (SPEC 8.1).
+        Grade etkili = grade == Grade.BILDIM && Boolean.FALSE.equals(articleCorrect)
+                ? Grade.ZORLANDIM
+                : grade;
+        answers.insert(userId, sessionId, Kind.WORD, wordId, null, etkili == Grade.BILDIM, null, today);
+
+        Optional<Progress> mevcut = store.find(userId, wordId);
+        Next next = mevcut.map(p -> ladder.apply(p.step(), etkili, today)).orElseGet(() -> ladder.first(today));
+        if (mevcut.isPresent()) {
+            store.update(userId, wordId, next.step(), next.due(), etkili, today);
+        } else {
+            store.insertNew(userId, wordId, next.step(), next.due(), etkili, today);
+        }
+
+        return new AnswerView(wordId, etkili, articleCorrect, word.article(), next.step(), next.due(),
+                next.intervalDays(), ladder.strong(next.step()));
     }
 
-    /** Kelime performansi da adaptif motora akar. */
-    private void updateVocabStat(UUID userId, boolean correct) {
-        jdbc.update("""
-                INSERT INTO user_category_stat
-                    (user_id, mistake_category_id, correct, attempts, weight, updated_at)
-                SELECT ?, mc.id, ?, 1, 1.0, now()
-                FROM mistake_category mc
-                WHERE mc.code = 'WORTSCHATZ'
-                ON CONFLICT (user_id, mistake_category_id) DO UPDATE SET
-                    correct = user_category_stat.correct + EXCLUDED.correct,
-                    attempts = user_category_stat.attempts + 1,
-                    last_wrong_at = CASE WHEN EXCLUDED.correct = 0
-                                         THEN now() ELSE user_category_stat.last_wrong_at END,
-                    updated_at = now()
-                """, userId, correct ? 1 : 0);
+    /** Oturumu bitirir ve calismayi otomatik kaydeder (SPEC 6.1). */
+    @Transactional
+    public void finish(UUID userId, UUID sessionId, List<Long> interactions, LocalDate today) {
+        if (!answers.ownsSession(userId, sessionId)) {
+            throw new NotFoundException("Oturum bulunamadı");
+        }
+        List<Instant> events = interactions == null ? List.of()
+                : interactions.stream().sorted().map(Instant::ofEpochMilli).toList();
+        long active = ActivityRules.activeSeconds(events, activityConfig.idleGapMinutes());
+        sessions.finishSession(userId, sessionId, active);
+        // Kelime calismasi ogrenme aktivitesidir: seviye kaniti uretmez (K2).
+        activities.recordSite(userId, new SiteActivity(ActivityType.KELIME, today, active,
+                null, null, null, null, null, sessionId));
     }
 
-    private String nextDueMessage(int intervalDays) {
-        if (intervalDays <= 1) {
-            return "Yarin tekrar karsina cikacak.";
+    @Transactional(readOnly = true)
+    public Stats stats(UUID userId, LocalDate today) {
+        int gucluBasamak = gucluBasamak();
+        return new Stats(store.countStudied(userId), store.countAtLeastStep(userId, gucluBasamak),
+                store.dueCount(userId, today), answers.total(userId, Kind.WORD).answers());
+    }
+
+    /** Koc icin: bugunku tekrar sayisi ve tahmini suresi. */
+    @Transactional(readOnly = true)
+    public int dueMinutes(UUID userId, LocalDate today) {
+        int toplam = 0;
+        for (String id : store.dueWordIds(userId, today)) {
+            toplam += word(id).map(Word::estimatedMinutes).orElse(1);
         }
-        if (intervalDays < 30) {
-            return intervalDays + " gun sonra tekrar sorulacak.";
-        }
-        return Math.round(intervalDays / 30.0) + " ay sonra tekrar sorulacak.";
+        return toplam;
     }
 
     // ------------------------------------------------------------------
 
-    private String targetLevel(UUID userId) {
-        List<String> levels = jdbc.queryForList("""
-                SELECT target_level FROM learning_goal
-                WHERE user_id = ? AND status = 'ACTIVE'
-                """, String.class, userId);
-
-        return levels.isEmpty() ? "A1" : levels.get(0);
+    Plan plan(UUID userId, LocalDate today) {
+        int yeniLimit = dailyNew(userId);
+        Set<String> gorulen = store.seenWordIds(userId);
+        List<String> adaylar = yeniAdaylar(userId, today, gorulen);
+        return VocabularyPlanner.plan(store.cards(userId), adaylar, today, yeniLimit,
+                ladder.dailyReviewLimit());
     }
 
-    /** Hedef A2 ise A1 kelimeleri de havuza dahildir. */
-    private String levelsUpTo(String targetLevel) {
-        return switch (targetLevel) {
-            case "A1" -> "A1";
-            case "A2" -> "A1,A2";
-            default -> "A1,A2,B1";
-        };
+    /** Calisma seviyesine kadar olan, henuz girilmemis kelimeler; kolaydan zora. */
+    private List<String> yeniAdaylar(UUID userId, LocalDate today, Set<String> gorulen) {
+        Level calisma = levels.overview(userId, today).working().level().forContent();
+        List<String> out = new ArrayList<>();
+        for (Level l : Level.assessable()) {
+            if (!calisma.isAtLeast(l)) {
+                continue;
+            }
+            catalog.words().values().stream()
+                    .filter(w -> w.level() == l)
+                    .map(Word::id)
+                    .filter(id -> !gorulen.contains(id))
+                    .forEach(out::add);
+        }
+        return out;
+    }
+
+    private int dailyNew(UUID userId) {
+        int dakika = onboarding.rhythm(userId).map(OnboardingStore.Rhythm::dailyMinutes).orElse(15);
+        return ladder.dailyNew(dakika);
+    }
+
+    private int gucluBasamak() {
+        for (int step = 1; step <= ladder.son(); step++) {
+            if (ladder.strong(step)) {
+                return step;
+            }
+        }
+        return ladder.son();
+    }
+
+    private Optional<Word> word(String id) {
+        return Optional.ofNullable(catalog.words().get(id));
+    }
+
+    private static Card card(Word w, boolean isNew, int step) {
+        return new Card(w.id(), w.lemma(), w.article(), w.plural(), w.partOfSpeech(), w.meaningTr(),
+                w.exampleDe(), w.exampleTr(), w.level(), w.verified(), isNew, step, w.article() != null);
     }
 }

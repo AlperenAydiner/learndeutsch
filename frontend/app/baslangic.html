@@ -18,417 +18,260 @@
 
 <div data-nav></div>
 
+<!--
+    Onboarding (SPEC Bolum 3): en fazla 5 adim, panelden once.
+    1 baslangic · 2 yerlestirme (yalniz "bir miktar biliyorum") · 3 hedef
+    · 4 amac · 5 calisma ritmi. Cevaplarin hepsi sonradan degistirilebilir.
+-->
 <main class="wrap wizard" id="main">
 
-    <ol class="wizard__steps">
-        <li class="wizard__step wizard__step--active" id="ad1">1 · Hedefin</li>
-        <li class="wizard__step" id="ad2">2 · Seviye ölçümü</li>
-        <li class="wizard__step" id="ad3">3 · Sonuç</li>
-    </ol>
+    <ol class="wizard__steps" id="adimlar"></ol>
 
     <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
 
-    <!-- ================= 1. Hedef ================= -->
-    <section class="wizard__panel" id="panelHedef">
-        <h1 class="wizard__title">Hedefini belirleyelim</h1>
+    <!-- 1. Baslangic -->
+    <section class="wizard__panel" data-panel="1" hidden>
+        <h1 class="wizard__title">Almancayla nerede duruyorsun?</h1>
+        <p class="wizard__lead">Buna göre nereden başlayacağımızı belirleyeceğiz.</p>
+        <div class="choice__options choice__options--cards" role="radiogroup" aria-label="Başlangıç">
+            <label class="opt">
+                <input type="radio" name="baslangic" value="FROM_ZERO">
+                <span class="opt__box">
+                    <span class="opt__title">Almancaya sıfırdan başlıyorum</span>
+                    <span class="opt__desc">Test yok; en temelden başlarız.</span>
+                </span>
+            </label>
+            <label class="opt">
+                <input type="radio" name="baslangic" value="SOME_KNOWLEDGE">
+                <span class="opt__box">
+                    <span class="opt__title">Bir miktar Almanca biliyorum</span>
+                    <span class="opt__desc">Kısa bir yerleştirme testi öneririz; atlayabilirsin.</span>
+                </span>
+            </label>
+        </div>
+    </section>
+
+    <!-- 2. Yerlestirme -->
+    <section class="wizard__panel" data-panel="2" hidden>
+        <h1 class="wizard__title">Yerleştirme testi</h1>
         <p class="wizard__lead">
-            Dört soru. Programını buna göre kuracağız — sonradan
-            Ayarlar'dan değiştirebilirsin.
+            En fazla 24 soru, yaklaşık 10 dakika. Cevaplarına göre seviye yükselir ya da
+            düşer. Sonuç yalnızca kaba bir başlangıç noktasıdır, resmi bir değerlendirme değildir.
         </p>
-
-        <form id="hedefFormu">
-            <div class="choice">
-                <span class="choice__label">
-                    Hangi seviyeye ulaşmak istiyorsun?
-                    <span class="choice__hint">İçerik havuzu şu an A1 ve A2'yi kapsıyor.</span>
-                </span>
-                <div class="choice__options choice__options--cards" role="radiogroup">
-                    <label class="opt">
-                        <input type="radio" name="seviye" value="A1" required>
-                        <span class="opt__box">
-                            <span class="opt__title">A1</span>
-                            <span class="opt__desc">Sıfırdan temel: tanışma, günlük hayat, basit cümleler</span>
-                        </span>
-                    </label>
-                    <label class="opt">
-                        <input type="radio" name="seviye" value="A2" checked>
-                        <span class="opt__box">
-                            <span class="opt__title">A2</span>
-                            <span class="opt__desc">Geçmiş zaman, yan cümle, günlük iletişimde rahatlık</span>
-                        </span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="choice">
-                <span class="choice__label">
-                    Bir sınava mı hazırlanıyorsun?
-                    <span class="choice__hint">Sınav seçersen program deneme ve prova günleri içerir.</span>
-                </span>
-                <div class="choice__options choice__options--cards" role="radiogroup">
-                    <label class="opt">
-                        <input type="radio" name="sinav" value="GOETHE_A2" checked>
-                        <span class="opt__box">
-                            <span class="opt__title">Goethe-Zertifikat A2</span>
-                            <span class="opt__desc">Sınav formatına göre hazırlık</span>
-                        </span>
-                    </label>
-                    <label class="opt">
-                        <input type="radio" name="sinav" value="NONE">
-                        <span class="opt__box">
-                            <span class="opt__title">Sınavım yok</span>
-                            <span class="opt__desc">Sadece seviyeyi bitirmek istiyorum</span>
-                        </span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="choice">
-                <span class="choice__label">Kaç günde ulaşmak istiyorsun?</span>
-                <div class="choice__options" role="radiogroup" id="gunSecenekleri"></div>
-            </div>
-
-            <div class="choice">
-                <span class="choice__label">
-                    Günde ne kadar ayırabilirsin?
-                    <span class="choice__hint">Dürüst ol — program buna göre ölçeklenir.</span>
-                </span>
-                <div class="choice__options" role="radiogroup" id="sureSecenekleri"></div>
-            </div>
-
-            <button class="btn btn--primary btn--lg" type="submit" id="hedefGonder">
-                Devam et
-            </button>
-        </form>
-    </section>
-
-    <!-- ================= 2. Test ================= -->
-    <section class="wizard__panel" id="panelTest" hidden>
-        <h1 class="wizard__title">Seviyeni ölçelim</h1>
-        <p class="wizard__lead">
-            39 soru, yaklaşık 15 dakika. Bilmediğini boş bırak —
-            tahmin etmen ölçümü bozar ve bildiğin sayılan konular programdan
-            çıkarılır. Amacımız seni yakalamak değil, zamanını boşa harcamamak.
-        </p>
-
-        <div class="quiz__progress">
-            <span id="soruSayaci">1 / 39</span>
-            <span class="bar"><span class="bar__fill" id="ilerleme" style="width:0%"></span></span>
-        </div>
-
-        <div class="quiz__prompt" id="soruMetni"></div>
-        <div class="quiz__options" id="secenekler"></div>
-
-        <div class="quiz__nav">
-            <button class="btn btn--ghost" type="button" id="geriBtn">Geri</button>
-            <button class="btn btn--ghost" type="button" id="atlaBtn">Bilmiyorum, atla</button>
-            <button class="btn btn--primary" type="button" id="ileriBtn">İleri</button>
+        <div id="testSonucu" hidden></div>
+        <div class="btn-row">
+            <a class="btn btn--primary" id="testeBasla" href="/app/yerlestirme.html?donus=baslangic">Teste başla</a>
+            <button class="btn btn--ghost" type="button" id="testiAtla">Şimdilik atla</button>
         </div>
     </section>
 
-    <!-- ================= 3. Sonuç ================= -->
-    <section class="wizard__panel" id="panelSonuc" hidden>
-        <h1 class="wizard__title">Sonuç</h1>
-
-        <div class="result__level">
-            <span class="result__level-value" id="seviyeTahmini">—</span>
-            <span class="result__level-label">tahmini mevcut seviyen</span>
-        </div>
-
-        <div class="result__stats">
-            <div class="stat">
-                <span class="stat__value" id="statDogru">—</span>
-                <span class="stat__label">doğru cevap</span>
-            </div>
-            <div class="stat">
-                <span class="stat__value" id="statBilinen">—</span>
-                <span class="stat__label">bildiğin konu</span>
-            </div>
-            <div class="stat">
-                <span class="stat__value" id="statAtlanan">—</span>
-                <span class="stat__label">atlanacak gün</span>
-            </div>
-        </div>
-
-        <h2 class="block__title">Konu konu durumun</h2>
-        <p class="block__note">
-            Zayıftan güçlüye sıralı. <strong>Biliyorsun</strong> işaretli konular
-            programdan çıkarılacak; <strong>yarım</strong> olanların süresi kısalacak.
-        </p>
-        <ul class="cats" id="kategoriler"></ul>
-
-        <h2 class="block__title">Soru soru</h2>
-        <p class="block__note">
-            Yanlışlarını görmeden ilerlemek öğretici olmaz. Aşağıda her sorunun
-            doğru cevabı ve kısa açıklaması var.
-        </p>
-        <div id="inceleme"></div>
-
-        <a class="btn btn--primary btn--lg block" href="/app/bugun.html">Panele git</a>
+    <!-- 3. Hedef -->
+    <section class="wizard__panel" data-panel="3" hidden>
+        <h1 class="wizard__title">Hangi seviyeye ulaşmak istiyorsun?</h1>
+        <p class="wizard__lead" id="hedefNot">Hedefini sen seçersin; ulaştığında sistem seni zorla bir üst seviyeye itmez.</p>
+        <div class="choice__options" role="radiogroup" aria-label="Hedef seviye" id="hedefler"></div>
     </section>
 
+    <!-- 4. Amac -->
+    <section class="wizard__panel" data-panel="4" hidden>
+        <h1 class="wizard__title">Almancayı ne için öğreniyorsun?</h1>
+        <p class="wizard__lead">Önerilerin tonunu ve sınav pratiğinin ağırlığını buna göre ayarlarız.</p>
+        <div class="choice__options" role="radiogroup" aria-label="Amaç" id="amaclar"></div>
+    </section>
+
+    <!-- 5. Ritim -->
+    <section class="wizard__panel" data-panel="5" hidden>
+        <h1 class="wizard__title">Ne kadar zaman ayırabilirsin?</h1>
+        <p class="wizard__lead">Gerçekçi olanı seç; plan bu süreye sığdırılır. Sonradan değiştirebilirsin.</p>
+        <div class="choice">
+            <span class="choice__label">Günde</span>
+            <div class="choice__options" role="radiogroup" aria-label="Günlük süre" id="sureler"></div>
+        </div>
+        <div class="choice">
+            <span class="choice__label">Haftada kaç gün</span>
+            <div class="choice__options" role="radiogroup" aria-label="Haftada gün" id="gunler"></div>
+        </div>
+        <button class="btn btn--primary btn--lg" type="button" id="bitir">Kaydet ve bitir</button>
+    </section>
+
+    <!-- Sonuc -->
+    <section class="wizard__panel" data-panel="6" hidden>
+        <h1 class="wizard__title">Kişisel yolun hazır</h1>
+        <p class="path" id="yol"></p>
+        <p class="wizard__lead" id="calismaNotu"></p>
+        <a class="btn btn--primary btn--lg" href="/app/index.html">Ana Sayfa'ya geç</a>
+    </section>
+
+    <div class="wizard__nav" id="gezinme" hidden>
+        <button class="btn btn--quiet" type="button" id="geri">← Geri</button>
+    </div>
 </main>
 
 <script type="module">
     import { requireAuth } from "/assets/js/core/guard.js";
-    import { api, ApiError } from "/assets/js/core/api.js";
+    import { api } from "/assets/js/core/api.js";
+    import { AMAC, seviyeAdi, esc } from "/assets/js/core/etiket.js";
 
-    const GUN_SECENEKLERI = [
-        { value: 30, label: "30 gün", desc: "yoğun tempo" },
-        { value: 45, label: "45 gün", desc: "hızlı" },
-        { value: 60, label: "60 gün", desc: "dengeli" },
-        { value: 90, label: "90 gün", desc: "rahat" },
-        { value: 120, label: "120 gün", desc: "geniş zaman" },
-    ];
-
-    const SURE_SECENEKLERI = [
-        { value: 60, label: "1 saat" },
-        { value: 120, label: "2 saat" },
-        { value: 180, label: "3 saat" },
-        { value: 240, label: "4 saat" },
-        { value: 390, label: "6,5 saat", desc: "tam gün" },
-    ];
-
-    const hata = document.getElementById("hata");
-    let sorular = [];
-    let cevaplar = new Map();   // soruId -> secenekId
-    let secenekMetni = new Map();   // secenekId -> metin
-    let sira = 0;
+    const params = new URLSearchParams(location.search);
+    const ADIM_ADLARI = ["Başlangıç", "Test", "Hedef", "Amaç", "Ritim"];
+    let durum = null;
+    let adim = 1;
+    const secim = { hedef: null, amac: null, dakika: null, gun: null };
 
     const session = await requireAuth();
     if (session) {
-        kurSecenekler();
-        bagla();
-    }
-
-    // ---------- 1. Hedef ----------
-
-    function kurSecenekler() {
-        const gunler = document.getElementById("gunSecenekleri");
-        gunler.innerHTML = GUN_SECENEKLERI.map((o, i) => `
-            <label class="opt">
-                <input type="radio" name="gun" value="${o.value}" ${i === 2 ? "checked" : ""}>
-                <span class="opt__box">
-                    <span class="opt__title">${o.label}</span>
-                    <span class="opt__desc">${o.desc}</span>
-                </span>
-            </label>`).join("");
-
-        const sureler = document.getElementById("sureSecenekleri");
-        sureler.innerHTML = SURE_SECENEKLERI.map((o, i) => `
-            <label class="opt">
-                <input type="radio" name="sure" value="${o.value}" ${i === 1 ? "checked" : ""}>
-                <span class="opt__box">
-                    <span class="opt__title">${o.label}</span>
-                    ${o.desc ? `<span class="opt__desc">${o.desc}</span>` : ""}
-                </span>
-            </label>`).join("");
-    }
-
-    function bagla() {
-        document.getElementById("hedefFormu")
-            .addEventListener("submit", hedefGonder);
-        document.getElementById("ileriBtn").addEventListener("click", ileri);
-        document.getElementById("geriBtn").addEventListener("click", geri);
-        document.getElementById("atlaBtn").addEventListener("click", () => {
-            cevaplar.delete(sorular[sira].id);
-            ileri();
-        });
-    }
-
-    async function hedefGonder(e) {
-        e.preventDefault();
-        hata.hidden = true;
-
-        const form = new FormData(e.target);
-        const seviye = form.get("seviye");
-        const sinav = form.get("sinav");
-
-        // Goethe A2 ile A1 hedefi celisir; kullaniciyi sunucuya gondermeden uyar.
-        if (sinav === "GOETHE_A2" && seviye !== "A2") {
-            goster("Goethe A2 sınavı için hedef seviyen de A2 olmalı.");
-            return;
-        }
-
-        const btn = document.getElementById("hedefGonder");
-        btn.disabled = true;
-        btn.textContent = "Kaydediliyor...";
-
         try {
-            await api.post("/goals", {
-                targetLevel: seviye,
-                examType: sinav,
-                totalDays: Number(form.get("gun")),
-                dailyMinutes: Number(form.get("sure")),
-            });
-            await testeGec();
+            durum = await api.get("/onboarding");
+            if (durum.completed && !params.has("duzenle")) {
+                location.replace("/app/index.html");
+            } else {
+                baslat();
+            }
         } catch (err) {
-            goster(err.message);
-            btn.disabled = false;
-            btn.textContent = "Devam et";
+            hata(err.message);
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
         }
     }
 
-    // ---------- 2. Test ----------
+    function baslat() {
+        secim.hedef = durum.goal?.target ?? null;
+        secim.amac = durum.goal?.purpose ?? null;
+        secim.dakika = durum.rhythm?.dailyMinutes ?? null;
+        secim.gun = durum.rhythm?.daysPerWeek ?? null;
 
-    async function testeGec() {
-        const test = await api.get("/placement/test");
-        sorular = test.questions;
-        secenekMetni = new Map(
-            sorular.flatMap((s) => s.options.map((o) => [o.id, o.text])));
-        sira = 0;
+        document.querySelectorAll('input[name="baslangic"]').forEach((r) => {
+            r.checked = r.value === durum.startMode;
+            r.addEventListener("change", () => baslangicSec(r.value));
+        });
+        document.getElementById("testiAtla").addEventListener("click", () => git(3));
+        document.getElementById("bitir").addEventListener("click", bitir);
+        document.getElementById("geri").addEventListener("click", geri);
 
-        panel("panelTest");
-        adim(2);
-        ciz();
+        secenekleriCiz();
+
+        // Yerlestirme testinden donuluyorsa hedef adimina gec.
+        const baslangicAdimi = Number(params.get("adim")) || (durum.startMode ? 3 : 1);
+        git(durum.startMode ? baslangicAdimi : 1);
     }
 
-    function ciz() {
-        const soru = sorular[sira];
+    async function baslangicSec(mode) {
+        try {
+            durum = await api.put("/onboarding/start", { startMode: mode });
+            secenekleriCiz();
+            git(mode === "FROM_ZERO" ? 3 : 2);
+        } catch (err) {
+            hata(err.message);
+        }
+    }
 
-        document.getElementById("soruSayaci").textContent =
-            `${sira + 1} / ${sorular.length}`;
-        document.getElementById("ilerleme").style.width =
-            `${(sira / sorular.length) * 100}%`;
+    function secenekleriCiz() {
+        radyo("hedefler", "hedef", durum.targetOptions.map((l) => ({ value: l, title: l })), secim.hedef,
+            (v) => { secim.hedef = v; git(4); });
+        radyo("amaclar", "amac", Object.entries(AMAC).map(([value, title]) => ({ value, title })), secim.amac,
+            (v) => { secim.amac = v; git(5); });
+        radyo("sureler", "dakika", durum.dailyMinuteOptions.map((m) => ({ value: m, title: m === 90 ? "90+ dk" : `${m} dk` })),
+            secim.dakika, (v) => { secim.dakika = Number(v); });
+        radyo("gunler", "gun", [1, 2, 3, 4, 5, 6, 7].map((g) => ({ value: g, title: String(g) })),
+            secim.gun, (v) => { secim.gun = Number(v); });
 
-        // Bosluk gorsel olarak one ciksin.
-        document.getElementById("soruMetni").innerHTML =
-            escapeHtml(soru.prompt).replace(/___/g, '<span class="quiz__gap">___</span>');
+        const sonuc = document.getElementById("testSonucu");
+        if (durum.placement) {
+            sonuc.hidden = false;
+            sonuc.innerHTML = `<p class="notice notice--info">Son yerleştirme sonucun:
+                <strong>${seviyeAdi(durum.placement.result)} civarı</strong> (düşük güven, kaba başlangıç noktası).</p>`;
+            document.getElementById("testeBasla").textContent = "Testi tekrar çöz";
+            document.getElementById("testiAtla").textContent = "Devam et";
+            document.getElementById("hedefNot").textContent =
+                `Test sonucuna göre ${seviyeAdi(durum.placement.result)} üstündeki hedefler gösteriliyor. `
+                + "Hedefe ulaştığında sistem seni zorla bir üst seviyeye itmez.";
+        }
+    }
 
-        const secili = cevaplar.get(soru.id);
-        document.getElementById("secenekler").innerHTML = soru.options.map((o) => `
-            <button class="quiz__option" type="button"
-                    data-id="${o.id}" aria-pressed="${o.id === secili}">
-                ${escapeHtml(o.text)}
-            </button>`).join("");
+    function radyo(kutuId, ad, secenekler, secili, degisti) {
+        const kutu = document.getElementById(kutuId);
+        kutu.innerHTML = secenekler.map((o) => `
+            <label class="opt">
+                <input type="radio" name="${ad}" value="${esc(String(o.value))}"
+                       ${String(o.value) === String(secili) ? "checked" : ""}>
+                <span class="opt__box"><span class="opt__title">${esc(o.title)}</span></span>
+            </label>`).join("");
+        kutu.querySelectorAll("input").forEach((r) => r.addEventListener("change", () => degisti(r.value)));
+    }
 
-        document.querySelectorAll(".quiz__option").forEach((btn) => {
-            btn.addEventListener("click", () => {
-                cevaplar.set(soru.id, btn.dataset.id);
-                ciz();
-                // Secince kendiliginden ilerle: 39 soruda her seferinde
-                // "ileri" tiklamak gereksiz surtunme.
-                setTimeout(ileri, 180);
-            });
-        });
-
-        document.getElementById("geriBtn").disabled = sira === 0;
-        document.getElementById("ileriBtn").textContent =
-            sira === sorular.length - 1 ? "Bitir ve sonucu gör" : "İleri";
+    function git(n) {
+        adim = n;
+        document.querySelectorAll("[data-panel]").forEach((p) => { p.hidden = Number(p.dataset.panel) !== n; });
+        document.getElementById("gezinme").hidden = n === 1 || n === 6;
+        adimlariCiz();
+        document.getElementById("hata").hidden = true;
+        window.scrollTo({ top: 0 });
     }
 
     function geri() {
-        if (sira > 0) {
-            sira--;
-            ciz();
+        if (adim === 3) {
+            git(durum.startMode === "SOME_KNOWLEDGE" ? 2 : 1);
+        } else {
+            git(Math.max(1, adim - 1));
         }
     }
 
-    async function ileri() {
-        if (sira < sorular.length - 1) {
-            sira++;
-            ciz();
+    function adimlariCiz() {
+        // "Sifirdan" diyene test adimi gosterilmez.
+        const testVar = durum.startMode !== "FROM_ZERO";
+        const liste = ADIM_ADLARI.map((ad, i) => ({ no: i + 1, ad })).filter((a) => testVar || a.no !== 2);
+        document.getElementById("adimlar").innerHTML = liste.map((a, i) => {
+            const sinif = a.no === adim ? " wizard__step--active" : a.no < adim ? " wizard__step--done" : "";
+            return `<li class="wizard__step${sinif}">${i + 1} · ${a.ad}</li>`;
+        }).join("");
+    }
+
+    async function bitir() {
+        if (!secim.hedef || !secim.amac || !secim.dakika || !secim.gun) {
+            hata("Hedef, amaç, günlük süre ve haftalık gün sayısını seç.");
             return;
         }
-        await gonder();
-    }
-
-    async function gonder() {
-        const btn = document.getElementById("ileriBtn");
+        const btn = document.getElementById("bitir");
         btn.disabled = true;
-        btn.textContent = "Değerlendiriliyor...";
-
         try {
-            const sonuc = await api.post("/placement/submit", {
-                answers: sorular.map((s) => ({
-                    questionId: s.id,
-                    selectedOptionId: cevaplar.get(s.id) ?? null,
-                })),
-            });
-            sonucGoster(sonuc);
+            const body = { target: secim.hedef, purpose: secim.amac, dailyMinutes: secim.dakika, daysPerWeek: secim.gun };
+            durum = params.has("duzenle") && durum.completed
+                ? await duzenle(body)
+                : await api.post("/onboarding/complete", body);
+            sonucGoster();
         } catch (err) {
-            goster(err.message);
+            hata(err.message);
+        } finally {
             btn.disabled = false;
-            btn.textContent = "Bitir ve sonucu gör";
         }
     }
 
-    // ---------- 3. Sonuç ----------
-
-    function sonucGoster(s) {
-        panel("panelSonuc");
-        adim(3);
-
-        document.getElementById("seviyeTahmini").textContent = s.estimatedLevel;
-        document.getElementById("statDogru").textContent = `${s.correct}/${s.total}`;
-        document.getElementById("statBilinen").textContent =
-            s.masteredCategoryCodes.length;
-        document.getElementById("statAtlanan").textContent = s.skippableUnits;
-
-        const etiket = { MASTERED: "biliyorsun", PARTIAL: "yarım", WEAK: "zayıf" };
-        document.getElementById("kategoriler").innerHTML = s.categories.map((c) => `
-            <li class="cat">
-                <span>${escapeHtml(c.nameTr)}</span>
-                <span class="cat__score">${c.correct}/${c.total}</span>
-                <span class="tag tag--${c.status.toLowerCase()}">${etiket[c.status]}</span>
-            </li>`).join("");
-
-        const soruAdi = new Map(sorular.map((q) => [q.id, q.prompt]));
-        document.getElementById("inceleme").innerHTML =
-            (s.review ?? []).map((r) => incelemeHtml(r, soruAdi.get(r.questionId))).join("");
+    async function duzenle(body) {
+        await api.put("/onboarding/goal", { target: body.target, purpose: body.purpose });
+        return api.put("/onboarding/rhythm", { dailyMinutes: body.dailyMinutes, daysPerWeek: body.daysPerWeek });
     }
 
-    /**
-     * Dogru cevabi gostermek tek basina yetmez: kullanici neyi
-     * isaretledigini de gormeli ki farki anlasin.
-     */
-    function incelemeHtml(r, soru) {
-        const seciliId = cevaplar.get(r.questionId);
-        const senin = seciliId ? secenekMetni.get(seciliId) : null;
-
-        const seninSatir = r.wasCorrect
-            ? ""
-            : `<p class="qrev__line qrev__line--no">Senin cevabın:
-                 <b>${senin ? escapeHtml(senin) : "boş bıraktın"}</b></p>`;
-
-        return `
-            <div class="qrev qrev--${r.wasCorrect ? "ok" : "wrong"}">
-                <p class="qrev__q">${escapeHtml(soru ?? "")}</p>
-                ${seninSatir}
-                <p class="qrev__line qrev__line--ok">Doğru cevap:
-                    <b>${escapeHtml(r.correctOptionText)}</b></p>
-                ${r.explanationTr
-                    ? `<p class="qrev__exp">${escapeHtml(r.explanationTr)}</p>` : ""}
-            </div>`;
+    function sonucGoster() {
+        document.getElementById("yol").innerHTML = durum.path.map((l) => `<span>${l}</span>`).join(" → ");
+        const w = durum.working;
+        const notlar = {
+            OVERALL_ESTIMATE: "beceri kanıtlarından",
+            PLACEMENT: "yerleştirme testinden",
+            ONBOARDING: "başlangıç cevabından",
+            A0_EXIT: "temel konuları tamamlamandan",
+        };
+        document.getElementById("calismaNotu").textContent =
+            `İçerik önerileri ${w.level === "A0" ? "en temelden" : w.level + " düzeyinden"} başlayacak `
+            + `(${notlar[w.source]}). Bu bir seviye iddiası değil; seviyeni dört becerideki `
+            + "çalışmaların ve sonuçların belirler.";
+        git(6);
     }
 
-    // ---------- yardımcılar ----------
-
-    function panel(id) {
-        ["panelHedef", "panelTest", "panelSonuc"].forEach((p) => {
-            document.getElementById(p).hidden = p !== id;
-        });
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function adim(n) {
-        [1, 2, 3].forEach((i) => {
-            const el = document.getElementById("ad" + i);
-            el.classList.toggle("wizard__step--active", i === n);
-            el.classList.toggle("wizard__step--done", i < n);
-        });
-    }
-
-    function goster(mesaj) {
-        hata.textContent = mesaj;
-        hata.hidden = false;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function escapeHtml(s) {
-        const d = document.createElement("div");
-        d.textContent = s;
-        return d.innerHTML;
+    function hata(mesaj) {
+        const h = document.getElementById("hata");
+        h.textContent = mesaj;
+        h.hidden = false;
     }
 </script>
 

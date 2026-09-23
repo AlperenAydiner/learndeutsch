@@ -1,0 +1,79 @@
+[
+  {
+    "id": "cd-a1-sp-1",
+    "level": "A1",
+    "skill": "SPRECHEN",
+    "textTr": "Kendimi tanıtabilir, adımı, nereden geldiğimi ve nerede oturduğumu söyleyebilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-sp-2",
+    "level": "A1",
+    "skill": "SPRECHEN",
+    "textTr": "Alışverişte ya da restoranda basit isteklerimi söyleyebilirim (fiyat sormak, sipariş vermek).",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-sp-3",
+    "level": "A1",
+    "skill": "SPRECHEN",
+    "textTr": "Karşımdaki yavaş ve net konuşursa basit sorular sorup cevaplayabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-sp-4",
+    "level": "A1",
+    "skill": "SPRECHEN",
+    "textTr": "Günlük programımı ve hobilerimi birkaç basit cümleyle anlatabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-sc-1",
+    "level": "A1",
+    "skill": "SCHREIBEN",
+    "textTr": "Kendimi tanıtan kısa bir mesaj ya da e-posta yazabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-sc-2",
+    "level": "A1",
+    "skill": "SCHREIBEN",
+    "textTr": "Basit bir form doldurabilirim: ad, adres, doğum tarihi, meslek.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-sc-3",
+    "level": "A1",
+    "skill": "SCHREIBEN",
+    "textTr": "Kısa bir davet ya da not yazabilirim (zaman, yer, ne getirileceği).",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-le-1",
+    "level": "A1",
+    "skill": "LESEN",
+    "textTr": "Tabelaları, menüleri ve kısa duyuruları anlayabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-le-2",
+    "level": "A1",
+    "skill": "LESEN",
+    "textTr": "Kısa ve basit kişisel mesajlarda ana bilgiyi bulabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-ho-1",
+    "level": "A1",
+    "skill": "HOEREN",
+    "textTr": "Yavaş ve net konuşulduğunda tanıdık kelimeleri ve çok basit cümleleri anlayabilirim.",
+    "verified": false
+  },
+  {
+    "id": "cd-a1-ho-2",
+    "level": "A1",
+    "skill": "HOEREN",
+    "textTr": "Sayıları, saatleri ve fiyatları duyduğumda anlayabilirim.",
+    "verified": false
+  }
+]

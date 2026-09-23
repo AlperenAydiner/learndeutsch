@@ -1,0 +1,82 @@
+[
+  {
+    "id": "h-b1-01",
+    "level": "B1",
+    "kind": "DICTATION",
+    "titleTr": "İş yerinde kısa duyuru",
+    "text": "Bitte denken Sie daran, dass die Besprechung morgen früher beginnt als geplant.",
+    "textTr": "Lütfen toplantının yarın planlanandan erken başlayacağını unutmayın.",
+    "estimatedMinutes": 5,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-b1-02",
+    "level": "B1",
+    "kind": "DICTATION",
+    "titleTr": "Kira ilanı notu",
+    "text": "Die Wohnung ist ab dem ersten Oktober frei und wird ohne Möbel vermietet.",
+    "textTr": "Daire 1 Ekim'den itibaren boş ve eşyasız kiralanıyor.",
+    "estimatedMinutes": 5,
+    "questions": [],
+    "verified": false
+  },
+  {
+    "id": "h-b1-03",
+    "level": "B1",
+    "kind": "COMPREHENSION",
+    "titleTr": "Radyoda kurs tanıtımı",
+    "text": "Und jetzt ein Hinweis für alle, die beruflich weiterkommen möchten: Die Volkshochschule bietet ab November einen Abendkurs für Bewerbungstraining an. In sechs Terminen lernen Sie, wie Sie einen Lebenslauf aufbauen, ein Anschreiben formulieren und sich im Vorstellungsgespräch sicher präsentieren. Der Kurs findet dienstags von achtzehn bis zwanzig Uhr statt und kostet vierzig Euro. Wer arbeitslos gemeldet ist, zahlt die Hälfte. Anmeldungen sind bis Ende Oktober online möglich; die Teilnehmerzahl ist auf zwölf Personen begrenzt.",
+    "textTr": "Şimdi de mesleki olarak ilerlemek isteyenlere bir duyuru: Halk eğitim merkezi kasımdan itibaren akşam başvuru eğitimi kursu açıyor. Altı oturumda özgeçmiş hazırlamayı, ön yazı yazmayı ve mülakatta kendinizi güvenle sunmayı öğreniyorsunuz. Kurs salı günleri 18-20 arası, ücreti 40 euro. İşsizlik kaydı olanlar yarısını ödüyor. Kayıtlar ekim sonuna kadar çevrimiçi; kontenjan 12 kişi.",
+    "estimatedMinutes": 7,
+    "questions": [
+      {
+        "id": "h-b1-03-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Worum geht es in dem Kurs?",
+        "options": [
+          "Um Deutsch für Anfänger",
+          "Um Bewerbungstraining",
+          "Um Computerkenntnisse",
+          "Um Rhetorik im Studium"
+        ],
+        "answer": "Um Bewerbungstraining",
+        "acceptedAnswers": [],
+        "explanationTr": "\"einen Abendkurs für Bewerbungstraining\"."
+      },
+      {
+        "id": "h-b1-03-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wann findet der Kurs statt?",
+        "options": [
+          "Montags vormittags",
+          "Dienstags abends",
+          "Mittwochs nachmittags",
+          "Samstags"
+        ],
+        "answer": "Dienstags abends",
+        "acceptedAnswers": [],
+        "explanationTr": "\"dienstags von achtzehn bis zwanzig Uhr\"."
+      },
+      {
+        "id": "h-b1-03-q3",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie viel zahlt jemand, der arbeitslos gemeldet ist?",
+        "options": ["Nichts", "Zwanzig Euro", "Vierzig Euro", "Sechzig Euro"],
+        "answer": "Zwanzig Euro",
+        "acceptedAnswers": [],
+        "explanationTr": "Kurs 40 euro; işsizler yarısını ödüyor, yani 20 euro."
+      },
+      {
+        "id": "h-b1-03-q4",
+        "type": "TRUE_FALSE",
+        "prompt": "Die Teilnehmerzahl ist begrenzt.",
+        "options": ["richtig", "falsch"],
+        "answer": "richtig",
+        "acceptedAnswers": [],
+        "explanationTr": "\"die Teilnehmerzahl ist auf zwölf Personen begrenzt\"."
+      }
+    ],
+    "verified": false
+  }
+]

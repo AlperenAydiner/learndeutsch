@@ -1,0 +1,464 @@
+[
+  {
+    "id": "p01",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich ___ Student.",
+    "options": [
+      "bin",
+      "bist",
+      "ist",
+      "sind"
+    ],
+    "answer": "bin",
+    "acceptedAnswers": [],
+    "tags": [
+      "SEIN_HABEN"
+    ],
+    "explanationTr": "sein fiili: ich bin, du bist, er ist.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p02",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Er ___ in Berlin.",
+    "options": [
+      "wohne",
+      "wohnst",
+      "wohnt",
+      "wohnen"
+    ],
+    "answer": "wohnt",
+    "acceptedAnswers": [],
+    "tags": [
+      "VERBKONJUGATION"
+    ],
+    "explanationTr": "Düzenli fiil, 3. tekil şahıs: -t eki alır.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p03",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Du ___ sehr gut Deutsch.",
+    "options": [
+      "spreche",
+      "sprichst",
+      "spricht",
+      "sprechen"
+    ],
+    "answer": "sprichst",
+    "acceptedAnswers": [],
+    "tags": [
+      "VERBKONJUGATION"
+    ],
+    "explanationTr": "sprechen düzensizdir: du sprichst, er spricht.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p04",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ Buch ist neu.",
+    "options": [
+      "Der",
+      "Die",
+      "Das",
+      "Den"
+    ],
+    "answer": "Das",
+    "acceptedAnswers": [],
+    "tags": [
+      "ARTIKEL"
+    ],
+    "explanationTr": "Buch nötr: das Buch.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p05",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ Straße ist lang.",
+    "options": [
+      "Der",
+      "Die",
+      "Das",
+      "Dem"
+    ],
+    "answer": "Die",
+    "acceptedAnswers": [],
+    "tags": [
+      "ARTIKEL"
+    ],
+    "explanationTr": "-e ile biten isimlerin çoğu dişildir: die Straße.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p06",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ Bahnhof ist dort.",
+    "options": [
+      "Der",
+      "Die",
+      "Das",
+      "Den"
+    ],
+    "answer": "Der",
+    "acceptedAnswers": [],
+    "tags": [
+      "ARTIKEL"
+    ],
+    "explanationTr": "Bahnhof eril: der Bahnhof.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p07",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ein Haus, zwei ___.",
+    "options": [
+      "Hause",
+      "Häuser",
+      "Häusern",
+      "Hausen"
+    ],
+    "answer": "Häuser",
+    "acceptedAnswers": [],
+    "tags": [
+      "PLURAL"
+    ],
+    "explanationTr": "Haus çoğulu Häuser: sesli harf değişir ve -er eklenir.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p08",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich habe ___ Zeit.",
+    "options": [
+      "nicht",
+      "kein",
+      "keine",
+      "nichts"
+    ],
+    "answer": "keine",
+    "acceptedAnswers": [],
+    "tags": [
+      "NEGATION"
+    ],
+    "explanationTr": "İsmi olumsuzlarken kein kullanılır; Zeit dişil olduğu için keine.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p09",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ kommst du? — Aus der Türkei.",
+    "options": [
+      "Wo",
+      "Woher",
+      "Wohin",
+      "Wann"
+    ],
+    "answer": "Woher",
+    "acceptedAnswers": [],
+    "tags": [
+      "W_FRAGEN"
+    ],
+    "explanationTr": "Woher: nereden. Wo nerede, wohin nereye demektir.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p10",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich sehe ___ Mann.",
+    "options": [
+      "der",
+      "den",
+      "dem",
+      "des"
+    ],
+    "answer": "den",
+    "acceptedAnswers": [],
+    "tags": [
+      "AKKUSATIV"
+    ],
+    "explanationTr": "Akkusativ -i hâlidir; eril artikel der yerine den olur.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p11",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Wir kaufen ___ Tisch.",
+    "options": [
+      "ein",
+      "einen",
+      "einem",
+      "eines"
+    ],
+    "answer": "einen",
+    "acceptedAnswers": [],
+    "tags": [
+      "AKKUSATIV"
+    ],
+    "explanationTr": "Belirsiz artikel eril Akkusativ'de einen olur.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p12",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Hast du ___ Schlüssel gefunden?",
+    "options": [
+      "der",
+      "den",
+      "dem",
+      "die"
+    ],
+    "answer": "den",
+    "acceptedAnswers": [],
+    "tags": [
+      "AKKUSATIV"
+    ],
+    "explanationTr": "Schlüssel eril; Akkusativ'de den Schlüssel.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p13",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Das ist ___ Schwester.",
+    "options": [
+      "mein",
+      "meine",
+      "meinen",
+      "meinem"
+    ],
+    "answer": "meine",
+    "acceptedAnswers": [],
+    "tags": [
+      "POSSESSIV"
+    ],
+    "explanationTr": "Schwester dişil; iyelik zamiri meine olur.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p14",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich ___ heute arbeiten.",
+    "options": [
+      "muss",
+      "musst",
+      "müssen",
+      "müsst"
+    ],
+    "answer": "muss",
+    "acceptedAnswers": [],
+    "tags": [
+      "MODALVERBEN"
+    ],
+    "explanationTr": "müssen: ich muss, du musst, er muss.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p15",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ du mir helfen?",
+    "options": [
+      "Kannst",
+      "Kann",
+      "Könnt",
+      "Können"
+    ],
+    "answer": "Kannst",
+    "acceptedAnswers": [],
+    "tags": [
+      "MODALVERBEN"
+    ],
+    "explanationTr": "können: du kannst. Soru cümlesinde fiil başa gelir.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p16",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich ___ jeden Tag um sieben auf.",
+    "options": [
+      "stehe",
+      "stehst",
+      "steht",
+      "aufstehe"
+    ],
+    "answer": "stehe",
+    "acceptedAnswers": [],
+    "tags": [
+      "TRENNBARE_VERBEN"
+    ],
+    "explanationTr": "aufstehen ayrılabilen fiildir; ön ek cümle sonuna gider.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p17",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Morgen ___ ins Kino.",
+    "options": [
+      "gehe ich",
+      "ich gehe",
+      "ich gehen",
+      "gehen ich"
+    ],
+    "answer": "gehe ich",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSTELLUNG"
+    ],
+    "explanationTr": "Cümle zaman ifadesiyle başlarsa fiil ikinci sırada kalır: özne fiilden sonra gelir.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p19",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Der Kurs beginnt ___ neun Uhr.",
+    "options": [
+      "am",
+      "um",
+      "im",
+      "in"
+    ],
+    "answer": "um",
+    "acceptedAnswers": [],
+    "tags": [
+      "ZEITANGABEN"
+    ],
+    "explanationTr": "Saat için um kullanılır. am gün için, im ay için.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p20",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich fahre mit ___ Bus.",
+    "options": [
+      "der",
+      "den",
+      "dem",
+      "des"
+    ],
+    "answer": "dem",
+    "acceptedAnswers": [],
+    "tags": [
+      "DATIV"
+    ],
+    "explanationTr": "mit her zaman Dativ ister; eril der yerine dem olur.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p23",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich ___ einen Film gesehen.",
+    "options": [
+      "habe",
+      "bin",
+      "hat",
+      "ist"
+    ],
+    "answer": "habe",
+    "acceptedAnswers": [],
+    "tags": [
+      "PERFEKT"
+    ],
+    "explanationTr": "Çoğu fiil Perfekt'te haben alır.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p26",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "___ bitte langsam! (sprechen)",
+    "options": [
+      "Sprich",
+      "Sprech",
+      "Sprechen",
+      "Sprichst"
+    ],
+    "answer": "Sprich",
+    "acceptedAnswers": [],
+    "tags": [
+      "IMPERATIV"
+    ],
+    "explanationTr": "sprechen fiilinin du emri: Sprich (sesli harf değişir, -e düşer).",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "GRAMMAR"
+  },
+  {
+    "id": "p38",
+    "level": "A1",
+    "type": "MULTIPLE_CHOICE",
+    "prompt": "Ich gehe zum Arzt, weil ich ___ bin.",
+    "options": [
+      "müde",
+      "krank",
+      "gesund",
+      "schnell"
+    ],
+    "answer": "krank",
+    "acceptedAnswers": [],
+    "tags": [
+      "WORTSCHATZ"
+    ],
+    "explanationTr": "Doktora hasta olunca gidilir: krank.",
+    "estimatedMinutes": 1,
+    "verified": false,
+    "placementKind": "VOCABULARY"
+  }
+]

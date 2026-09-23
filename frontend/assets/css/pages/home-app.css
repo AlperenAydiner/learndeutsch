@@ -1,0 +1,110 @@
+/* =====================================================================
+   Ana Sayfa (giris yapmis kullanici).
+
+   Genis ekranda solda durum, sagda "Bugun ne yaptin?"; son aktiviteler
+   altta tam genislik. Formda serbest metin yerine tek dokunuslu secenekler.
+   ===================================================================== */
+
+.home {
+    display: grid;
+    gap: var(--s-7);
+}
+
+@media (min-width: 1100px) {
+    .home {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+        column-gap: var(--s-8);
+        align-items: start;
+    }
+    .home__recent { grid-column: 1 / -1; }
+}
+
+/* --- Beceriler ------------------------------------------------------ */
+
+.skills { list-style: none; margin: 0 0 var(--s-3); padding: 0; }
+
+.skill {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: var(--s-3);
+    align-items: baseline;
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+    font-size: var(--fs-sm);
+}
+
+.skill__name { font-weight: 700; }
+.skill__meta { color: var(--text-faint); font-size: var(--fs-xs); }
+.skill--no_data .skill__value { color: var(--text-faint); }
+
+/* --- Form ----------------------------------------------------------- */
+
+.logform {
+    display: grid;
+    gap: var(--s-5);
+}
+
+.logform__row { display: grid; gap: var(--s-2); }
+
+.logform__label {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: var(--ls-wide);
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.logform__label small { text-transform: none; letter-spacing: 0; font-weight: 500; }
+
+.logform__text { max-width: 420px; }
+.logform__date { width: auto; min-height: 36px; padding-block: 0; }
+
+.logform__more {
+    padding: var(--s-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r);
+}
+
+.logform__more summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    color: var(--primary);
+}
+
+.logform__more[open] summary { margin-bottom: var(--s-3); }
+
+.logform__score {
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    margin-bottom: var(--s-4);
+}
+
+.logform__score .field__input { width: 96px; }
+
+/* --- Son aktiviteler ------------------------------------------------ */
+
+.acts { list-style: none; margin: 0; padding: 0; }
+
+.act {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.act__main { display: grid; gap: 2px; }
+.act__type { font-weight: 700; }
+.act__meta { color: var(--text-muted); font-size: var(--fs-sm); }
+.act__note { color: var(--text-faint); font-size: var(--fs-xs); }
+.act__actions { display: flex; gap: var(--s-1); }
+.act__actions .btn { min-height: 36px; font-size: var(--fs-sm); }
+
+@media (max-width: 560px) {
+    .skill { grid-template-columns: 1fr auto; }
+    .skill__meta { grid-column: 1 / -1; }
+}

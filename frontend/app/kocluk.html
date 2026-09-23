@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Koçluk — Ich spreche Deutsch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="stylesheet" href="/assets/css/pages/coach.css">
+</head>
+<body>
+
+<div data-nav></div>
+
+<!--
+    Kocluk (SPEC Bolum 7). Iki bolum gorsel olarak ayri:
+    "Ne kadar Almanca biliyorum?" (dort beceri, kanit, guven) ile
+    "Ne kadar calistim?" (ogrenme aktiviteleri). Ikisi karistirilmaz (K1, K2).
+-->
+<main class="wrap section" id="main">
+    <div class="notice notice--error" id="hata" role="alert" hidden></div>
+    <p class="loading" id="yukleniyor">Yükleniyor…</p>
+
+    <div id="icerik" hidden>
+
+        <div class="page-head">
+            <div>
+                <h1>Koçluk</h1>
+                <p class="page-head__sub" id="hedefOzet"></p>
+            </div>
+        </div>
+
+        <p class="path" id="yol"></p>
+        <p class="block__note" id="baslangicNoktasi"></p>
+
+        <!-- 1) Ne kadar Almanca biliyorum? -->
+        <section class="coach-block coach-block--knowledge">
+            <h2 class="block__title">Ne kadar Almanca biliyorum?</h2>
+            <p class="block__note">
+                Seviye yalnız dört beceriden hesaplanır: Lesen, Hören, Schreiben, Sprechen.
+                Kelime ve gramer çalışman buraya girmez.
+            </p>
+            <p class="coach-overall" id="genel"></p>
+            <p class="block__note" id="eksik"></p>
+            <ul class="skillcards" id="beceriler"></ul>
+            <div id="hedefDurumu"></div>
+        </section>
+
+        <!-- 2) Ne kadar çalıştım? -->
+        <section class="coach-block coach-block--work">
+            <h2 class="block__title">Ne kadar çalıştım?</h2>
+            <p class="block__note">
+                Bunlar öğrenme aktiviteleri. Çalışma alışkanlığını gösterir, seviye iddiası değildir.
+            </p>
+            <div class="habit" id="aliskanlik"></div>
+            <h3 class="block__title block">Son 30 gün</h3>
+            <ul class="totals" id="toplamlar"></ul>
+            <h3 class="block__title block">Öğrenme aktivitelerin</h3>
+            <div class="learnstats" id="modulIstatistik"></div>
+            <p class="block__note" id="modulNotu"></p>
+
+            <h3 class="block__title block">Hata hafızan</h3>
+            <p class="block__note">
+                Yanlış yaptığın konular etiketlenir. Doğru gelmeye başlayınca "düzeliyor",
+                art arda doğru gelince "çözüldü" olur.
+            </p>
+            <div id="hatalar"></div>
+        </section>
+
+        <!-- 3) Sistem ne öneriyor? -->
+        <section class="coach-block">
+            <h2 class="block__title">Sistem ne öneriyor?</h2>
+            <p class="block__note">Her öneri hangi veriye dayandığını söyler.</p>
+            <div id="oneriler"></div>
+        </section>
+
+        <!-- 4) Bu haftanın planı -->
+        <section class="coach-block">
+            <h2 class="block__title">Bu haftanın öncelikleri</h2>
+            <p class="block__note" id="haftaNot"></p>
+            <div id="hafta"></div>
+        </section>
+
+        <!-- 5) Ayarlar -->
+        <section class="coach-block">
+            <h2 class="block__title">Hedefini ve ritmini değiştir</h2>
+            <form class="goalform" id="hedefForm">
+                <div class="logform__row">
+                    <span class="logform__label">Hedef seviye</span>
+                    <div class="pills" data-field="target"></div>
+                </div>
+                <div class="logform__row">
+                    <span class="logform__label">Amaç</span>
+                    <div class="pills" data-field="purpose"></div>
+                </div>
+                <div class="logform__row">
+                    <span class="logform__label">Günde</span>
+                    <div class="pills" data-field="dailyMinutes"></div>
+                </div>
+                <div class="logform__row">
+                    <span class="logform__label">Haftada kaç gün</span>
+                    <div class="pills" data-field="daysPerWeek"></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn--primary" type="submit">Kaydet</button>
+                    <a class="btn btn--ghost" href="/app/yerlestirme.html">Seviye testini çöz</a>
+                </div>
+            </form>
+            <p class="block__note" id="kaydedildi" hidden>Kaydedildi.</p>
+        </section>
+    </div>
+</main>
+
+<script type="module">
+    import { requireAuth } from "/assets/js/core/guard.js";
+    import { api } from "/assets/js/core/api.js";
+    import { tarihYaz } from "/assets/js/core/tarih.js";
+    import { oneriListesi, haftalikPlan, turAdi } from "/assets/js/components/kocKartlari.js";
+    import {
+        BECERI, AMAC, SEVIYELER, SONUC_KAYNAGI, KADEME,
+        seviyeAdi, beceriMetni, guvenMetni, genelMetni, eksikBecerilerMetni, esc,
+    } from "/assets/js/core/etiket.js";
+
+    const secim = {};
+    let durum = null;
+
+    const session = await requireAuth();
+    if (session) {
+        try {
+            durum = await api.get("/onboarding");
+            if (!durum.completed) {
+                location.replace("/app/baslangic.html");
+            } else {
+                await ciz();
+            }
+        } catch (err) {
+            hata(err.message);
+        } finally {
+            document.getElementById("yukleniyor").hidden = true;
+        }
+    }
+
+    async function ciz() {
+        const [seviye, koc, kelime, artikel, gramer, hatalar] = await Promise.all([
+            api.get("/level"), api.get("/coach"), api.get("/words/stats"), api.get("/article/stats"),
+            api.get("/grammar/stats"), api.get("/grammar/errors"),
+        ]);
+        document.getElementById("icerik").hidden = false;
+
+        const r = durum.rhythm;
+        document.getElementById("hedefOzet").innerHTML =
+            `Hedef <strong>${durum.goal.target}</strong> · ${AMAC[durum.goal.purpose]} · `
+            + `günde ${r.dailyMinutes === 90 ? "90+" : r.dailyMinutes} dk, haftada ${r.daysPerWeek} gün`;
+        document.getElementById("yol").innerHTML = durum.path.map((l) => `<span>${l}</span>`).join(" → ");
+        document.getElementById("baslangicNoktasi").textContent = seviye.placement
+            ? `Başlangıç noktan: ${seviyeAdi(seviye.placement.result)} civarı (yerleştirme testi, `
+              + `${tarihYaz(seviye.placement.takenOn)}, düşük güven). Bu, beceri profilinden ayrıdır.`
+            : "Henüz yerleştirme testi çözmedin.";
+
+        beceriler(seviye);
+        hedefDurumu(seviye);
+        aliskanlik(koc);
+        modulIstatistikleri(kelime, artikel, gramer);
+        hataHafizasi(hatalar);
+        oneriler(koc);
+        hafta(koc);
+        formKur();
+    }
+
+    // ---------- ne kadar biliyorum ----------
+
+    function beceriler(s) {
+        document.getElementById("genel").textContent = genelMetni(s.overall);
+        document.getElementById("eksik").textContent = eksikBecerilerMetni(s.overall);
+        document.getElementById("beceriler").innerHTML = s.skills.map((k) => `
+            <li class="skillcard">
+                <div class="skillcard__head">
+                    <h3>${BECERI[k.skill]}</h3>
+                    <span class="badge badge--${k.confidence === "RELIABLE" ? "ok" : k.confidence === "LOW" ? "warn" : "muted"}">
+                        ${guvenMetni(k.confidence)}
+                    </span>
+                </div>
+                <p class="skillcard__value">${beceriMetni(k)}</p>
+                <p class="skillcard__meta">${k.evidenceCount} kanıt</p>
+                ${k.basis.length ? `
+                    <details class="skillcard__basis">
+                        <summary>Neye dayanıyor?</summary>
+                        <ul>${k.basis.map((b) => `
+                            <li>${tarihYaz(b.date, { day: "numeric", month: "short", year: "numeric" })} ·
+                                ${b.level} · ${esc(SONUC_KAYNAGI[b.source] ?? b.source)} ·
+                                ${b.score}/${b.maxScore} · ${b.positive ? "destekliyor" : "karşı"} ·
+                                ${KADEME[b.tier]} kademe
+                                ${b.contentVerified === false ? " (içerik doğrulanmadığı için bir kademe düşük)" : ""}
+                            </li>`).join("")}
+                        </ul>
+                    </details>` : ""}
+            </li>`).join("");
+    }
+
+    function hedefDurumu(s) {
+        const kutu = document.getElementById("hedefDurumu");
+        if (!s.goal) {
+            kutu.innerHTML = "";
+            return;
+        }
+        if (s.goal.complete) {
+            kutu.innerHTML = `<p class="notice notice--success">🎉 Hedef seviyene ulaştın — platform içi verilerine göre.
+                Hedefini korumak ya da değiştirmek senin seçimin.</p>
+                <ul class="goalstatus">${s.goal.skills.map(hedefSatiri).join("")}</ul>`;
+            return;
+        }
+        kutu.innerHTML = `<h3 class="block__title block">Hedefe (${s.goalTarget}) göre durum</h3>
+            <ul class="goalstatus">${s.goal.skills.map(hedefSatiri).join("")}</ul>`;
+    }
+
+    function hedefSatiri(st) {
+        const eksikler = [];
+        if (!st.estimateReached) eksikler.push("tahmin hedefin altında");
+        if (st.supporting < 2) eksikler.push(`hedefi destekleyen ${st.supporting} kanıt (en az 2 gerekli)`);
+        else if (!st.hasRecent) eksikler.push("güncel kanıt yok (son 30 gün)");
+        return `<li class="goalstatus__row ${st.ok ? "is-ok" : ""}">
+            <span>${BECERI[st.skill]}</span>
+            <span>${st.ok ? "tamam" : esc(eksikler.join(", "))}</span>
+            <span class="goalstatus__conf">${guvenMetni(st.confidence)}</span>
+        </li>`;
+    }
+
+    // ---------- ne kadar çalıştım ----------
+
+    function aliskanlik(koc) {
+        const gunler = koc.last7Days;
+        const enCok = Math.max(30, ...gunler.map((g) => Object.values(g.minutes).reduce((a, b) => a + b, 0)));
+        document.getElementById("aliskanlik").innerHTML = `
+            <div class="habit__grid">
+                ${gunler.map((g) => {
+                    const toplam = Object.values(g.minutes).reduce((a, b) => a + b, 0);
+                    const parcalar = Object.entries(g.minutes).map(([t, m]) =>
+                        `<span class="habit__part habit__part--${t.toLowerCase()}" style="height:${(m / enCok) * 100}%"
+                               title="${turAdi(t)} ${m} dk"></span>`).join("");
+                    return `<div class="habit__day">
+                        <div class="habit__bars">${parcalar}</div>
+                        <span class="habit__label">${tarihYaz(g.date, { weekday: "short" })}</span>
+                        <span class="habit__total">${toplam || "–"}</span>
+                    </div>`;
+                }).join("")}
+            </div>
+            <p class="block__note">Son 7 gün, tür bazlı dakika. Üstteki sayı o günün toplamı.</p>`;
+
+        const toplamlar = Object.entries(koc.last30Days);
+        document.getElementById("toplamlar").innerHTML = toplamlar.length
+            ? toplamlar.sort((a, b) => b[1] - a[1]).map(([t, m]) =>
+                `<li class="totals__row"><span>${turAdi(t)}</span><span>${m} dk</span></li>`).join("")
+            : `<li class="loading">Son 30 günde kayıt yok.</li>`;
+
+        document.getElementById("modulNotu").textContent =
+            "Bunlar öğrenme aktiviteleridir: seviye tahminine girmezler. Lesen, Hören, "
+            + "Schreiben ve Sprechen çalışmaları kendi modülleri açıldığında buraya eklenecek.";
+    }
+
+    /** Kelime ve artikel modullerinin kendi istatistigi (SPEC 7). */
+    function modulIstatistikleri(kelime, artikel, gramer) {
+        const artikelSatir = ["der", "die", "das"].map((a) => {
+            const w = artikel.byArticle[a];
+            return `<li class="learnstats__row"><span class="artikel--${a}">${a}</span><span>${
+                w.answers ? `%${Math.round((w.correct / w.answers) * 100)} · son ${w.answers} yanıt` : "veri yok"
+            }</span></li>`;
+        }).join("");
+
+        document.getElementById("modulIstatistik").innerHTML = `
+            <div class="learnstats__col">
+                <h4 class="learnstats__head">Kelime</h4>
+                <ul class="learnstats__list">
+                    <li class="learnstats__row"><span>Çalıştığın</span><span>${kelime.studied}</span></li>
+                    <li class="learnstats__row"><span>Güçlü</span><span>${kelime.strong}</span></li>
+                    <li class="learnstats__row"><span>Tekrar bekleyen</span><span>${kelime.dueToday}</span></li>
+                </ul>
+            </div>
+            <div class="learnstats__col">
+                <h4 class="learnstats__head">Artikel</h4>
+                <ul class="learnstats__list">${artikelSatir}</ul>
+            </div>
+            <div class="learnstats__col">
+                <h4 class="learnstats__head">Gramer</h4>
+                <ul class="learnstats__list">
+                    <li class="learnstats__row"><span>Çalıştığın konu</span><span>${gramer.studiedTopics}</span></li>
+                    <li class="learnstats__row"><span>Tamamladığın</span><span>${gramer.completedTopics}</span></li>
+                    <li class="learnstats__row"><span>Kontrol bekleyen</span><span>${gramer.dueChecks}</span></li>
+                </ul>
+            </div>
+            <p class="learnstats__link"><a href="/app/ogren.html">Öğren sayfasında çalış</a></p>`;
+    }
+
+    /** Hata hafizasi (SPEC 8.4): aktif -> duzeliyor -> cozuldu. */
+    function hataHafizasi(hatalar) {
+        const kutu = document.getElementById("hatalar");
+        if (!hatalar.length) {
+            kutu.innerHTML = `<p class="block__note">Henüz etiketlenmiş bir hata yok. Gramer
+                alıştırmalarında yanlış yaptığın konular burada birikir.</p>`;
+            return;
+        }
+        const DURUM = { ACTIVE: ["aktif", "err"], IMPROVING: ["düzeliyor", "warn"], RESOLVED: ["çözüldü", "ok"] };
+        kutu.innerHTML = `<ul class="errors">${hatalar.map((h) => {
+            const [ad, renk] = DURUM[h.status];
+            return `<li class="errors__row">
+                <span class="errors__tag">${esc(h.titleTr)}</span>
+                <span class="badge badge--${renk}">${ad}</span>
+                <span class="errors__meta">${h.occurrences} hata · ${h.distinctSessions} oturum${h.recurring ? " · tekrarlayan" : ""}</span>
+            </li>`;
+        }).join("")}</ul>`;
+    }
+
+    // ---------- öneriler ve plan ----------
+
+    function oneriler(koc) {
+        document.getElementById("oneriler").innerHTML = oneriListesi(koc.recommendations);
+    }
+
+    function hafta(koc) {
+        const w = koc.weekly;
+        document.getElementById("haftaNot").textContent =
+            `${tarihYaz(w.weekStart, { day: "numeric", month: "short" })} – `
+            + `${tarihYaz(w.weekEnd, { day: "numeric", month: "short" })} · haftalık ${w.totalMinutes} dk`
+            + (w.boosted.length ? ` · koçun önerisi ${w.boosted.map(turAdi).join(", ")} payını artırdı` : "");
+        document.getElementById("hafta").innerHTML = haftalikPlan(w);
+    }
+
+    // ---------- hedef ve ritim ----------
+
+    function formKur() {
+        pills("target", SEVIYELER.map((l) => [l, l]), durum.goal.target);
+        pills("purpose", Object.entries(AMAC), durum.goal.purpose);
+        pills("dailyMinutes", durum.dailyMinuteOptions.map((m) => [m, m === 90 ? "90+ dk" : `${m} dk`]),
+            durum.rhythm.dailyMinutes);
+        pills("daysPerWeek", [1, 2, 3, 4, 5, 6, 7].map((g) => [g, String(g)]), durum.rhythm.daysPerWeek);
+        document.getElementById("hedefForm").addEventListener("submit", kaydet);
+    }
+
+    function pills(alan, secenekler, secili) {
+        secim[alan] = String(secili);
+        const kutu = document.querySelector(`[data-field="${alan}"]`);
+        kutu.innerHTML = secenekler.map(([v, t]) =>
+            `<button type="button" class="pill" data-v="${esc(String(v))}"
+                     aria-pressed="${String(v) === String(secili)}">${esc(t)}</button>`).join("");
+        kutu.querySelectorAll(".pill").forEach((b) => b.addEventListener("click", () => {
+            secim[alan] = b.dataset.v;
+            kutu.querySelectorAll(".pill").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        }));
+    }
+
+    async function kaydet(e) {
+        e.preventDefault();
+        document.getElementById("hata").hidden = true;
+        try {
+            if (secim.target !== durum.goal.target || secim.purpose !== durum.goal.purpose) {
+                await api.put("/onboarding/goal", { target: secim.target, purpose: secim.purpose });
+            }
+            await api.put("/onboarding/rhythm", {
+                dailyMinutes: Number(secim.dailyMinutes),
+                daysPerWeek: Number(secim.daysPerWeek),
+            });
+            durum = await api.get("/onboarding");
+            await ciz();
+            const ok = document.getElementById("kaydedildi");
+            ok.hidden = false;
+            setTimeout(() => { ok.hidden = true; }, 4000);
+        } catch (err) {
+            hata(err.message);
+        }
+    }
+
+    function hata(mesaj) {
+        const h = document.getElementById("hata");
+        h.textContent = mesaj;
+        h.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+[
+  {
+    "id": "r-a1-01",
+    "level": "A1",
+    "titleTr": "Yeni komşu",
+    "topicTr": "Tanışma ve günlük hayat",
+    "text": "Hallo! Ich heiße Mert und ich bin 28 Jahre alt. Ich komme aus Izmir, aber jetzt wohne ich in Hamburg. Ich arbeite als Koch in einem kleinen Restaurant. Meine Wohnung ist nicht groß, aber sie ist hell und ruhig. Am Montag und am Dienstag habe ich frei. Dann gehe ich gern in den Park oder ich besuche meine Schwester. Sie wohnt auch in Hamburg und studiert Medizin. Am Abend lerne ich Deutsch, denn ich möchte bald besser sprechen.",
+    "estimatedMinutes": 6,
+    "questions": [
+      {
+        "id": "r-a1-01-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wo wohnt Mert jetzt?",
+        "options": ["In Izmir", "In Hamburg", "In Berlin", "In München"],
+        "answer": "In Hamburg",
+        "acceptedAnswers": [],
+        "explanationTr": "Metinde \"jetzt wohne ich in Hamburg\" diyor; Izmir doğduğu yer."
+      },
+      {
+        "id": "r-a1-01-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was ist Mert von Beruf?",
+        "options": ["Arzt", "Lehrer", "Koch", "Student"],
+        "answer": "Koch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Ich arbeite als Koch\" — aşçı olarak çalışıyor."
+      },
+      {
+        "id": "r-a1-01-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Merts Wohnung ist groß.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Meine Wohnung ist nicht groß\" — yani büyük değil."
+      },
+      {
+        "id": "r-a1-01-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was macht Mert am Abend?",
+        "options": ["Er arbeitet", "Er lernt Deutsch", "Er besucht den Park", "Er kocht"],
+        "answer": "Er lernt Deutsch",
+        "acceptedAnswers": [],
+        "explanationTr": "Son cümle: \"Am Abend lerne ich Deutsch\"."
+      },
+      {
+        "id": "r-a1-01-q5",
+        "type": "TRUE_FALSE",
+        "prompt": "Merts Schwester studiert Medizin.",
+        "options": ["richtig", "falsch"],
+        "answer": "richtig",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Sie wohnt auch in Hamburg und studiert Medizin\"."
+      }
+    ],
+    "glossary": [
+      { "de": "die Wohnung", "tr": "daire" },
+      { "de": "hell", "tr": "aydınlık" },
+      { "de": "ruhig", "tr": "sessiz, sakin" },
+      { "de": "frei haben", "tr": "izinli olmak" }
+    ],
+    "verified": false
+  },
+  {
+    "id": "r-a1-02",
+    "level": "A1",
+    "titleTr": "Süpermarkette",
+    "topicTr": "Alışveriş ve sayılar",
+    "text": "Am Samstag geht Familie Yılmaz einkaufen. Der Supermarkt ist gleich neben dem Bahnhof und öffnet um acht Uhr. Frau Yılmaz kauft Brot, Milch und Äpfel. Herr Yılmaz möchte Käse, aber der Käse ist heute sehr teuer: ein Kilo kostet 14 Euro. \"Das ist zu teuer\", sagt er. Die Kinder nehmen einen Saft und Schokolade. An der Kasse bezahlt Frau Yılmaz mit Karte. Zusammen kostet alles 32 Euro. Danach fahren sie mit dem Bus nach Hause.",
+    "estimatedMinutes": 6,
+    "questions": [
+      {
+        "id": "r-a1-02-q1",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wann geht die Familie einkaufen?",
+        "options": ["Am Freitag", "Am Samstag", "Am Sonntag", "Am Montag"],
+        "answer": "Am Samstag",
+        "acceptedAnswers": [],
+        "explanationTr": "İlk cümle: \"Am Samstag geht Familie Yılmaz einkaufen\"."
+      },
+      {
+        "id": "r-a1-02-q2",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Was kauft Herr Yılmaz nicht?",
+        "options": ["Käse", "Brot", "Milch", "Saft"],
+        "answer": "Käse",
+        "acceptedAnswers": [],
+        "explanationTr": "Peynir çok pahalı olduğu için almıyor: \"Das ist zu teuer\"."
+      },
+      {
+        "id": "r-a1-02-q3",
+        "type": "TRUE_FALSE",
+        "prompt": "Der Supermarkt öffnet um neun Uhr.",
+        "options": ["richtig", "falsch"],
+        "answer": "falsch",
+        "acceptedAnswers": [],
+        "explanationTr": "Metinde saat sekiz yazıyor: \"öffnet um acht Uhr\"."
+      },
+      {
+        "id": "r-a1-02-q4",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie viel kostet alles zusammen?",
+        "options": ["14 Euro", "22 Euro", "32 Euro", "42 Euro"],
+        "answer": "32 Euro",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Zusammen kostet alles 32 Euro\"; 14 Euro bir kilo peynirin fiyatı."
+      },
+      {
+        "id": "r-a1-02-q5",
+        "type": "MULTIPLE_CHOICE",
+        "prompt": "Wie fahren sie nach Hause?",
+        "options": ["Mit dem Auto", "Mit dem Bus", "Mit dem Fahrrad", "Zu Fuß"],
+        "answer": "Mit dem Bus",
+        "acceptedAnswers": [],
+        "explanationTr": "\"Danach fahren sie mit dem Bus nach Hause\"."
+      }
+    ],
+    "glossary": [
+      { "de": "einkaufen", "tr": "alışveriş yapmak" },
+      { "de": "teuer", "tr": "pahalı" },
+      { "de": "die Kasse", "tr": "kasa" },
+      { "de": "bezahlen", "tr": "ödemek" }
+    ],
+    "verified": false
+  }
+]

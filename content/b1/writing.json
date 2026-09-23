@@ -1,0 +1,39 @@
+[
+  {
+    "id": "s-b1-01",
+    "level": "B1",
+    "titleTr": "Bir konuda görüş yazısı",
+    "taskTr": "Bir forumda \"Evden çalışmak mı, ofiste çalışmak mı?\" tartışılıyor. Kendi görüşünü yaz: iki tarafın da bir avantajını söyle, sonra hangisini neden tercih ettiğini açıkla ve bir örnek ver.",
+    "taskDe": "In einem Forum wird diskutiert: Homeoffice oder Büro? Schreiben Sie Ihre Meinung: Nennen Sie je einen Vorteil beider Seiten, begründen Sie Ihre Wahl und geben Sie ein Beispiel.",
+    "minWords": 100,
+    "phrases": [
+      "Meiner Meinung nach ...",
+      "Einerseits ... , andererseits ...",
+      "Ein Vorteil davon ist, dass ...",
+      "Aus meiner Erfahrung ...",
+      "Zusammenfassend würde ich sagen, dass ..."
+    ],
+    "sampleAnswer": "Meiner Meinung nach hat beides Vor- und Nachteile. Einerseits spart man im Homeoffice viel Zeit, weil der Arbeitsweg wegfällt. Andererseits ist der Kontakt zu den Kolleginnen und Kollegen im Büro deutlich einfacher; man klärt eine Frage in zwei Minuten, statt eine lange E-Mail zu schreiben.\n\nIch selbst arbeite lieber hybrid. An zwei Tagen im Büro bespreche ich alles, was Diskussion braucht, und zu Hause konzentriere ich mich auf Aufgaben, die Ruhe verlangen. Als ich letztes Jahr nur zu Hause gearbeitet habe, habe ich gemerkt, dass mir der Austausch gefehlt hat.\n\nZusammenfassend würde ich sagen, dass eine Mischung am besten funktioniert, wenn es klare Regeln für Arbeitszeiten gibt.",
+    "estimatedMinutes": 35,
+    "verified": false
+  },
+  {
+    "id": "s-b1-02",
+    "level": "B1",
+    "titleTr": "Resmî şikâyet ve talep",
+    "taskTr": "Oturduğun binada kalorifer iki haftadır çalışmıyor. Ev sahibine resmî bir e-posta yaz: sorunu ve ne zamandır sürdüğünü anlat, daha önce ne yaptığını söyle, somut bir tarih vererek çözüm iste ve sonuç alamazsan ne yapacağını nazikçe belirt.",
+    "taskDe": "Die Heizung in Ihrer Wohnung funktioniert seit zwei Wochen nicht. Schreiben Sie eine formelle E-Mail an die Vermieterin: Problem, Dauer, bisherige Schritte, konkrete Frist und höflicher Hinweis auf weitere Schritte.",
+    "minWords": 100,
+    "phrases": [
+      "Sehr geehrte Frau ... ,",
+      "hiermit möchte ich Sie darüber informieren, dass ...",
+      "Seit dem ... funktioniert ...",
+      "Ich habe bereits ...",
+      "Ich bitte Sie, bis zum ... ...",
+      "Mit freundlichen Grüßen"
+    ],
+    "sampleAnswer": "Sehr geehrte Frau Berger,\n\nhiermit möchte ich Sie darüber informieren, dass die Heizung in meiner Wohnung seit dem 3. November nicht mehr funktioniert. Die Räume werden nicht warm, obwohl die Thermostate auf der höchsten Stufe stehen.\n\nIch habe bereits zweimal in der Hausverwaltung angerufen. Beim ersten Anruf wurde mir ein Techniker angekündigt, der bisher nicht gekommen ist. Da die Temperaturen nachts unter fünf Grad fallen, ist die Situation inzwischen schwer erträglich.\n\nIch bitte Sie, die Reparatur bis zum 20. November zu veranlassen. Sollte das nicht möglich sein, werde ich die Miete nach Rücksprache mit dem Mieterverein entsprechend mindern.\n\nMit freundlichen Grüßen\nMert Yılmaz",
+    "estimatedMinutes": 35,
+    "verified": false
+  }
+]

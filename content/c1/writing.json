@@ -1,0 +1,21 @@
+[
+  {
+    "id": "s-c1-01",
+    "level": "C1",
+    "titleTr": "Özetle ve eleştirel biçimde değerlendir",
+    "taskTr": "Okuduğun bir metni (örneğin \"Dikkat ekonomisi\" metnini) önce kendi cümlelerinle özetle, sonra eleştirel biçimde değerlendir: yazarın kanıtı ne kadar güçlü, hangi noktada fazla ileri gidiyor, sen ne eklerdin? Alıntı yapma, kendi ifadenle yaz.",
+    "taskDe": "Fassen Sie einen gelesenen Text in eigenen Worten zusammen und nehmen Sie anschließend kritisch Stellung: Wie tragfähig ist die Argumentation, wo geht sie zu weit, was würden Sie ergänzen?",
+    "minWords": 200,
+    "phrases": [
+      "Der Text geht der Frage nach, ob ...",
+      "Der Autor argumentiert im Wesentlichen damit, dass ...",
+      "Überzeugend erscheint mir dabei, dass ...",
+      "Kritisch anzumerken ist allerdings, dass ...",
+      "Die Argumentation wäre tragfähiger, wenn ...",
+      "Unabhängig davon bleibt festzuhalten, dass ..."
+    ],
+    "sampleAnswer": "Der Text geht der Frage nach, ob die viel zitierte \"sinkende Aufmerksamkeitsspanne\" empirisch haltbar ist. Der Autor zeigt zunächst, dass sich die bekannte Sekundenzahl nicht auf eine belastbare Untersuchung zurückführen lässt, sondern über eine Pressemitteilung in Umlauf geriet. Anschließend erklärt er die Beharrlichkeit der Behauptung damit, dass sie an eine kulturkritische Erzählung vom Verfall der Konzentration anschließt. Die Forschung selbst, so das Argument, beschreibe Aufmerksamkeit nicht als einheitliches Vermögen, sondern als kontextabhängiges Bündel von Prozessen; verändert habe sich weniger der Mensch als seine Umgebung, in der Unterbrechungen billig und Belohnungen unmittelbar geworden seien.\n\nÜberzeugend erscheint mir dabei die Quellenkritik: Wer eine Zahl weiterverbreitet, sollte sagen können, woher sie stammt. Auch der Hinweis auf die Funktion solcher Erzählungen ist plausibel, weil er erklärt, warum eine Widerlegung allein selten genügt.\n\nKritisch anzumerken ist allerdings, dass der Text die Gegenposition recht schnell abräumt. Dass Unterbrechungen häufiger geworden sind, heißt nicht zwingend, dass sie folgenlos für die Konzentrationsfähigkeit bleiben; hier hätte ich mir mindestens einen Verweis auf Längsschnittstudien gewünscht. Die Argumentation wäre tragfähiger, wenn sie zwischen kurzfristiger Ablenkbarkeit und langfristiger Veränderung unterscheiden würde.\n\nUnabhängig davon bleibt festzuhalten, dass die praktische Empfehlung — Unterbrechungen strukturell zu verteuern statt an Willenskraft zu appellieren — auch dann sinnvoll ist, wenn man die stärkere These nicht teilt.",
+    "estimatedMinutes": 60,
+    "verified": false
+  }
+]
