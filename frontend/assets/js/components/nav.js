@@ -34,7 +34,7 @@ export function mountNav({ loggedIn = false, userName = "" } = {}) {
         <header class="topbar${loggedIn ? " topbar--app" : ""}">
             <div class="wrap topbar__inner">
                 <a class="brand" href="${loggedIn ? "/app/index.html" : "/index.html"}">
-                    <span class="brand__mark" aria-hidden="true">ID</span>
+                    <span class="brand__mark" aria-hidden="true">DE</span>
                     <span>Ich spreche Deutsch</span>
                 </a>
 
